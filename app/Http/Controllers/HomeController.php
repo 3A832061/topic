@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
 
     public function index()
     {
-        return view('index');
+        $posts=Post::orderBy('date', 'DESC')->take(6)->get();
+        $data=['posts'=>$posts];
+        return view('index',$data);
     }
+
 }
