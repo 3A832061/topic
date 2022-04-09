@@ -17,35 +17,94 @@
 <main class="flex-shrink-0">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-5">
-            <a class="navbar-brand" href="index.html">管樂社</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html">公告</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">行事曆</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社團介紹</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                            <li><a class="dropdown-item" href="blog-home.html">社團簡介</a></li>
-                            <li><a class="dropdown-item" href="blog-post.html">指導老師</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">活動紀錄</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                            <li><a class="dropdown-item" href="portfolio-overview.html">音樂會</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">試樂器</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">迎新</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">社慶</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">講座</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">寒/暑輔</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">幹部訓練</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">招生網站</a></li>
-                </ul>
-            </div>
+        <!--<img class="container px-5">-->
+        <a class="navbar-brand" href={{route('index')}}><img src="https://i.imgur.com/VFpayUA.png" ></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href={{route('posts.index')}}>公告</a></li>
+                <li class="nav-item"><a class="nav-link" href={{route('calendars.index')}}}>行事曆</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社團介紹</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" href="blog-home.html">社團簡介</a></li>
+                        <li><a class="dropdown-item" href="blog-post.html">指導老師</a></li>
+                        <li><a class="dropdown-item" href="blog-post.html">獎項紀錄</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">活動紀錄</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                        <li><a class="dropdown-item" href="portfolio-overview.html">音樂會</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">試樂器</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">迎新</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">社慶</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">講座</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">寒/暑輔</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">幹部訓練</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="about.html">招生網站</a></li>
+                @if (Route::has('login'))
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">譜相關</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                <li><a class="dropdown-item" href="portfolio-overview.html">總清單</a></li>
+                                <li><a class="dropdown-item" href="portfolio-item.html">歷年演出</a></li>
+                                <li><a class="dropdown-item" href="portfolio-item.html">缺頁申請</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">器材相關</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                <li><a class="dropdown-item" href="portfolio-overview.html">樂器清單</a></li>
+                                <li><a class="dropdown-item" href="portfolio-item.html">樂器報修</a></li>
+                                <li><a class="dropdown-item" href="portfolio-item.html">耗材清單</a></li>
+                                <li><a class="dropdown-item" href="portfolio-item.html">耗材申請</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社費相關</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                <li><a class="dropdown-item" href="portfolio-overview.html">收支圓餅圖</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">出席</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                <li><a class="dropdown-item" href="portfolio-overview.html">出席填寫</a></li>
+                                <li><a class="dropdown-item" href="portfolio-item.html">出席統計</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社員 {{auth()->user()->name}}</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                <li><a class="dropdown-item" href="portfolio-item.html">社員資料</a></li>
+                                <li><a class="dropdown-item" href="portfolio-item.html">修改密碼</a></li>
+
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                             onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                            登出
+                                        </x-jet-dropdown-link>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        @endif
+                        <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">登入</a></li>
+                    @endauth
+                @endif
+            </ul>
+        </div>
         </div>
     </nav>
     <!-- Header-->
@@ -54,11 +113,19 @@
             <div class="row gx-5 align-items-center justify-content-center">
                 <div class="col-lg-8 col-xl-7 col-xxl-6">
                     <div class="my-5 text-center text-xl-start">
-                        <h1 class="display-5 fw-bolder text-white mb-2">A Bootstrap 5 template for modern businesses</h1>
-                        <p class="lead fw-normal text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
+                        <h3 style="color: white">最新公告</h3>
+                        <table style="color: white" border="5" width="75%">
+                            @foreach($posts as $post)
+                                <tr>
+                                    <td>{{$post->date}}</td>
+                                    <td></td>
+                                    <td> <a  style="text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a></td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        <br>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                            <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                            <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index')}}>查看全部公告</a>
                         </div>
                     </div>
                 </div>
