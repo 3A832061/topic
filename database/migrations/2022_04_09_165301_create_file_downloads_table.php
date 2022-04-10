@@ -15,6 +15,10 @@ class CreateFileDownloadsTable extends Migration
     {
         Schema::create('file_downloads', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('link');
+            $table->string('remark')->nullable();
+            $table->string('pin');
             $table->timestamps();
         });
     }

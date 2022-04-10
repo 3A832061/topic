@@ -15,6 +15,10 @@ class CreateActNoticesTable extends Migration
     {
         Schema::create('act__notices', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('content');
+            $table->string('remark')->nullable();
+            $table->string('pin');
             $table->timestamps();
         });
     }

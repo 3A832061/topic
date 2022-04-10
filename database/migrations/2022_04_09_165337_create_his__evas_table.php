@@ -15,6 +15,11 @@ class CreateHisEvasTable extends Migration
     {
         Schema::create('his__evas', function (Blueprint $table) {
             $table->id();
+            $table->string('year');
+            $table->string('title');
+            $table->string('file');
+            $table->string('remark')->nullable();
+            $table->string('pin');
             $table->timestamps();
         });
     }

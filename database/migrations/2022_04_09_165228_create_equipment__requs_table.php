@@ -15,6 +15,13 @@ class CreateEquipmentRequsTable extends Migration
     {
         Schema::create('equipment__requs', function (Blueprint $table) {
             $table->id();
+            $table->string('mem_name');
+            $table->string('type');
+            $table->string('name');
+            $table->integer('quan')->default(1);
+            $table->string('remark')->nullable();
+            $table->boolean('state');
+            $table->date('day');
             $table->timestamps();
         });
     }

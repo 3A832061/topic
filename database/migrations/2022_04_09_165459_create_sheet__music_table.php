@@ -16,17 +16,17 @@ class CreateSheetMusicTable extends Migration
         Schema::create('sheet__music', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('zhname');
+            $table->string('zhname')->nullable();
             $table->string('composer');
-            $table->string('arranger');
-            $table->string('lost');
+            $table->string('arranger')->nullable();
+            $table->string('lost')->nullable();
             $table->string('saveform');
-            $table->string('authorize');
-            $table->int('year');
-            $table->int('price');
-            $table->boolean('change');
+            $table->string('authorize')->nullable();
+            $table->integer('year');
+            $table->integer('price')->nullable();
+            $table->boolean('change')->default(1);
             $table->boolean('check');
-            $table->string('remark');
+            $table->string('remark')->nullable();
             $table->string('pin');
             $table->timestamps();
         });

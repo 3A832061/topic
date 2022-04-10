@@ -15,6 +15,12 @@ class CreateCalendarsTable extends Migration
     {
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->date('date');
+            $table->string('publi');
+            $table->string('remark')->nullable();
+            $table->string('pin');
             $table->timestamps();
         });
     }

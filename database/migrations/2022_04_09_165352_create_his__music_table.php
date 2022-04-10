@@ -15,6 +15,11 @@ class CreateHisMusicTable extends Migration
     {
         Schema::create('his__music', function (Blueprint $table) {
             $table->id();
+            $table->string('before');
+            $table->string('during');
+            $table->string('after');
+            $table->string('remark')->nullable();
+            $table->string('pin');
             $table->timestamps();
         });
     }

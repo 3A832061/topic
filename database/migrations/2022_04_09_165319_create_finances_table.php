@@ -15,6 +15,12 @@ class CreateFinancesTable extends Migration
     {
         Schema::create('finances', function (Blueprint $table) {
             $table->id();
+            $table->string('subject');
+            $table->string('summary');
+            $table->string('type');
+            $table->integer('price');
+            $table->string('remark')->nullable();
+            $table->string('pin');
             $table->timestamps();
         });
     }

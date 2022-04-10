@@ -17,11 +17,11 @@ class CreateSheetRequsTable extends Migration
             $table->id();
             $table->string('mem_name');
             $table->string('name');
-            $table->integer('part');
+            $table->string('part');
             $table->string('page');
-            $table->string('num_page');
-            $table->int('quan');
-            $table->string('remark');
+            $table->integer('num_page')->default(1);
+            $table->integer('quan')->default(1);
+            $table->string('remark')->nullable();
             $table->boolean('state');
             $table->date('day');
             $table->timestamps();

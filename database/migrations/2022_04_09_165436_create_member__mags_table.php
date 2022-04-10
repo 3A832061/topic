@@ -15,19 +15,17 @@ class CreateMemberMagsTable extends Migration
     {
         Schema::create('member__mags', function (Blueprint $table) {
             $table->id();
+            $table->integer('year');
+            $table->string('part');
             $table->string('name');
-            $table->string('zhname');
-            $table->string('composer');
-            $table->string('arranger');
-            $table->string('lost');
-            $table->string('saveform');
-            $table->string('authorize');
-            $table->int('year');
-            $table->int('price');
-            $table->boolean('change');
-            $table->boolean('check');
-            $table->string('remark');
-            $table->string('pin');
+            $table->string('class');
+            $table->string('acc')->nullable();
+            $table->string('email');
+            $table->string('phone');
+            $table->boolean('pay')->nullable();
+            $table->string('remark')->nullable();
+            $table->string('pos');
+            $table->boolean('now');
             $table->timestamps();
         });
     }
