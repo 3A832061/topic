@@ -15,6 +15,15 @@ class CreateSheetRequsTable extends Migration
     {
         Schema::create('sheet__requs', function (Blueprint $table) {
             $table->id();
+            $table->string('mem_name');
+            $table->string('name');
+            $table->integer('part');
+            $table->string('page');
+            $table->string('num_page');
+            $table->int('quan');
+            $table->string('remark');
+            $table->boolean('state');
+            $table->date('day');
             $table->timestamps();
         });
     }

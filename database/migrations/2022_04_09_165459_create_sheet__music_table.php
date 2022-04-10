@@ -15,6 +15,19 @@ class CreateSheetMusicTable extends Migration
     {
         Schema::create('sheet__music', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('zhname');
+            $table->string('composer');
+            $table->string('arranger');
+            $table->string('lost');
+            $table->string('saveform');
+            $table->string('authorize');
+            $table->int('year');
+            $table->int('price');
+            $table->boolean('change');
+            $table->boolean('check');
+            $table->string('remark');
+            $table->string('pin');
             $table->timestamps();
         });
     }
