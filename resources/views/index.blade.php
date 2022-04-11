@@ -96,10 +96,6 @@
                             </ul>
                         </li>
                     @else
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
                         <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">登入</a></li>
                     @endauth
                 @endif
@@ -107,62 +103,42 @@
         </div>
         </div>
     </nav>
-    <!-- Header-->
+    <!-- 公告-->
     <header class="bg-dark py-5">
         <div class="container px-5">
             <div class="row gx-5 align-items-center justify-content-center">
                 <div class="col-lg-8 col-xl-7 col-xxl-6">
                     <div class="my-5 text-center text-xl-start">
                         <h3 style="color: white">最新公告</h3>
-                        <table style="color: white" border="5" width="75%">
-                            @foreach($posts as $post)
-                                <tr>
-                                    <td>{{$post->date}}</td>
-                                    <td></td>
-                                    <td> <a  style="text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a></td>
-                                </tr>
-                            @endforeach
-                        </table>
+                            @if(count($posts)==0)
+                                <p style="color: white">暫無公告</p>
+                            @else
+                                <table style="color: white" border="5" width="75%">
+                                    @foreach($posts as $post)
+                                        <tr>
+                                            <td>{{$post->date}}</td>
+                                            <td></td>
+                                            <td> <a  style="text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a></td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            @endif
                         <br>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                             <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index')}}>查看全部公告</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+                    <img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." />
+                </div>
             </div>
         </div>
     </header>
-    <!-- Features section-->
+    <!-- 行事曆-->
     <section class="py-5" id="features">
         <div class="container px-5 my-5">
-            <div class="row gx-5">
-                <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">A better way to start building.</h2></div>
-                <div class="col-lg-8">
-                    <div class="row gx-5 row-cols-1 row-cols-md-2">
-                        <div class="col mb-5 h-100">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                            <h2 class="h5">Featured title</h2>
-                            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                        </div>
-                        <div class="col mb-5 h-100">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                            <h2 class="h5">Featured title</h2>
-                            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                        </div>
-                        <div class="col mb-5 mb-md-0 h-100">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                            <h2 class="h5">Featured title</h2>
-                            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                        </div>
-                        <div class="col h-100">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                            <h2 class="h5">Featured title</h2>
-                            <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <iframe src="https://calendar.google.com/calendar/embed?src=sjv94a9prqhtcgv458kmd9o990%40group.calendar.google.com&ctz=Asia%2FTaipei" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
     </section>
     <!-- Testimonial section-->
