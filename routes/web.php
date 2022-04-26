@@ -28,15 +28,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::prefix('calendar')->group(function(){
-    Route::get('/',[CalendarController::class,'index'])->name('calendars.index');
-    Route::get('{id}',[CalendarController::class,'show'])->name('calendars.show');
-    Route::get('create',[CalendarController::class,'create'])->name('calendars.create');
-    Route::post('/',[CalendarController::class,'store'])->name('calendars.store');
-    Route::get('{id}/edit',[CalendarController::class,'edit'])->name('calendars.edit');
-    Route::post('{id}',[CalendarController::class,'update'])->name('calendars.update');
-    Route::delete('{id}',[CalendarController::class,'delete'])->name('calendars.delete');
-});
+    Route::get('/calendar',[CalendarController::class,'index'])->name('calendars.index');
 
 Route::prefix('post')->group(function(){
     Route::get('/',[PostController::class,'index'])->name('posts.index');
