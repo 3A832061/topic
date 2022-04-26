@@ -7,13 +7,13 @@
     <meta name="author" content="" />
     <title>Modern Business - Start Bootstrap Template</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column">
 <main class="flex-shrink-0">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href={{route('posts.index')}}>公告</a></li>
-                <li class="nav-item"><a class="nav-link"  href= {{ route('calendars.index') }} >行事曆</a></li>
+                <li class="nav-item"><a class="nav-link" href={{route('calendars.index')}}>行事曆</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社團介紹</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -103,35 +103,51 @@
         </div>
         </div>
     </nav>
-
     <!-- Page Content-->
+
     <section class="py-5">
         <div class="container px-5 my-5">
-            <h3 align="center">所有公告</h3>
-            <table align="center" style="color: black" border="5" width="75%">
-                <tr>
-                    <td>標題</td>
-                    <td>{{$post->title}}</td>
+            <div class="row gx-5">
 
-                </tr>
-                <tr>
-                    <td>日期</td>
-                    <td>{{$post->date}}</td>
-                </tr>
-                <tr>
-                    <td>內容</td>
-                    <td>
-                        <?php
-                        $string=$post->content;
-                        $cutchar = explode('\n', $string);
-                        foreach ($cutchar as $item){
-                            echo $item."<br>";
-                        }
-                        ?>
-                    </td>
-                </tr>
-            </table>
+                <div class="col-lg-9">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">{{$post->date}}</div>
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">音樂會公告</a>
+                        </header>
+
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <?php
+                            $string=$post->content;
+                            $cutchar = explode('\n', $string);
+                            foreach ($cutchar as $item){
+                                echo $item."<br>";
+                            }
+                            ?>
+                        </section>
+                        <!-- Preview image figure-->
+                        {{ isset($name) ? "<figure class='mb-4'><img class='img-fluid rounded' src=$post->link alt='...' /></figure>" : ''}}
+                    </article>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="d-flex align-items-center mt-lg-5 mb-4">
+                    <img class="img-fluid rounded-circle" style="height: 25pt ;width: 25pt;"  src="https://i.imgur.com/JzO3oWo.png" alt="..." />
+                    <div class="ms-3">
+                        <div class="fw-bold">發布人：</div>
+                        <div class="text-muted">{{$post->publi}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 </main>
 <!-- Footer-->
 <footer class="bg-dark py-4 mt-auto">
@@ -151,6 +167,6 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+<script src="../js/scripts.js"></script>
 </body>
 </html>
