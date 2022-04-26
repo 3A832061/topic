@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Information;
 use App\Http\Requests\StoreInformationRequest;
 use App\Http\Requests\UpdateInformationRequest;
+use App\Models\Information;
 
 class InformationController extends Controller
 {
@@ -15,7 +16,25 @@ class InformationController extends Controller
      */
     public function index()
     {
-        //
+        return view(introduce.index);
+    }
+
+    public function award()
+    {
+        $award = DB::table('information')->where('type','=','award')->get();
+        return view(introduce.award, ['information' => $award]);
+    }
+
+    public function introdece()
+    {
+        $introduce = DB::table('information')->where('type','=','introduce')->get();
+        return view(introduce.society, ['information' => $introduce]);
+    }
+
+    public function teacher()
+    {
+        $teacher = DB::table('information')->where('type','=','teacher')->get();
+        return view(introduce., ['information' => $teacher]);
     }
 
     /**

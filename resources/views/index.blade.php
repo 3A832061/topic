@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href={{route('posts.index')}}>公告</a></li>
-                <li class="nav-item"><a class="nav-link" href={{route('calendars.index')}}}>行事曆</a></li>
+                <li class="nav-item"><a class="nav-link" href={{route('calendars.index')}}>行事曆</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社團介紹</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -135,12 +135,17 @@
             </div>
         </div>
     </header>
+
+
     <!-- 行事曆-->
     <section class="py-5" id="features">
         <div class="container px-5 my-5">
-            <iframe src="https://calendar.google.com/calendar/embed?src=sjv94a9prqhtcgv458kmd9o990%40group.calendar.google.com&ctz=Asia%2FTaipei" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            <iframe src="https://calendar.google.com/calendar/embed?src=nplmeq6n7tjdov4ttr5fo5lajg%40group.calendar.google.com&ctz=Asia%2FTaipei" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
     </section>
+
+
+
     <!-- Testimonial section-->
     <div class="py-5 bg-light">
         <div class="container px-5 my-5">
