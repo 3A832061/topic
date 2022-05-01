@@ -78,7 +78,7 @@
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="#" method="POST" role="form">
+                        <form action="" method="POST" role="form">
                             @csrf
                             <div class="form-group">
                                 <label for="name" class="inline">曲目名稱：</label>
@@ -117,6 +117,9 @@
                             <div class="form-group">
                                 <label for="remark" class="inline">備註：</label>
                                 <input name="remark" class="form-control-itemname" placeholder="" value="">
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">提交</button>
                             </div>
                         </form>
                     </div>
