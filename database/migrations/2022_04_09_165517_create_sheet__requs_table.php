@@ -15,7 +15,7 @@ class CreateSheetRequsTable extends Migration
     {
         Schema::create('sheet__requs', function (Blueprint $table) {
             $table->id();
-            $table->string('mem_name');
+            $table->string('mem_name')->references('name')->on('member__mage');
             $table->string('name');
             $table->string('part');
             $table->string('page');
