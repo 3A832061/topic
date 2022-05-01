@@ -2,27 +2,27 @@
 @section('title','管樂社')
 @section('index.con')
     <main class="flex-shrink-0">
-        @include('layouts.nav')
-        <!-- 公告-->
+    @include('layouts.nav')
+    <!-- 公告-->
         <header class="bg-dark py-5">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-8 col-xl-7 col-xxl-6">
                         <div class="my-5 text-center text-xl-start">
                             <h3 style="color: white">最新公告</h3>
-                                @if(count($posts)==0)
-                                    <p style="color: white">暫無公告</p>
-                                @else
-                                    <table style="color: white" border="5" width="75%">
-                                        @foreach($posts as $post)
-                                            <tr>
-                                                <td>{{$post->date}}</td>
-                                                <td></td>
-                                                <td> <a  style="text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a></td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                @endif
+                            @if(count($posts)==0)
+                                <p style="color: white">暫無公告</p>
+                            @else
+                                <table style="color: white" border="5" width="75%">
+                                    @foreach($posts as $post)
+                                        <tr>
+                                            <td>{{$post->date}}</td>
+                                            <td></td>
+                                            <td> <a  style="text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a></td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            @endif
                             <br>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index')}}>查看全部公告</a>
