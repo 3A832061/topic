@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\InformationController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +42,13 @@ Route::prefix('post')->group(function(){
     Route::delete('{id}',[PostController::class,'delete'])->name('posts.delete');
 });
 
+Route::prefix('information')->group(function(){
+    Route::get('/',[InformationController::class,'index'])->name('informations.index');
+    Route::get('/',[TeacherController::class,'index'])->name('teacher.show');
+    Route::get('create',[TeacherController::class,'create'])->name('teacher.create');
+    Route::post('/',[TeacherController::class,'store'])->name('teacher.store');
+    Route::get('{id}/edit',[TeacherController::class,'edit'])->name('teacher.edit');
+    Route::post('{id}',[TeacherController::class,'update'])->name('teacher.update');
+    Route::delete('{id}',[TeacherController::class,'delete'])->name('teacher.delete');
+
+});
