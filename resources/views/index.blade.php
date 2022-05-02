@@ -25,7 +25,7 @@
                             @endif
                             <br>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index')}}>查看全部公告</a>
+                                <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index')}} >查看全部公告</a>
                             </div>
                         </div>
                     </div>
