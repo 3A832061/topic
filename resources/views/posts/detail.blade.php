@@ -149,6 +149,8 @@
         </div>
     </section>
 </main>
+<a href={{route('posts.create')}} >新增公告</a>
+<a href={{route('posts.edit',$post->id)}}>修改公告</a>
 <!-- Footer-->
 <footer class="bg-dark py-4 mt-auto">
     <div class="container px-5">

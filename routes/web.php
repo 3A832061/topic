@@ -18,8 +18,6 @@ use App\Http\Controllers\TeacherController;
 |
 */
 
-Route::get('/',[HomeController::class,'index'])->name('index');
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -30,25 +28,27 @@ Route::middleware([
     })->name('dashboard');
 });
 
-    Route::get('/calendar',[CalendarController::class,'index'])->name('calendars.index');
+Route::get('/',[HomeController::class,'index'])->name('index');
 
-Route::prefix('post')->group(function(){
-    Route::get('/',[PostController::class,'index'])->name('posts.index');
-    Route::get('{id}',[PostController::class,'show'])->name('posts.show');
-    Route::get('create',[PostController::class,'create'])->name('posts.create');
+Route::get('/calendar',[CalendarController::class,'index'])->name('calendars.index');
+
+Route::prefix('posts')->group(function(){
+    Route::get('',[PostController::class,'index'])->name('posts.index');
+    Route::get('/{id}',[PostController::class,'show'])->name('posts.show');
+    Route::get('/create',[PostController::class,'create'])->name('posts.create');
     Route::post('/',[PostController::class,'store'])->name('posts.store');
-    Route::get('{id}/edit',[PostController::class,'edit'])->name('posts.edit');
+    Route::get('/{id}/edit',[PostController::class,'edit'])->name('posts.edit');
     Route::post('{id}',[PostController::class,'update'])->name('posts.update');
-    Route::delete('{id}',[PostController::class,'delete'])->name('posts.delete');
+    Route::delete('/{id}',[PostController::class,'delete'])->name('posts.delete');
 });
 
-Route::prefix('information')->group(function(){
-    Route::get('/',[InformationController::class,'index'])->name('informations.index');
+Route::prefix('teacher')->group(function(){
     Route::get('/',[TeacherController::class,'index'])->name('teacher.show');
-    Route::get('create',[TeacherController::class,'create'])->name('teacher.create');
+    Route::get('/create',[TeacherController::class,'create'])->name('teacher.create');
     Route::post('/',[TeacherController::class,'store'])->name('teacher.store');
     Route::get('{id}/edit',[TeacherController::class,'edit'])->name('teacher.edit');
     Route::post('{id}',[TeacherController::class,'update'])->name('teacher.update');
     Route::delete('{id}',[TeacherController::class,'delete'])->name('teacher.delete');
-
 });
+
+
