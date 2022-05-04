@@ -40,52 +40,29 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">修改公告</h1>
+                    <h1 class="mt-4" id="customerz1">新增公告</h1>
                 </div>
                 <!-- /.row -->
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="" method="POST" role="form">
+                        <form action="{{route('posts.update',$post->id)}}" method="POST" role="form" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="name" class="inline">曲目名稱：</label>
-                                <input name="name" class="form-control-itemname" placeholder="請輸入名稱" value="">
+                                <label for="title" class="inline">標題：</label>
+                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{old('title',$post->title)}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="inline">曲目名稱：</label>
-                                <input name="name" class="form-control-itemname" placeholder="請輸入名稱" value="">
+                                <label for="content" class="inline">內容：（換行要打\n）</label>
+                                <textarea id="content" name="content" class="form-control" rows="10">{{old('content',$post->content)}}</textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="frag" class="inline">聲部：</label>
-                                <select name="part" class="form-control">
-                                    <option value="長笛" selected>長笛</option>
-                                    <option value="豎笛" >豎笛</option>
-                                    <option value="薩克" >薩克</option>
-                                    <option value="法國號" >法國號</option>
-                                    <option value="長號" >長號</option>
-                                    <option value="小號" >小號</option>
-                                    <option value="(上)低音號" >(上)低音號</option>
-                                    <option value="打擊" >打擊</option>
-                                </select>
+                                <label for="link" class="inline">附件</label>
+                                <input name="link" type="form-control-itemname" class="form-control-itemname" placeholder="請輸入連結網址" value="{{old('link',$post->link)}}">
                             </div>
 
-                            <div class="form-group">
-                                <label for="page" class="inline">部數：</label>
-                                <input name="page" type="number" class="form-control-itemname" placeholder="請輸入部數（例：Alto Part2）" value="">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="quan" class="inline">份數：</label>
-                                <input name="quan" type="number" class="form-control-itemname" placeholder="份數" value="">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="remark" class="inline">備註：</label>
-                                <input name="remark" class="form-control-itemname" placeholder="" value="">
-                            </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">提交</button>
                             </div>

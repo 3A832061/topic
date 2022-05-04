@@ -18,10 +18,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->date('date');
-            $table->date('link')->nullable();
+            $table->string('link')->nullable();
             $table->string('publi');
             $table->string('remark')->nullable();
-            $table->string('pin');
             $table->timestamps();
         });
     }

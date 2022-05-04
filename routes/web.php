@@ -6,6 +6,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\IntroductionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,12 +35,13 @@ Route::get('/calendar',[CalendarController::class,'index'])->name('calendars.ind
 
 Route::prefix('posts')->group(function(){
     Route::get('',[PostController::class,'index'])->name('posts.index');
-    Route::get('/{id}',[PostController::class,'show'])->name('posts.show');
     Route::get('/create',[PostController::class,'create'])->name('posts.create');
     Route::post('/',[PostController::class,'store'])->name('posts.store');
     Route::get('/{id}/edit',[PostController::class,'edit'])->name('posts.edit');
     Route::post('{id}',[PostController::class,'update'])->name('posts.update');
-    Route::delete('/{id}',[PostController::class,'delete'])->name('posts.delete');
+    Route::delete('/{id}',[PostController::class,'delete'])->name('posts.destroy');
+    Route::get('/{id}',[PostController::class,'show'])->name('posts.show');
+
 });
 
 Route::prefix('teacher')->group(function(){
@@ -48,7 +50,15 @@ Route::prefix('teacher')->group(function(){
     Route::post('/',[TeacherController::class,'store'])->name('teacher.store');
     Route::get('{id}/edit',[TeacherController::class,'edit'])->name('teacher.edit');
     Route::post('{id}',[TeacherController::class,'update'])->name('teacher.update');
-    Route::delete('{id}',[TeacherController::class,'delete'])->name('teacher.delete');
+    Route::delete('{id}',[TeacherController::class,'delete'])->name('teacher.destroy');
 });
 
+Route::prefix('introduction')->group(function(){
+    Route::get('/',[IntroductionController::class,'index'])->name('introduction.show');
+    Route::get('/create',[IntroductionController::class,'create'])->name('introduction.create');
+    Route::post('/',[IntroductionController::class,'store'])->name('introduction.store');
+    Route::get('{id}/edit',[IntroductionController::class,'edit'])->name('introduction.edit');
+    Route::post('{id}',[IntroductionController::class,'update'])->name('introduction.update');
+    Route::delete('{id}',[IntroductionController::class,'delete'])->name('introduction.destroy');
+});
 

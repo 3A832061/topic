@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -22,12 +23,28 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.form');
+        return view('posts.createform');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return view('posts.form');
+        if($_POST['link']=='') {
+            DB::table('posts')->insert([
+                'title' => $_POST['title'],
+                'content' => $_POST['content'],
+                'date' => date('Y/m/d'),
+                'publi' => auth()->user()->name]);
+        }
+        else{
+            DB::table('posts')->insert([
+                'title' => $_POST['title'],
+                'content' => $_POST['content'],
+                'date' => date('Y/m/d'),
+                'link' => $_POST['link'],
+                'publi' => auth()->user()->name]);
+        }
+
+        return redirect()->route('posts.index');
     }
 
     public function edit($id)
@@ -36,13 +53,18 @@ class PostController extends Controller
         return view('posts.editform')->with('post',$post);
     }
 
-    public function update()
+    public function update($id,Request $request)
     {
-        return view('posts.index');
+        $recipe=Post::find($id);
+
+        $recipe->update($request->all());
+
+        return redirect()->route('posts.index');
     }
 
-    public function delete()
+    public function delete($id)
     {
-        return view('posts.index');
+        Post::destroy($id);
+        return redirect()->route('posts.index');
     }
 }
