@@ -1,34 +1,31 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Information;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
-class TeacherController extends Controller
+class AwardController extends Controller
 {
     public function index()
     {
-        $teacher = DB::table('information')->where('type','=','teacher')->get();
-        return view('information.teacher.index', ['information' => $teacher]);
+        $award = DB::table('information')->where('type','=','award')->get();
+        return view('information.award.index', ['information' => $award]);
     }
 
     public function create()
     {
-        return view('information.teacher.createform');
+        return view('information.award.createform');
     }
 
     public function store(StoreInformationRequest $request)
     {
 
-        return view('information.teacher.index', ['information' => $teacher]);
     }
 
     public function edit($id)
     {
         $teacher=Information::find($id);
-        return view('information.form',[$teacher=>'teacher']);
+        return view('information.award.editform',[$teacher=>'teacher']);
     }
 
 

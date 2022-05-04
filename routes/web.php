@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\IntroductionController;
+use App\Http\Controllers\AwardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::prefix('posts')->group(function(){
     Route::post('/',[PostController::class,'store'])->name('posts.store');
     Route::get('/{id}/edit',[PostController::class,'edit'])->name('posts.edit');
     Route::post('{id}',[PostController::class,'update'])->name('posts.update');
-    Route::delete('/{id}',[PostController::class,'delete'])->name('posts.destroy');
+    Route::delete('/{id}',[PostController::class,'destroy'])->name('posts.destroy');
     Route::get('/{id}',[PostController::class,'show'])->name('posts.show');
 
 });
@@ -50,7 +51,7 @@ Route::prefix('teacher')->group(function(){
     Route::post('/',[TeacherController::class,'store'])->name('teacher.store');
     Route::get('{id}/edit',[TeacherController::class,'edit'])->name('teacher.edit');
     Route::post('{id}',[TeacherController::class,'update'])->name('teacher.update');
-    Route::delete('{id}',[TeacherController::class,'delete'])->name('teacher.destroy');
+    Route::delete('{id}',[TeacherController::class,'destroy'])->name('teacher.destroy');
 });
 
 Route::prefix('introduction')->group(function(){
@@ -59,6 +60,15 @@ Route::prefix('introduction')->group(function(){
     Route::post('/',[IntroductionController::class,'store'])->name('introduction.store');
     Route::get('{id}/edit',[IntroductionController::class,'edit'])->name('introduction.edit');
     Route::post('{id}',[IntroductionController::class,'update'])->name('introduction.update');
-    Route::delete('{id}',[IntroductionController::class,'delete'])->name('introduction.destroy');
+    Route::delete('{id}',[IntroductionController::class,'destroy'])->name('introduction.destroy');
+});
+
+Route::prefix('award')->group(function(){
+    Route::get('/',[AwardController::class,'index'])->name('award.show');
+    Route::get('/create',[AwardController::class,'create'])->name('award.create');
+    Route::post('/',[AwardController::class,'store'])->name('award.store');
+    Route::get('{id}/edit',[AwardController::class,'edit'])->name('award.edit');
+    Route::post('{id}',[AwardController::class,'update'])->name('award.update');
+    Route::delete('{id}',[AwardController::class,'destroy'])->name('award.destroy');
 });
 

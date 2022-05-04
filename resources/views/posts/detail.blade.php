@@ -31,7 +31,7 @@
                             ?>
                         </section>
                         <!-- Preview image figure-->
-                        {{ isset($name) ? "<figure class='mb-4'><img class='img-fluid rounded' src=$post->link alt='...' /></figure>" : ''}}
+                        {{ isset($post->link) ? "<figure class='mb-4'><img class='img-fluid rounded' src=$post->link alt='...' /></figure>" : ''}}
                     </article>
                 </div>
             </div>

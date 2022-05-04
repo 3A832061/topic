@@ -20,7 +20,6 @@ class CreateCalendarsTable extends Migration
             $table->date('date');
             $table->string('publi');
             $table->string('remark')->nullable();
-            $table->string('pin');
             $table->timestamps();
         });
     }

@@ -11,9 +11,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社團介紹</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" href="blog-home.html">社團簡介</a></li>
+                        <li><a class="dropdown-item" href={{route('introduction.show')}}>社團簡介</a></li>
                         <li><a class="dropdown-item" href={{route('teacher.show')}}>指導老師</a></li>
-                        <li><a class="dropdown-item" href="blog-post.html">獎項紀錄</a></li>
+                        <li><a class="dropdown-item" href={{route('award.show')}}>獎項紀錄</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
