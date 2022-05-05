@@ -72,3 +72,5 @@ Route::prefix('award')->group(function(){
     Route::delete('{id}',[AwardController::class,'destroy'])->name('award.destroy');
 });
 
+
+
