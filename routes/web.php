@@ -8,6 +8,7 @@ use App\Http\Controllers\InformationController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\IntroductionController;
 use App\Http\Controllers\AwardController;
+use App\Http\Controllers\AttendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,14 @@ Route::middleware([
 
 Route::get('/',[HomeController::class,'index'])->name('index');
 
-Route::get('/calendar',[CalendarController::class,'index'])->name('calendars.index');
+Route::prefix('calendar')->group(function(){
+    Route::get('',[CalendarController::class,'index'])->name('calendars.index'); //顯示行事曆
+    Route::get('/create',[CalendarController::class,'create'])->name('calendar.create');
+    Route::post('/',[CalendarController::class,'store'])->name('calendar.store');
+    Route::get('/{id}/edit',[CalendarController::class,'edit'])->name('calendar.edit');
+    Route::post('{id}',[CalendarController::class,'update'])->name('calendar.update');
+    Route::delete('/{id}',[CalendarController::class,'destroy'])->name('calendar.destroy');
+});
 
 Route::prefix('posts')->group(function(){
     Route::get('',[PostController::class,'index'])->name('posts.index');
@@ -42,7 +50,6 @@ Route::prefix('posts')->group(function(){
     Route::post('{id}',[PostController::class,'update'])->name('posts.update');
     Route::delete('/{id}',[PostController::class,'destroy'])->name('posts.destroy');
     Route::get('/{id}',[PostController::class,'show'])->name('posts.show');
-
 });
 
 Route::prefix('teacher')->group(function(){
@@ -70,5 +77,14 @@ Route::prefix('award')->group(function(){
     Route::get('{id}/edit',[AwardController::class,'edit'])->name('award.edit');
     Route::post('{id}',[AwardController::class,'update'])->name('award.update');
     Route::delete('{id}',[AwardController::class,'destroy'])->name('award.destroy');
+});
+
+Route::prefix('attend')->group(function(){
+    Route::get('/',[AttendController::class,'index'])->name('attend.index'); //list
+    Route::get('/create',[AttendController::class,'create'])->name('attend.create');
+    Route::post('/',[AttendController::class,'store'])->name('attend.store');
+    Route::get('{id}/edit',[AttendController::class,'edit'])->name('attend.edit');
+    Route::post('{id}',[AttenddController::class,'update'])->name('attend.update');
+    Route::delete('{id}',[AttendController::class,'destroy'])->name('attend.destroy');
 });
 
