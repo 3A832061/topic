@@ -1,4 +1,5 @@
 @extends('layouts.partials.type')
+@section('title','管樂社')
 @section('form.css')
     <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,64 +104,52 @@
 @endsection
 @section('index.con')
     @include('layouts.nav')
-
     <div class="row">
         <div class="column" style="background-color:#aaa;">
-
-                <center>
-                <h1 class="mt-4" id="customerz1"style="align-content: center">新增日程</h1>
-                </center>
+            <center>
+                <h1 class="mt-4" id="customerz1"style="align-content: center">修改日程</h1>
+            </center>
 
             <!-- /.row -->
             <p>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="form">
-                    <form action={{route('calendar.store')}} method="POST" role="form" >
-                        @csrf
-                        <div class="form-group">
-                            <label for="date" class="inline">時間：</label>
-                            <?php
-                                $week=date('l');
-                                if($week=='Sunday'){ $week='日'; }
-                                elseif($week=='Monday'){ $week='一'; }
-                                elseif ($week=='Tuesday'){ $week='二'; }
-                                elseif($week=='Wednesday'){ $week='三'; }
-                                elseif ($week=='Thursday'){ $week='四'; }
-                                elseif($week=='Friday'){ $week='五'; }
-                                elseif($week=='Saturday'){ $week='六'; }
-                            ?>
-                            <input name="date" class="form-control-itemname" placeholder="ex：5/5（四） 18:30~21:30" value="{{date('m/d')}}（{{$week}}） 18：30~21：30">
-                        </div>
+                        <form action={{route('calendar.update',$calendar->id)}} method="POST" role="form" >
+                            @csrf
+                            <div class="form-group">
+                                <label for="date" class="inline">時間：</label>
+                                <input name="date" class="form-control-itemname" placeholder="ex：5/5（四） 18:30~21:30" value="{{$calendar->date}}">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="title" class="inline">內容：</label>
-                            <input name="title" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="">
-                        </div>
+                            <div class="form-group">
+                                <label for="title" class="inline">內容：</label>
+                                <input name="title" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="{{$calendar->title}}">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="tag" class="inline" >標籤：</label>
-                            <select name="tag" class="form-control" style="width: 100%">
-                                <option value="練習" selected>練習</option>
-                                <option value="開會" >開會</option>
-                                <option value="活動" >活動</option>
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label for="tag" class="inline" >標籤：</label>
+                                <select name="tag" class="form-control" style="width: 100%">
+                                    <option value="練習" {{ ($calendar->tag=="練習")?'selected':'' }}>練習</option>
+                                    <option value="開會" {{ ($calendar->tag=="開會")?'selected':'' }}>開會</option>
+                                    <option value="活動" {{ ($calendar->tag=="活動")?'selected':'' }}>活動</option>
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="month" class="inline">月份：</label>
-                            <input name="month" type="form-control-itemname" class="form-control-itemname" value="{{date('Y-m')}}">
-                        </div>
+                            <div class="form-group">
+                                <label for="month" class="inline">月份：</label>
+                                <input name="month" type="form-control-itemname" class="form-control-itemname" value={{$calendar->month}}>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="remark" class="inline">備註：</label>
-                            <input name="remark" type="form-control-itemname" class="form-control-itemname" value="">
-                        </div>
+                            <div class="form-group">
+                                <label for="remark" class="inline">備註：</label>
+                                <input name="remark" type="form-control-itemname" class="form-control-itemname" value={{$calendar->remark}}>
+                            </div>
 
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary">提交</button>
-                        </div>
-                    </form>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -176,7 +165,7 @@
                     <tr>
                         <td>
                             <div class="dropdown">
-                                <button onclick="myFunction()" class="dropbtn">{{$month}}</button>
+                                <button onclick="myFunction()" class="dropbtn">全部</button>
                                 <div id="myDropdown" class="dropdown-content">
                                     @foreach($types as $type)
                                         <a href={{ route('calendar.create',$type->month) }}>{{$type->month}}</a>
@@ -185,13 +174,13 @@
                             </div>
                         </td>
                     </tr>
-                    @foreach($calendars as $calendar)
+                    @foreach($list as $item)
                         <tr >
-                            <td>{{$calendar->date}}</td>
-                            <td>{{$calendar->title}}</td>
-                            <td><a style="display: inline" href={{route('calendar.edit',$calendar->id)}}>修改</a><td>
+                            <td>{{$item->date}}</td>
+                            <td>{{$item->title}}</td>
+                            <td><a style="display: inline" href={{route('calendar.edit',$item->id)}}>修改</a><td>
                             <td>
-                                <form action="{{ route('calendar.destroy',$calendar->id) }}" method="POST" style="display: inline">
+                                <form action="{{ route('calendar.destroy',$item->id) }}" method="POST" style="display: inline">
                                     @method('DELETE')
                                     @csrf
                                     <button  class="btn btn-sm btn-danger" type="submit">刪除</button>

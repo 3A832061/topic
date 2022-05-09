@@ -35,7 +35,7 @@ Route::get('/',[HomeController::class,'index'])->name('index');
 
 Route::prefix('calendar')->group(function(){
     Route::get('',[CalendarController::class,'index'])->name('calendars.index'); //顯示行事曆
-    Route::get('/create',[CalendarController::class,'create'])->name('calendar.create');
+    Route::get('/create/{month?}',[CalendarController::class,'create'])->name('calendar.create');
     Route::post('/',[CalendarController::class,'store'])->name('calendar.store');
     Route::get('/{id}/edit',[CalendarController::class,'edit'])->name('calendar.edit');
     Route::post('{id}',[CalendarController::class,'update'])->name('calendar.update');

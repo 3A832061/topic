@@ -20,6 +20,7 @@ class CreateCalendarsTable extends Migration
             $table->text('tag');
             $table->string('month');
             $table->string('remark')->nullable();
+            $table->string('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
