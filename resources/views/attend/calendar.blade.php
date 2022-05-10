@@ -7,39 +7,52 @@
             box-sizing: border-box;
         }
 
-        .row {
-            display: flex;
+        .row-p {
+            margin: 0 0;
+            height: 100%;
         }
 
         /* Create two equal columns that sits next to each other */
-        .column {
-            flex: 50%;
-            padding: 10px;
+        .column-p {
+            float: left;
+            width: 50%;
+            padding: 10px 10px;
+            height: 100%;
+        }
+
+        .row-p:after {
+            content: "";
+            display: table;
+            clear: both;
         }
 
         .form{
-            padding-left: 50%;
+            padding-left: 20%;
         }
 
         @media screen and (max-width: 1200px) {
-            .column {
+            .row-p {
+                margin: 0 0;
+                height: auto;
+            }
+            .column-p {
                 width: 100%;
                 flex: 100%;
+                height: auto;
             }
             .form{
-                padding-left: 2%;
+                padding-left: 20%;
             }
         }
 
         .form-control-itemname
         {
             display: inline;
-            width: 100%;
+            width: 60%;
             height: 34px;
             padding: 6px 12px;
             font-size: 14px;
             line-height: 1.42857143;
-            color: #555;
             background-color: #fff;
             background-image: none;
             border: 1px solid #ccc;
@@ -104,8 +117,8 @@
 @section('index.con')
     @include('layouts.nav')
 
-    <div class="row">
-        <div class="column" style="background-color:#aaa;">
+    <div class="row-p">
+        <div class="column-p" style="background-color:#aaa;">
 
                 <center>
                 <h1 class="mt-4" id="customerz1"style="align-content: center">新增日程</h1>
@@ -113,8 +126,6 @@
 
             <!-- /.row -->
             <p>
-            <div class="row">
-                <div class="col-lg-8">
                     <div class="form">
                     <form action={{route('calendar.store')}} method="POST" role="form" >
                         @csrf
@@ -130,17 +141,23 @@
                                 elseif($week=='Friday'){ $week='五'; }
                                 elseif($week=='Saturday'){ $week='六'; }
                             ?>
-                            <input name="date" class="form-control-itemname" placeholder="ex：5/5（四） 18:30~21:30" value="{{date('m/d')}}（{{$week}}） 18：30~21：30">
+                            <input id="date" name="date" onkeyup="changestring()" style="display: inline; width: 65px; height: 34px; padding: 6px 12px;
+            font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
+            border: 1px solid #ccc; border-radius: 4px;" placeholder="ex：5/5（四） 18:30~21:30" value="{{date('m/d')}}">
+                            <label id="week">（{{ $week }}）</label>
+                            <input name="time" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
+            font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
+            border: 1px solid #ccc; border-radius: 4px;" placeholder="ex：5-5（四） 18:30~21:30" value="18：30~21：30">
                         </div>
 
                         <div class="form-group">
-                            <label for="title" class="inline">內容：</label>
+                            <label for="title" >內容：</label>
                             <input name="title" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="">
                         </div>
 
                         <div class="form-group">
                             <label for="tag" class="inline" >標籤：</label>
-                            <select name="tag" class="form-control" style="width: 100%">
+                            <select name="tag" style="width: 80px;" class="form-control-itemname">
                                 <option value="練習" selected>練習</option>
                                 <option value="開會" >開會</option>
                                 <option value="活動" >活動</option>
@@ -149,7 +166,7 @@
 
                         <div class="form-group">
                             <label for="month" class="inline">月份：</label>
-                            <input name="month" type="form-control-itemname" class="form-control-itemname" value="{{date('Y-m')}}">
+                            <input id="year" name="month" type="form-control-itemname" class="form-control-itemname" value="{{date('Y-m')}}">
                         </div>
 
                         <div class="form-group">
@@ -162,16 +179,16 @@
                         </div>
                     </form>
                     </div>
-                </div>
-            </div>
+
         </div>
-        <div class="column" style="background-color:#bbb;">
+        <div class="column-p" style="background-color:#bbb;">
             <div class="container-fluid px-4">
                 <center>
                     <h1 class="mt-4" id="customerz1">已設定的日程</h1>
                 </center>
             </div>
             @if(count($types)>0)
+                <div style="padding-left: 20%">
                 <table>
                     <tr>
                         <td>
@@ -186,7 +203,7 @@
                         </td>
                     </tr>
                     @foreach($calendars as $calendar)
-                        <tr >
+                        <tr>
                             <td>{{$calendar->date}}</td>
                             <td>{{$calendar->title}}</td>
                             <td><a style="display: inline" href={{route('calendar.edit',$calendar->id)}}>修改</a><td>
@@ -200,6 +217,7 @@
                         <tr>
                     @endforeach
                 </table>
+                </div>
             @else
                 <p>暫無資料</p>
             @endif
@@ -226,6 +244,22 @@
                     }
                 }
             }
+        }
+
+        function changestring(){
+            var year=document.getElementById("year").value.substring(0,4);
+            var x = document.getElementById("date").value;
+            const birthday = new Date(year+'-'+x);
+            const day1 = birthday.getDay();
+            var week;
+            if(day1==0){ week='星期天'; }
+            else if(day1==1){ week='一'; }
+            else if(day1==2){ week='二'; }
+            else if(day1==3){ week='三'; }
+            else if(day1==4){ week='四'; }
+            else if(day1==5){ week='五'; }
+            else if(day1==6){ week='六'; }
+            document.getElementById("week").innerHTML ='（'+week+'）';
         }
     </script>
 @endsection
