@@ -35,89 +35,33 @@
 @endsection
 @section('index.con')
     @include('layouts.nav')
-    <!-- 公告-->
     <main class="flex-shrink-0">
-        <header class="bg-dark py-5">
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center justify-content-center">
-                    <div class="col-lg-8 col-xl-7 col-xxl-6">
-                        <div class="my-5 text-center text-xl-start">
-                            <h3 style="color: white">最新公告</h3>
-                            @if(count($posts)==0)
-                                <p style="color: white">暫無公告</p>
-                            @else
-                                <table style="color: white" border="5" width="75%">
-                                    @foreach($posts as $post)
-                                        <tr>
-                                            <td>{{$post->date}}</td>
-                                            <td></td>
-                                            <td> <a  style="text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a></td>
-                                        </tr>
-                                    @endforeach
-                                </table>
-                            @endif
-                            <br>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index')}}>查看全部公告</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-                        <img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." />
-                    </div>
-                </div>
-            </div>
-        </header>
-
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">表單</h1>
+                    <h1 class="mt-4" id="customerz1">新增簡介</h1>
                 </div>
                 <!-- /.row -->
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="" method="POST" role="form">
+                        <form action="{{route('introduction.update',$introduction->id)}}" method="POST" role="form">
                             @csrf
                             <div class="form-group">
-                                <label for="name" class="inline">曲目名稱：</label>
-                                <input name="name" class="form-control-itemname" placeholder="請輸入名稱" value="">
+                                <label for="title" class="inline">標題：</label>
+                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{$introduction->title}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="inline">曲目名稱：</label>
-                                <input name="name" class="form-control-itemname" placeholder="請輸入名稱" value="">
+                                <label for="content" class="inline">內容：（換行要打\n）</label>
+                                <textarea id="content" name="content" class="form-control" rows="10">{{$introduction->content}}</textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="frag" class="inline">聲部：</label>
-                                <select name="part" class="form-control">
-                                    <option value="長笛" selected>長笛</option>
-                                    <option value="豎笛" >豎笛</option>
-                                    <option value="薩克" >薩克</option>
-                                    <option value="法國號" >法國號</option>
-                                    <option value="長號" >長號</option>
-                                    <option value="小號" >小號</option>
-                                    <option value="(上)低音號" >(上)低音號</option>
-                                    <option value="打擊" >打擊</option>
-                                </select>
+                                <label for="picture" class="inline">圖片</label>
+                                <input name="picture" class="form-control-itemname" placeholder="請輸入連結網址" value={{$introduction->picture}}>
                             </div>
 
-                            <div class="form-group">
-                                <label for="page" class="inline">部數：</label>
-                                <input name="page" type="number" class="form-control-itemname" placeholder="請輸入部數（例：Alto Part2）" value="">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="quan" class="inline">份數：</label>
-                                <input name="quan" type="number" class="form-control-itemname" placeholder="份數" value="">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="remark" class="inline">備註：</label>
-                                <input name="remark" class="form-control-itemname" placeholder="" value="">
-                            </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">提交</button>
                             </div>

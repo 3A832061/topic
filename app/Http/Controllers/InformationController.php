@@ -19,20 +19,6 @@ class InformationController extends Controller
         return view(introduce.index);
     }
 
-    public function award()
-    {
-        $award = DB::table('information')->where('type','=','award')->get();
-        return view('information.award', ['information' => $award]);
-    }
-
-    public function introdece()
-    {
-        $introduce = DB::table('information')->where('type','=','introduce')->get();
-        return view('information.society', ['information' => $introduce]);
-    }
-
-
-
     /**
      * Show the form for creating a new resource.
      *

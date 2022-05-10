@@ -11,7 +11,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社團介紹</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" href={{route('introduction.show')}}>社團簡介</a></li>
+                        <li><a class="dropdown-item" href={{ route('introduction.show') }}>社團簡介</a></li>
                         <li><a class="dropdown-item" href={{route('teacher.show')}}>指導老師</a></li>
                         <li><a class="dropdown-item" href={{route('award.show')}}>獎項紀錄</a></li>
                         <li><a class="dropdown-item" href={{route('award.show')}}>組織章程</a></li>
@@ -79,13 +79,13 @@
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                                 <li><a class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
                                 <li><a class="dropdown-item" href={{route('attend.create')}}>出席填寫</a></li>
-                                <li><a class="dropdown-item" href={{route('attend.index')}}>>出席統計</a></li>
+                                <li><a class="dropdown-item" href={{route('attend.index')}}>出席統計</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社員 {{auth()->user()->name}}</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                <li><a class="dropdown-item" href="portfolio-item.html">社員資料</a></li>
+                                <li><a class="dropdown-item" href={{route('user.edit')}}>社員資料</a></li>
                                 <li><a class="dropdown-item" href="portfolio-item.html">修改密碼</a></li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
