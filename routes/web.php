@@ -9,6 +9,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\IntroductionController;
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\AttendController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,5 +87,10 @@ Route::prefix('attend')->group(function(){
     Route::get('{id}/edit',[AttendController::class,'edit'])->name('attend.edit');
     Route::post('{id}',[AttenddController::class,'update'])->name('attend.update');
     Route::delete('{id}',[AttendController::class,'destroy'])->name('attend.destroy');
+});
+
+Route::prefix('member')->group(function(){
+    Route::get('/',[UserController::class,'edit'])->name('user.edit');
+    Route::post('/{id}',[UserController::class,'update'])->name('user.update');
 });
 
