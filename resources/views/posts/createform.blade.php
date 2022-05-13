@@ -54,6 +54,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="tag" class="inline">標籤：</label>
+                                <select name="tag" style="width: 200px;" class="form-control-itemname">
+                                    <option value="音樂會公告" selecte0d>音樂會公告</option>
+                                    <option value="活動公告" >活動公告</option>
+                                    <option value="活動公告" >招生公告</option>
+                                    <option value="活動公告" >團練公告</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="content" class="inline">內容：（換行要打\n）</label>
                                 <textarea id="content" name="content" class="form-control" rows="10"></textarea>
                             </div>

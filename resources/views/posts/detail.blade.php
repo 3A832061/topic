@@ -17,7 +17,7 @@
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">{{$post->date}}</div>
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">音樂會公告</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$post->tag}}</a>
                         </header>
 
                         <!-- Post content-->

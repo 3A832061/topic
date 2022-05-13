@@ -33,7 +33,8 @@ class PostController extends Controller
                 'title' => $_POST['title'],
                 'content' => $_POST['content'],
                 'date' => date('Y/m/d'),
-                'publi' => auth()->user()->name]);
+                'tag' => $_POST['tag'],
+                'user_id' => auth()->user()->id]);
         }
         else{
             DB::table('posts')->insert([
@@ -41,7 +42,8 @@ class PostController extends Controller
                 'content' => $_POST['content'],
                 'date' => date('Y/m/d'),
                 'link' => $_POST['link'],
-                'publi' => auth()->user()->name]);
+                'tag' => $_POST['tag'],
+                'user_id' => auth()->user()->id]);
         }
 
         return redirect()->route('posts.index');

@@ -40,7 +40,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">新增公告</h1>
+                    <h1 class="mt-4" id="customerz1">修改公告</h1>
                 </div>
                 <!-- /.row -->
                 <p>
@@ -51,6 +51,16 @@
                             <div class="form-group">
                                 <label for="title" class="inline">標題：</label>
                                 <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{old('title',$post->title)}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tag" class="inline">標籤：</label>
+                                <select name="tag" style="width: 200px;" class="form-control-itemname">
+                                    <option value="音樂會公告" {{ ($post->tag=="音樂會公告")?'selected':'' }}>音樂會公告</option>
+                                    <option value="活動公告" {{ ($post->tag=="活動公告")?'selected':'' }}>活動公告</option>
+                                    <option value="招生公告" {{ ($post->tag=="招生公告")?'selected':'' }}>招生公告</option>
+                                    <option value="團練公告" {{ ($post ->tag=="團練公告")?'selected':'' }}>團練公告</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
