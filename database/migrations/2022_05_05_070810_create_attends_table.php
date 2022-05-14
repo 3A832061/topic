@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttendTable extends Migration
+class CreateAttendsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAttendTable extends Migration
      */
     public function up()
     {
-        Schema::create('attend', function (Blueprint $table) {
+        Schema::create('attends', function (Blueprint $table) {
             $table->id();
             $table->string('calendar_id')->references('id')->on('calendar');
             $table->string('content');
-            $table->string('fill');
+            $table->string('user_id')->references('id')->on('users'); //填寫人
             $table->string('remark')->nullable();
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateAttendTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attend');
+        Schema::dropIfExists('attends');
     }
 }

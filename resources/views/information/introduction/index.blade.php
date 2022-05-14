@@ -23,7 +23,7 @@
         <section class="py-5">
             @if (Route::has('login'))
                 @auth
-                    @if($introduction->content=='')
+                    @if(!$introduction)
                         <a class="button button4" href={{route('introduction.create')}}>新增簡介</a>
                     @else
                         <a class="button button4" href={{ route('introduction.edit', $introduction->id) }}>修改簡介</a>
@@ -36,7 +36,7 @@
 
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder">社團介紹</h1>
-                            @if($introduction->content!='')
+                            @if($introduction)
                                 <p class="lead fw-normal text-muted mb-0">
                                     {{$introduction->content}}
                                 </p>
@@ -47,7 +47,7 @@
                             @endif
                         </div>
                 </div>
-                @if($introduction->content!='')
+                @if($introduction)
                     <div class="row gx-5">
                         <div class="col-12">
                             <img class="img-fluid rounded-3 mb-5" src={{$introduction->picture}} alt="..." />

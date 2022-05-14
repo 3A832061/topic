@@ -10,6 +10,8 @@ use App\Http\Controllers\IntroductionController;
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\AttendController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\RecruitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,12 +83,13 @@ Route::prefix('award')->group(function(){
 });
 
 Route::prefix('attend')->group(function(){
-    Route::get('/',[AttendController::class,'index'])->name('attend.index'); //list
-    Route::get('/create',[AttendController::class,'create'])->name('attend.create');
-    Route::post('/',[AttendController::class,'store'])->name('attend.store');
-    Route::get('{id}/edit',[AttendController::class,'edit'])->name('attend.edit');
-    Route::post('{id}',[AttenddController::class,'update'])->name('attend.update');
-    Route::delete('{id}',[AttendController::class,'destroy'])->name('attend.destroy');
+    Route::get('/',[AttendController::class,'index'])->name('attends.index'); //list
+    Route::get('/create',[AttendController::class,'create'])->name('attends.create');
+    Route::post('/',[AttendController::class,'store'])->name('attends.store');
+    Route::get('{id}/edit',[AttendController::class,'edit'])->name('attends.edit');
+    Route::post('{id}',[AttenddController::class,'update'])->name('attends.update');
+    Route::delete('{id}',[AttendController::class,'destroy'])->name('attends.destroy');
+    Route::get('/show',[AttendController::class,'show'])->name('attends.show');
 });
 
 Route::prefix('member')->group(function(){
@@ -94,3 +97,19 @@ Route::prefix('member')->group(function(){
     Route::post('/{id}',[UserController::class,'update'])->name('user.update');
 });
 
+/*未完成
+Route::prefix('equipment')->group(function(){
+    Route::get('/',[EquipmentController::class,'index'])->name('attends.index'); //list
+    Route::get('/',[EquipmentController::class,''])->name('attends.create');
+    Route::get('/',[EquipmentController::class,'edit'])->name('attends.edit');
+});*/
+
+Route::prefix('recruit')->group(function(){
+    Route::get('/',[RecruitController::class,'index'])->name('recruit.index');
+    Route::get('/create',[RecruitController::class,'create'])->name('recruit.create');
+    Route::post('/',[RecruitController::class,'store'])->name('recruit.store');
+    Route::get('{id}/edit',[RecruitController::class,'edit'])->name('recruit.edit');
+    Route::post('{id}',[RecruitController::class,'update'])->name('recruit.update');
+    Route::delete('{id}',[RecruitController::class,'destroy'])->name('recruit.destroy');
+    Route::get('/show',[RecruitController::class,'show'])->name('recruit.show');
+});

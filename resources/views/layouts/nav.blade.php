@@ -30,7 +30,7 @@
                         <li><a class="dropdown-item" href="portfolio-item.html">幹部訓練</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="about.html">招生表單</a></li>
+                <li class="nav-item"><a class="nav-link" href={{route('recruit.index')}}>招生表單</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">器材相關</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
@@ -78,8 +78,8 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">出席</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                                 <li><a class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
-                                <li><a class="dropdown-item" href={{route('attend.create')}}>出席填寫</a></li>
-                                <li><a class="dropdown-item" href={{route('attend.index')}}>出席統計</a></li>
+                                <li><a class="dropdown-item" href={{route('attends.show')}}>出席填寫</a></li>
+                                <li><a class="dropdown-item" href={{route('attends.index')}}>出席統計</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
