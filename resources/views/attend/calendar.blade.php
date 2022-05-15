@@ -131,20 +131,9 @@
                         @csrf
                         <div class="form-group">
                             <label for="date" class="inline">時間：</label>
-                            <?php
-                                $week=date('l');
-                                if($week=='Sunday'){ $week='日'; }
-                                elseif($week=='Monday'){ $week='一'; }
-                                elseif ($week=='Tuesday'){ $week='二'; }
-                                elseif($week=='Wednesday'){ $week='三'; }
-                                elseif ($week=='Thursday'){ $week='四'; }
-                                elseif($week=='Friday'){ $week='五'; }
-                                elseif($week=='Saturday'){ $week='六'; }
-                            ?>
-                            <input id="date" name="date" onkeyup="changestring()" style="display: inline; width: 65px; height: 34px; padding: 6px 12px;
+                            <input id="date" name="date" type="date" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
-            border: 1px solid #ccc; border-radius: 4px;" placeholder="ex：5/5（四） 18:30~21:30" value="{{date('m/d')}}">
-                            <label id="week">（{{ $week }}）</label>
+            border: 1px solid #ccc; border-radius: 4px;">
                             <input name="time" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
             border: 1px solid #ccc; border-radius: 4px;" placeholder="ex：5-5（四） 18:30~21:30" value="18：30~21：30">

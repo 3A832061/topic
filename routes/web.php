@@ -110,6 +110,5 @@ Route::prefix('recruit')->group(function(){
     Route::post('/',[RecruitController::class,'store'])->name('recruit.store');
     Route::get('{id}/edit',[RecruitController::class,'edit'])->name('recruit.edit');
     Route::post('{id}',[RecruitController::class,'update'])->name('recruit.update');
-    Route::delete('{id}',[RecruitController::class,'destroy'])->name('recruit.destroy');
     Route::get('/show',[RecruitController::class,'show'])->name('recruit.show');
 });
