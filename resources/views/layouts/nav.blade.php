@@ -69,9 +69,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社費相關</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                <li><a class="dropdown-item" href="portfolio-overview.html">填寫收入</a></li>
-                                <li><a class="dropdown-item" href="portfolio-overview.html">填寫支出</a></li>
-                                <li><a class="dropdown-item" href="portfolio-overview.html">收支圓餅圖</a></li>
+                                <li><a id="accountantcreate" class="dropdown-item" href={{route('accountant.create')}}>填寫收支</a></li>
+                                <li><a class="dropdown-item" href={{route('accountant.show')}}>收支清單</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

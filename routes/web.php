@@ -12,6 +12,7 @@ use App\Http\Controllers\AttendController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\RecruitController;
+use App\Http\Controllers\AccountantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,4 +113,9 @@ Route::prefix('recruit')->group(function(){
     Route::post('{id}',[RecruitController::class,'update'])->name('recruit.update');
     Route::get('/show',[RecruitController::class,'show'])->name('recruit.show');
     Route::get('/list',[RecruitController::class,'list'])->name('recruit.list');
+});
+
+Route::prefix('accountant')->group(function(){
+    Route::get('/',[AccountantController::class,'create'])->name('accountant.create');
+    Route::get('/show',[AccountantController::class,'show'])->name('accountant.show');
 });

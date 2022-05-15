@@ -39,7 +39,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">新增介紹</h1>
+                    <h1 class="mt-4" id="customerz1">修改介紹</h1>
                 </div>
                 <!-- /.row -->
                 <p>

@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <iframe name="hidden_iframe" style="display: none;"></iframe>
-                        <form action="https://script.google.com/macros/s/AKfycbwo4uMZwMW6FwnQCOR0QSkkNqQSHDiqrTKbB-hl-U8dRf9ozr9y3MEmbXVX2aikhAqitQ/exec" target="hidden_iframe" method="POST" role="form" >
+                        <form action="https://script.google.com/macros/s/AKfycbwda7078NqX02Ov-gQCVC129m8znjJ7PQCHQIdrub806O8t9RFqReXTXSOLGSDfJd2wdw/exec" target="hidden_iframe" method="POST" role="form" >
                             @csrf
                             <input type="hidden" name="method" value="write" >
                             <div class="form-group">
@@ -131,9 +131,7 @@
 
                             <div class="form-group">
                                 <label for="mark" class="inline">我會看的樂譜記號：</label>
-                                <input type="checkbox" id="mark1" name="mark[]" value="高音譜記號" onclick="touch(this)">高音譜記號
-                                <input type="checkbox" id="mark2" name="mark[]" value="低音譜記號" onclick="touch(this)">低音譜記號
-                                <input type="checkbox" id="mark3" name="mark[]" value="都不會看" onclick="touch(this)">都不會看
+                                <input name="mark" class="form-control-itemname" placeholder="高音譜記號、低音譜記號，或都不會" value="">
                             </div>
 
                             <div class="form-group">
