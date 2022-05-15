@@ -111,4 +111,5 @@ Route::prefix('recruit')->group(function(){
     Route::get('{id}/edit',[RecruitController::class,'edit'])->name('recruit.edit');
     Route::post('{id}',[RecruitController::class,'update'])->name('recruit.update');
     Route::get('/show',[RecruitController::class,'show'])->name('recruit.show');
+    Route::get('/list',[RecruitController::class,'list'])->name('recruit.list');
 });

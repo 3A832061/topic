@@ -45,8 +45,8 @@
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <iframe name="hidden_iframe" style="display:none;"></iframe>
-                        <form action="https://script.google.com/macros/s/AKfycbwEIzsFKIDmJ9oCQrnvn3IPYWJ50gpD7yNbvEH4Lb67JlQo7UDip1HOSBNNHzgu4ox62A/exec" target="hidden_iframe" method="POST" role="form" >
+                        <iframe name="hidden_iframe" style="display: none;"></iframe>
+                        <form action="https://script.google.com/macros/s/AKfycbwo4uMZwMW6FwnQCOR0QSkkNqQSHDiqrTKbB-hl-U8dRf9ozr9y3MEmbXVX2aikhAqitQ/exec" target="hidden_iframe" method="POST" role="form" >
                             @csrf
                             <input type="hidden" name="method" value="write" >
                             <div class="form-group">
@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-primary" onclick="success()">提交</button>
                             </div>
                         </form>
                     </div>
@@ -189,5 +189,9 @@
             }
         }
 
+        function success(){
+            window.alert("提交成功，感謝填寫，之後會有幹部再跟你聯絡");
+            document.getElementById('index').click();
+        }
     </script>
 @endsection

@@ -30,6 +30,7 @@
                     @endif
                 @endauth
             @endif
+                <a class="button button4" href={{ route('recruit.list') }}>查看填寫資料</a>
             <div class="container px-5 my-5">
                 <div class="row gx-5 justify-content-center">
                     <h1 class="fw-bolder" style="text-align: center;">介紹</h1>

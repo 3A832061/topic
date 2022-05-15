@@ -44,4 +44,9 @@ class RecruitController extends Controller
     {
         return view('information.recruit.show');
     }
+
+    public function list()
+    {
+        return view('information.recruit.list');
+    }
 }
