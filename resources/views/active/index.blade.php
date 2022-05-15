@@ -1,57 +1,153 @@
 @extends('layouts.partials.type')
-@section('title','管樂社')
+@section('title','活動紀錄')
 @section('outfit.css')
     <style>
-
-        .collapsible {
-        background-color: #eee;
-        color: #444;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 18px;
+        body {
+            font-family: Arial;
+            margin: 0;
         }
 
-        .collapsible:after {
-            content: '\25bc';
-            color: #a3a3a3;
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        /* Position the image container (needed to position the left and right arrows) */
+        .container {
+            position: relative;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+        }
+
+        /* Add a pointer when hovering over the thumbnail images */
+        .cursor {
+            cursor: pointer;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
             font-weight: bold;
-            float: right;
-            margin-left: 5px;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
-        .active:after {
-            content: "\25b2";
-            /*符號對照 https://oinam.github.io/entities/*/
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
         }
-        .active, .collapsible:hover {
-            background-color: #ccc;
-        }
-         .content {
-             padding: 0 18px;
-             background-color: white;
-             max-height: 0;
-             overflow: hidden;
-             transition: max-height 0.2s ease-out;
-             text-align:left;
-             margin-top: 25px;
-         }
 
-         .fonsizeli
-         {
-             font-size: 14pt;
-         }
-         .col-lg-6
-         {
-             margin-bottom: 25px;
-         }
-         .mb-4
-         {
-             margin-bottom: 0 !important;
-         }
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* Container for image text */
+        .caption-container {
+            text-align: center;
+            background-color: #222;
+            padding: 2px 16px;
+            color: white;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Six columns side by side */
+        .column {
+            float: left;
+            width: 16.66% !important;
+            height:60px !important;
+        }
+
+        /* Add a transparency effect for thumnbail images */
+        .demo {
+            opacity: 0.6;
+        }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+        .mySlides
+        {
+            width:1200px;
+            height:600px;
+            margin:auto !important;
+        }
+        .image
+        {
+            max-width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            /*#75799缺少置中*/
+        }
+        .containermage
+        {
+            border-width:1px;
+            border-style:solid;
+            border-color:#ccc;
+            padding: 1px;
+
+        }
+        .prev, .next
+        {
+            color:#252525;
+        }
+        .prev:hover, .next:hover
+        {
+            background:rgba(0,0,0,0);
+        }
+        a:hover
+        {
+            color:#aaa !important;
+        }
+        .btn
+        {
+
+            opacity:0.5;
+
+        }
+        .btn:hover  /*#75799想靠右!&COLOR*/
+        {
+            opacity:1.0;
+            border-width:1px !important;
+            border-style:solid !important;
+            border-color:cornflowerblue !important;
+            background:#CCC !important;
+            color: #031f50 !important;
+            transition: opacity .8s ease-in-out;
+        }
+
     </style>
 @endsection
 @section('index.con')
@@ -62,68 +158,87 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
                         <div class="text-center mb-4" >
-                            <h1 class="fw-bolder">獎項紀錄</h1>
+                            <h1 class="fw-bolder">活動紀錄- </h1>
                         </div>
                     </div>
                 </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="text-center mb-4">
-                            <button type="button" class="collapsible">110學年度</button>
-                            <div class="content">
-                                <ul class="fonsizeli" style="list-style-type: disc">
-                                <li>1</li><li>2</li><li>3</li>
-                                </ul>
-                            </div>
-                        </div>
 
-                        <div class="text-center mb-2">
-                            <button type="button" class="collapsible">109學年度</button>
-                            <div class="content">
-                                <ul  class="fonsizeli" style="list-style-type: disc">
-                                    <li>1</li><li>2</li><li>3</li>
-                                </ul>
-                            </div>
+                <p>
+                <div class="container" style="">
+                    <!-- Full-width images with number text -->
+                    <div class="containermage">
+                    @foreach($actives as $active)
+                    <div class="mySlides">
+                            <div class="numbertext">{{$active->id}}/ 6 ｜{{$active->content}}
+                            @auth
+                                @if(auth()->user()->name=='admin')
+                                    <a class="btn btn-success flex-shrink-0" href="{{route('active.create')}}">新增</a>
+                                    <a class="btn btn-primary flex-shrink-0" href="{{route('active.edit',$active->id)}}">修改</a>
+                                    <form action="{{ route('active.destroy',$active->id) }}" method="POST" style="display:inline;">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button  class="btn btn-danger flex-shrink-0" type="submit">刪除</button>
+                                    </form>
+                                @endif
+                            @endauth
                         </div>
-
-                        <div class="text-center mb-2">
-                            <button type="button" class="collapsible"> 108學年度</button>
-                            <div class="content">
-                                <ul  class="fonsizeli" style="list-style-type: disc">
-                                    <li>1</li><li>2</li><li>3</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="text-center mb-5">
-                            <button type="button" class="collapsible">其他學年度</button>
-                            <div class="content">
-                                <ul  class="fonsizeli" style="list-style-type: disc">
-                                    <li>1</li><li>2</li><li>3</li>
-                                </ul>
-                            </div>
-                        </div>
-
+                        <img src="{{$active->url}}" class="image">
                     </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <!-- 以上，左右切換+張數-->
+                    @endforeach
+                    </div>
+                    <p>
+                        <!--#75799壞掉了!-->
+                    <div class="row case">
+                        <div class="column">
+                            @foreach($actives as $active)
+                                <img class="demo cursor" src="{{$active->url}}" style="width:60px; height:60px;" onclick="currentSlide({{$active->id}})" alt="活動紀錄">
+                            @endforeach
+                        </div>
+                    </div>
+
                 </div>
-            </div>
+
+                </div>
         </section>
     </main>
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
 
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight){
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            captionText.innerHTML = dots[slideIndex-1].alt;
         }
     </script>
+
     @include('layouts.footer')
 @endsection
+
+

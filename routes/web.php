@@ -8,6 +8,7 @@ use App\Http\Controllers\InformationController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\IntroductionController;
 use App\Http\Controllers\AwardController;
+use App\Http\Controllers\ActiveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,15 @@ Route::prefix('award')->group(function(){
     Route::get('{id}/edit',[AwardController::class,'edit'])->name('award.edit');
     Route::post('{id}',[AwardController::class,'update'])->name('award.update');
     Route::delete('{id}',[AwardController::class,'destroy'])->name('award.destroy');
+});
+
+Route::prefix('active')->group(function(){
+    Route::get('show/{show}',[ActiveController::class,'show'])->name('active.show');
+    Route::get('create',[ActiveController::class,'create'])->name('active.create');
+    Route::post('/',[ActiveController::class,'store'])->name('active.store');
+    Route::get('{id}/edit',[ActiveController::class,'edit'])->name('active.edit');
+    Route::post('{id}',[ActiveController::class,'update'])->name('active.update');
+    Route::delete('{id}',[ActiveController::class,'destroy'])->name('active.destroy');
 });
 
 

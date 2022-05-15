@@ -17,6 +17,7 @@ class CreateActivesTable extends Migration
             $table->id();
             $table->string('url');
             $table->string('content');
+            $table->string('type');
             $table->timestamps();
         });
     }
