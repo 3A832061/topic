@@ -76,8 +76,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">出席</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                <li><a class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
-                                <li><a class="dropdown-item" href={{route('attends.show')}}>出席填寫</a></li>
+                                <li><a id="calendar" class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
+                                <li><a id="attend" class="dropdown-item" href={{route('attends.create')}}>出席填寫</a></li>
                                 <li><a class="dropdown-item" href={{route('attends.index')}}>出席統計</a></li>
                             </ul>
                         </li>

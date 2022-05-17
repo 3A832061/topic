@@ -127,35 +127,22 @@
             <!-- /.row -->
             <p>
                     <div class="form">
-                    <form action={{route('calendar.store')}} method="POST" role="form" >
+                    <form action="https://script.google.com/macros/s/AKfycbwExb_SLfi068HOIrl5Ux8otTopQ7NvSKwVhNUoIl1cAeJzhmFOMsUOcPLc0hBGxYCe/exec" method="POST" role="form" >
                         @csrf
                         <div class="form-group">
-                            <label for="date" class="inline">時間：</label>
+                            <input type="hidden" name="method" value="write_calendar" >
+                            <label for="date" class="inline">日期：</label>
                             <input id="date" name="date" type="date" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
             border: 1px solid #ccc; border-radius: 4px;">
                             <input name="time" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
-            border: 1px solid #ccc; border-radius: 4px;" placeholder="ex：5-5（四） 18:30~21:30" value="18：30~21：30">
+            border: 1px solid #ccc; border-radius: 4px;" value="18：30~21：30">
                         </div>
 
                         <div class="form-group">
-                            <label for="title" >內容：</label>
-                            <input name="title" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tag" class="inline" >標籤：</label>
-                            <select name="tag" style="width: 80px;" class="form-control-itemname">
-                                <option value="練習" selected>練習</option>
-                                <option value="開會" >開會</option>
-                                <option value="活動" >活動</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="month" class="inline">月份：</label>
-                            <input id="year" name="month" type="form-control-itemname" class="form-control-itemname" value="{{date('Y-m')}}">
+                            <label for="content" >內容：</label>
+                            <input name="content" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="">
                         </div>
 
                         <div class="form-group">
@@ -164,7 +151,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary">提交</button>
+                            <button type="submit" class="btn btn-primary" onclick="success()">提交</button>
                         </div>
                     </form>
                     </div>
@@ -249,6 +236,11 @@
             else if(day1==5){ week='五'; }
             else if(day1==6){ week='六'; }
             document.getElementById("week").innerHTML ='（'+week+'）';
+        }
+
+        function success(){
+            window.alert("提交成功");
+            document.getElementById('calendar').click();
         }
     </script>
 @endsection

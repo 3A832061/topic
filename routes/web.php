@@ -88,9 +88,6 @@ Route::prefix('attend')->group(function(){
     Route::get('/create',[AttendController::class,'create'])->name('attends.create');
     Route::post('/',[AttendController::class,'store'])->name('attends.store');
     Route::get('{id}/edit',[AttendController::class,'edit'])->name('attends.edit');
-    Route::post('{id}',[AttenddController::class,'update'])->name('attends.update');
-    Route::delete('{id}',[AttendController::class,'destroy'])->name('attends.destroy');
-    Route::get('/show',[AttendController::class,'show'])->name('attends.show');
 });
 
 Route::prefix('member')->group(function(){
