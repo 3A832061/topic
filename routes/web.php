@@ -9,6 +9,8 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\IntroductionController;
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\ActiveController;
+use App\Http\Controllers\SheetMusicController;
+use App\Http\Controllers\SheetRequController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +82,14 @@ Route::prefix('active')->group(function(){
     Route::get('{id}/edit',[ActiveController::class,'edit'])->name('active.edit');
     Route::post('{id}',[ActiveController::class,'update'])->name('active.update');
     Route::delete('{id}',[ActiveController::class,'destroy'])->name('active.destroy');
+});
+
+Route::prefix('sheet')->group(function(){
+    Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show');
+    Route::get('show/{show}',[SheetMusicController::class,'show'])->name('sheet.detail');
+    Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create');
+    Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit');
+    Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update');
 });
 
 

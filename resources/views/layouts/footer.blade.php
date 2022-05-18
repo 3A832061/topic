@@ -12,7 +12,7 @@
                 <span class="text-white mx-1">&middot;</span>
                 <a class="link-light small" href="#!">Contact</a>
                 <span class="text-white mx-3"></span>
-                <img src="https://images.plurk.com/24qO3V0ymvX3lzLiZufBqL.gif"> <!--可置換成logo-->
+                <img src=""> <!--可置換成logo-->
             </div>
         </div>
     </div>
