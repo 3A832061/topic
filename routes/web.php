@@ -8,11 +8,15 @@ use App\Http\Controllers\InformationController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\IntroductionController;
 use App\Http\Controllers\AwardController;
+use App\Http\Controllers\ActiveController;
+use App\Http\Controllers\SheetMusicController;
+use App\Http\Controllers\SheetRequController;
 use App\Http\Controllers\AttendController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\AccountantController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +43,7 @@ Route::get('/',[HomeController::class,'index'])->name('index');
 
 Route::prefix('calendar')->group(function(){
     Route::get('',[CalendarController::class,'index'])->name('calendars.index'); //顯示行事曆
-    Route::get('/create',[CalendarController::class,'create'])->name('calendar.create');
+    Route::get('/create/{month?}',[CalendarController::class,'create'])->name('calendar.create');
     Route::post('/',[CalendarController::class,'store'])->name('calendar.store');
     Route::get('/{id}/edit',[CalendarController::class,'edit'])->name('calendar.edit');
     Route::post('{id}',[CalendarController::class,'update'])->name('calendar.update');
@@ -83,6 +87,24 @@ Route::prefix('award')->group(function(){
     Route::delete('{id}',[AwardController::class,'destroy'])->name('award.destroy');
 });
 
+Route::prefix('active')->group(function(){
+    Route::get('show/{show}',[ActiveController::class,'show'])->name('active.show');
+    Route::get('create',[ActiveController::class,'create'])->name('active.create');
+    Route::post('/',[ActiveController::class,'store'])->name('active.store');
+    Route::get('{id}/edit',[ActiveController::class,'edit'])->name('active.edit');
+    Route::post('{id}',[ActiveController::class,'update'])->name('active.update');
+    Route::delete('{id}',[ActiveController::class,'destroy'])->name('active.destroy');
+});
+
+Route::prefix('sheet')->group(function(){
+    Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show');
+    Route::get('show/{show}',[SheetMusicController::class,'show'])->name('sheet.detail');
+    Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create');
+    Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit');
+    Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update');
+});
+
+
 Route::prefix('attend')->group(function(){
     Route::get('/',[AttendController::class,'index'])->name('attends.index'); //list
     Route::get('/create',[AttendController::class,'create'])->name('attends.create');
@@ -116,3 +138,4 @@ Route::prefix('accountant')->group(function(){
     Route::get('/',[AccountantController::class,'create'])->name('accountant.create');
     Route::get('/show',[AccountantController::class,'show'])->name('accountant.show');
 });
+

@@ -4,7 +4,7 @@
     <main class="flex-shrink-0">
         @include('layouts.nav')
         <div>
-        <!-- Testimonial section-->
+            <!-- Testimonial section-->
             <div class="py-3 bg-transparent">
             </div>
             <div class="py-5 bg-light">
@@ -13,8 +13,8 @@
                         <div class="col-lg-10 col-xl-7">
                             <div class="text-center">
 
-                                    <h1 class="fw-bolder">社內樂譜清單一覽</h1>
-                                    <p class="lead fw-normal text-muted mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
+                                <h1 class="fw-bolder">社內樂譜清單一覽</h1>
+                                <p class="lead fw-normal text-muted mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
 
                                 <!--div class="fs-4 mb-4 fst-italic">~</div>
                                 <div class="d-flex align-items-center justify-content-center">

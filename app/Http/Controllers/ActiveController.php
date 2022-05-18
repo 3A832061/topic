@@ -10,8 +10,8 @@ class ActiveController extends Controller
 {
     public function show($type)
     {
-            $actives = DB::table('actives')->where('type', '=', $type)->get();
-            return view('active.index',['actives' => $actives]);
+        $actives = DB::table('actives')->where('type', '=', $type)->get();
+        return view('active.index',['actives' => $actives]);
     }
 
     public function store(Request $request){
