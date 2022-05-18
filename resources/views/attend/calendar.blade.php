@@ -157,15 +157,34 @@
             document.getElementById("week").innerHTML ='（'+week+'）';
         }
 
-        function success(){
-            window.alert("提交成功");
-            document.getElementById('calendar').click();
-        }
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
+            var data;
+            $.ajax({
+                type: "post",
+                data: {
+                    "method": "read_calendar",
+                    "query": "month"
+                },
+                url: "https://script.google.com/macros/s/AKfycbw7doLcnw6nQ-CtMQZ4KMFI2QvgvdkYUgWn2DgZjtSlY4QKMfp3WLOaGEtOpL1HEw0K/exec", // 填入網路應用程式網址
+                success: function (e) {
+                    data=e;
+                    var char=e.split('-');
+                    $.each(char, function(index, element) {
+                        if(element!=''){
+                            $(".dropdown-content").append("<button id='" + element + "' class='item'>" + element + "</button>");
+                        }
+                    });
+                },
+                error:function(xhr){
+                    alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
+                }
+            });
+
+/*
             $('.dropbtn').on('click',function(){
                 document.getElementById("myDropdown").classList.toggle("show");
             });
@@ -178,6 +197,7 @@
                     },
                     url: "https://script.google.com/macros/s/AKfycbw7doLcnw6nQ-CtMQZ4KMFI2QvgvdkYUgWn2DgZjtSlY4QKMfp3WLOaGEtOpL1HEw0K/exec", // 填入網路應用程式網址
                     success: function (e) {
+                        data=e;
                         var char=e.split('-');
                         $.each(char, function(index, element) {
                             if(element!=''){
@@ -213,9 +233,15 @@
                         alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
                     }
                 });
+
             });
             $('.dropbtn').one().click();
             $('.dropbtn').one().click();
+
+            $('#submit').on('click',function(){
+                alert("提交成功");
+                $('#calendar').one().click();
+            });*/
         });
     </script>
 @endsection
@@ -224,11 +250,9 @@
 
     <div class="row-p">
         <div class="column-p" style="background-color:#aaa;">
-
                 <center>
                 <h1 class="mt-4" id="customerz1"style="align-content: center">新增日程</h1>
                 </center>
-
             <!-- /.row -->
             <p>
                     <div class="form">
@@ -257,7 +281,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary" onclick="success()">提交</button>
+                            <button id="submit" type="submit" class="btn btn-primary">提交</button>
                         </div>
                     </form>
                     </div>
