@@ -21,13 +21,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">活動紀錄</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                        <li><a class="dropdown-item" href={{route('active.show','音樂會')}}>音樂會</a></li>
-                        <li><a class="dropdown-item" href="{{route('active.show','試樂器')}}">試樂器</a></li>
-                        <li><a class="dropdown-item" href="{{route('active.show','迎新')}}">迎新</a></li>
-                        <li><a class="dropdown-item" href="{{route('active.show','社慶')}}">社慶</a></li>
-                        <li><a class="dropdown-item" href="{{route('active.show','講座')}}">講座</a></li>
-                        <li><a class="dropdown-item" href="{{route('active.show','寒/暑輔')}}">寒/暑輔</a></li>
-                        <li><a class="dropdown-item" href="{{route('active.show','幹部訓練')}}">幹部訓練</a></li>
+                        <li><a class="dropdown-item" href="portfolio-overview.html">音樂會</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">試樂器</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">迎新</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">社慶</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">講座</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">寒/暑輔</a></li>
+                        <li><a class="dropdown-item" href="portfolio-item.html">幹部訓練</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href={{route('recruit.index')}}>招生表單</a></li>
@@ -52,7 +52,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">譜相關</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                <li><a class="dropdown-item" href="{{route('sheet.show')}}">總清單</a></li>
+                                <li><a class="dropdown-item" href="portfolio-overview.html">總清單</a></li>
                                 <li><a class="dropdown-item" href="portfolio-item.html">歷年演出</a></li>
                                 <li><a class="dropdown-item" href="portfolio-item.html">缺頁申請</a></li>
                             </ul>

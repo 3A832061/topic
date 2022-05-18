@@ -40,7 +40,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">新增活動</h1>
+                    <h1 class="mt-4" id="customerz1">新增公告</h1>
                 </div>
                 <!-- /.row -->
                 <p>

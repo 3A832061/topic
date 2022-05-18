@@ -107,107 +107,26 @@
             display: block;
         }
 
+        .item{
+            width: 100%;
+        }
+
+        .tr{
+
+        }
+
+        .item:hover, .item:focus, .item:active{
+            background-color: #2980B9;
+        }
+
+
         /* Change color of dropdown links on hover */
         .dropdown-content a:hover {background-color: #ddd}
 
         /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
         .show {display:block;}
     </style>
-@endsection
-@section('index.con')
-    @include('layouts.nav')
-
-    <div class="row-p">
-        <div class="column-p" style="background-color:#aaa;">
-
-                <center>
-                <h1 class="mt-4" id="customerz1"style="align-content: center">新增日程</h1>
-                </center>
-
-            <!-- /.row -->
-            <p>
-                    <div class="form">
-                    <form action="https://script.google.com/macros/s/AKfycbwExb_SLfi068HOIrl5Ux8otTopQ7NvSKwVhNUoIl1cAeJzhmFOMsUOcPLc0hBGxYCe/exec" method="POST" role="form" >
-                        @csrf
-                        <div class="form-group">
-                            <input type="hidden" name="method" value="write_calendar" >
-                            <label for="date" class="inline">日期：</label>
-                            <input id="date" name="date" type="date" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
-            font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
-            border: 1px solid #ccc; border-radius: 4px;">
-                            <input name="time" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
-            font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
-            border: 1px solid #ccc; border-radius: 4px;" value="18：30~21：30">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="content" >內容：</label>
-                            <input name="content" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="remark" class="inline">備註：</label>
-                            <input name="remark" type="form-control-itemname" class="form-control-itemname" value="">
-                        </div>
-
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary" onclick="success()">提交</button>
-                        </div>
-                    </form>
-                    </div>
-
-        </div>
-        <div class="column-p" style="background-color:#bbb;">
-            <div class="container-fluid px-4">
-                <center>
-                    <h1 class="mt-4" id="customerz1">已設定的日程</h1>
-                </center>
-            </div>
-            @if(count($types)>0)
-                <div style="padding-left: 20%">
-                <table>
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button onclick="myFunction()" class="dropbtn">{{$month}}</button>
-                                <div id="myDropdown" class="dropdown-content">
-                                    @foreach($types as $type)
-                                        <a href={{ route('calendar.create',$type->month) }}>{{$type->month}}</a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @foreach($calendars as $calendar)
-                        <tr>
-                            <td>{{$calendar->date}}</td>
-                            <td>{{$calendar->title}}</td>
-                            <td><a style="display: inline" href={{route('calendar.edit',$calendar->id)}}>修改</a><td>
-                            <td>
-                                <form action="{{ route('calendar.destroy',$calendar->id) }}" method="POST" style="display: inline">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button  class="btn btn-sm btn-danger" type="submit">刪除</button>
-                                </form>
-                            </td>
-                        <tr>
-                    @endforeach
-                </table>
-                </div>
-            @else
-                <p>暫無資料</p>
-            @endif
-        </div>
-    </div>
-    @include('layouts.footer')
-
     <script>
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
         // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {
             if (!event.target.matches('.dropbtn')) {
@@ -243,4 +162,133 @@
             document.getElementById('calendar').click();
         }
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.dropbtn').on('click',function(){
+                document.getElementById("myDropdown").classList.toggle("show");
+            });
+            $('.dropbtn').one('click',function(){
+                $.ajax({
+                    type: "post",
+                    data: {
+                        "method": "read_calendar",
+                        "query": "month"
+                    },
+                    url: "https://script.google.com/macros/s/AKfycbw7doLcnw6nQ-CtMQZ4KMFI2QvgvdkYUgWn2DgZjtSlY4QKMfp3WLOaGEtOpL1HEw0K/exec", // 填入網路應用程式網址
+                    success: function (e) {
+                        var char=e.split('-');
+                        $.each(char, function(index, element) {
+                            if(element!=''){
+                                $(".dropdown-content").append("<button id='" + element + "' class='item'>" + element + "</button>");
+                            }
+                        });
+
+                        $('.item').on('click',function(){
+                            $.ajax({
+                                type: "post",
+                                data: {
+                                    "method": "read_calendar",
+                                    "query":this.id
+                                },
+                                url: "https://script.google.com/macros/s/AKfycbw7doLcnw6nQ-CtMQZ4KMFI2QvgvdkYUgWn2DgZjtSlY4QKMfp3WLOaGEtOpL1HEw0K/exec", // 填入網路應用程式網址
+                                success: function (e1) {
+                                    var char=e1.split('-');
+                                    $('#tab tbody').html('');
+                                    $.each(char, function(index2) {
+                                        if(char[index2]!=""){
+                                            var trHTML = "<tr><td>"+char[index2]+"</td></tr>";
+                                            $("#tab tbody").append(trHTML);
+                                        }
+                                    });
+                                },
+                                error:function(xhr){
+                                    alert("發生錯誤:1 " + xhr.status + " " + xhr.statusText);
+                                }
+                            });
+                        });
+                    },
+                    error:function(xhr){
+                        alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
+                    }
+                });
+            });
+            $('.dropbtn').one().click();
+            $('.dropbtn').one().click();
+        });
+    </script>
+@endsection
+@section('index.con')
+    @include('layouts.nav')
+
+    <div class="row-p">
+        <div class="column-p" style="background-color:#aaa;">
+
+                <center>
+                <h1 class="mt-4" id="customerz1"style="align-content: center">新增日程</h1>
+                </center>
+
+            <!-- /.row -->
+            <p>
+                    <div class="form">
+                    <iframe name="hidden_iframe" style="display: none;"></iframe>
+                    <form action="https://script.google.com/macros/s/AKfycbwExb_SLfi068HOIrl5Ux8otTopQ7NvSKwVhNUoIl1cAeJzhmFOMsUOcPLc0hBGxYCe/exec" method="POST" role="form"  target="hidden_iframe">
+                        @csrf
+                        <div class="form-group">
+                            <input type="hidden" name="method" value="write_calendar" >
+                            <label for="date" class="inline">日期：</label>
+                            <input id="date" name="date" type="date" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
+            font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
+            border: 1px solid #ccc; border-radius: 4px;">
+                            <input name="time" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
+            font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
+            border: 1px solid #ccc; border-radius: 4px;" value="18：30~21：30">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content" >內容：</label>
+                            <input name="content" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="remark" class="inline">備註：</label>
+                            <input name="remark" type="form-control-itemname" class="form-control-itemname" value="">
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary" onclick="success()">提交</button>
+                        </div>
+                    </form>
+                    </div>
+
+        </div>
+        <div class="column-p" style="background-color:#bbb;">
+            <div class="container-fluid px-4">
+                <center>
+                    <h1 class="mt-4" id="customerz1">已設定的日程</h1>
+                </center>
+            </div>
+
+            <div style="padding-left: 20%">
+            <table id="tab">
+                <thead>
+                    <tr>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><span>選擇月份</span></button>
+                                <div id="myDropdown" class="dropdown-content">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    @include('layouts.footer')
 @endsection

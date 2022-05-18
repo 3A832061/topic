@@ -11,19 +11,8 @@ class CalendarController extends Controller
         return view('calendar');
     }
 
-    public function create($month='全部'){
-        if($month=='全部'){
-            //所有已輸入資料都顯示出來
-            $calendars=Calendar::orderBy('date', 'ASC')->get();
-        }
-        else{
-            //用不同的年月份來顯示已輸入的資料
-            $calendars=Calendar::where('month','=',$month)->orderBy('date', 'DESC')->get();
-        }
-        //顯示各個年月份，供使用者選擇要顯示的資料
-        $types=DB::table('calendars')->select('month')->distinct()->get();
-        $data=['types'=>$types,'calendars'=>$calendars,'month'=>$month];
-        return view('attend.calendar',$data);
+    public function create(){
+        return view('attend.calendar');
     }
 
     public function store(Request $request){
