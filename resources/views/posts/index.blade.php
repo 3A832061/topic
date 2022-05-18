@@ -9,15 +9,17 @@
             <h3 align="center">所有公告</h3>
             <table align="center" style="color: black" border="5" width="75%">
                 <tr>
-                    <td>日期</td>
-                    <td></td>
-                    <td>標題</td>
+                    <td style="width: 10%;"></td>
+                    <td style="width: 30%;">日期</td>
+                    <td style="width: 60%;">標題</td>
                 </tr>
                 @foreach($posts as $post)
                     <tr>
-                        <td>{{$post->date}}</td>
-                        <td></td>
-                        <td> <a style="text-decoration:none;color: black;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a></td>
+                        <td style="width: 10%;">{{$post->tag}}</td>
+                        <td style="width: 20%;">{{$post->date}}</td>
+                        <td style="width: 70%;">
+                            <a style="text-decoration:none;color: black;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a>
+                        </td>
                     </tr>
                 @endforeach
             </table>

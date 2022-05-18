@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('pay')->nullable();
             $table->string('remark')->nullable();
             $table->string('pos')->nullable(); //職位
-            $table->boolean('now')->nullable(); //現在是否在校
+            $table->boolean('now')->nullable(); //現在是否為社員
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

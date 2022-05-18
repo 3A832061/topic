@@ -1,34 +1,59 @@
 @extends('layouts.partials.type')
 @section('title','管樂社')
+<style>
+    .button {
+        background-color: #04AA6D;
+        width: 120px;
+        border: none;
+        color: white;
+        padding: 5px;
+        text-align: center;
+
+
+        font-size: 16px;
+        margin: 4px 2px;
+    }
+
+    .button4 {border-radius: 12px;}
+
+</style>
 @section('index.con')
     <main class="flex-shrink-0">
         @include('layouts.nav')
         <section class="py-5">
+            @if (Route::has('login'))
+                @auth
+                    @if(!$introduction)
+                        <a class="button button4" href={{route('introduction.create')}}>新增簡介</a>
+                    @else
+                        <a class="button button4" href={{ route('introduction.edit', $introduction->id) }}>修改簡介</a>
+                    @endif
+                @endauth
+            @endif
             <div class="container px-5 my-5">
+
                 <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
+
                         <div class="text-center mb-5">
                             <h1 class="fw-bolder">社團介紹</h1>
-                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab similique, ducimus ut alias sit accusamus illum, asperiores deserunt dolorum quaerat qui! Ab, quisquam explicabo magni dolores unde beatae quam a.</p>
+                            @if($introduction)
+                                <p class="lead fw-normal text-muted mb-0">
+                                    {{$introduction->content}}
+                                </p>
+                            @else
+                                <p class="lead fw-normal text-muted mb-0">
+                                    暫無資料
+                                </p>
+                            @endif
+                        </div>
+                </div>
+                @if($introduction)
+                    <div class="row gx-5">
+                        <div class="col-12">
+                            <img class="img-fluid rounded-3 mb-5" src={{$introduction->picture}} alt="..." />
                         </div>
                     </div>
-                </div>
-                <div class="row gx-5">
-                    <div class="col-12"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/1300x700/343a40/6c757d" alt="..." /></div>
-                    <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-                    <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="text-center mb-5">
-                            <p class="lead fw-normal text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam deserunt architecto enim eos accusantium fugit recusandae illo iste dignissimos possimus facere ducimus odit voluptatibus exercitationem, ex laudantium illum voluptatum corporis.</p>
-                            <a class="text-decoration-none" href="#!">
-                                View project
-                                <i class="bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endif
             </div>
         </section>
     </main>

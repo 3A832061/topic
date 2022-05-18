@@ -14,6 +14,11 @@
                                 <p style="color: white">暫無公告</p>
                             @else
                                 <table style="color: white" border="5" width="75%">
+                                    <tr>
+                                        <td>日期</td>
+                                        <td></td>
+                                        <td>標題</td>
+                                    </tr>
                                     @foreach($posts as $post)
                                         <tr>
                                             <td>{{$post->date}}</td>

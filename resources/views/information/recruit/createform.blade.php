@@ -35,42 +35,21 @@
 @endsection
 @section('index.con')
     @include('layouts.nav')
-    <!-- 公告-->
     <main class="flex-shrink-0">
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">新增活動</h1>
+                    <h1 class="mt-4" id="customerz1">新增簡介</h1>
                 </div>
                 <!-- /.row -->
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="{{route('posts.store')}}" method="POST" role="form" enctype="multipart/form-data">
+                        <form action="{{route('recruit.store')}}" method="POST" role="form">
                             @csrf
-                            <div class="form-group">
-                                <label for="title" class="inline">標題：</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="tag" class="inline">標籤：</label>
-                                <select name="tag" style="width: 200px;" class="form-control-itemname">
-                                    <option value="音樂會公告" selecte0d>音樂會公告</option>
-                                    <option value="活動公告" >活動公告</option>
-                                    <option value="活動公告" >招生公告</option>
-                                    <option value="活動公告" >團練公告</option>
-                                </select>
-                            </div>
-
                             <div class="form-group">
                                 <label for="content" class="inline">內容：（換行要打\n）</label>
                                 <textarea id="content" name="content" class="form-control" rows="10"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="link" class="inline">附件</label>
-                                <input name="link" type="form-control-itemname" class="form-control-itemname" placeholder="請輸入連結網址">
                             </div>
 
                             <div class="text-right">
