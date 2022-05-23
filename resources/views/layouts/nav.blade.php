@@ -30,9 +30,13 @@
                     <li><a class="dropdown-item" href="{{route('active.show','幹部訓練')}}">幹部訓練</a></li>
                 </ul>
             </li>
+            @if (!Route::has('login'))
+                @auth
             <li class="nav-item"><a class="nav-link" href={{route('recruit.index')}}>招生表單</a></li>
+                @endauth
+            @endif
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">器材相關</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">器材</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                     <li><a class="dropdown-item" href="portfolio-item.html">器材清單</a></li>
                     <li><a class="dropdown-item" href="portfolio-item.html">器材借用</a></li>
@@ -50,7 +54,7 @@
             @if (Route::has('login'))
                 @auth
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">譜相關</a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">譜</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                             <li><a class="dropdown-item" href="{{route('sheet.show')}}">總清單</a></li>
                             <li><a class="dropdown-item" href="portfolio-item.html">歷年演出</a></li>
@@ -58,7 +62,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">文書相關</a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">文書</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                             <li><a class="dropdown-item" href="portfolio-overview.html">歷年社團評鑑紀錄</a></li>
                             <li><a class="dropdown-item" href="portfolio-item.html">活動注意事項</a></li>
@@ -67,23 +71,27 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社費相關</a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社費</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                             <li><a id="accountantcreate" class="dropdown-item" href={{route('accountant.create')}}>填寫收支</a></li>
                             <li><a class="dropdown-item" href={{route('accountant.show')}}>收支清單</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">出席</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                            <li><a id="calendar" class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
-                            <li><a id="attend" class="dropdown-item" href={{route('attends.create')}}>出席填寫</a></li>
-                            <li><a class="dropdown-item" href={{route('attends.index')}}>出席統計</a></li>
-                        </ul>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社員 {{auth()->user()->name}}</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                            <li><h5 class="dropdown-header">出席相關</h5></li>
+                            <li><a id="calendar" class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
+                            <li><a id="attend" class="dropdown-item" href={{route('attends.create')}}>出席填寫</a></li>
+                            <li><a class="dropdown-item" href={{route('attends.index')}}>出席統計</a></li>
+
+                            <li><h5 class="dropdown-header">新生相關</h5></li>
+                            <li><a class="dropdown-item" href={{route('recruit.index')}}>招生表單</a></li>
+                            <li><a class="dropdown-item" href={{ route('register') }}>新增帳號</a></li>
+
+                            <li><h5 class="dropdown-header">帳號相關</h5></li>
+                            <li> <a class="dropdown-item" href={{ route('user.show') }}>權限管理</a></li>
                             <li><a class="dropdown-item" href={{route('user.edit')}}>社員資料</a></li>
                             <li><a class="dropdown-item" href="portfolio-item.html">修改密碼</a></li>
                             <li>

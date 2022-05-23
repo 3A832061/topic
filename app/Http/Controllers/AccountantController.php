@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 
 class AccountantController extends Controller
 {
-    public function create(){
-        return view('accountant.form');
+    public function create()
+    {
+        if( auth()->user()->pos=='總務' ) {
+            return view('accountant.form');
+        }
+        else{
+            return redirect()->route('index');
+        }
     }
 
-    public function show(){
+    public function show()
+    {
         return view('accountant.show');
     }
 }
