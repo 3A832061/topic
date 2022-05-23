@@ -35,6 +35,17 @@
 @endsection
 @section('index.con')
     @include('layouts.nav')
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <!-- 公告-->
     <main class="flex-shrink-0">
         <div id="layoutSidenav_content">

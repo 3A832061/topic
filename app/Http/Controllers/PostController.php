@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index($tag='full')
     {
-        $posts=Post::orderBy('date', 'DESC')->get();
-        $data=['posts'=>$posts];
+        if($tag=='full') {
+            $posts = Post::orderBy('date', 'DESC')->get();
+        }
+        else{
+            $posts = Post::where('tag', '=',$tag)->get();
+        }
+        $data = ['posts' => $posts];
         return view('posts.index',$data);
     }
 
@@ -26,8 +32,10 @@ class PostController extends Controller
         return view('posts.createform');
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
+        $validated = $request->validated();
+
         if($_POST['link']=='') {
             DB::table('posts')->insert([
                 'title' => $_POST['title'],
@@ -55,8 +63,10 @@ class PostController extends Controller
         return view('posts.editform')->with('post',$post);
     }
 
-    public function update($id,Request $request)
+    public function update($id,PostRequest $request)
     {
+        $validated = $request->validated();
+
         $recipe=Post::find($id);
 
         $recipe->update($request->all());
