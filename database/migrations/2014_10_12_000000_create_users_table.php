@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('year')->nullable(); //屆別
+            $table->string('year')->nullable(); //屆別
             $table->string('part')->nullable(); //聲部別
             $table->string('class')->nullable();
             $table->string('acc')->nullable(); //學號

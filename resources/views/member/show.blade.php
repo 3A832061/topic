@@ -53,18 +53,37 @@
                 tmp.checked=true;
             }
 
-
             document.getElementById(form).submit();
+        }
+        function doubleCheck($id){
+            var msg;
+            if(document.getElementsByName('pos')[0].value!="社員"){
+                msg = "您要交接幹部了嗎？\n前一任幹部會改為社員權限\n請確認！";
+            }
+            else{
+                msg = "修改權限為社員\n請確認！";
+            }
+            if (confirm(msg)==true) {
+                success($id);
+            }
         }
     </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
 
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+            alert(msg);
+        }
+    </script>
+
     <!-- 公告-->
     <div class="container mt-3">
         <h2>權限管理</h2>
-        <table class="table table-hover">
+        <table class="table table-hover" >
             <thead>
             <tr>
                 <th>名字</th>
@@ -72,8 +91,8 @@
                 <th>班級</th>
                 <th>學號</th>
                 <th>手機</th>
-                <th>職位</th>
-                <th>入社時間</th>
+                <th width="80px">職位</th>
+                <th width="80px">入社時間</th>
                 <th>電子信箱</th>
                 <th>繳交社費?</th>
                 <th>現任社員?</th>
@@ -92,7 +111,7 @@
                     <td>{{$user->acc}}</td>
                     <td>{{$user->phone}}</td>
                     <td>
-                        <select name="pos" class="form-control" onchange="success({{$user->id}})">
+                        <select name="pos" class="form-control" onchange="doubleCheck({{$user->id}})">
                             <option value="社員" {{ ($user->pos=="社員")?'selected':'' }}>社員</option>
                             <option value="社長" {{ ($user->pos=="社長")?'selected':'' }}>社長</option>
                             <option value="副社" {{ ($user->pos=="副社")?'selected':'' }}>副社長</option>
@@ -112,7 +131,8 @@
                     <td>
                         <input type="checkbox" id="now{{$user->id}}" name="now" value=1 onclick="success({{$user->id}})" {{ ($user->now==1 )?'checked':'' }}>
                     </td>
-                    <td>{{$user->remark}}</td>
+                    <td> <textarea cols="5">{{$user->remark}}</textarea>
+                    </td>
                 </tr>
                 </form>
             @endforeach

@@ -30,25 +30,26 @@
                     <li><a class="dropdown-item" href="{{route('active.show','幹部訓練')}}">幹部訓練</a></li>
                 </ul>
             </li>
-            @if (!Route::has('login'))
+            @if (Route::has('login'))
                 @auth
+            @else
             <li class="nav-item"><a class="nav-link" href={{route('recruit.index')}}>招生表單</a></li>
                 @endauth
             @endif
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">器材</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                    <li><a class="dropdown-item" href="portfolio-item.html">器材清單</a></li>
-                    <li><a class="dropdown-item" href="portfolio-item.html">器材借用</a></li>
                     @if (Route::has('login'))
                         @auth
-                            <li><a class="dropdown-item" href="portfolio-item.html">器材申請</a></li>
-                            <li><a class="dropdown-item" href="portfolio-overview.html">樂器清單</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">樂器報修</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">耗材清單</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">耗材申請</a></li>
+                    <li><a class="dropdown-item" href="portfolio-item.html">樂器報修</a></li>
+                    <li><a class="dropdown-item" href="portfolio-item.html">耗材申請</a></li>
+                    <li><a class="dropdown-item" href="portfolio-item.html">器材申請</a></li>
+                    <li><a class="dropdown-item" href="portfolio-item.html">器材報廢</a></li>
                         @endauth
                     @endif
+                    <li><a class="dropdown-item" href="portfolio-item.html">器材借用</a></li>
+                    <li><hr class="dropdown-divider"></hr></li>
+                    <li><a class="dropdown-item" href="portfolio-item.html">器材清單</a></li>
                 </ul>
             </li>
             @if (Route::has('login'))
@@ -79,21 +80,26 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社員 {{auth()->user()->name}}</a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{auth()->user()->pos}} {{auth()->user()->name}}</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                             <li><h5 class="dropdown-header">出席相關</h5></li>
+
                             <li><a id="calendar" class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
                             <li><a id="attend" class="dropdown-item" href={{route('attends.create')}}>出席填寫</a></li>
                             <li><a class="dropdown-item" href={{route('attends.index')}}>出席統計</a></li>
-
+                            <li><hr class="dropdown-divider"></hr></li>
                             <li><h5 class="dropdown-header">新生相關</h5></li>
-                            <li><a class="dropdown-item" href={{route('recruit.index')}}>招生表單</a></li>
-                            <li><a class="dropdown-item" href={{ route('register') }}>新增帳號</a></li>
 
-                            <li><h5 class="dropdown-header">帳號相關</h5></li>
+                            <li><a class="dropdown-item" href={{route('recruit.index')}}>招生資料</a></li>
+                            <li><a class="dropdown-item" href={{ route('register') }}>新增帳號</a></li>
                             <li> <a class="dropdown-item" href={{ route('user.show') }}>權限管理</a></li>
+                            <li><hr class="dropdown-divider"></hr></li>
+                            <li><h5 class="dropdown-header">帳號相關</h5></li>
+
+
                             <li><a class="dropdown-item" href={{route('user.edit')}}>社員資料</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">修改密碼</a></li>
+                            <li><a class="dropdown-item" href={{route('password.reset')}}>修改密碼</a></li>
+                            <li><hr class="dropdown-divider"></hr></li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf

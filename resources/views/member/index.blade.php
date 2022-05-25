@@ -42,11 +42,15 @@
                 document.getElementById("accDiv").style.display="block";
             }
         }
+        function inputcheck(){
+            document.getElementsByName("pay")[0].clicked==true;
+        }
+
+
     </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
-
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -72,7 +76,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="name" class="inline">名字：</label>
-                                <input readonly name="name" class="form-control-itemname" placeholder="請輸入名字" value="{{auth()->user()->name}}">
+                                <input  name="name" class="form-control-itemname" placeholder="請輸入名字" value="{{auth()->user()->name}}">
                             </div>
 
                             <div class="form-group">
@@ -94,15 +98,15 @@
                             <div class="form-group">
                                 <label for="part" class="inline">聲部：</label>
                                 <select name="part" class="form-control-itemname">
-                                    <option value="長笛"      {{ (auth()->user()->part=="長笛")?'selected':'' }}>長笛 Fl</option>
-                                    <option value="豎笛"      {{ (auth()->user()->part=="豎笛")?'selected':'' }}>豎笛 Cl</option>
-                                    <option value="薩克"      {{ (auth()->user()->part=="薩克")?'selected':'' }}>薩克斯風 Sax</option>
-                                    <option value="法國號"    {{ (auth()->user()->part=="法國號")?'selected':'' }}>法國號 Horn</option>
-                                    <option value="長號"      {{ (auth()->user()->part=="長號")?'selected':'' }}>長號 Tb</option>
-                                    <option value="小號"      {{ (auth()->user()->part=="小號")?'selected':'' }}>小號 Tp</option>
-                                    <option value="上低音號"   {{ (auth()->user()->part=="上低音號")?'selected':'' }}>上低音號 Eup</option>
-                                    <option value="低音號"    {{ (auth()->user()->part=="低音號")?'selected':'' }}>低音號 Tuba</option>
-                                    <option value="打擊"      {{ (auth()->user()->part=="打擊")?'selected':'' }}>打擊 Per</option>
+                                    <option value="Fl"      {{ (auth()->user()->part=="FL")?'selected':'' }}>長笛 Fl</option>
+                                    <option value="Cl"      {{ (auth()->user()->part=="Cl")?'selected':'' }}>豎笛 Cl</option>
+                                    <option value="Sax"      {{ (auth()->user()->part=="Sax")?'selected':'' }}>薩克斯風 Sax</option>
+                                    <option value="Horn"    {{ (auth()->user()->part=="Horn")?'selected':'' }}>法國號 Horn</option>
+                                    <option value="Tb"      {{ (auth()->user()->part=="Tb")?'selected':'' }}>長號 Tb</option>
+                                    <option value="Tp"      {{ (auth()->user()->part=="Tp")?'selected':'' }}>小號 Tp</option>
+                                    <option value="Eup"   {{ (auth()->user()->part=="Eup")?'selected':'' }}>上低音號 Eup</option>
+                                    <option value="Tuba"    {{ (auth()->user()->part=="tuba")?'selected':'' }}>低音號 Tuba</option>
+                                    <option value="Per"      {{ (auth()->user()->part=="Per")?'selected':'' }}>打擊 Per</option>
                                 </select>
                             </div>
 
@@ -121,11 +125,11 @@
 
                             <div class="form-group">
                                 <label for="pay" class="inline">社費繳交：</label>
-                                <input name="pay" type="checkbox"  {{ (auth()->user()->pay==1 )?'checked':'' }}  onclick="return false;"
+                                <input name="pay" type="checkbox"  value={{auth()->user()->pay}} {{ (auth()->user()->pay==1 )?'checked':'' }}  onclick="return false;" >
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-primary" onsubmit="inputcheck();">提交</button>
                             </div>
                         </form>
                     </div>

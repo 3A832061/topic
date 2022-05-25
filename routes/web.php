@@ -16,6 +16,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\AccountantController;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
 
 /*
@@ -44,8 +49,8 @@ Route::prefix('calendar')->group(function(){
 });
 
 Route::prefix('posts')->group(function(){
-    Route::get('/{tag?}',[PostController::class,'index'])->name('posts.index');
     Route::get('/create',[PostController::class,'create'])->name('posts.create')->middleware('auth');
+    Route::get('/{tag?}',[PostController::class,'index'])->name('posts.index');
     Route::post('/',[PostController::class,'store'])->name('posts.store')->middleware('auth');
     Route::get('/{id}/edit',[PostController::class,'edit'])->name('posts.edit')->middleware('auth');
     Route::post('{id}',[PostController::class,'update'])->name('posts.update')->middleware('auth');
@@ -97,16 +102,16 @@ Route::prefix('sheet')->group(function(){
 
 
 Route::prefix('attend')->group(function(){
-    Route::get('/',[AttendController::class,'index'])->name('attends.index'); //list
-    Route::get('/create',[AttendController::class,'create'])->name('attends.create');
-    Route::post('/',[AttendController::class,'store'])->name('attends.store');
-    Route::get('{id}/edit',[AttendController::class,'edit'])->name('attends.edit');
+    Route::get('/',[AttendController::class,'index'])->name('attends.index')->middleware('auth'); //list
+    Route::get('/create',[AttendController::class,'create'])->name('attends.create')->middleware('auth');
+    Route::post('/',[AttendController::class,'store'])->name('attends.store')->middleware('auth');
+    Route::get('{id}/edit',[AttendController::class,'edit'])->name('attends.edit')->middleware('auth');
 });
 
 Route::prefix('member')->group(function(){
-    Route::get('/',[UserController::class,'edit'])->name('user.edit');
-    Route::put('/{id}',[UserController::class,'update'])->name('user.update');
-    Route::put('/{id}/admin',[UserController::class,'adminUpdate'])->name('user.adminUpdate');
+    Route::get('/',[UserController::class,'edit'])->name('user.edit')->middleware('auth');
+    Route::put('/{id}',[UserController::class,'update'])->name('user.update')->middleware('auth');
+    Route::put('/{id}/admin',[UserController::class,'adminUpdate'])->name('user.adminUpdate')->middleware('auth');
     Route::get('/show',[UserController::class,'show'])->name('user.show')->middleware('auth');
 });
 
@@ -132,3 +137,7 @@ Route::prefix('accountant')->group(function(){
     Route::get('/show',[AccountantController::class,'show'])->name('accountant.show')->middleware('auth');
 });
 
+Route::get('/reset-password/', function () {
+    return view('auth.reset-password');})->middleware('auth')->name('password.reset');
+
+Route::post('/reset-password',[UserController::class,'reset'])->middleware('auth')->name('password.update');

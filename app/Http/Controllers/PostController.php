@@ -17,6 +17,7 @@ class PostController extends Controller
             $posts = Post::where('tag', '=',$tag)->get();
         }
         $data = ['posts' => $posts];
+
         return view('posts.index',$data);
     }
 
