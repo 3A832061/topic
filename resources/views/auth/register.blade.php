@@ -7,7 +7,6 @@
 <x-guest-layout>
 <div style="width: 60%; margin: auto; padding-top: 30px;">
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -58,3 +57,5 @@
         </form>
 </div>
 </x-guest-layout>
+    @include('layouts.footer')
+@endsection
