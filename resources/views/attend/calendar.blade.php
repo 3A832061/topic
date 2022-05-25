@@ -172,7 +172,7 @@
                         "method": "read_calendar",
                         "query": "month"
                     },
-                    url: "https://script.google.com/macros/s/AKfycbw7doLcnw6nQ-CtMQZ4KMFI2QvgvdkYUgWn2DgZjtSlY4QKMfp3WLOaGEtOpL1HEw0K/exec", // 填入網路應用程式網址
+                    url: "https://script.google.com/macros/s/AKfycbwbxrOGKNk9TmFlRkITNlJHtNAaZo2y_3Uj1yUL9-Oxu4BqrSq9x2-DRInDvFgNcVyB/exec", // 填入網路應用程式網址
                     success: function (e) {
                         data=e;
                         var char=e.split('-');
@@ -189,7 +189,7 @@
                                     "method": "read_calendar",
                                     "query":this.id
                                 },
-                                url: "https://script.google.com/macros/s/AKfycbw7doLcnw6nQ-CtMQZ4KMFI2QvgvdkYUgWn2DgZjtSlY4QKMfp3WLOaGEtOpL1HEw0K/exec", // 填入網路應用程式網址
+                                url: "https://script.google.com/macros/s/AKfycbwbxrOGKNk9TmFlRkITNlJHtNAaZo2y_3Uj1yUL9-Oxu4BqrSq9x2-DRInDvFgNcVyB/exec", // 填入網路應用程式網址
                                 success: function (e1) {
                                     var char=e1.split('-');
                                     $('#tab tbody').html('');
@@ -215,7 +215,7 @@
             $('.dropbtn').one().click();
             $('.dropbtn').one().click();
 
-            $('#submit').on('click',function(){
+            $('#submit').on('submit',function(){
                 alert("提交成功");
                 $('#calendar').one().click();
             });
@@ -234,14 +234,14 @@
             <p>
                     <div class="form">
                     <iframe name="hidden_iframe" style="display: none;"></iframe>
-                    <form action="https://script.google.com/macros/s/AKfycbwExb_SLfi068HOIrl5Ux8otTopQ7NvSKwVhNUoIl1cAeJzhmFOMsUOcPLc0hBGxYCe/exec" method="POST" role="form"  target="hidden_iframe">
+                    <form action="https://script.google.com/macros/s/AKfycbwbxrOGKNk9TmFlRkITNlJHtNAaZo2y_3Uj1yUL9-Oxu4BqrSq9x2-DRInDvFgNcVyB/exec" method="POST" role="form"  target="hidden_iframe">
                         @csrf
                         <div class="form-group">
-                            <input type="hidden" name="method" value="write_calendar" >
+                            <input type="hidden" name="method" value="write_calendar" required>
                             <label for="date" class="inline">日期：</label>
                             <input id="date" name="date" type="date" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
-            border: 1px solid #ccc; border-radius: 4px;">
+            border: 1px solid #ccc; border-radius: 4px;" required>
                             <input name="time" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
             border: 1px solid #ccc; border-radius: 4px;" value="18：30~21：30">
@@ -249,7 +249,7 @@
 
                         <div class="form-group">
                             <label for="content" >內容：</label>
-                            <input name="content" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="">
+                            <input name="content" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="" required>
                         </div>
 
                         <div class="form-group">

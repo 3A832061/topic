@@ -3,7 +3,7 @@
 @section('index.con')
 <main class="flex-shrink-0">
     @include('layouts.nav')
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWMfyD7o30rHiTaVb-qK1ERnZiWdkAH3oC0EVVJT9tx7F82Q/viewform?embedded=true" width="640" height="2782" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
+    <iframe width="100%" height="100%" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQl28sjUUWdVagOTa6BW6nDiZn1cDKLG-RXWA9B-a2bGT4iHuNv_I8_XBMeRI7jTJReZ_Xo3BXKpYUi/pubhtml?widget=true&amp;headers=false"></iframe>
 </main>
 @include('layouts.footer')
 @endsection
