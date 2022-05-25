@@ -52,7 +52,12 @@
                     @endif
                 </div>
             </div>
+                @if (Route::has('login'))
+                    @auth
+                    @else
             <a class="button button4" style="float:right;"  href={{route('recruit.show')}}>下一頁</a>
+                    @endauth
+                @endif
         </section>
     </main>
     @include('layouts.footer')

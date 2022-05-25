@@ -84,7 +84,7 @@
                                 <input name="link" type="form-control-itemname" class="form-control-itemname" placeholder="請輸入連結網址" value="{{old('link',$post->link)}}">
                             </div>
 
-                            <div class="text-right">
+                            <div class="text-right"  style="display: inline;">
                                 <button type="submit" class="btn btn-primary">提交</button>
                             </div>
                         </form>

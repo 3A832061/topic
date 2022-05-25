@@ -12,7 +12,7 @@ class AccountantController extends Controller
             return view('accountant.form');
         }
         else{
-            return redirect()->route('index');
+            return redirect()->route('index')->with('alert', '只有總務可以填寫');
         }
     }
 

@@ -1,6 +1,49 @@
 @extends('layouts.partials.type')
 @section('title','管樂社')
+@section('form.css')
+    <style>
+        #myBtn {
+            display: block;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #4e7bff;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+    </style>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+@endsection
 @section('index.con')
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+            alert(msg);
+        }
+    </script>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
     <main class="flex-shrink-0">
     @include('layouts.nav')
     <!-- 公告-->
@@ -13,14 +56,16 @@
                             @if(count($posts)==0)
                                 <p style="color: white">暫無公告</p>
                             @else
-                                <table style="color: white" border="5" width="75%">
+                                <table style="color: white" border="5" width="100%">
                                     <tr>
+                                        <td></td>
                                         <td>日期</td>
                                         <td></td>
                                         <td>標題</td>
                                     </tr>
                                     @foreach($posts as $post)
                                         <tr>
+                                            <td>{{$post->tag}}</td>
                                             <td>{{$post->date}}</td>
                                             <td></td>
                                             <td> <a  style="text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a></td>
@@ -40,7 +85,6 @@
                 </div>
             </div>
         </header>
-
         <!-- 行事曆-->
         <section class="py-5" id="features">
             <div class="container px-5 my-5">

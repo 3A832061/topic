@@ -46,11 +46,21 @@
     <form action="{{ route('posts.destroy',$post->id) }}" method="POST" style="display: inline">
         @method('DELETE')
         @csrf
-        <button  class="btn btn-sm btn-danger" type="submit">刪除</button>
+        <button  class="btn btn-sm btn-danger" type="submit" onclick="javascript:return doubleCheck();">刪除</button>
     </form>
     @endauth
 @endif
 
     @include('layouts.footer')
+    <script>
+        function doubleCheck(){
+            var msg = "您真的確定要刪除嗎？\n\n請確認！";
+            if (confirm(msg)==true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    </script>
 @endsection
 

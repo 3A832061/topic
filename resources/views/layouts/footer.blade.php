@@ -6,12 +6,11 @@
                 <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
             </div>
             <div class="col-auto">
-                <a class="link-light small" href="#!">Privacy</a>
-                <span class="text-white mx-1">&middot;</span>
-                <a class="link-light small" href="#!">Terms</a>
-                <span class="text-white mx-1">&middot;</span>
-                <a class="link-light small" href="#!">Contact</a>
-                <span class="text-white mx-3"></span>
+                <a href="https://www.facebook.com/novemberberber" target="_blank"><img src="https://i.imgur.com/1zbGxyT.png"></a>
+                <a href="#" target="_blank"><img src="https://i.imgur.com/hbdwGnG.png"></a>
+                <a href="https://instagram.com/ncut_november_wind_band?igshid=YmMyMTA2M2Y=" target="_blank"><img src="https://i.imgur.com/PVPDawS.png"></a>
+
+
                 <img src=""> <!--可置換成logo-->
             </div>
         </div>
