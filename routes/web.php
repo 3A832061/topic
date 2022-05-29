@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\InformationController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\IntroductionController;
 use App\Http\Controllers\AwardController;
@@ -16,11 +15,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\AccountantController;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Str;
+
 
 
 /*
@@ -42,10 +37,6 @@ Route::get('/',[HomeController::class,'index'])->name('index');
 Route::prefix('calendar')->group(function(){
     Route::get('',[CalendarController::class,'index'])->name('calendars.index'); //顯示行事曆
     Route::get('/create/{month?}',[CalendarController::class,'create'])->name('calendar.create')->middleware('auth');
-    Route::post('/',[CalendarController::class,'store'])->name('calendar.store')->middleware('auth');
-    Route::get('/{id}/edit',[CalendarController::class,'edit'])->name('calendar.edit')->middleware('auth');
-    Route::post('{id}',[CalendarController::class,'update'])->name('calendar.update')->middleware('auth');
-    Route::delete('/{id}',[CalendarController::class,'destroy'])->name('calendar.destroy')->middleware('auth');
 });
 
 Route::prefix('posts')->group(function(){
@@ -104,8 +95,6 @@ Route::prefix('sheet')->group(function(){
 Route::prefix('attend')->group(function(){
     Route::get('/',[AttendController::class,'index'])->name('attends.index')->middleware('auth'); //list
     Route::get('/create',[AttendController::class,'create'])->name('attends.create')->middleware('auth');
-    Route::post('/',[AttendController::class,'store'])->name('attends.store')->middleware('auth');
-    Route::get('{id}/edit',[AttendController::class,'edit'])->name('attends.edit')->middleware('auth');
 });
 
 Route::prefix('member')->group(function(){
@@ -115,12 +104,12 @@ Route::prefix('member')->group(function(){
     Route::get('/show',[UserController::class,'show'])->name('user.show')->middleware('auth');
 });
 
-/*未完成
+
 Route::prefix('equipment')->group(function(){
-    Route::get('/',[EquipmentController::class,'index'])->name('attends.index'); //list
-    Route::get('/',[EquipmentController::class,''])->name('attends.create');
-    Route::get('/',[EquipmentController::class,'edit'])->name('attends.edit');
-});*/
+    Route::get('/',[EquipmentController::class,'index'])->name('equipments.index'); //list
+    Route::get('/create',[EquipmentController::class,''])->name('equipments.create');
+    Route::get('/edit',[EquipmentController::class,'edit'])->name('equipments.edit');
+});
 
 Route::prefix('recruit')->group(function(){
     Route::get('/',[RecruitController::class,'index'])->name('recruit.index');

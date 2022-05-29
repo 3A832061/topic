@@ -49,7 +49,7 @@
                     @endif
                     <li><a class="dropdown-item" href="portfolio-item.html">器材借用</a></li>
                     <li><hr class="dropdown-divider"></hr></li>
-                    <li><a class="dropdown-item" href="portfolio-item.html">器材清單</a></li>
+                    <li><a class="dropdown-item" href={{ route('equipments.index') }}>器材清單</a></li>
                 </ul>
             </li>
             @if (Route::has('login'))
@@ -68,7 +68,6 @@
                             <li><a class="dropdown-item" href="portfolio-overview.html">歷年社團評鑑紀錄</a></li>
                             <li><a class="dropdown-item" href="portfolio-item.html">活動注意事項</a></li>
                             <li><a class="dropdown-item" href="portfolio-item.html">音樂會事項</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">相關表單下載</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
