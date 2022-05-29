@@ -111,7 +111,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="year" class="inline">入社年：{{auth()->user()->year}}</label>
+                                <?php
+                                $year=date_format(auth()->user()->created_at,'Y/m/d');
+                                ?>
+                                <label for="year" class="inline">入社年：{{$year}}</label>
                             </div>
 
                             <div class="form-group">

@@ -96,7 +96,6 @@
                 <th>電子信箱</th>
                 <th>繳交社費?</th>
                 <th>現任社員?</th>
-                <th>備註</th>
             </tr>
             </thead>
             <tbody>
@@ -123,15 +122,16 @@
                             <option value="公關" {{ ($user->pos=="公關")?'selected':'' }}>公關</option>
                         </select>
                     </td>
-                    <td>{{$user->year}}</td>
+                        <?php
+                            $year=date_format($user->created_at,'Y/m/d');
+                        ?>
+                    <td>{{$year}}</td>
                     <td>{{$user->email}}</td>
                     <td>
                         <input type="checkbox" id="pay{{$user->id}}" name="pay" value=1 onclick="success({{$user->id}})" {{ ($user->pay==1 )?'checked':'' }}>
                     </td>
                     <td>
                         <input type="checkbox" id="now{{$user->id}}" name="now" value=1 onclick="success({{$user->id}})" {{ ($user->now==1 )?'checked':'' }}>
-                    </td>
-                    <td> <textarea cols="5">{{$user->remark}}</textarea>
                     </td>
                 </tr>
                 </form>

@@ -89,8 +89,8 @@
         for(var i=0; i<data.length; i++){
             alldata+=data[i].value+"-";
         }
-        document.getElementsByName("question").value=alldata;
-        alert( document.getElementsByName("question").value );
+        document.getElementsByName("question")[0].value=alldata;
+        alert(document.getElementsByName("question")[0].value);
     }
     </script>
 
@@ -120,7 +120,7 @@
                         "method": "read_calendar",
                         "query": "month"
                     },
-                    url: "https://script.google.com/macros/s/AKfycbwbxrOGKNk9TmFlRkITNlJHtNAaZo2y_3Uj1yUL9-Oxu4BqrSq9x2-DRInDvFgNcVyB/exec", // 填入網路應用程式網址
+                    url: "https://script.google.com/macros/s/AKfycbzTpdmicws0kvgZB9ux4ZGrDANoy_siT6dwkpRgxTQMATnLavP1a37rj1wLWEIAJrwV/exec", // 填入網路應用程式網址
                     success: function (e) {
                         data=e;
                         var char=e.split('-');
@@ -139,7 +139,7 @@
                                     "user":$("#name").val(),
                                     month:this.id,
                                 },
-                                url: "https://script.google.com/macros/s/AKfycbwbxrOGKNk9TmFlRkITNlJHtNAaZo2y_3Uj1yUL9-Oxu4BqrSq9x2-DRInDvFgNcVyB/exec", // 填入網路應用程式網址
+                                url: "https://script.google.com/macros/s/AKfycbzTpdmicws0kvgZB9ux4ZGrDANoy_siT6dwkpRgxTQMATnLavP1a37rj1wLWEIAJrwV/exec", // 填入網路應用程式網址
                                 success: function (item_data) {
                                     $('#tmp').html('');
                                     var char=item_data.split('-');
@@ -242,7 +242,7 @@
                     "user":$("#name").val(),
                     month:date,
                 },
-                url: "https://script.google.com/macros/s/AKfycbwbxrOGKNk9TmFlRkITNlJHtNAaZo2y_3Uj1yUL9-Oxu4BqrSq9x2-DRInDvFgNcVyB/exec", // 填入網路應用程式網址
+                url: "https://script.google.com/macros/s/AKfycbzTpdmicws0kvgZB9ux4ZGrDANoy_siT6dwkpRgxTQMATnLavP1a37rj1wLWEIAJrwV/exec", // 填入網路應用程式網址
                 success: function (form_data) {
                     $('#tmp').html('');
                     var char=form_data.split('-');
@@ -345,7 +345,7 @@
                 <div class="row">
                     <div id="attend" class="col-lg-8">
                         <iframe name="hidden_iframe" style="display: none;"></iframe>
-                        <form  action="https://script.google.com/macros/s/AKfycbwbxrOGKNk9TmFlRkITNlJHtNAaZo2y_3Uj1yUL9-Oxu4BqrSq9x2-DRInDvFgNcVyB/exec" method="POST" role="form" target="hidden_iframe" onsubmit="return touch();">
+                        <form  action="https://script.google.com/macros/s/AKfycbzTpdmicws0kvgZB9ux4ZGrDANoy_siT6dwkpRgxTQMATnLavP1a37rj1wLWEIAJrwV/exec" method="POST" role="form" target="hidden_iframe" onsubmit="return touch();">
                             @csrf
                             <input type="hidden" name="method" value="write_attend" >
                             <input type="hidden" id="name" name="name" value={{auth()->user()->name}}>
