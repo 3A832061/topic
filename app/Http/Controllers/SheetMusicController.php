@@ -13,19 +13,25 @@ class SheetMusicController extends Controller
 
     public function index()
     {
-        return view('sheet.index');
+
+        $sheets = DB::table('Sheet__Music')->orderBy('type','desc')->orderBy('name', 'asc')->get();
+        return view('sheet.index',['sheets' => $sheets]);
     }
 
 
     public function create()
     {
         //
+
+        return view('sheet.create');
     }
 
 
-    public function store(StoreSheet_MusicRequest $request)
+    public function store(Request $request)
     {
         //
+        Sheet_Music::create($request->all());
+        return redirect()->route('sheet.show');
     }
 
 
@@ -46,8 +52,5 @@ class SheetMusicController extends Controller
         //
     }
 
-    public function destroy(Sheet_Music $sheet_Music)
-    {
-        //
-    }
+
 }

@@ -12,7 +12,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社團介紹</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                     <li><a class="dropdown-item" href={{ route('introduction.show') }}>社團簡介</a></li>
-                    <li><a class="dropdown-item" href={{route('teacher.show')}}>指導老師</a></li>
+                    <li><a class="dropdown-item" href={{route('teacher.show','')}}>指導老師</a></li>
                     <li><a class="dropdown-item" href={{route('award.show')}}>獎項紀錄</a></li>
                     <li><a class="dropdown-item" href={{route('award.show')}}>組織章程</a></li>
                     <li><a class="dropdown-item" href={{route('award.show')}}>組織架構</a></li>
@@ -26,7 +26,7 @@
                     <li><a class="dropdown-item" href="{{route('active.show','迎新')}}">迎新</a></li>
                     <li><a class="dropdown-item" href="{{route('active.show','社慶')}}">社慶</a></li>
                     <li><a class="dropdown-item" href="{{route('active.show','講座')}}">講座</a></li>
-                    <li><a class="dropdown-item" href="{{route('active.show','寒/暑輔')}}">寒/暑輔</a></li>
+                    <li><a class="dropdown-item" href="{{route('active.show','寒暑輔')}}">寒/暑輔</a></li>
                     <li><a class="dropdown-item" href="{{route('active.show','幹部訓練')}}">幹部訓練</a></li>
                 </ul>
             </li>
@@ -53,8 +53,8 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">譜相關</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                             <li><a class="dropdown-item" href="{{route('sheet.show')}}">總清單</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">歷年演出</a></li>
-                            <li><a class="dropdown-item" href="portfolio-item.html">缺頁申請</a></li>
+                            <li><a class="dropdown-item" href="{{route('sheet.show')}}">歷年演出</a></li>
+                            <li><a class="dropdown-item" href="{{route('apply.show')}}">缺頁申請</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

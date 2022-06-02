@@ -147,7 +147,18 @@
             color: #031f50 !important;
             transition: opacity .8s ease-in-out;
         }
-
+        .mySlides{
+            text-align:center !important;
+            background-color:#ccc;
+        }
+        .mySlides:hover .show
+        {
+            display:block !important;
+        }
+        .show
+        {
+            display:none;
+        }
     </style>
 @endsection
 @section('index.con')
@@ -164,23 +175,26 @@
                 </div>
 
                 <p>
+                    @auth
+                        @if(auth()->user()->name=='admin')
+                            <a class="btn btn-success flex-shrink-0" href="{{route('active.create')}}">新增</a>
+                        @endif
+                    @endauth
                 <div class="container" style="">
+
                     <!-- Full-width images with number text -->
                     <div class="containermage">
+
                     @foreach($actives as $active)
                     <div class="mySlides">
-                            <div class="numbertext">{{$active->id}}/ 6 ｜{{$active->content}}
-                            @auth
-                                @if(auth()->user()->name=='admin')
-                                    <a class="btn btn-success flex-shrink-0" href="{{route('active.create')}}">新增</a>
-                                    <a class="btn btn-primary flex-shrink-0" href="{{route('active.edit',$active->id)}}">修改</a>
-                                    <form action="{{ route('active.destroy',$active->id) }}" method="POST" style="display:inline;">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button  class="btn btn-danger flex-shrink-0" type="submit">刪除</button>
-                                    </form>
-                                @endif
-                            @endauth
+                       <div class="numbertext">{{$active->id}}/ 6 ｜{{$active->content}}
+                                <div class="show">
+                                    @auth
+                                        @if(auth()->user()->name=='admin')
+                                            <a class="btn btn-primary flex-shrink-0" href="{{route('active.edit',$active->id)}}">修改</a>
+                                        @endif
+                                    @endauth
+                                </div>
                         </div>
                         <img src="{{$active->url}}" class="image">
                     </div>

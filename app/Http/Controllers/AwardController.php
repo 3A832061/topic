@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Award;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -8,34 +9,41 @@ class AwardController extends Controller
 {
     public function index()
     {
-        $award = DB::table('information')->where('type','=','award')->get();
-        return view('information.award.index', ['information' => $award]);
+        $awards = DB::table('awards')->orderBy('year','DESC')->get();
+        return view('information.award.index', ['awards' => $awards]);
     }
 
     public function create()
     {
-        return view('information.award.createform');
+        $awards = DB::table('awards')->get();
+        return view('information.award.createform', ['awards' => $awards]);
     }
 
-    public function store(StoreInformationRequest $request)
+    public function store(Request $request)
     {
 
+        Award::create($request->all());
+        return redirect()->route('award.show');
     }
 
     public function edit($id)
     {
-        $teacher=Information::find($id);
-        return view('information.award.editform',[$teacher=>'teacher']);
+        $awards = Award::find($id);
+        $data= ['awards'=>$awards];
+        return view('information.award.editform',$data);
     }
 
 
-    public function update(UpdateInformationRequest $request, Information $information)
+    public function update(Request $request, $id)
     {
-        //
+        $awards=Award::find($id);
+        $awards->update($request->all());
+        return redirect()->route('award.show');
     }
 
-    public function destroy(Information $information)
+    public function destroy($id)
     {
-        //
+        Award::destroy($id);
+        return redirect()->route('award.show');
     }
 }

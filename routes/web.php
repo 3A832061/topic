@@ -16,6 +16,7 @@
     use App\Http\Controllers\EquipmentController;
     use App\Http\Controllers\RecruitController;
     use App\Http\Controllers\AccountantController;
+    use App\Http\Controllers\ApplyController;
 
 
 /*
@@ -96,15 +97,6 @@
         Route::delete('{id}',[ActiveController::class,'destroy'])->name('active.destroy');
     });
 
-    Route::prefix('sheet')->group(function(){
-        Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show');
-        Route::get('show/{show}',[SheetMusicController::class,'show'])->name('sheet.detail');
-        Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create');
-        Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit');
-        Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update');
-    });
-
-
     Route::prefix('attend')->group(function(){
         Route::get('/',[AttendController::class,'index'])->name('attends.index'); //list
         Route::get('/create',[AttendController::class,'create'])->name('attends.create');
@@ -139,3 +131,19 @@
         Route::get('/show',[AccountantController::class,'show'])->name('accountant.show');
     });
 
+
+Route::prefix('sheet')->group(function(){
+    Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show');
+    Route::get('show/{show}',[SheetMusicController::class,'show'])->name('sheet.detail');
+    Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create');
+    Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit');
+    Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update');
+});
+
+Route::prefix('apply')->group(function(){
+    Route::get('/',[ApplyController::class,'index'])->name('apply.show'); //檢視all
+    Route::get('/create',[ApplyController::class,'create'])->name('apply.create'); //新增
+    Route::post('/',[ApplyController::class,'store'])->name('apply.store');
+    Route::get('{id}/edit',[ApplyController::class,'edit'])->name('apply.edit'); //編輯狀態
+    Route::post('{id}',[ApplyController::class,'update'])->name('apply.update');
+});

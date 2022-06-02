@@ -10,8 +10,9 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        $teacher = DB::table('information')->where('type','=','teacher')->get();
-        return view('information.teacher.index', ['information' => $teacher]);
+
+
+        return view('information.teacher.index');
     }
 
     public function create()
@@ -22,13 +23,12 @@ class TeacherController extends Controller
     public function store(StoreInformationRequest $request)
     {
 
-        return view('information.teacher.index', ['information' => $teacher]);
+        return view('information.teacher.index');
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $teacher=Information::find($id);
-        return view('information.form',[$teacher=>'teacher']);
+
     }
 
 

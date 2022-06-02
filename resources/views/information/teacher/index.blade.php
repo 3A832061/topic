@@ -1,5 +1,43 @@
 @extends('layouts.partials.type')
 @section('title','管樂社')
+<style>
+    .col-lg-6
+    {
+      width:100%;
+    }
+    .img-fluid
+    {
+        text-align: right !important;
+    }
+    .col-lg-6.ass
+    {
+        text-align:center !important;
+    }
+     .col-lg-6
+     {
+         width:100%;
+
+     }
+
+    .img-fluid.rounded-3.mb-3
+    {
+        width:400px !important;
+        height: 500px !important;
+        background-color: #1e1e1e;
+    }
+    .btn.btn-outline-success.flex-shrink-0
+    {
+        color:#d7ad96 !important;
+        border-color: #d7ad96 !important;
+    }
+    .btn.btn-outline-success.flex-shrink-0:hover
+    {
+        color:white !important;
+        border-color: #d7ad96 !important;
+        background-color: #d7ad96 !important;
+    }
+
+</style>
 @section('index.con')
     <main class="flex-shrink-0">
         @include('layouts.nav')
@@ -9,25 +47,36 @@
                 <div class="col-lg-6">
                     <div class="text-center mb-5">
                         <h1 class="fw-bolder">指導老師</h1>
-                        <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab similique, ducimus ut alias sit accusamus illum, asperiores deserunt dolorum quaerat qui! Ab, quisquam explicabo magni dolores unde beatae quam a.</p>
                     </div>
                 </div>
             </div>
             <div class="row gx-5">
-                <div class="col-12"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/1300x700/343a40/6c757d" alt="..." /></div>
-                <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-                <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-            </div>
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6">
-                    <div class="text-center mb-5">
-                        <p class="lead fw-normal text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam deserunt architecto enim eos accusantium fugit recusandae illo iste dignissimos possimus facere ducimus odit voluptatibus exercitationem, ex laudantium illum voluptatum corporis.</p>
-                        <a class="text-decoration-none" href="#!">
-                            View project
-                            <i class="bi-arrow-right"></i>
-                        </a>
+
+                <div class="col-12"></div>
+                <section class="col-4">
+                    <div>
+                        <ul>
+
+                                <li><a href="#"></a></li>
+                        </ul>
                     </div>
-                </div>
+                </section>
+                <section class="col-5">
+
+
+                            <div class="col-8">
+                                <p><h3></h3>
+                                <p></p>
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded-3 mb-3" src="" alt="..." />
+
+                            </div>
+                    <div class="col-4">
+                    </div>
+
+                </section>
+
             </div>
         </div>
     </section>

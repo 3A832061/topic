@@ -69,7 +69,6 @@
                             <div class="form-group">
                                 <label for="url" class="inline">圖片網址：</label>
                                 <input id="url" name="url" class="form-control" placeholder="請輸入連結網址" value="{{old('url',$actives->url)}}">
-
                             </div>
 
                             <div class="text-right">
