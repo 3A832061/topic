@@ -33,19 +33,30 @@ class UserController extends Controller
 
     public function adminUpdate($id,Request $request)
     {
-        $user=User::where('pos','=',$_POST['pos'])->update(['pos' => '社員']);;
+        if(auth()->user()->pos=='社長' || auth()->user()->pos=='文書') {
+            $user = User::where('pos', '=', $_POST['pos'])->update(['pos' => '社員']);;
 
-        $recipe=User::find($id);
-        $recipe->update($request->all());
+            $recipe = User::find($id);
+            $recipe->update($request->all());
 
-        return redirect()->route('user.show');
+            return redirect()->route('user.show');
+        }
+        else{
+            return redirect()->back()->with('alert', '只有社長、文書可以修改');
+        }
     }
 
-    public function show()
+    public function show($type='now')
     {
-        $users=User::orderBy('id', 'ASC')->get();
-        $data1=['users'=>$users];
-        return view('member.show',$data1);
+        if($type=='now'){
+            $users = User::where('now','=',1)->orderBy('id', 'ASC')->get();
+        }
+        else{
+            $users = User::orderBy('id', 'ASC')->get();
+        }
+
+            $data1 = ['users' => $users,'type'=>$type];
+            return view('member.show', $data1);
     }
 
     //重設密碼

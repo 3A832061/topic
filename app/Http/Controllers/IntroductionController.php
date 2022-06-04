@@ -20,12 +20,18 @@ class IntroductionController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('information')->insert([
-            'title' => $_POST['title'],
-            'content' => $_POST['content'],
-            'type' => 'introduction',
-            'picture' => $_POST['picture']]);
+        if($request->hasFile('picture')) {
+            $imageName = time().'.'.$request->picture->extension();
+            //把檔案存到公開的資料夾
+            $request->picture->move(public_path('images/introduction'), $imageName);
 
+            DB::table('information')->insert([
+                'title' => $_POST['title'],
+                'content' => $_POST['content'],
+                'type' => 'introduction',
+                'picture' => $imageName]);
+
+        }
         return redirect()->route('introduction.show');
     }
 
@@ -39,6 +45,20 @@ class IntroductionController extends Controller
     public function update($id,Request $request)
     {
         $recipe=Information::find($id);
+
+        if($request->hasFile('picture')) {
+            $imageName = time().'.'.$request->picture->extension();
+            //把檔案存到公開的資料夾
+            $request->picture->move(public_path('images/introduction'), $imageName);
+            $recipe->title=$request->title;
+            $recipe->content=$request->content;
+            $recipe->picture=$imageName;
+            $recipe->user_id = auth()->user()->id;
+            $recipe->save();
+        }
+        else{
+                $recipe->update($request->all());
+        }
 
         $recipe->update($request->all());
         return redirect()->route('introduction.show');

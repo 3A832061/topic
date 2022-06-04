@@ -12,9 +12,10 @@ use App\Http\Controllers\SheetMusicController;
 use App\Http\Controllers\SheetRequController;
 use App\Http\Controllers\AttendController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\AccountantController;
+use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\PrecautionController;
 
 
 
@@ -101,14 +102,7 @@ Route::prefix('member')->group(function(){
     Route::get('/',[UserController::class,'edit'])->name('user.edit')->middleware('auth');
     Route::put('/{id}',[UserController::class,'update'])->name('user.update')->middleware('auth');
     Route::put('/{id}/admin',[UserController::class,'adminUpdate'])->name('user.adminUpdate')->middleware('auth');
-    Route::get('/show',[UserController::class,'show'])->name('user.show')->middleware('auth');
-});
-
-
-Route::prefix('equipment')->group(function(){
-    Route::get('/',[EquipmentController::class,'index'])->name('equipments.index'); //list
-    Route::get('/create',[EquipmentController::class,''])->name('equipments.create');
-    Route::get('/edit',[EquipmentController::class,'edit'])->name('equipments.edit');
+    Route::get('/{type?}/show',[UserController::class,'show'])->name('user.show')->middleware('auth');
 });
 
 Route::prefix('recruit')->group(function(){
@@ -130,3 +124,19 @@ Route::get('/reset-password/', function () {
     return view('auth.reset-password');})->middleware('auth')->name('password.reset');
 
 Route::post('/reset-password',[UserController::class,'reset'])->middleware('auth')->name('password.update');
+
+Route::prefix('evaluation')->group(function(){
+    Route::get('/',[EvaluationController::class,'index'])->name('evaluations.index');
+    Route::get('/create',[EvaluationController::class,'create'])->name('evaluations.create')->middleware('auth');
+    Route::post('/',[EvaluationController::class,'store'])->name('evaluations.store')->middleware('auth');
+    Route::get('{id}/edit',[EvaluationController::class,'edit'])->name('evaluations.edit')->middleware('auth');
+    Route::post('{id}',[EvaluationController::class,'update'])->name('evaluations.update')->middleware('auth');
+});
+
+Route::prefix('precautions')->group(function(){
+    Route::get('/',[PrecautionController::class,'index'])->name('precautions.index');
+    Route::get('/create',[PrecautionController::class,'create'])->name('precautions.create')->middleware('auth');
+    Route::post('/',[PrecautionController::class,'store'])->name('precautions.store')->middleware('auth');
+    Route::get('{id}/edit',[PrecautionController::class,'edit'])->name('precautions.edit')->middleware('auth');
+    Route::post('{id}',[PrecautionController::class,'update'])->name('precautions.update')->middleware('auth');
+});

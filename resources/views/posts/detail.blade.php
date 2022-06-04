@@ -3,53 +3,57 @@
 @section('index.con')
     <main class="flex-shrink-0">
         @include('layouts.nav')
-    <section class="py-5">
-        <div class="container px-5 my-5">
-            <div class="row gx-5">
+    <section class="py-5" >
+        <div style="padding-left: 25%;padding-right: 10%">
 
+            <div class="row gx-5">
                 <div class="col-lg-9">
                     <!-- Post content-->
                     <article>
                         <!-- Post header-->
                         <header class="mb-4">
+                            <div style="text-align:right;">
+                                @if ( auth()->check())
+                                    @if(auth()->user()->pos!='社員')
+                                    <a class="btn btn-primary" href={{route('posts.create')}} >新增公告</a>
+                                    <a class="btn  btn-success" href={{route('posts.edit',$post->id)}}>修改公告</a>
+                                    <form action="{{ route('posts.destroy',$post->id) }}" method="POST" style="display: inline">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button  class="btn  btn-danger" type="submit" onclick="javascript:return doubleCheck();">刪除</button>
+                                    </form>
+                                    @endif
+                                @endif
+                            </div>
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">{{$post->title}}</h1>
+                            <h1 class="fw-bolder mb-1" style=" white-space: pre-wrap;  word-wrap: break-word;">{{$post->title}}</h1>
                             <!-- Post meta content-->
+
                             <div class="text-muted fst-italic mb-2">{{$post->date}}</div>
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$post->tag}}</a>
+
                         </header>
 
                         <!-- Post content-->
-                        <section class="mb-5">
-                            <?php
-                            $string=$post->content;
-                            $cutchar = explode('\n', $string);
-                            foreach ($cutchar as $item){
-                                echo $item."<br>";
-                            }
-                            ?>
+                        <section class="mb-5" id="content" >
+                            <pre style=" white-space: pre-wrap;  word-wrap: break-word;">{{$post->content}}</pre>
                         </section>
                         <!-- Preview image figure-->
-                        {{ isset($post->link) ? "<figure class='mb-4'><img class='img-fluid rounded' src=$post->link alt='...' /></figure>" : ''}}
+                        <figure class='mb-4'>
+                            @if($post->link!=null)
+                                <img class='img-fluid rounded' src={{asset("images/".$post->link)}} alt='...' />
+                            @endif
+                        </figure>
                     </article>
                 </div>
             </div>
+
         </div>
+
     </section>
 </main>
 
-@if (Route::has('login'))
-    @auth
-    <a href={{route('posts.create')}} >新增公告</a>
-    <a href={{route('posts.edit',$post->id)}}>修改公告</a>
-    <form action="{{ route('posts.destroy',$post->id) }}" method="POST" style="display: inline">
-        @method('DELETE')
-        @csrf
-        <button  class="btn btn-sm btn-danger" type="submit" onclick="javascript:return doubleCheck();">刪除</button>
-    </form>
-    @endauth
-@endif
 
     @include('layouts.footer')
     <script>

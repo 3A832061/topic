@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEquipmentsTable extends Migration
+class CreateEquipmentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,24 @@ class CreateEquipmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipments', function (Blueprint $table) {
+        Schema::create('equipment', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->string('number')->nullable();  //編號
+            $table->string('number')->nullable();
             $table->string('name');
-            $table->string('spec')->nullable(); //規格
-            $table->string('supplier')->nullable();     //供應商
-            $table->string('supplier_tel')->nullable();     //供應商聯絡方式
+            $table->string('spec')->nullable();
+            $table->string('supplier')->nullable();
+            $table->string('supplier_tel')->nullable();
             $table->integer('price')->nullable();
-            $table->integer('quan');        //數量
-            $table->date('pur_date')->nullable();   //購買日期
+            $table->integer('quan');
+            $table->date('pur_date')->nullable();
             $table->string('pur_person')->nullable();
-            $table->date('check_date')->nullable();     //最近清點日期
+            $table->date('check_date')->nullable();
             $table->string('check_person')->nullable();
-            $table->string('state');        //目前狀態
+            $table->string('state');
             $table->string('remark')->nullable();
             $table->string('location');
-            $table->boolean('out_loan');    //是否可外借
+            $table->boolean('out_loan');
             $table->timestamps();
         });
     }
@@ -42,6 +42,6 @@ class CreateEquipmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipments');
+        Schema::dropIfExists('equipment');
     }
 }

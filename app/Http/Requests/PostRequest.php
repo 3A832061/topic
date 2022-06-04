@@ -25,7 +25,8 @@ class PostRequest extends FormRequest
     {
         return [
             'title.required' => '標題是必填',
-            'title.max:255' => '標題字數過多',
+            'title.max' => '標題字數過多',
+            'title.min' => '標題字數太少',
             'content.required' => '內容是必填',
         ];
     }
@@ -33,7 +34,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:255'],
+            'title' => ['required','min:3', 'max:255'],
             'content' => ['required']
         ];
     }
