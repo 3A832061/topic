@@ -17,6 +17,7 @@ use App\Http\Controllers\AccountantController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\PrecautionController;
 use App\Http\Controllers\ArchitectureController;
+use App\Http\Controllers\OrganizeController;
 
 
 
@@ -149,4 +150,13 @@ Route::prefix('architectures')->group(function(){
     Route::get('{id}/edit',[ArchitectureController::class,'edit'])->name('architectures.edit')->middleware('auth');
     Route::post('{id}',[ArchitectureController::class,'update'])->name('architectures.update')->middleware('auth');
     Route::delete('/{id}',[ArchitectureController::class,'destroy'])->name('architectures.destroy')->middleware('auth');
+});
+
+Route::prefix('organizes')->group(function(){
+    Route::get('/',[OrganizeController::class,'index'])->name('organizes.index');
+    Route::get('/create',[OrganizeController::class,'create'])->name('organizes.create')->middleware('auth');
+    Route::post('/',[OrganizeController::class,'store'])->name('organizes.store')->middleware('auth');
+    Route::get('{id}/edit',[OrganizeController::class,'edit'])->name('organizes.edit')->middleware('auth');
+    Route::post('{id}',[OrganizeController::class,'update'])->name('organizes.update')->middleware('auth');
+    Route::delete('/{id}',[OrganizeController::class,'destroy'])->name('organizes.destroy')->middleware('auth');
 });
