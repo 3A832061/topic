@@ -51,6 +51,14 @@
 @endsection
 @section('index.con')
     @include('layouts.nav')
+
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+            alert(msg);
+        }
+    </script>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

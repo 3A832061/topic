@@ -34,12 +34,27 @@ class UserController extends Controller
     public function adminUpdate($id,Request $request)
     {
         if(auth()->user()->pos=='社長' || auth()->user()->pos=='文書') {
-            $user = User::where('pos', '=', $_POST['pos'])->update(['pos' => '社員']);;
+            if($request->pos!=null) {
+                $user = User::where('pos', '=', $request->pos)->get();
 
+                if(count($user)==1 && $request->pos=='社長'){
+                    $user = User::where('pos', '=', $_POST['pos'])->update(['pos' => '社員']);
+                }
+                else{
+                    return redirect()->back()->with('alert', '社長不可以空缺');
+                }
+
+                if(count($user)==1 && $request->pos=='文書'){
+                    $user = User::where('pos', '=', $_POST['pos'])->update(['pos' => '社員']);
+                }
+                else{
+                    return redirect()->back()->with('alert', '文書不可以空缺');
+                }
+            }
             $recipe = User::find($id);
             $recipe->update($request->all());
 
-            return redirect()->route('user.show');
+            return redirect()->back();
         }
         else{
             return redirect()->back()->with('alert', '只有社長、文書可以修改');

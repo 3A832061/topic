@@ -40,17 +40,21 @@
     <script>
         function success(id){
             var form="form"+id;
+
             var name="now"+id;
             var tmp=document.getElementById(name);
             if(!tmp.checked){
                 tmp.value=0;
                 tmp.checked=true;
             }
-            var name="pay"+id;
-            var tmp=document.getElementById(name);
-            if(!tmp.checked){
-                tmp.value=0;
-                tmp.checked=true;
+
+            name="pay"+id;
+            tmp=document.getElementById(name);
+            if(tmp!=null){
+                if(!tmp.checked){
+                    tmp.value=0;
+                    tmp.checked=true;
+                }
             }
 
             document.getElementById(form).submit();
@@ -82,7 +86,11 @@
 
     <!-- 公告-->
     <div class="container mt-3">
+        @if($type=='now')
         <h2>社員清單</h2>
+        @elseif($type=='full')
+            <h2>所有社員</h2>
+            @endif
         <table class="table table-hover" >
             <thead>
             <tr>
@@ -91,11 +99,13 @@
                 <th>班級</th>
                 <th>學號</th>
                 <th>手機</th>
-                <th width="80px">職位</th>
+                @if($type=='now')
+                    <th width="80px">職位</th>
+                @endif
                 <th width="80px">入社時間</th>
                 <th>電子信箱</th>
                 @if($type=='now')
-                <th>繳交社費?</th>
+                    <th>繳交社費?</th>
                 @endif
                 <th>現任社員?</th>
             </tr>
@@ -105,43 +115,48 @@
                 <form id="form{{$user->id}}" action={{ route('user.adminUpdate',$user->id) }} method="POST" role="form">
                     @method('PUT')
                     @csrf
-                <tr>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->part}}</td>
-                    <td>{{$user->class}}</td>
-                    <td>{{$user->acc}}</td>
-                    <td>{{$user->phone}}</td>
-                    <td>
-                        @if(auth()->user()->pos=="社長"|| auth()->user()->pos=='文書')
-                        <select name="pos" class="form-control" onchange="doubleCheck({{$user->id}})" readonly="">
-                            <option value="社員" {{ ($user->pos=="社員")?'selected':'' }}>社員</option>
-                            <option value="社長" {{ ($user->pos=="社長")?'selected':'' }}>社長</option>
-                            <option value="副社" {{ ($user->pos=="副社")?'selected':'' }}>副社</option>
-                            <option value="總務" {{ ($user->pos=="總務")?'selected':'' }}>總務</option>
-                            <option value="譜務" {{ ($user->pos=="譜務")?'selected':'' }}>譜務</option>
-                            <option value="器材" {{ ($user->pos=="器材")?'selected':'' }}>器材</option>
-                            <option value="文書" {{ ($user->pos=="文書")?'selected':'' }}>文書</option>
-                            <option value="美宣" {{ ($user->pos=="美宣")?'selected':'' }}>美宣</option>
-                            <option value="公關" {{ ($user->pos=="公關")?'selected':'' }}>公關</option>
-                        </select>
-                        @else
-                            {{$user->pos}}
-                        @endif
-                    </td>
-                        <?php
-                            $year=date_format($user->created_at,'Y/m/d');
-                        ?>
-                    <td>{{$year}}</td>
-                    <td>{{$user->email}}</td>
-                    @if($type=='now')
+                    <tr>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->part}}</td>
+                        <td>{{$user->class}}</td>
+                        <td>{{$user->acc}}</td>
+                        <td>{{$user->phone}}</td>
+                        @if($type=='now')
                         <td>
-                            <input type="checkbox" id="pay{{$user->id}}"  readonly  name="pay" value=1  @if(auth()->user()->pos=='社長'|| auth()->user()->pos=='文書') onclick="success({{$user->id}})"  @else onclick="return false;" @endif {{ ($user->pay==1 )?'checked':'' }}>
+                                @if(auth()->user()->pos=="社長"|| auth()->user()->pos=='文書')
+                                    <select name="pos" class="form-control" onchange="doubleCheck({{$user->id}})" >
+                                        <option value="社員" {{ ($user->pos=="社員")?'selected':'' }}>社員</option>
+                                        <option value="社長" {{ ($user->pos=="社長")?'selected':'' }}>社長</option>
+                                        <option value="副社" {{ ($user->pos=="副社")?'selected':'' }}>副社</option>
+                                        <option value="總務" {{ ($user->pos=="總務")?'selected':'' }}>總務</option>
+                                        <option value="譜務" {{ ($user->pos=="譜務")?'selected':'' }}>譜務</option>
+                                        <option value="器材" {{ ($user->pos=="器材")?'selected':'' }}>器材</option>
+                                        <option value="文書" {{ ($user->pos=="文書")?'selected':'' }}>文書</option>
+                                        <option value="美宣" {{ ($user->pos=="美宣")?'selected':'' }}>美宣</option>
+                                        <option value="公關" {{ ($user->pos=="公關")?'selected':'' }}>公關</option>
+                                    </select>
+                                @else
+                                    {{$user->pos}}
+                                @endif
+
                         </td>
-                    @endif
-                    <td>
-                        <input type="checkbox" id="now{{$user->id}}" name="now" value=1 @if(auth()->user()->pos=='社長'|| auth()->user()->pos=='文書') onclick="success({{$user->id}})"  @else onclick="return false;" @endif {{ ($user->now==1 )?'checked':'' }} >
-                    </td>
-                </tr>
+                        @endif
+                            <?php
+                                $year=date_format($user->created_at,'Y/m/d');
+                            ?>
+                        <td>{{$year}}</td>
+                        <td>{{$user->email}}</td>
+
+                        @if($type=='now')
+                            <td>
+                                <input type="checkbox" id="pay{{$user->id}}"  name="pay" value=1  @if(auth()->user()->pos=='社長'|| auth()->user()->pos=='文書') onclick="success({{$user->id}})"  @else onclick="return false;" @endif {{ ($user->pay==1 )?'checked':'' }}>
+                            </td>
+                        @endif
+
+                        <td>
+                            <input type="checkbox" id="now{{$user->id}}" name="now" value=1 @if(auth()->user()->pos=='社長'|| auth()->user()->pos=='文書') onclick="success({{$user->id}})"  @else onclick="return false;" @endif {{ ($user->now==1 )?'checked':'' }} >
+                        </td>
+                    </tr>
                 </form>
             @endforeach
             </tbody>

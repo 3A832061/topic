@@ -42,7 +42,7 @@
                         <!-- Preview image figure-->
                         <figure class='mb-4'>
                             @if($post->link!=null)
-                                <img class='img-fluid rounded' src={{asset("images/".$post->link)}} alt='...' />
+                                <img class='img-fluid rounded' src={{asset("images/posts".$post->link)}} alt='...' />
                             @endif
                         </figure>
                     </article>
