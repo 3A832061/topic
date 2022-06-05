@@ -172,7 +172,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pin" class="inline"></label>
-                                <input name="pin" class="form-control-itemname" placeholder="" value="{{auth()->user()->name}}" id="pin"
+                                <input name="pin" class="form-control-itemname" placeholder="" value="{{auth()->user()->pos}}" id="pin"
                                        style="display:none;">
                             </div>
                             <div class="text-right">

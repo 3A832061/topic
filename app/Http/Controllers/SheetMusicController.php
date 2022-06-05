@@ -68,7 +68,6 @@ class SheetMusicController extends Controller
     {
         //
         $sheets = DB::table('Sheet__Music')->where('check','=','1')->get();
-
         return view('sheet.tenpast',['sheets' => $sheets]);
     }
     public function search()
@@ -79,7 +78,6 @@ class SheetMusicController extends Controller
     public function check($id)
     {
         $sheets=Sheet_Music::find($id);
-        $sheets->update(['check' => 1],['checkyear' => "2022/06"]);
         return redirect()->route('sheet.past');
     }
 

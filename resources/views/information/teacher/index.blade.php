@@ -41,36 +41,60 @@
 @section('index.con')
     <main class="flex-shrink-0">
         @include('layouts.nav')
+
     <section class="py-5">
         <div class="container px-5 my-5">
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center mb-5">
                         <h1 class="fw-bolder">指導老師</h1>
+                        @if ( auth()->check())
+                            @if(auth()->user()->pos!='社員')
+                                <a class="btn btn-success flex-shrink-0" href="{{route('teacher.create')}}">新增</a>
+                            @endif
+                        @endif
                     </div>
                 </div>
+
             </div>
+
+
             <div class="row gx-5">
-
                 <div class="col-12"></div>
-                <section class="col-4">
-                    <div>
-                        <ul>
-
-                                <li><a href="
-
-                      "></a></li>
-                        </ul>
-                    </div>
-                </section>
-                <section class="col-5">
-                            <div class="col-8">
-                                <img class="img-fluid rounded-3" src="" alt="..." />
-                            </div>
-                </section>
-                    <div class="col-4">
-                        <p>....</p>
-                    </div>
+                <h2>列表</h2>
+                <ul>
+                    @foreach($teachers as $info)
+                    <li>
+                        <a href="#{{$info->id}}" class="aaa btn btn-default flex-shrink-0" >{{$info->title}}</a>
+                        <p>
+                    </li>
+                    @endforeach
+                </ul>
+                <hr>
+                @foreach($teachers as $info)
+                    <div class="row gx-5" style="border-bottom: #2a2a2a;">
+                        <section class="col-9" >
+                            <a id="{{$info->id}}"></a>
+                            @if ( auth()->check())
+                                @if(auth()->user()->pos!='社員')
+                                    <right> <a class='btn btn-outline-dark flex-shrink-0' href='{{route('teacher.edit',$info->id)}}' style=' white-space:nowrap; !important;'>編輯</a>
+                                        <form action='{{ route('teacher.destroy',$info->id) }}' method='POST' style='display: inline;'>
+                                        @method('DELETE')
+                                        @csrf
+                                        <button  class='btn btn-outline-danger flex-shrink-0' type='submit'>刪除</button>
+                                        </form> </right>
+                                @endif
+                            @endif
+                            <p><h2 style=' white-space:nowrap; !important;'>{{$info->title}}</h2>
+                            </p>
+                            <pre>{{$info->content}}</pre>
+                    </section>
+                        <div class="col-3">
+                            <img class="img-fluid rounded-3" src="{{$info->picture}}"  />
+                        </div>
+                        </div>
+                    <hr>
+                    @endforeach
 
 
 

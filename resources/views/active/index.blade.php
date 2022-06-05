@@ -175,11 +175,11 @@
                 </div>
 
                 <p>
-                    @auth
-                        @if(auth()->user()->name=='admin')
+                    @if ( auth()->check())
+                        @if(auth()->user()->pos!='社員')
                             <a class="btn btn-success flex-shrink-0" href="{{route('active.create')}}">新增</a>
                         @endif
-                    @endauth
+                    @endif
                 <div class="container" style="">
 
                     <!-- Full-width images with number text -->
@@ -189,11 +189,11 @@
                     <div class="mySlides">
                        <div class="numbertext">{{$active->id}}/ 6 ｜{{$active->content}}
                                 <div class="show">
-                                    @auth
-                                        @if(auth()->user()->name=='admin')
+                                    @if ( auth()->check())
+                                        @if(auth()->user()->pos!='社員')
                                             <a class="btn btn-primary flex-shrink-0" href="{{route('active.edit',$active->id)}}">修改</a>
                                         @endif
-                                    @endauth
+                                    @endif
                                 </div>
                         </div>
                         <img src="{{$active->url}}" class="image">
@@ -204,12 +204,11 @@
                     @endforeach
                     </div>
                     <p>
-                        <!--#75799壞掉了!-->
                     <div class="row case">
                         <div class="column">
-                            @foreach($actives as $active)
-                                <img class="demo cursor" src="{{$active->url}}" style="width:60px; height:60px;" onclick="currentSlide({{$active->id}})" alt="活動紀錄">
-                            @endforeach
+
+                                <!--img class="demo cursor" src="{{$active->url}}" style="width:60px; height:60px;" onclick="currentSlide()" alt="活動紀錄"-->
+
                         </div>
                     </div>
 

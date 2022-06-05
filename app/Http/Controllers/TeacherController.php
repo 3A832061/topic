@@ -13,7 +13,7 @@ class TeacherController extends Controller
 
         $teachers = DB::table('information')->where('type','=','teacher')->get();
 
-        return view('information.teacher.index',['teachers',$teachers]);
+        return view('information.teacher.index')->with('teachers',$teachers);
 
     }
 
@@ -22,25 +22,38 @@ class TeacherController extends Controller
         return view('information.teacher.createform');
     }
 
-    public function store(StoreInformationRequest $request)
+    public function store(Request $request)
     {
-
+        DB::table('information')->insert(
+            [
+                'title'=> $_POST['title'],
+                'type' => "teacher",
+                'content' => $_POST['content'],
+                'picture' => $_POST['url'],
+               // 'user_id' => auth()->user()->id
+                   ]);
         return view('information.teacher.index');
     }
 
-    public function edit()
+    public function edit($id)
     {
-
+        $teachers=Information::find($id);
+        $data= ['Information'=>$teachers];
+        return view('information.teacher.editform',$data);
     }
 
 
-    public function update(UpdateInformationRequest $request, Information $information)
+    public function update(Request $request,$id)
     {
         //
+        $teachers=Information::find($id);
+        $teachers->update($request->all());
+        return redirect()->route('teacher.show');
     }
 
-    public function destroy(Information $information)
+    public function destroy($id)
     {
-        //
+        Information::destroy($id);
+        return redirect()->route('teacher.show');
     }
 }

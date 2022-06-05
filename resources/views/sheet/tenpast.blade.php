@@ -59,7 +59,7 @@
                     <table class="table">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col">演出年份</th>
+                            <th scope="col">編號</th>
                             <th scope="col">曲目名稱</th>
                             <th scope="col">中文譯名</th>
                             <th scope="col">作曲者</th>
@@ -73,7 +73,7 @@
 
                         foreach($sheets as $a){
                         echo "<tr>";
-                        echo "<th scope='row'>".$a->checkyear;
+                        echo "<th scope='row'>".$x+=1;
                         echo "<td>".$a->name."</td>";
                         echo "<td>".$a->zhname."</td>";
                         echo "<td>".$a->composer."</td>";

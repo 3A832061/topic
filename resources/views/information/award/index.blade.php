@@ -111,12 +111,17 @@
                                                     $content=$y->content;
                                                     echo "<li><pre style='word-break:; white-space:nowrap; '>".$content;
                                                     ?>
+                                                    @if ( auth()->check())
+                                                        @if(auth()->user()->pos!='社員')
+
                                                     <a class='btn btn-outline-dark flex-shrink-0' href='{{route('award.edit',$id)}}'>修改</a>
                                                     <form action='{{ route('award.destroy',$id) }}' method='POST' style='display: inline;'>
                                                         @method('DELETE')
                                                         @csrf
                                                         <button  class='btn btn-outline-danger flex-shrink-0' type='submit'>刪除</button>
                                                     </form>
+                                                    @endif
+                                                        @endif
                                                         </pre>
                                                         </li>
                                                     <?php

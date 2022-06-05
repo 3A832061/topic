@@ -57,6 +57,8 @@
                             </div>
                         </div>
                     </div>
+                <div class="c">
+                    <div class="row gx- justify-content-center">
                             </div>
                         <div class="card-body">
                             <center>曲目搜尋：<input type="search" class="light-table-filter form-group" data-table="order-table" placeholder="請輸入名稱(至少2字元)"></center>
