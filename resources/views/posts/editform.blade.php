@@ -103,7 +103,7 @@
                 <h3>目前附件：</h3>
                 <figure class='mb-4'>
                     @if($post->link!=null)
-                        <img style="max-width: 30%;" class='img-fluid rounded' src={{asset("images/".$post->link)}} alt='...' />
+                        <img style="max-width: 30%;" class='img-fluid rounded' src={{asset("images/posts/".$post->link)}} alt='...' />
                     @else
                         <p style="padding-left: 80px;">無附件</p>
                     @endif

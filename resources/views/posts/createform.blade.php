@@ -74,11 +74,11 @@
                                 <label for="tag" class="inline">標籤：</label>
                                 <select name="tag" style="width: 200px;" class="form-control-itemname">
                                     <option value="音樂會公告" selected>音樂會公告</option>
-                                    <option value="活動公告" >活動宣傳</option>
-                                    <option value="活動公告" >招生宣傳</option>
-                                    <option value="活動公告" >團練公告</option>
-                                    <option value="活動公告" >行政公告</option>
-                                    <option value="活動公告" >社團榮耀</option>
+                                    <option value="活動宣傳" >活動宣傳</option>
+                                    <option value="招生宣傳" >招生宣傳</option>
+                                    <option value="團練公告" >團練公告</option>
+                                    <option value="行政公告" >行政公告</option>
+                                    <option value="社團榮耀" >社團榮耀</option>
                                 </select>
                             </div>
 
