@@ -36,15 +36,18 @@
                 <div class="row gx-5 justify-content-center">
                     <h1 class="fw-bolder" style="text-align: center;">介紹</h1>
                     @if($recruit)
-                        <ul style="list-style-typ: disc; padding-left: 25%;">
-                            <?php
-                            $string=$recruit->content;
-                            $cutchar = explode('\n', $string);
-                            foreach ($cutchar as $item){
-                                echo "<li>".$item."</li>";
+                        <pre>
+                        <?php
+                            if($item->content){
+                                $string = $item->content;
+                                $string = str_replace("\n","\n</li><li>",$string);
+                                $string = "<li>".$string."</li>";
+                                echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;'>".$string."</pre>";
+                            }else{
+                                echo "<p>無資料，請按修改新增注意事項</p>";
                             }
                             ?>
-                        </ul>
+                    </pre>
                     @else
                         <p class="lead fw-normal text-muted mb-0">
                             暫無資料

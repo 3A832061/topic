@@ -139,6 +139,7 @@
                                             @endif
                                         @endif
                                     </label>
+                                    <br>
                                 </div>
                             @endforeach
                         @endif

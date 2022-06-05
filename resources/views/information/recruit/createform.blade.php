@@ -49,7 +49,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="content" class="inline">內容：（換行要打\n）</label>
-                                <textarea id="content" name="content" class="form-control" rows="10"></textarea>
+                                <textarea id="content" name="content" class="form-control" rows="10" style="overflow: auto;overflow-y: auto; white-space: pre;"></textarea>
                             </div>
 
                             <div class="text-right">
