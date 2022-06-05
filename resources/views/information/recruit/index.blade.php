@@ -36,7 +36,7 @@
                 <div class="row gx-5 justify-content-center">
                     <h1 class="fw-bolder" style="text-align: center;">介紹</h1>
                     @if($recruit)
-                        <pre>
+                        <pre width="60%">
                         <?php
                             if($recruit->content){
                                 $string = $recruit->content;

@@ -35,20 +35,14 @@ class UserController extends Controller
     {
         if(auth()->user()->pos=='社長' || auth()->user()->pos=='文書') {
             if($request->pos!=null) {
-                $user = User::where('pos', '=', $request->pos)->get();
-
-                if(count($user)==1 && $request->pos=='社長'){
-                    $user = User::where('pos', '=', $_POST['pos'])->update(['pos' => '社員']);
-                }
-                else{
-                    return redirect()->back()->with('alert', '社長不可以空缺');
-                }
-
-                if(count($user)==1 && $request->pos=='文書'){
-                    $user = User::where('pos', '=', $_POST['pos'])->update(['pos' => '社員']);
-                }
-                else{
-                    return redirect()->back()->with('alert', '文書不可以空缺');
+                $user = User::where('pos', '=', auth()->user()->pos)->get();
+                if(count($user)==1){
+                    if($id==auth()->user()->id && $request->pos!==auth()->user()->pos){
+                        return redirect()->back()->with('alert', auth()->user()->pos.'不可以空缺');
+                    }
+                    else{
+                        User::where('pos', '=', $_POST['pos'])->update(['pos' => '社員']);
+                    }
                 }
             }
             $recipe = User::find($id);
