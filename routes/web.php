@@ -16,6 +16,7 @@ use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\AccountantController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\PrecautionController;
+use App\Http\Controllers\ArchitectureController;
 
 
 
@@ -139,4 +140,13 @@ Route::prefix('precautions')->group(function(){
     Route::post('/',[PrecautionController::class,'store'])->name('precautions.store')->middleware('auth');
     Route::get('{id}/edit',[PrecautionController::class,'edit'])->name('precautions.edit')->middleware('auth');
     Route::post('{id}',[PrecautionController::class,'update'])->name('precautions.update')->middleware('auth');
+});
+
+Route::prefix('architectures')->group(function(){
+    Route::get('/',[ArchitectureController::class,'index'])->name('architectures.index');
+    Route::get('/create',[ArchitectureController::class,'create'])->name('architectures.create')->middleware('auth');
+    Route::post('/',[ArchitectureController::class,'store'])->name('architectures.store')->middleware('auth');
+    Route::get('{id}/edit',[ArchitectureController::class,'edit'])->name('architectures.edit')->middleware('auth');
+    Route::post('{id}',[ArchitectureController::class,'update'])->name('architectures.update')->middleware('auth');
+    Route::delete('/{id}',[ArchitectureController::class,'destroy'])->name('architectures.destroy')->middleware('auth');
 });

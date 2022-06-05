@@ -51,4 +51,6 @@ class PrecautionController extends Controller
 
         return redirect()->route('precautions.index');
     }
+
+
 }

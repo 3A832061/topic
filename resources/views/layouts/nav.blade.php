@@ -16,7 +16,7 @@
                     <li><a class="dropdown-item" href={{route('teacher.show')}}>指導老師</a></li>
                     <li><a class="dropdown-item" href={{route('award.show')}}>獎項紀錄</a></li>
                     <li><a class="dropdown-item" href={{route('award.show')}}>組織章程</a></li>
-                    <li><a class="dropdown-item" href={{route('award.show')}}>組織架構</a></li>
+                    <li><a class="dropdown-item" href={{route('architectures.index')}}>組織架構</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
