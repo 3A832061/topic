@@ -23,10 +23,11 @@ class CreateSheetMusicTable extends Migration
             $table->string('lost')->nullable();
             $table->string('saveform');
             $table->string('authorize')->nullable();
-            $table->integer('year');
+            $table->integer('year')->nullable();;
             $table->integer('price')->nullable();
             $table->boolean('change')->default(1);
             $table->boolean('check');
+            $table->string('checkyear')->nullable();
             $table->string('remark')->nullable();
             $table->string('pin');
             $table->timestamps();

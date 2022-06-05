@@ -11,8 +11,10 @@ class TeacherController extends Controller
     public function index()
     {
 
+        $teachers = DB::table('information')->where('type','=','teacher')->get();
 
-        return view('information.teacher.index');
+        return view('information.teacher.index',['teachers',$teachers]);
+
     }
 
     public function create()

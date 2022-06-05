@@ -134,10 +134,14 @@
 
 Route::prefix('sheet')->group(function(){
     Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show');
-    Route::get('show/{show}',[SheetMusicController::class,'show'])->name('sheet.detail');
+    Route::get('/past',[SheetMusicController::class,'past'])->name('sheet.past');
+    Route::get('/past/search',[SheetMusicController::class,'search'])->name('sheet.search');
+    Route::post('/past{id}',[SheetMusicController::class,'check'])->name('sheet.check');
+    Route::post('/',[SheetMusicController::class,'store'])->name('sheet.store');
     Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create');
     Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit');
     Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update');
+    Route::delete('{id}',[SheetMusicController::class,'destroy'])->name('sheet.destroy');
 });
 
 Route::prefix('apply')->group(function(){

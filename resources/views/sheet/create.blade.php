@@ -45,6 +45,8 @@
             border:0px;
             background-color:transparent;
         }
+
+
     </style>
 @endsection
 @section('index.con')
@@ -54,51 +56,47 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">樂譜缺頁申請單</h1>
-                    <!--a class="btn btn-success flex-shrink-0" href={{route('apply.show')}}>查看審核狀態</a-->
+                    <h1 class="mt-4" id="customerz1">新增樂譜</h1>
+                    <!--a class="btn btn-success flex-shrink-0" href=>查看審核狀態</a-->
                 </div>
                 <!-- /.row -->
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <iframe name="hidden_iframe" style="display: none;"></iframe>
-                        <form action="#" target="hidden_iframe" method="POST" role="form">
+                        <form action="{{route('sheet.store')}}" method="POST" role="form">
                             @csrf
-                            <?php
-                            echo "<div class='form-group'>";
-                            echo "<label for='sheet' class='inline'>曲目名稱：</label>";
-                            echo "<input id='sheet' name='sheet'  class='form-control-itemname' placeholder='請輸入曲目原文名稱' value='' >";
-                            echo "</div>";
-                            echo "<div class='form-group'>";
-                                echo "<label for='state' class='inline'>曲目類型：</label>";
-                                    echo "<select id='state' name='play' class='form-control'>";
-                                        echo "<option value='外文譜' >外文譜</option>";
-                            ?>
-                                        <option value='日文譜' >日文譜</option>
-                                    <option value="日文譜" >中文譜</option>
+                            <h6 style="font-weight: bolder; color:red;">*=必填</h6><div class='form-group'>
+                                <label for='name' class='inline'>曲目名稱*：</label>
+                                <input id='name' name='name'  class='form-control-itemname' placeholder='請輸入曲目原文名稱' value='' required>
+                            </div>
+                            <div class='form-group'>
+                                <label for='type' class='inline'>曲目類型：</label>
+                                <select id='type' name='type' class='form-control'>
+                                    <option value='外文譜' >外文譜</option>
+                                    <option value='日文譜' >日文譜</option>
+                                    <option value="中文譜" >中文譜</option>
                                     <option value="重奏譜" >重奏譜</option>
                                 </select>
                             </div>
-
                             <div class="form-group">
-                                <label for="part" class="inline">中文譯名：</label>
-                                <input id="part" name="part" class="form-control-itemname" placeholder="若為外文曲目可輸入中譯名稱" value="" >
+                                <label for="zhname" class="inline">中文譯名：</label>
+                                <input id="zhname" name="zhname" class="form-control-itemname" placeholder="若為外文曲目可輸入中譯名稱" value="" >
                             </div>
                             <div class="form-group">
-                                <label for="page" class="inline">作曲者：</label>
-                                <input name="page" class="form-control-itemname" placeholder="請輸入作曲者姓名" value="" id="page">
+                                <label for="composer" class="inline">作曲者*：</label>
+                                <input name="composer" class="form-control-itemname" placeholder="請輸入作曲者姓名" value="" id="page" required>
                             </div>
                             <div class="form-group">
-                                <label for="numpage" class="inline">編曲者：</label>
-                                <input name="numpage" class="form-control-itemname" placeholder="請輸入編曲者姓名" value="" id="numpage">
+                                <label for="arranger" class="inline">編曲者：</label>
+                                <input name="arranger" class="form-control-itemname" placeholder="請輸入編曲者姓名" value="" id="numpage">
                             </div>
                             <div class="form-group">
-                                <label for="quan" class="inline">存譜缺少聲部：</label>
-                                <textarea name="quan" class="form-control-itemname" placeholder="若存譜有聲部缺少請在此處詳細註明" value="" id="quan"></textarea>
+                                <label for="lost" class="inline">存譜缺少聲部：</label>
+                                <textarea name="lost" class="form-control-itemname" placeholder="若存譜有聲部缺少請在此處詳細註明" value="" id="quan"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="state" class="inline">存放形式：</label>
-                                <select id="state" name="play" class="form-control">
+                                <label for="saveform" class="inline">存放形式：</label>
+                                <select id="saveform" name="saveform" class="form-control">
                                     <option value="電子譜" >純電子譜</option>
                                     <option value="紙本譜" >純紙本譜</option>
                                     <option value="電子譜/紙本譜" >電子譜+紙本譜</option>
@@ -106,7 +104,7 @@
                             </div>
                             <!--譜的授權方式補充-->
                             <div class="form-group">
-                                <label for="state" class="inline">授權模式：
+                                <label for="authorize" class="inline">授權模式：
                                 </label>
                                 <button id="show" class="inline btn btn-outline-primary flex-lg-shrink-1" style="border:0px; font-weight: bolder; ">
                                     授權模式說明
@@ -136,9 +134,9 @@
                                         👉甚至未來若文凱老師離開，當屆的幹部必須要跟文凱討論勤益這些年從老師那拿到的譜如何處置<br>
                                         ——————————————————————-
                                     </p>
-                                    <button id="close"  class="inline btn btn-outline-primary flex-lg-shrink-1">關閉</button>
+                                    <a id="close"  class="inline btn btn-outline-primary flex-lg-shrink-1">關閉</a>
                                 </dialog>
-                                <select id="state" name="play" class="form-control">
+                                <select id="authorize" name="authorize" class="form-control">
                                     <option value="租賃譜" >租賃譜</option>
                                     <option value="授權書模式">授權書模式</option>
                                     <option value="授權指揮模式">授權指揮模式</option>
@@ -147,44 +145,50 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="remark" class="inline">年份：</label>
-                                <input name="remark" class="form-control-itemname" type='year' placeholder="如果有其他事項請在此處填寫" value="" id="remark">
+                                <label for="year" class="inline">年份：</label>
+                                <input name="year" class="form-control-itemname" type='year' placeholder="請填寫樂譜發行年份" value="" id="remark">
                             </div>
                             <div class="form-group">
-                                <label for="remark" class="inline">購譜價格：</label>
-                                <input name="remark" class="form-control-itemname" placeholder="如果有其他事項請在此處填寫" value="" id="remark">
+                                <label for="price" class="inline">購譜價格：</label>
+                                <input name="price" class="form-control-itemname" placeholder="請填寫樂譜購入價格" value="" id="remark">
                             </div>
                             <div class="form-group">
-                                <label for="state" class="inline">能否換譜（※若不確定則默認不可換譜）：</label>
-                                <select id="state" name="play" class="form-control">
-                                    <option value="可以換譜" >可以換譜</option>
-                                    <option value="不可換譜" selected>不可換譜</option>
+                                <label for="change" class="inline">能否換譜（※若不確定則默認不可換譜）：</label>
+                                <select id="change" name="change" class="form-control">
+                                    <option value="0" >可以換譜</option>
+                                    <option value="1" selected>不可換譜</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="state" class="inline">10年間已演奏</label>
-                                <select id="state" name="play" class="form-control">
-                                    <option value="v" >是</option>
-                                    <option value="" selected>否</option>
+                                <label for="check" class="inline">10年間已演奏</label>
+                                <select id="check" name="check" class="form-control">
+                                    <option value="1" >是</option>
+                                    <option value="0" selected>否</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="remark" class="inline">備註：</label>
                                 <input name="remark" class="form-control-itemname" placeholder="如果有其他備註或重奏聲部類別請在此處填寫" value="" id="remark">
                             </div>
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-primary" onclick="success()">儲存</button>
+                            <div class="form-group">
+                                <label for="pin" class="inline"></label>
+                                <input name="pin" class="form-control-itemname" placeholder="" value="{{auth()->user()->name}}" id="pin"
+                                       style="display:none;">
                             </div>
-                    </form>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary" onsubmit="success()">儲存</button>
+                            </div>
 
+                        </form>
                     </div>
+                </div>
             </main>
         </div>
     </main>
     @include('layouts.footer')
     <script>
         function success(){
-            window.alert("儲存成功");
+            window.alert("成功新增!");
             document.getElementById('index').click();
         }
 

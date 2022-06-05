@@ -53,7 +53,7 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">譜相關</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
                             <li><a class="dropdown-item" href="{{route('sheet.show')}}">總清單</a></li>
-                            <li><a class="dropdown-item" href="{{route('sheet.show')}}">歷年演出</a></li>
+                            <li><a class="dropdown-item" href="{{route('sheet.past')}}">歷年演出</a></li>
                             <li><a class="dropdown-item" href="{{route('apply.show')}}">缺頁申請</a></li>
                         </ul>
                     </li>

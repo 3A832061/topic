@@ -65,7 +65,7 @@
                                 </pre>
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">儲存</button>
+                                <button type="submit" class="btn btn-primary">登錄</button>
                             </div>
                         </form>
                     </div>

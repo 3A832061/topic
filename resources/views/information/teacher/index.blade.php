@@ -55,27 +55,26 @@
                 <div class="col-12"></div>
                 <section class="col-4">
                     <div>
-                        <ul>
+                        <ul><?php
+                                @foreach
+                                <li><a href="
 
-                                <li><a href="#"></a></li>
+                      "></a></li>
+                            
+                            ?>
                         </ul>
                     </div>
                 </section>
                 <section class="col-5">
-
-
                             <div class="col-8">
-                                <p><h3></h3>
-                                <p></p>
+                                <img class="img-fluid rounded-3" src="" alt="..." />
                             </div>
-                            <div class="col-4">
-                                <img class="img-fluid rounded-3 mb-3" src="" alt="..." />
-
-                            </div>
+                </section>
                     <div class="col-4">
+                        <p>....</p>
                     </div>
 
-                </section>
+
 
             </div>
         </div>
