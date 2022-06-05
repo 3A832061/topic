@@ -131,7 +131,7 @@
 
                             <div class="form-group">
                                 <label for="mark" class="inline">我會看的樂譜記號：</label>
-                                <input name="mark" class="form-control-itemname" placeholder="高音譜記號、低音譜記號，或都不會" value="">
+                                <input name="mark" class="form-control-itemname" placeholder="高音譜記號、低音譜記號，或都不會" value="" >
                             </div>
 
                             <div class="form-group">

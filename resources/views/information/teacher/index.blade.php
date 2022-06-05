@@ -55,13 +55,11 @@
                 <div class="col-12"></div>
                 <section class="col-4">
                     <div>
-                        <ul><?php
-                                @foreach
+                        <ul>
+
                                 <li><a href="
 
                       "></a></li>
-                            
-                            ?>
                         </ul>
                     </div>
                 </section>

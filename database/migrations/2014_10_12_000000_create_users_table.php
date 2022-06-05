@@ -14,17 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
-            $table->integer('year')->nullable(); //屆別
             $table->string('part')->nullable(); //聲部別
             $table->string('class')->nullable();
             $table->string('acc')->nullable(); //學號
             $table->string('phone')->nullable();
             $table->boolean('pay')->nullable();
             $table->string('remark')->nullable();
-            $table->string('pos')->nullable(); //職位
-            $table->boolean('now')->nullable(); //現在是否為社員
+            $table->string('pos')->default('社員'); //職位
+            $table->boolean('now')->default('1'); //現在是否為社員
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

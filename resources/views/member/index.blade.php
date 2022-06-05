@@ -32,111 +32,115 @@
             margin-bottom:100px !important;
         }
     </style>
+    <script>
+        function inputClass(){
+
+            if(document.getElementsByName("class")[0].value=="非在校"){
+                document.getElementById("accDiv").style.display="none";
+            }
+            else {
+                document.getElementById("accDiv").style.display="block";
+            }
+        }
+        function inputcheck(){
+            document.getElementsByName("pay")[0].clicked==true;
+        }
+
+
+    </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
+
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+            alert(msg);
+        }
+    </script>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <!-- 公告-->
     <main class="flex-shrink-0">
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">社員資料</h1>
+                    <h1 class="mt-4" id="customerz1">{{auth()->user()->name}} 社員資料</h1>
                 </div>
                 <!-- /.row -->
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="" method="POST" role="form">
+                        <form action={{ route('user.update',auth()->user()->id) }} method="POST" role="form">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="name" class="inline">名字：</label>
-                                <input readonly name="name" class="form-control-itemname" placeholder="請輸入名字" value="{{auth()->user()->name}}">
+                                <input  name="name" class="form-control-itemname" placeholder="請輸入名字" value="{{auth()->user()->name}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="acc" class="inline">班級：</label>
-                                <input name="acc" class="form-control-itemname" placeholder="請輸入班級，若非在校生，請填非在校" value="{{auth()->user()->class}}">
+                                <label for="class" class="inline" >班級：</label>
+                                <input name="class" class="form-control-itemname" placeholder="請輸入班級，若非在校生，請填非在校" value="{{auth()->user()->class}}" onchange="inputClass()">
                             </div>
 
                             @if(auth()->user()->class!='非在校')
+
                             <div class="form-group">
-                                <label for="acc" class="inline">學號：</label>
-                                <input name="acc" class="form-control-itemname" placeholder="請輸入學號" value="{{auth()->user()->acc}}">
+                                <div  id="accDiv">
+                                    <label for="acc" class="inline">學號：</label>
+                                    <input name="acc" class="form-control-itemname" placeholder="請輸入學號" value="{{auth()->user()->acc}}">
+                                </div>
                             </div>
+
                             @endif
 
                             <div class="form-group">
-                                <label for="frag" class="inline">聲部：</label>
-                                @if(auth()->user()->part)!='')
-                                <select name="part" class="form-control">
-                                    <option value="長笛" {{ ($calendar->tag=="練習")?'selected':'' }}>長笛</option>
-                                    <option value="豎笛" {{ ($calendar->tag=="練習")?'selected':'' }}>豎笛</option>
-                                    <option value="薩克" {{ ($calendar->tag=="練習")?'selected':'' }}>薩克</option>
-                                    <option value="法國號" {{ ($calendar->tag=="練習")?'selected':'' }}>法國號</option>
-                                    <option value="長號" {{ ($calendar->tag=="練習")?'selected':'' }}>長號</option>
-                                    <option value="小號" {{ ($calendar->tag=="練習")?'selected':'' }}>小號</option>
-                                    <option value="上低音號" {{ ($calendar->tag=="練習")?'selected':'' }}>(上)低音號</option>
-                                    <option value="低音號" {{ ($calendar->tag=="練習")?'selected':'' }}>(上)低音號</option>
-                                    <option value="打擊" {{ ($calendar->tag=="練習")?'selected':'' }}>打擊</option>
-                                </select>
-                                @else
-                                    <select name="part" class="form-control">
-                                        <option selected="selected" disabled="disabled"  style='display: none' value=''></option>
-                                        <option value="長笛">長笛</option>
-                                        <option value="豎笛">豎笛</option>
-                                        <option value="薩克">薩克</option>
-                                        <option value="法國號">法國號</option>
-                                        <option value="長號">長號</option>
-                                        <option value="小號">小號</option>
-                                        <option value="上低音號">上低音號</option>
-                                        <option value="低音號">低音號</option>
-                                        <option value="打擊">打擊</option>
-                                    </select>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <label for="quan" class="inline">入社年：</label>
-                                <input name="quan" type="number" class="form-control-itemname" value="{{auth()->user()->year}}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="page" class="inline">職位：</label>
-                                <select name="part" class="form-control">
-                                    <option value="社員">社員</option>
-                                    <option value="社長">社長</option>
-                                    <option value="副社">副社長</option>
-                                    <option value="總務">總務</option>
-                                    <option value="譜務">譜務</option>
-                                    <option value="器材">器材</option>
-                                    <option value="文書">文書</option>
-                                    <option value="美宣">美宣</option>
-                                    <option value="公關">公關</option>
+                                <label for="part" class="inline">聲部：</label>
+                                <select name="part" class="form-control-itemname">
+                                    <option value="Fl"      {{ (auth()->user()->part=="FL")?'selected':'' }}>長笛 Fl</option>
+                                    <option value="Cl"      {{ (auth()->user()->part=="Cl")?'selected':'' }}>豎笛 Cl</option>
+                                    <option value="Sax"      {{ (auth()->user()->part=="Sax")?'selected':'' }}>薩克斯風 Sax</option>
+                                    <option value="Horn"    {{ (auth()->user()->part=="Horn")?'selected':'' }}>法國號 Horn</option>
+                                    <option value="Tb"      {{ (auth()->user()->part=="Tb")?'selected':'' }}>長號 Tb</option>
+                                    <option value="Tp"      {{ (auth()->user()->part=="Tp")?'selected':'' }}>小號 Tp</option>
+                                    <option value="Eup"   {{ (auth()->user()->part=="Eup")?'selected':'' }}>上低音號 Eup</option>
+                                    <option value="Tuba"    {{ (auth()->user()->part=="tuba")?'selected':'' }}>低音號 Tuba</option>
+                                    <option value="Per"      {{ (auth()->user()->part=="Per")?'selected':'' }}>打擊 Per</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="remark" class="inline">手機：</label>
-                                <input name="remark" class="form-control-itemname" placeholder="" value="">
+                                <?php
+                                $year=date_format(auth()->user()->created_at,'Y/m/d');
+                                ?>
+                                <label for="year" class="inline">入社年：{{$year}}</label>
                             </div>
 
                             <div class="form-group">
-                                <label for="remark" class="inline">信箱：</label>
-                                <input name="remark" class="form-control-itemname" placeholder="" value="">
+                                <label class="inline">職位： {{auth()->user()->pos}}</label>
                             </div>
 
                             <div class="form-group">
-                                <label for="remark" class="inline">備註：</label>
-                                <input name="remark" class="form-control-itemname" placeholder="" value="">
+                                <label for="phone" class="inline">手機：</label>
+                                <input name="phone" class="form-control-itemname" placeholder="" value={{auth()->user()->phone}}>
                             </div>
 
                             <div class="form-group">
-                                <label for="remark" class="inline">社費繳交：</label>
-                                <input name="remark" class="form-control-itemname" placeholder="" value="">
+                                <label for="pay" class="inline">社費繳交：</label>
+                                <input name="pay" type="checkbox"  value={{auth()->user()->pay}} {{ (auth()->user()->pay==1 )?'checked':'' }}  onclick="return false;" >
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-primary" onsubmit="inputcheck();">提交</button>
                             </div>
                         </form>
                     </div>

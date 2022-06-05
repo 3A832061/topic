@@ -32,9 +32,26 @@
             margin-bottom:100px !important;
         }
     </style>
+    <script>
+        function success(){
+            var content = $("#form1 textarea").val();
+            content = content.replace(/\n|\r\n/g,"<br>");
+            window.alert("提交成功，感謝填寫");
+        }
+    </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <!-- 公告-->
     <main class="flex-shrink-0">
         <div id="layoutSidenav_content">
@@ -46,31 +63,33 @@
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="{{route('posts.store')}}" method="POST" role="form" enctype="multipart/form-data">
+                        <form id="form1" action="{{route('posts.store')}}" method="POST" role="form" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="inline">標題：</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="">
+                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{ old('title') }}" required onsubmit="return success();">
                             </div>
 
                             <div class="form-group">
                                 <label for="tag" class="inline">標籤：</label>
                                 <select name="tag" style="width: 200px;" class="form-control-itemname">
-                                    <option value="音樂會公告" selecte0d>音樂會公告</option>
-                                    <option value="活動公告" >活動公告</option>
-                                    <option value="活動公告" >招生公告</option>
-                                    <option value="活動公告" >團練公告</option>
+                                    <option value="音樂會公告" selected>音樂會公告</option>
+                                    <option value="活動宣傳" >活動宣傳</option>
+                                    <option value="招生宣傳" >招生宣傳</option>
+                                    <option value="團練公告" >團練公告</option>
+                                    <option value="行政公告" >行政公告</option>
+                                    <option value="社團榮耀" >社團榮耀</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="content" class="inline">內容：（換行要打\n）</label>
-                                <textarea id="content" name="content" class="form-control" rows="10"></textarea>
+                                <label for="content" class="inline">內容：</label>
+                                <textarea id="content" name="content" class="form-control" rows="10" style="white-space: pre;" required>{{ old('content') }}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="link" class="inline">附件</label>
-                                <input name="link" type="form-control-itemname" class="form-control-itemname" placeholder="請輸入連結網址">
+                                <input type="file" name="link" accept="image/*">
                             </div>
 
                             <div class="text-right">

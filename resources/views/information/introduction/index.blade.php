@@ -21,14 +21,14 @@
     <main class="flex-shrink-0">
         @include('layouts.nav')
         <section class="py-5">
-            @if (Route::has('login'))
-                @auth
+            @if ( auth()->check())
+                @if(auth()->user()->pos!='社員')
                     @if(!$introduction)
                         <a class="button button4" href={{route('introduction.create')}}>新增簡介</a>
                     @else
                         <a class="button button4" href={{ route('introduction.edit', $introduction->id) }}>修改簡介</a>
                     @endif
-                @endauth
+                @endif
             @endif
             <div class="container px-5 my-5">
 
@@ -50,7 +50,7 @@
                 @if($introduction)
                     <div class="row gx-5">
                         <div class="col-12">
-                            <img class="img-fluid rounded-3 mb-5" src={{$introduction->picture}} alt="..." />
+                            <img class="img-fluid rounded-3 mb-5" src={{asset('images/introduction/'.$introduction->picture)}} alt="..." />
                         </div>
                     </div>
                 @endif

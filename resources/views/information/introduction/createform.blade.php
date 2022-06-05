@@ -45,25 +45,25 @@
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="{{route('introduction.store')}}" method="POST" role="form">
+                        <form action="{{route('introduction.store')}}" method="POST" role="form" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="inline">標題：</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="諾曼本管樂社">
+                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" required value="諾曼本管樂社">
                             </div>
 
                             <div class="form-group">
                                 <label for="content" class="inline">內容：（換行要打\n）</label>
-                                <textarea id="content" name="content" class="form-control" rows="10"></textarea>
+                                <textarea id="content" name="content" class="form-control" rows="10" required></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="picture" class="inline">圖片</label>
-                                <input name="picture" class="form-control-itemname" placeholder="請輸入連結網址">
+                                <label for="picture" class="inline">附件</label>
+                                <input type="file" name="picture" accept="image/*" required>
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-primary" >提交</button>
                             </div>
                         </form>
                     </div>

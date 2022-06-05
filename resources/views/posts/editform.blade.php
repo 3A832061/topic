@@ -4,7 +4,7 @@
 
     <style>
         .row
-        {padding-left:50px !important;}
+        {padding-left:0 !important;}
         .mt-4
         {padding-left: 35px;}
         /*--*/
@@ -28,58 +28,87 @@
         }
         #layoutSidenav_content
         {
-            margin-left:200px !important;
+            margin-left:30% !important;
+            margin-right: 30%;
             margin-bottom:100px !important;
         }
+
+        @media screen and (max-width: 800px) {
+            #layoutSidenav_content
+            {
+                margin-left:10% !important;
+                margin-right: 10%;
+                margin-bottom:100px !important;
+            }
+        }
     </style>
+
 @endsection
 @section('index.con')
     @include('layouts.nav')
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <!-- 公告-->
-    <main class="flex-shrink-0">
+    <main >
         <div id="layoutSidenav_content">
-            <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">修改公告</h1>
+                    <h1 class="mt-4" id="customerz1" >修改公告</h1>
                 </div>
                 <!-- /.row -->
                 <p>
-                <div class="row">
-                    <div class="col-lg-8">
-                        <form action="{{route('posts.update',$post->id)}}" method="POST" role="form" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label for="title" class="inline">標題：</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{old('title',$post->title)}}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="tag" class="inline">標籤：</label>
-                                <select name="tag" style="width: 200px;" class="form-control-itemname">
-                                    <option value="音樂會公告" {{ ($post->tag=="音樂會公告")?'selected':'' }}>音樂會公告</option>
-                                    <option value="活動公告" {{ ($post->tag=="活動公告")?'selected':'' }}>活動公告</option>
-                                    <option value="招生公告" {{ ($post->tag=="招生公告")?'selected':'' }}>招生公告</option>
-                                    <option value="團練公告" {{ ($post ->tag=="團練公告")?'selected':'' }}>團練公告</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="content" class="inline">內容：（換行要打\n）</label>
-                                <textarea id="content" name="content" class="form-control" rows="10">{{old('content',$post->content)}}</textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="link" class="inline">附件</label>
-                                <input name="link" type="form-control-itemname" class="form-control-itemname" placeholder="請輸入連結網址" value="{{old('link',$post->link)}}">
-                            </div>
-
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-primary">提交</button>
-                            </div>
-                        </form>
+                <form action="{{route('posts.update',$post->id)}}" method="POST" role="form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="title" class="inline">標題：</label>
+                        <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{old('title',$post->title)}}">
                     </div>
-                </div>
-            </main>
+
+                    <div class="form-group">
+                        <label for="tag" class="inline">標籤：</label>
+                        <select name="tag" style="width: 200px;" class="form-control-itemname">
+                            <option value="音樂會公告" {{ ($post->tag=="音樂會公告")?'selected':'' }}>音樂會公告</option>
+                            <option value="活動宣傳" {{ ($post->tag=="活動宣傳")?'selected':'' }}>活動宣傳</option>
+                            <option value="招生宣傳" {{ ($post->tag=="招生宣傳")?'selected':'' }}>招生宣傳</option>
+                            <option value="團練公告" {{ ($post ->tag=="團練公告")?'selected':'' }}>團練公告</option>
+                            <option value="行政公告" {{ ($post ->tag=="行政公告")?'selected':'' }}>行政公告</option>
+                            <option value="社團榮耀" {{ ($post ->tag=="社團榮耀")?'selected':'' }}>社團榮耀</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content" class="inline">內容：</label>
+                        <textarea id="content" name="content" class="form-control" style=" white-space: pre;" rows="5">{{old('content',$post->content)}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="link" class="inline">更新附件</label>
+                        <input type="file" name="link">
+                        <input type="checkbox"  name="link_del" value="true"><label>刪除附件</label>
+                    </div>
+
+                    <div   style="text-align:right;">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+
+                <h3>目前附件：</h3>
+                <figure class='mb-4'>
+                    @if($post->link!=null)
+                        <img style="max-width: 30%;" class='img-fluid rounded' src={{asset("images/posts/".$post->link)}} alt='...' />
+                    @else
+                        <p style="padding-left: 80px;">無附件</p>
+                    @endif
+                </figure>
+
         </div>
     </main>
     @include('layouts.footer')

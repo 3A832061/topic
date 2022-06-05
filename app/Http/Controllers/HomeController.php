@@ -10,7 +10,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts=Post::orderBy('date', 'DESC')->take(6)->get();
+        $posts=Post::orderBy('date', 'ASC')->take(4)->get();
         $data=['posts'=>$posts];
         return view('index',$data);
     }

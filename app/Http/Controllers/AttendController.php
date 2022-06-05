@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Attend;
 use App\Models\Calendar;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AttendController extends Controller
 {
@@ -11,25 +12,15 @@ class AttendController extends Controller
     {
         return view('attend.list');
     }
-    public function show()
-    {
-        $calendar=Calendar::orderBy('month','DESC')->first(); //查詢日程設定資料
-        if(!$calendar){
-            return '請先設定日程';
-        }
-        else{
-            $attend=Attend::where('user_id','=',auth()->user()->id)->first(); //查詢是否有填寫過出席資料
-            if(!$attend){
-                $attend=Calendar::where('user_id','=',auth()->user()->id)->first();
-                return view('attend.createform');
-            }
-            else{
-                return redirect()->route('attends.edit');
-            }
-        }
-    }
+
     public function create()
     {
-        return view('attend.createform');
+        $user=User::where('id','=',auth()->user()->id)->first();
+       if($user->part!=null){
+           return view('attend.createform');
+       }
+       else {
+           return redirect()->route('user.edit')->with('alert', '請先填寫社員資料');
+       }
     }
 }

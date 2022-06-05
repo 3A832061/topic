@@ -45,11 +45,11 @@
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="{{route('introduction.update',$introduction->id)}}" method="POST" role="form">
+                        <form action="{{route('introduction.update',$introduction->id)}}" method="POST" role="form" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="inline">標題：</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{$introduction->title}}">
+                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{ $introduction->title}}">
                             </div>
 
                             <div class="form-group">
@@ -58,14 +58,22 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="picture" class="inline">圖片</label>
-                                <input name="picture" class="form-control-itemname" placeholder="請輸入連結網址" value={{$introduction->picture}}>
+                                <label for="picture" class="inline">附件</label>
+                                <input type="file" name="picture" accept="image/*" >
                             </div>
 
-                            <div class="text-right">
+                            <div class="text-right" style="text-align:right;">
                                 <button type="submit" class="btn btn-primary">提交</button>
                             </div>
                         </form>
+                        <h3>目前附件：</h3>
+                        <figure class='mb-4'>
+                            @if($introduction->picture!=null)
+                                <img style="max-width: 40%;" class='img-fluid rounded' src={{asset("images/introduction/".$introduction->picture)}} alt='...' />
+                            @else
+                                <p style="padding-left: 80px;">無附件</p>
+                            @endif
+                        </figure>
                     </div>
                 </div>
             </main>
