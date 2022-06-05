@@ -252,7 +252,7 @@ Route::prefix('precautions')->group(function(){
     Route::post('{id}',[PrecautionController::class,'update'])->name('precautions.update')->middleware('auth');
 });
 
-Route::prefix('architectures')->group(function(){
+Route::prefix('architecture')->group(function(){
     Route::get('/',[ArchitectureController::class,'index'])->name('architectures.index');
     Route::get('/create',[ArchitectureController::class,'create'])->name('architectures.create')->middleware('auth');
     Route::post('/',[ArchitectureController::class,'store'])->name('architectures.store')->middleware('auth');
@@ -261,7 +261,7 @@ Route::prefix('architectures')->group(function(){
     Route::delete('/{id}',[ArchitectureController::class,'destroy'])->name('architectures.destroy')->middleware('auth');
 });
 
-Route::prefix('organizes')->group(function(){
+Route::prefix('organize')->group(function(){
     Route::get('/',[OrganizeController::class,'index'])->name('organizes.index');
     Route::get('/create',[OrganizeController::class,'create'])->name('organizes.create')->middleware('auth');
     Route::post('/',[OrganizeController::class,'store'])->name('organizes.store')->middleware('auth');

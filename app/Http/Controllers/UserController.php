@@ -48,7 +48,7 @@ class UserController extends Controller
             $recipe = User::find($id);
             $recipe->update($request->all());
 
-            return redirect()->back()->with('alert','修改成功');
+            return redirect()->back()->with('alert', '修改成功');
         }
         else{
             return redirect()->back()->with('alert', '只有社長、文書可以修改');
