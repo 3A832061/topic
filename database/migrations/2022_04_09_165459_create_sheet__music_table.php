@@ -25,7 +25,7 @@ class CreateSheetMusicTable extends Migration
             $table->string('authorize')->nullable();
             $table->integer('year')->nullable();;
             $table->integer('price')->nullable();
-            $table->boolean('change')->default(1);
+            $table->boolean('change1')->default(1);
             $table->boolean('check1');
             $table->string('checkyear')->nullable();
             $table->string('remark')->nullable();
