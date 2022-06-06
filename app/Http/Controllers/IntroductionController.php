@@ -53,7 +53,6 @@ class IntroductionController extends Controller
             $recipe->title=$request->title;
             $recipe->content=$request->content;
             $recipe->picture=$imageName;
-            $recipe->user_id = auth()->user()->id;
             $recipe->save();
         }
         else{

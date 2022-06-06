@@ -58,7 +58,7 @@
                 @if (Route::has('login'))
                     @auth
                     @else
-            <a class="button button4" style="float:right;"  href={{route('recruit.show')}}>下一頁</a>
+            <a class="button button4" style="float:right;"  href={{route('recruit.show')}}>填寫表單</a>
                     @endauth
                 @endif
         </section>

@@ -75,10 +75,13 @@
             <div class="container px-5 my-4">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
-                        <div class="text-center mb-4" >
+                        <div class="text-center mb-4" style="padding-top: 70px;">
                             <h1 class="fw-bolder">獎項紀錄</h1>
-
+@if(auth()->check())
+                                @if(auth()->user()->pos!='社員')
                             <a class="btn btn-success flex-shrink-0" href="{{route('award.create')}}">新增獎項</a>
+                        @endif
+    @endif
                         </div>
                     </div>
                 </div>
@@ -89,6 +92,7 @@
                         <div class="text-center mb-4">
                             <?php
                                     $x="";
+                                    if(count($awards)>0){
                                     foreach($awards as $y)
                                         {
                                             $z=$y->year;
@@ -127,6 +131,10 @@
                                                     <?php
                                                 }
                                         }
+
+}else{
+    echo "<p>暫無資料</p>";
+}
                                 ?>
                     </div>
                 </div>
