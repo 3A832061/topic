@@ -236,6 +236,8 @@ Route::get('/reset-password/', function () {
 
 Route::post('/reset-password',[UserController::class,'reset'])->middleware('auth')->name('password.update');
 
+Route::get('/register',  function () {return view('auth.register');} )->name('register')->middleware('auth');
+
 Route::prefix('evaluation')->group(function(){
     Route::get('/',[EvaluationController::class,'index'])->name('evaluations.index');
     Route::get('/create',[EvaluationController::class,'create'])->name('evaluations.create')->middleware('auth');
