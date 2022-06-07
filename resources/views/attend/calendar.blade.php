@@ -198,14 +198,13 @@
                                     var trHTML="<iframe name='hidden_iframe' style='display: none;'></iframe>" +
                                         "<form id='delete' action='https://script.google.com/macros/s/AKfycbznuT6MCeLJ8D4iAmg2L0YBFNOC46d3sWnEHmoUGe6wt2a2yAEQ3PhUoENC7k2hZ2MU/exec' method='POST' role='form' target='hidden_iframe'>"+
                                         "<input type='hidden' name='method' value='delete'>" +
-                                        "<input id='mmmm' type='hidden' name='month' value='"+id+"'>" +
-                                    "<input type='hidden' id='delData' name='content'>";
+                                        "<input id='mmmm' type='hidden' name='month' value='"+id+"'>";
 
                                     $("#tab tbody").append(trHTML);
 
                                     $.each(char, function(index2) {
                                         if(char[index2]!=""){
-                                            trHTML = "<tr><td>"+char[index2]+"</td>" +
+                                            trHTML = "<tr><td>"+char[index2]+"</td>" +"<input type='hidden' id='delData' name='content' value='"+char[index2]+"'>"+
                          "<td><button value='"+index2+"' class='btn btn-danger'>刪除</button></td></tr>";
                                             $("#tab tbody").append(trHTML);
                                         }
@@ -249,8 +248,6 @@
                 }
 
             });
-
-
         });
     </script>
 @endsection
