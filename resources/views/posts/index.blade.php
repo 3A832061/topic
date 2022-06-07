@@ -136,10 +136,10 @@
                 <tbody>
                     @foreach($posts as $post)
                         <tr>
-                            <td >
+                            <td class="product-buyer-name">
                                 <a style="text-decoration:none;color: black;" href={{route('posts.index',$post->tag)}}>{{$post->tag}}</a>
                             </td>
-                            <td >{{$post->date}}</td>
+                            <td class="product-buyer-name">{{$post->date}}</td>
                             <td class="product-buyer-name">
                                 <a style="text-decoration:none;color: black;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a>
                             </td>

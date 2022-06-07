@@ -138,13 +138,13 @@ Route::prefix('calendar')->group(function(){
 });
 
 Route::prefix('posts')->group(function(){
+    Route::get('/tag/{tag?}',[PostController::class,'index'])->name('posts.index');
     Route::get('/create',[PostController::class,'create'])->name('posts.create')->middleware('auth');
-    Route::get('/{tag?}',[PostController::class,'index'])->name('posts.index');
     Route::post('/',[PostController::class,'store'])->name('posts.store')->middleware('auth');
-    Route::get('/{id}/edit',[PostController::class,'edit'])->name('posts.edit')->middleware('auth');
-    Route::post('{id}',[PostController::class,'update'])->name('posts.update')->middleware('auth');
+    Route::get('/edit/{id}',[PostController::class,'edit'])->name('posts.edit')->middleware('auth');
+    Route::post('/{id}',[PostController::class,'update'])->name('posts.update')->middleware('auth');
     Route::delete('/{id}',[PostController::class,'destroy'])->name('posts.destroy')->middleware('auth');
-    Route::get('/{id}/show',[PostController::class,'show'])->name('posts.show');
+    Route::get('/show/{id}',[PostController::class,'show'])->name('posts.show');
 });
 
 Route::prefix('teacher')->group(function(){

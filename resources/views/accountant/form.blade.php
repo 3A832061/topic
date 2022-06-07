@@ -59,17 +59,17 @@
 
                             <div class="form-group">
                                 <label for="content" class="inline">來源/用途：</label>
-                                <input name="content" class="form-control-itemname" value="">
+                                <input name="content" class="form-control-itemname" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="price" class="inline">單價：</label>
-                                <input name="price" type="number" class="form-control-itemname" value="">
+                                <input name="price" type="number" class="form-control-itemname" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="quantity" class="inline">數量：</label>
-                                <input name="quantity" type="number" class="form-control-itemname" value="">
+                                <input name="quantity" type="number" class="form-control-itemname" required>
                             </div>
 
                             <div class="form-group">

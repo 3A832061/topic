@@ -72,7 +72,7 @@
 
                             <div class="form-group">
                                 <label for="content" class="inline">注意事項：（換行就是一項注意事項）</label>
-                                <textarea id="content" name="content" class="form-control" rows="10" style="white-space: pre;">{{ old('content',$precaution->content) }}</textarea>
+                                <textarea id="content" name="content" class="form-control" rows="10" required style="white-space: pre;">{{ old('content',$precaution->content) }}</textarea>
                             </div>
 
                             <div class="text-right">
