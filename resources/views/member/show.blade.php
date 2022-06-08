@@ -149,7 +149,7 @@
 
                         @if($type=='now')
                             <td>
-                                <input type="checkbox" id="pay{{$user->id}}"  name="pay" value=1  @if(auth()->user()->pos=='社長'|| auth()->user()->pos=='文書') onclick="success({{$user->id}})"  @else onclick="return false;" @endif {{ ($user->pay==1 )?'checked':'' }}>
+                                <input type="checkbox" id="pay{{$user->id}}"  name="pay" value=1  @if(auth()->user()->pos=='總務') onclick="success({{$user->id}})"  @else onclick="return false;" @endif {{ ($user->pay==1 )?'checked':'' }}>
                             </td>
                         @endif
 

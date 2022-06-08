@@ -31,7 +31,7 @@
 
                             <div class="text-muted fst-italic mb-2">{{$post->date}}</div>
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$post->tag}}</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href={{route('posts.index',$post->tag)}}>{{$post->tag}}</a>
 
                         </header>
 

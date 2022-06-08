@@ -84,13 +84,13 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="name" class="inline">名字：</label>
-                                <input  name="name" class="form-control-itemname" placeholder="請輸入名字" value="{{auth()->user()->name}}">
+                                <label for="name" class="inline">名字：*</label>
+                                <input  name="name" class="form-control-itemname" required placeholder="請輸入名字" value="{{auth()->user()->name}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="class" class="inline" >班級：</label>
-                                <input name="class" class="form-control-itemname" placeholder="請輸入班級，若非在校生，請填非在校" value="{{auth()->user()->class}}" onchange="inputClass()">
+                                <label for="class" class="inline" >班級：*</label>
+                                <input name="class" class="form-control-itemname" required placeholder="請輸入班級，若非在校生，請填非在校" value="{{auth()->user()->class}}" onchange="inputClass()">
                             </div>
 
                             @if(auth()->user()->class!='非在校')
@@ -105,7 +105,7 @@
                             @endif
 
                             <div class="form-group">
-                                <label for="part" class="inline">聲部：</label>
+                                <label for="part" class="inline">聲部：*</label>
                                 <select name="part" class="form-control-itemname">
                                     <option value="Fl"      {{ (auth()->user()->part=="FL")?'selected':'' }}>長笛 Fl</option>
                                     <option value="Cl"      {{ (auth()->user()->part=="Cl")?'selected':'' }}>豎笛 Cl</option>
@@ -131,8 +131,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="phone" class="inline">手機：</label>
-                                <input name="phone" class="form-control-itemname" placeholder="" value={{auth()->user()->phone}}>
+                                <label for="phone" class="inline">手機：*</label>
+                                <input name="phone" class="form-control-itemname" placeholder="" required value={{auth()->user()->phone}}>
                             </div>
 
                             <div class="form-group">

@@ -265,7 +265,7 @@
                         @csrf
                         <div class="form-group">
                             <input name="method" value="write_calendar"  type="hidden" >
-                            <label for="date" class="inline">日期：</label>
+                            <label for="date" class="inline">日期：*</label>
                             <input id="date" name="date" type="date" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
             border: 1px solid #ccc; border-radius: 4px;" required>
@@ -275,7 +275,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="content" >內容：</label>
+                            <label for="content" >內容：*</label>
                             <input id="content" name="content" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="" required>
                         </div>
 
