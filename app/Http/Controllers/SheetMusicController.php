@@ -14,7 +14,7 @@ class SheetMusicController extends Controller
     public function index()
     {
 
-        $sheets = DB::table('Sheet__Music')->orderBy('type','asc')->orderBy('name', 'asc')->orderBy('created_at', 'desc')->get();
+        $sheets = DB::table('sheet__music')->orderBy('type','asc')->orderBy('name', 'asc')->orderBy('created_at', 'desc')->get();
         return view('sheet.index',['sheets' => $sheets]);
     }
 
@@ -46,7 +46,7 @@ class SheetMusicController extends Controller
     {
         //
         $sheets=Sheet_Music::find($id);
-        $data= ['Sheet__Music'=>$sheets];
+        $data= ['sheet__music'=>$sheets];
         return view('sheet.edit',$data);
     }
 
@@ -67,12 +67,12 @@ class SheetMusicController extends Controller
     public function past()
     {
         //
-        $sheets = DB::table('Sheet__Music')->where('check','=','1')->get();
+        $sheets = DB::table('sheet__music')->where('check','=','1')->get();
         return view('sheet.tenpast',['sheets' => $sheets]);
     }
     public function search()
     {
-        $sheets = DB::table('Sheet__Music')->orderBy('type','asc')->orderBy('name', 'asc')->where('check','=','0')->get();
+        $sheets = DB::table('sheet__music')->orderBy('type','asc')->orderBy('name', 'asc')->where('check','=','0')->get();
         return view('sheet.tenpastedit',['sheets' => $sheets]);
     }
     public function check($id)

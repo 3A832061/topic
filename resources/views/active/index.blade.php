@@ -175,11 +175,7 @@
                 </div>
 
                 <p>
-                    @if ( auth()->check())
-                        @if(auth()->user()->pos!='社員')
-                            <a class="btn btn-success flex-shrink-0" href="{{route('active.create')}}">新增</a>
-                        @endif
-                    @endif
+
                 <div class="container" style="">
 
                     <!-- Full-width images with number text -->

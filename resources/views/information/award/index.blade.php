@@ -77,8 +77,12 @@
                     <div class="col-lg-6">
                         <div class="text-center mb-4" >
                             <h1 class="fw-bolder">獎項紀錄</h1>
+                            @if ( auth()->check())
+                                @if(auth()->user()->pos!='社員')
 
                             <a class="btn btn-success flex-shrink-0" href="{{route('award.create')}}">新增獎項</a>
+                                @endif
+                                @endif
                         </div>
                     </div>
                 </div>
