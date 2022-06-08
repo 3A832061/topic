@@ -100,14 +100,16 @@
         }
         .mySlides
         {
-            width:1200px;
-            height:600px;
+            height:100% ;
+            max-height: 600px !important;
+            width: 100% ;
+            max-width: 1200px;
             margin:auto !important;
         }
         .image
         {
             max-width: 100%;
-            max-height: 100%;
+            max-height: 600px;
             overflow: hidden;
             /*#75799缺少置中*/
         }
@@ -150,6 +152,7 @@
         .mySlides{
             text-align:center !important;
             background-color:#ccc;
+
         }
         .mySlides:hover .show
         {
@@ -176,7 +179,7 @@
 
                 <p>
 
-                <div class="container" style="">
+                <div class=" col-sm-auto " style="">
 
                     <!-- Full-width images with number text -->
                     <div class="containermage">
@@ -203,7 +206,7 @@
                     <div class="row case">
                         <div class="column">
 
-                                <!--img class="demo cursor" src="{{$active->url}}" style="width:60px; height:60px;" onclick="currentSlide()" alt="活動紀錄"-->
+                                <!--img class="demo cursor" src="" style="width:60px; height:60px;" onclick="currentSlide()" alt="活動紀錄"-->
 
                         </div>
                     </div>
