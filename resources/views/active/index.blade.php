@@ -175,7 +175,7 @@
                 </div>
 
                 <p>
-                    @if ( auth()->check())
+                    @if( auth()->check())
                         @if(auth()->user()->pos!='社員')
                             <a class="btn btn-success flex-shrink-0" href="{{route('active.create')}}">新增</a>
                         @endif
@@ -206,8 +206,6 @@
                     <p>
                     <div class="row case">
                         <div class="column">
-
-                                <!--img class="demo cursor" src="{{$active->url}}" style="width:60px; height:60px;" onclick="currentSlide()" alt="活動紀錄"-->
 
                         </div>
                     </div>

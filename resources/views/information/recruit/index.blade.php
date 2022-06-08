@@ -44,7 +44,7 @@
                                 $string = "<li>".$string."</li>";
                                 echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;'>".$string."</pre>";
                             }else{
-                                echo "<p>無資料，請按修改新增注意事項</p>";
+                                echo "<p>無資料，請按「新增」，新增資料</p>";
                             }
                             ?>
                     </pre>
