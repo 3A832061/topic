@@ -46,11 +46,22 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <iframe name="hidden_iframe" style="display: none;"></iframe>
-                        <form action="https://script.google.com/macros/s/AKfycbxyjFuW9b8KcsiFsFpZe26Cg1JmCxWmezEKFUZ_z2mK6fH3mOS5Kmuqvj0p5UlEAjBR/exec" target="hidden_iframe" method="POST" role="form" >
+                        <form onsubmit="success()" action="https://script.google.com/macros/s/AKfycbxZ2GjfuUVVRte_CTsFjkXqa_Gh7LxH9OCMu7WmAO-IWm1KMysPOUwdPEBE23iPoaYl/exec" target="hidden_iframe" method="POST" role="form" >
                             @csrf
                             <input type="hidden" name="method" value="write" >
+
                             <div class="form-group">
-                                <label for="type" class="inline">收入/支出：</label>
+                                <label for="year" class="inline">學期：*</label>
+                                <input name="year" class="form-control-itemname" placeholder="例如：110-1、110-2、111-1...等" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date" class="inline">日期：*</label>
+                                <input name="date" class="form-control-itemname" type="date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="type" class="inline">收入/支出：*</label>
                                 <select id="type" name="type" class="form-control">
                                     <option value="收入" selected>收入</option>
                                     <option value="支出">支出</option>
@@ -58,17 +69,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="content" class="inline">來源/用途：</label>
+                                <label for="content" class="inline">來源/用途：*</label>
                                 <input name="content" class="form-control-itemname" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="price" class="inline">單價：</label>
-                                <input name="price" type="number" class="form-control-itemname" required>
+                                <label for="price" class="inline">單價：*</label>
+                                <input name="price" type="number" class="form-control-itemname" step="0.5"  required>
                             </div>
 
                             <div class="form-group">
-                                <label for="quantity" class="inline">數量：</label>
+                                <label for="quantity" class="inline">數量：*</label>
                                 <input name="quantity" type="number" class="form-control-itemname" required>
                             </div>
 
@@ -78,7 +89,7 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary" onclick="success()">提交</button>
+                                <button type="submit" class="btn btn-primary" >提交</button>
                             </div>
                         </form>
                     </div>

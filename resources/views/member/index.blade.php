@@ -74,7 +74,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">{{auth()->user()->name}} 社員資料</h1>
+                    <h1 class="mt-4" id="customerz1">{{auth()->user()->name}} 的社員資料</h1>
                 </div>
                 <!-- /.row -->
                 <p>
