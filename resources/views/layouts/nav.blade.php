@@ -69,7 +69,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{auth()->user()->pos}} {{auth()->user()->name}}</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                            <li><h5 class="dropdown-header">出席相關</h5></li>
+                            <li><h3 class="dropdown-header" style="font-size: 18px;" >出席相關</h3></li>
 
                             @if(auth()->user()->pos!='社員')
                                 <li><a id="calendar" class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
@@ -79,7 +79,7 @@
                             <li><a class="dropdown-item" href={{route('attends.index')}}>出席統計</a></li>
 
                             <li><hr class="dropdown-divider"></hr></li>
-                            <li><h5 class="dropdown-header">社員相關</h5></li>
+                            <li><h3 class="dropdown-header" style="font-size: 18px;" >社員相關</h3></li>
                             @if(auth()->user()->pos!='社員')
                                 <li><a class="dropdown-item" href={{route('recruit.index')}}>招生資料</a></li>
                             @endif
