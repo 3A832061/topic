@@ -5,12 +5,9 @@
     @include('layouts.nav')
 
 <x-guest-layout>
-<div style="width: 60%; margin: auto; padding-top: 30px;">
-        <x-slot name="logo">
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
+<div style="width: 60%; margin: auto; padding-top: 10VH;padding-bottom: 10VH;">
+        <p style="font-size: 32px;text-align: center;">新增社員帳號</p>
+        <p><br>
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <input type="hidden" name="year" value="{{date('Y/m/d')}}" >

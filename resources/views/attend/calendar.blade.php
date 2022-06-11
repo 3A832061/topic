@@ -30,7 +30,7 @@
             padding-left: 20%;
         }
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 750px) {
             .row-p {
                 margin: 0 0;
                 height: auto;

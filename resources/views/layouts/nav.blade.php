@@ -93,7 +93,7 @@
 
 
                             <li><hr class="dropdown-divider"></hr></li>
-                            <li><h5 class="dropdown-header">帳號相關</h5></li>
+                            <li><h3 style="font-size: 18px;" class="dropdown-header">帳號相關</h3></li>
 
                             <li><a class="dropdown-item" href={{route('user.edit')}}>社員資料</a></li>
                             <li><a class="dropdown-item" href={{route('password.reset')}}>修改密碼</a></li>
@@ -101,7 +101,7 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                    <x-jet-dropdown-link style="font-size: 16px;" href="{{ route('logout') }}"
                                                          onclick="event.preventDefault();
                                         this.closest('form').submit();">
                                         登出

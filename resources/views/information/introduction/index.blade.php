@@ -21,21 +21,23 @@
     <main class="flex-shrink-0">
         @include('layouts.nav')
         <section class="py-5">
-            @if ( auth()->check())
-                @if(auth()->user()->pos!='社員')
-                    @if(!$introduction)
-                        <a class="button button4" href={{route('introduction.create')}}>新增簡介</a>
-                    @else
-                        <a class="button button4" href={{ route('introduction.edit', $introduction->id) }}>修改簡介</a>
-                    @endif
-                @endif
-            @endif
+
             <div class="container px-5 my-5">
 
                 <div class="row gx-5 justify-content-center">
 
                         <div class="text-center mb-5">
-                            <h1 class="fw-bolder">社團介紹</h1>
+                            <h1 class="fw-bolder" style="display: inline;">社團介紹</h1>
+                            @if ( auth()->check())
+                                @if(auth()->user()->pos!='社員')
+                                    @if(!$introduction)
+                                        <a class="button button4" href={{route('introduction.create')}}>新增</a>
+                                    @else
+                                        <a class="button button4" href={{ route('introduction.edit', $introduction->id) }}>修改</a>
+                                    @endif
+                                @endif
+                            @endif
+                            <p>
                             @if($introduction)
                                 <p class="lead fw-normal text-muted mb-0">
                                     {{$introduction->content}}
