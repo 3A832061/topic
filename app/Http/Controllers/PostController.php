@@ -96,13 +96,14 @@ class PostController extends Controller
                 $recipe->update($request->all());
             }
         }
-
-        return redirect()->route('posts.index');
+        $tag='全部公告';
+        return redirect()->route('posts.index',['tag'=> $tag]);
     }
 
     public function destroy($id)
     {
         Post::destroy($id);
-        return redirect()->route('posts.index');
+        $tag='全部公告';
+        return redirect()->route('posts.index',['tag'=> $tag]);
     }
 }

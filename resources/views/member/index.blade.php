@@ -34,7 +34,6 @@
     </style>
     <script>
         function inputClass(){
-
             if(document.getElementsByName("class")[0].value=="非在校"){
                 document.getElementById("accDiv").style.display="none";
             }
@@ -46,7 +45,9 @@
             document.getElementsByName("pay")[0].clicked==true;
         }
 
-
+        function check(){
+            alert("修改成功");
+        }
     </script>
 @endsection
 @section('index.con')
@@ -80,7 +81,7 @@
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action={{ route('user.update',auth()->user()->id) }} method="POST" role="form">
+                        <form action={{ route('user.update',auth()->user()->id) }} method="POST" role="form" onsubmit="check()">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

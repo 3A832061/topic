@@ -3,6 +3,9 @@
     <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
         .row
         {padding-left:50px !important;}
         .mt-4
@@ -10,20 +13,29 @@
         /*--*/
         .form-control-itemname
         {
-            display: inline;
-            width: 55%;
+            width: 49%;
             height: 34px;
             padding: 6px 12px;
             font-size: 14px;
-
+            line-height: 1.42857143;
             color: #555;
             background-color: #fff;
             background-image: none;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin-right: 5%;
+        }
+        .inline{
+            text-align: center;
+            padding: 12px 12px 12px 0;
+            width: 50%;
+
+            display: inline-block;
         }
         .form-group
         {
+            width: 100%;
+            float: left;
             margin-bottom: 15px !important;
         }
         #layoutSidenav_content
@@ -80,6 +92,21 @@
         }
         /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
         .show {display:block;}
+        .content {
+            margin:auto;
+            width: 60%;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        @media screen and (max-width: 742px) {
+            .form-control-itemname, .inline {
+                text-align: left;
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+
     </style>
     <script >
     function touch(){
@@ -155,42 +182,42 @@
                                                 if(cut[1]=="到") {
                                                     $("#tmp").append("<div class='form-group'>" +
                                                         "<label for='q' class='inline'>" + cut[0] + "</label>" +
-                                                        "<select name='q' class='form-control' style='width: 80px;display:inline;'>" +
+                                                        "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>" +
                                                         "<option value='到' selected>到</option>" +
                                                         "<option value='不到' >不到</option>" +
                                                         "<option value='早退' >早退</option>" +
-                                                        "<option value='遲到' >遲到</option></select></div>");
+                                                        "<option value='晚到' >晚到</option></select></div>");
                                                 }
                                                 else if(cut[1]=="不到"){
                                                     $("#tmp").append("<div class='form-group'>" +
                                                         "<label for='q' class='inline'>" + cut[0] + "</label>" +
-                                                        "<select name='q' class='form-control' style='width: 80px;display:inline;'>" +
+                                                        "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>" +
                                                         "<option value='到' >到</option>" +
                                                         "<option value='不到' selected>不到</option>" +
                                                         "<option value='早退' >早退</option>" +
-                                                        "<option value='遲到' >遲到</option></select></div>");
+                                                        "<option value='晚到' >晚到</option></select></div>");
                                                 }
                                                 else if(cut[1]=="早退"){
                                                     $("#tmp").append("<div class='form-group'>" +
                                                         "<label for='q' class='inline'>" + cut[0] + "</label>" +
-                                                        "<select name='q' class='form-control' style='width: 80px;display:inline;'>" +
+                                                        "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>" +
                                                         "<option value='到' >到</option>" +
                                                         "<option value='不到' >不到</option>" +
                                                         "<option value='早退' selected>早退</option>" +
-                                                        "<option value='遲到' >遲到</option></select></div>");
+                                                        "<option value='晚到' >晚到</option></select></div>");
                                                 }
                                                 else if(cut[1]=="遲到"){
                                                     $("#tmp").append("<div class='form-group'>" +
                                                         "<label for='q' class='inline'>" + cut[0] + "</label>" +
-                                                        "<select name='q' class='form-control' style='width: 80px;display:inline;'>" +
+                                                        "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>" +
                                                         "<option value='到' >到</option>" +
                                                         "<option value='不到' >不到</option>" +
                                                         "<option value='早退' >早退</option>" +
-                                                        "<option value='遲到' selected>遲到</option></select></div>");
+                                                        "<option value='晚到' selected>晚到</option></select></div>");
                                                 }
                                             }
                                         });
-                                        $("#tmp").append("<div class='text-right'><button type='submit' class='btn btn-primary'>提交</button></div>");
+                                        $("#tmp").append("<div class='text-right'><button style='float: right;' type='submit' class='btn btn-primary'>提交</button></div>");
                                     }
                                     else{
                                         $("#tmp").append("<p>尚未填寫</p>");
@@ -199,15 +226,15 @@
                                             if(char[index2]!=""){
                                                 $("#tmp").append("<div class='form-group'>" +
                                                     "<label for='q' class='inline'>"+char[index2]+"</label>"+
-                                                    "<select name='q' class='form-control' style='width: 80px;display:inline;'>"+
+                                                    "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>"+
                                                     "<option selected='selected' disabled='disabled'  style='display: none' value=''></option>"+
                                                     "<option value='到'>到</option>"+
                                                     "<option value='不到' >不到</option>"+
                                                     "<option value='早退' >早退</option>"+
-                                                    "<option value='遲到' >遲到</option></select></div>");
+                                                    "<option value='晚到' >晚到</option></select></div>");
                                             }
                                         });
-                                        $("#tmp").append("<div class='text-right'><button type='submit' class='btn btn-primary'>提交</button></div>");
+                                        $("#tmp").append("<div class='text-right'><button style='float: right;' type='submit' class='btn btn-primary'>提交</button></div>");
                                     }
                                 },
                                 error:function(xhr){
@@ -258,38 +285,38 @@
                                 if(cut[1]=="到") {
                                     $("#tmp").append("<div class='form-group'>" +
                                         "<label for='q' class='inline'>" + cut[0] + "</label>" +
-                                        "<select name='q' class='form-control' style='width: 80px;display:inline;'>" +
+                                        "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>" +
                                         "<option value='到' selected>到</option>" +
                                         "<option value='不到' >不到</option>" +
                                         "<option value='早退' >早退</option>" +
-                                        "<option value='遲到' >遲到</option></select></div>");
+                                        "<option value='晚到' >晚到</option></select></div>");
                                 }
                                 else if(cut[1]=="不到"){
                                     $("#tmp").append("<div class='form-group'>" +
                                         "<label for='q' class='inline'>" + cut[0] + "</label>" +
-                                        "<select name='q' class='form-control' style='width: 80px;display:inline;'>" +
+                                        "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>" +
                                         "<option value='到' >到</option>" +
                                         "<option value='不到' selected>不到</option>" +
                                         "<option value='早退' >早退</option>" +
-                                        "<option value='遲到' >遲到</option></select></div>");
+                                        "<option value='晚到' >晚到</option></select></div>");
                                 }
                                 else if(cut[1]=="早退"){
                                     $("#tmp").append("<div class='form-group'>" +
                                         "<label for='q' class='inline'>" + cut[0] + "</label>" +
-                                        "<select name='q' class='form-control' style='width: 80px;display:inline;'>" +
+                                        "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>" +
                                         "<option value='到' >到</option>" +
                                         "<option value='不到' >不到</option>" +
                                         "<option value='早退' selected>早退</option>" +
-                                        "<option value='遲到' >遲到</option></select></div>");
+                                        "<option value='晚到' >晚到</option></select></div>");
                                 }
                                 else if(cut[1]=="遲到"){
                                     $("#tmp").append("<div class='form-group'>" +
                                         "<label for='q' class='inline'>" + cut[0] + "</label>" +
-                                        "<select name='q' class='form-control' style='width: 80px;display:inline;'>" +
+                                        "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>" +
                                         "<option value='到' >到</option>" +
                                         "<option value='不到' >不到</option>" +
                                         "<option value='早退' >早退</option>" +
-                                        "<option value='遲到' selected>遲到</option></select></div>");
+                                        "<option value='晚到' selected>晚到</option></select></div>");
                                 }
                             }
                         });
@@ -303,12 +330,12 @@
 
                                 $("#tmp").append("<div class='form-group'>" +
                                     "<label for='q' class='inline'>"+char[index2]+"</label>"+
-                                    "<select name='q' class='form-control' style='width: 80px;display:inline;'>"+
+                                    "<select name='q' class='form-control-itemname' style='width: 80px;display:inline;'>"+
                                     "<option selected='selected' disabled='disabled'  style='display: none' value=''></option>"+
                                     "<option value='到' >到</option>"+
                                     "<option value='不到' >不到</option>"+
                                     "<option value='早退' >早退</option>"+
-                                    "<option value='遲到' >遲到</option></select></div>");
+                                    "<option value='晚到' >晚到</option></select></div>");
                             }
                         });
                         $("#tmp").append("<div class='text-right'><button type='submit' class='btn btn-primary'>提交</button></div>");
@@ -325,39 +352,26 @@
 @section('index.con')
     @include('layouts.nav')
     <!-- 公告-->
-    <main class="flex-shrink-0">
-        <div id="layoutSidenav_content">
-            <main>
 
-                <div class="container-fluid px-4">
-                    <h1  id="customerz1" style="display: inline;">出席</h1>
-                    <div  style="display: inline; margin-left: 30px;">
-                        <div class="dropdown">
-                            <button class="dropbtn"><span>選擇月份</span></button>
-                            <div id="myDropdown" class="dropdown-content">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- /.row -->
-                <p>
-                <div class="row">
-                    <div id="attend" class="col-lg-8">
-                        <iframe name="hidden_iframe" style="display: none;"></iframe>
-                        <form  action="https://script.google.com/macros/s/AKfycbwPIzTzCBQ0DlUAq7zBlCxKa3rZ7l-eoksCeHRAvICiz6fPiQOYihKv5_jcfuHv-uzX/exec" method="POST" role="form" target="hidden_iframe" onsubmit="return touch();">
-                            @csrf
-                            <input type="hidden" name="method" value="write_attend" >
-                            <input type="hidden" id="name" name="name" value={{auth()->user()->name}}>
-                            <input type="hidden" name="part" value={{auth()->user()->part}}>
-                            <input type="hidden" name="question" value="">
-                            <div id="tmp">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </main>
+    <div  style="margin-left: 30px;">
+        <div class="dropdown">
+            <button class="dropbtn"><span>選擇月份</span></button>
+            <div id="myDropdown" class="dropdown-content">
+            </div>
         </div>
+    </div>
+    <h1  id="customerz1" style="text-align: center;margin-top: 1%">出席</h1>
+    <main class="content" >
+        <iframe name="hidden_iframe" style="display: none;"></iframe>
+        <form  action="https://script.google.com/macros/s/AKfycbwPIzTzCBQ0DlUAq7zBlCxKa3rZ7l-eoksCeHRAvICiz6fPiQOYihKv5_jcfuHv-uzX/exec" method="POST" role="form" target="hidden_iframe" onsubmit="return touch();">
+            @csrf
+            <input type="hidden" name="method" value="write_attend" >
+            <input type="hidden" id="name" name="name" value={{auth()->user()->name}}>
+            <input type="hidden" name="part" value={{auth()->user()->part}}>
+            <input type="hidden" name="question" value="">
+            <div id="tmp">
+            </div>
+        </form>
     </main>
     @include('layouts.footer')
 @endsection

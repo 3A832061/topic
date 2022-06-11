@@ -66,7 +66,7 @@
     <h1 style="padding-top: 5%;text-align: center;">填寫收支</h1>
     <p>
     <main class="content" >
-        <div class="wa">
+
         <iframe name="hidden_iframe" style="display: none;"></iframe>
         <form style="padding-bottom: 5%;" onsubmit="javascript:return success();" action="https://script.google.com/macros/s/AKfycbx7nsrV_jO3E8RNBS1_s-5hsvVj_dRBRwJfx1EEdmkgNSw7obF8Y1NtOeZUAyc332LE/exec" target="hidden_iframe" method="POST" role="form" >
             @csrf
@@ -133,6 +133,7 @@
                 <label for="remark" class="inline" style=" vertical-align: middle;">備註：</label>
                 <textarea name="remark" class="form-control-itemname" rows="3"></textarea>
             </div>
+
             <div id="a" style="display: none;">
                 <label for="price" class="inline" style="padding-bottom: 20px;">尚未繳交：</label>
                 <label>
@@ -142,6 +143,7 @@
                     @endforeach
                 @endif
                 </label>
+                <p>
                 <p style="text-align: center;">*填寫完後，記得到社員清單那裏更新誰有繳交社費*</p>
             </div>
 
@@ -150,7 +152,7 @@
             </div>
 
         </form>
-        </div>
+
     </main>
     @include('layouts.footer')
     <script>
