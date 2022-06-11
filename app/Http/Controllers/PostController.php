@@ -58,8 +58,8 @@ class PostController extends Controller
                 'tag' => $_POST['tag'],
                 'user_id' => auth()->user()->id]);
         }
-
-        return redirect()->route('posts.index');
+        $tag='全部公告';
+        return redirect()->route('posts.index',['tag'=> $tag]);
     }
 
     public function edit($id)
