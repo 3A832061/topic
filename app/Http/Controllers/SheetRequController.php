@@ -2,85 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apply;
 use App\Models\Sheet_Requ;
 use App\Http\Requests\StoreSheet_RequRequest;
 use App\Http\Requests\UpdateSheet_RequRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class SheetRequController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $sheets = DB::table('sheet__requs')->orderBy('day','desc')->orderBy('state','desc')->get();
+        return view('sheet.apply.list',['sheets' => $sheets]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
+        return view('sheet.apply.req');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreSheet_RequRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreSheet_RequRequest $request)
+
+    public function store(Request $request)
     {
         //
+
+            DB::table('sheet__requs')->insert([
+            'mem_name' => auth()->user()->name,
+            'name' => $_POST['name'],
+            'part' => $_POST['part'],
+            'page' => $_POST['page'],
+            'num_page' => $_POST['num_page'],
+            'quan' => $_POST['quan'],
+            'remark' => $_POST['remark'],
+            'state' => $_POST['state'],
+            'day' => date('Y/m/d')
+            ]);
+
+
+        return redirect()->route('sheetrequest.show');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Sheet_Requ  $sheet_Requ
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Sheet_Requ $sheet_Requ)
+
+
+    public function edit($id)
     {
         //
+        $sheets=Sheet_Requ::find($id);
+        $sheets->update(['state'=>0]);
+        return redirect()->route('sheetrequest.show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Sheet_Requ  $sheet_Requ
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Sheet_Requ $sheet_Requ)
+    public function update()
     {
         //
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateSheet_RequRequest  $request
-     * @param  \App\Models\Sheet_Requ  $sheet_Requ
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateSheet_RequRequest $request, Sheet_Requ $sheet_Requ)
+    public function destroy($id)
     {
         //
+        Sheet_Requ::destroy($id);
+        return redirect()->route('sheetrequest.show');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Sheet_Requ  $sheet_Requ
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Sheet_Requ $sheet_Requ)
-    {
-        //
-    }
 }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Apply;
 use App\Http\Requests\StoreApplyRequest;
 use App\Http\Requests\UpdateApplyRequest;
+use App\Models\Sheet_Music;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApplyController extends Controller
 {
@@ -12,9 +15,8 @@ class ApplyController extends Controller
     public function index()
     {
         //
-        return view('sheet.apply.list');
-    }
 
+    }
 
     public function create()
     {
@@ -22,18 +24,17 @@ class ApplyController extends Controller
         return view('sheet.apply.req');
     }
 
-
-    public function store(StoreApplyRequest $request)
+    public function store(Request $request)
     {
         //
+        Apply::create($request->all());
+        return redirect()->route('apply.index');
     }
-
 
     public function show(Apply $apply)
     {
         //
     }
-
 
     public function edit(Apply $apply)
     {

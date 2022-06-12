@@ -194,14 +194,15 @@ Route::prefix('sheet')->group(function(){
     Route::delete('{id}',[SheetMusicController::class,'destroy'])->name('sheet.destroy');
 });
 
-
-Route::prefix('apply')->group(function(){
-    Route::get('/',[ApplyController::class,'index'])->name('apply.show'); //檢視all
-    Route::get('/create',[ApplyController::class,'create'])->name('apply.create'); //新增
-    Route::post('/',[ApplyController::class,'store'])->name('apply.store');
-    Route::get('{id}/edit',[ApplyController::class,'edit'])->name('apply.edit'); //編輯狀態
-    Route::post('{id}',[ApplyController::class,'update'])->name('apply.update');
+Route::prefix('sheetrequ')->group(function(){
+    Route::get('/',[SheetRequController::class,'index'])->name('sheetrequest.show'); //檢視all
+    Route::get('/create',[SheetRequController::class,'create'])->name('sheetrequest.create'); //新增
+    Route::post('/',[SheetRequController::class,'store'])->name('sheetrequest.store');
+    Route::get('{id}/edit',[SheetRequController::class,'edit'])->name('sheetrequest.edit'); //編輯狀態
+    Route::post('{id}',[SheetRequController::class,'update'])->name('sheetrequest.update');
+    Route::delete('{id}',[SheetRequController::class,'destroy'])->name('sheetrequest.destroy');
 });
+
 
 
 Route::prefix('attend')->group(function(){
