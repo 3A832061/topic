@@ -3,19 +3,7 @@
 
 @section('title','管樂社')
 <style>
-    div.col-lg-9
-    {
-        box-shadow: 0px 0px 2px #bbb;
-        border-radius: 10px;
-        color: #2a2a2a !important;
-        background-color: #f6f6f6;
-        border:1px solid #d7f0ed !important;
-        padding-top:20px;
-    }
-    body
-    {
-        background-color: #e5ece7 !important;
-    }
+
 </style>
 @section('index.con')
     <main class="flex-shrink-0">

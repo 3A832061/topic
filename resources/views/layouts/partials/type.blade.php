@@ -29,7 +29,7 @@
         }
         .navbar
         {
-            background-color:  #719b9d !important;
+            background-color:  #020c19 !important;
         }
         #myBtn
         {
@@ -37,13 +37,13 @@
         }
         #myBtn:hover
         {
-            background-color: #719b9d;
+            background-color: #020c19;
             color:#ccc;
 
         }
         body
         {
-            background-color: #e5ece7 !important;
+            background-color: #f7f0e8 :  !important;
         }
         .view-container-border
         {

@@ -26,11 +26,6 @@
             width: 100px;
 
         }
-        tbody
-        {
-            border: 1px solid #eaf0d7;
-            border-radius:  !important;
-        }
     </style>
     <script>
         //Get the button
