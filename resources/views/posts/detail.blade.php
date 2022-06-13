@@ -1,16 +1,12 @@
 @extends('layouts.partials.type')
-
-
 @section('title','管樂社')
 <style>
-
     .content {
         margin: auto;
         width: 50%;
         margin-top: 5%;
         margin-bottom: 5%;
     }
-
 
     @media screen and (max-width: 830px) {
         .content {
@@ -35,7 +31,6 @@
                             </form>
                         @endif
                     @endif
-
                 </div>
             </article>
 

@@ -65,7 +65,7 @@ class SheetMusicController extends Controller
     public function past()
     {
         //
-        $sheets = DB::table('sheet__music')->where('check1','=','1')->get();
+        $sheets = DB::table('sheet__music')->where('check','=','1')->get();
         return view('sheet.tenpast',['sheets' => $sheets]);
     }
     public function search()

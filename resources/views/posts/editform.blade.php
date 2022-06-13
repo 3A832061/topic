@@ -10,8 +10,7 @@
         /*--*/
         .form-control-itemname
         {
-            display: inline;
-            width: 60%;
+            width: 70%;
             height: 34px;
             padding: 6px 12px;
             font-size: 14px;
@@ -21,9 +20,19 @@
             background-image: none;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin-right: 5%;
+        }
+        .inline{
+            text-align: center;
+            padding: 12px 12px 12px 0;
+            width: 20%;
+
+            display: inline-block;
         }
         .form-group
         {
+            width: 100%;
+            float: left;
             margin-bottom: 15px !important;
         }
         #layoutSidenav_content
@@ -48,7 +57,14 @@
             margin-bottom: 5%;
             padding: 30px;
             border-radius: 20px 20px 20px 20px;
+        }
 
+        @media screen and (max-width: 742px) {
+            .form-control-itemname, .inline {
+                text-align: left;
+                width: 100%;
+                margin-top: 0;
+            }
         }
     </style>
 
@@ -78,7 +94,7 @@
 
                     <div class="form-group">
                         <label for="tag" class="inline">標籤：*</label>
-                        <select name="tag" style="width: 200px;" class="form-control-itemname">
+                        <select name="tag" class="form-control-itemname">
                             <option value="音樂會公告" {{ ($post->tag=="音樂會公告")?'selected':'' }}>音樂會公告</option>
                             <option value="活動宣傳" {{ ($post->tag=="活動宣傳")?'selected':'' }}>活動宣傳</option>
                             <option value="招生宣傳" {{ ($post->tag=="招生宣傳")?'selected':'' }}>招生宣傳</option>
@@ -90,7 +106,7 @@
 
                     <div class="form-group">
                         <label for="content" class="inline">內容：*</label>
-                        <textarea id="content" name="content" class="form-control" style=" white-space: pre;" rows="7">{{old('content',$post->content)}}</textarea>
+                        <textarea id="content" name="content" class="form-control-itemname" style=" white-space: pre;height: 150px;" rows="7">{{old('content',$post->content)}}</textarea>
                     </div>
 
                     <div class="form-group">

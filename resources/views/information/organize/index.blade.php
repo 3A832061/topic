@@ -117,14 +117,15 @@
                                     <br>
                                     <span style="">
                                         <?php
-                                        if($item->content){
-                                            $string = $item->content;
-                                            $string = str_replace("\n","\n</li><li>",$string);
-                                            $string = "<li>".$string."</li>";
-                                            echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;text-align: left;padding-left: 50px;'>".$string."</pre>";
-                                        }else{
-                                            echo "<p>暫時無資料，請按修改，新增注意事項</p>";
-                                        }
+                                            if($item->content){
+                                                $string = $item->content;
+                                                $string = str_replace("\n","\n</li><li>",$string);
+                                                $string = "<li>".$string."</li>";
+                                                echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;text-align: left;padding-left: 50px;'>".$string."</pre>";
+                                            }
+                                            else{
+                                                echo "<p>暫時無資料，請按修改，新增注意事項</p>";
+                                            }
                                         ?>
                                     </span>
                                     <label style="text-align: right;align-self: end;">

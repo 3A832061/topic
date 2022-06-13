@@ -59,12 +59,22 @@
             padding: 30px;
             border-radius: 20px 20px 20px 20px;
         }
+        @media screen and (max-width: 742px) {
+            .form-control-itemname, .inline {
+                text-align: left;
+                width: 100%;
+                margin-top: 0;
+            }
+            #content{
+                width: 100%;
+            }
+        }
     </style>
 @endsection
 @section('index.con')
     @include('layouts.nav')
 
-                    <h1 style="text-align: center;margin-bottom: 30px;">新增簡介</h1>
+                    <h1 style="text-align: center;margin-bottom: 30px;margin-top: 5%;">新增簡介</h1>
     <div class="content">
                         <form action="{{route('introduction.store')}}" method="POST" role="form" enctype="multipart/form-data">
                             @csrf
@@ -74,7 +84,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="content" class="inline" style="vertical-align: top !important;">內容：</label>
+                                <label for="content" class="inline" style="vertical-align: middle;">內容：</label>
                                 <textarea id="content" name="content" class="textarea"  rows="10" required style="overflow: auto;overflow-y: auto; white-space: pre;"></textarea>
                             </div>
 
@@ -84,7 +94,7 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary" >提交</button>
+                                <button style="float: right;" type="submit" class="btn btn-primary" >提交</button>
                             </div>
                         </form>
     </div>

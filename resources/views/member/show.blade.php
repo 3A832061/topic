@@ -84,13 +84,13 @@
         }
     </script>
 
-    <!-- 公告-->
-    <div class="container mt-3">
+    <div class="container mt-3" style="margin-bottom: 5%;">
         @if($type=='now')
-        <h2>社員清單</h2>
+        <h2 style="margin-top: 5%;">社員清單</h2>
         @elseif($type=='full')
-            <h2>所有社員</h2>
+            <h2 style="margin-top: 5%;">所有社員</h2>
             @endif
+        <br>
         <table class="table table-hover" >
             <thead>
             <tr>
