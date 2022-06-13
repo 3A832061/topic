@@ -1,32 +1,20 @@
 @extends('layouts.partials.type')
 @section('form.css')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
-    .product-buyer-name {
-        max-width: 110px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .accordion {
-        background-color: #eee;
+    .ccc {
         color: #444;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
         border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15px;
-        transition: 0.4s;
     }
 
-    .active, .accordion:hover {
+    .td {
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        vertical-align: middle;
+        width: 25%;
     }
 
-    .accordion:after {
+    .ccc:after {
         content: '\25B2';
         color: #777;
         font-weight: bold;
@@ -34,7 +22,7 @@
         margin-left: 5px;
     }
 
-    .active:after {
+    .a:after {
         content: "\25BC";
     }
 </style>
@@ -69,10 +57,10 @@
                         for(var j=0;j<3;j++){
                             var a=rows[0].getElementsByTagName("th")[j];
                             if(j==n){
-                                th.classList.toggle("active");
+                                th.classList.toggle("a");
                             }
-                            else if(a.classList.contains('active')){
-                                a.classList.toggle("active");
+                            else if(a.classList.contains('a')){
+                                a.classList.toggle("a");
                             }
                         }
                         break;
@@ -83,10 +71,10 @@
                         for(var j=0;j<3;j++){
                             var a=rows[0].getElementsByTagName("th")[j];
                             if(j==n){
-                                th.classList.toggle("active");
+                                th.classList.toggle("a");
                             }
-                            else if(a.classList.contains('active')){
-                                a.classList.toggle("active");
+                            else if(a.classList.contains('a')){
+                                a.classList.toggle("a");
                             }
                         }
                         break;
@@ -120,33 +108,34 @@
                     <a class="btn btn-sm btn-success" href={{ route('posts.create') }}>新增公告</a>
                 @endif
             @endif
-            <table id="myTable" class="table table-hover" style="table-layout:fixed;">
+            <p>
+            <table id="myTable"  style="width: 100%;table-layout: fixed;">
                 <thead>
-                <tr>
-                    <th class="accordion" onclick="sortTable(0)" style="width: 100px;cursor: pointer;">類別</th>
-                    <th class="accordion" onclick="sortTable(1)" style="width: 125px;cursor: pointer;">日期</th>
-                    <th class="accordion" onclick="sortTable(2)" style="cursor: pointer;">標題</th>
-                    @if ( auth()->check())
-                        @if(auth()->user()->pos!='社員')
-                            <th style="width: 125px;"></th>
+                    <tr>
+                        <th class="td ccc" onclick="sortTable(0)" style="border-bottom: 2px solid #000;cursor: pointer;">類別</th>
+                        <th class="td ccc" onclick="sortTable(1)" style="border-bottom: 2px solid #000;cursor: pointer;">日期</th>
+                        <th class="td ccc" onclick="sortTable(2)" style="border-bottom: 2px solid #000;cursor: pointer;">標題</th>
+                        @if( auth()->check())
+                            @if(auth()->user()->pos!='社員')
+                                <th class="td" style="border-bottom: 2px solid #000;"> </th>
                             @endif
-                    @endif
-                </tr>
+                        @endif
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($posts as $post)
                         <tr>
-                            <td >
+                            <td class="td">
                                 <a style="text-decoration:none;color: black;" href={{route('posts.index',$post->tag)}}>{{$post->tag}}</a>
                             </td>
-                            <td >{{$post->date}}</td>
-                            <td class="product-buyer-name">
-                                <a style="text-decoration:none;color: black;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a>
+                            <td class="td">{{$post->date}}</td>
+                            <td class="td">
+                                <a style="text-decoration:none;color: black;" href={{route('posts.show',$post->id)}}><label style="width: 100%; overflow:hidden;white-space: nowrap;text-overflow: ellipsis;">{{$post->title}}</label></a>
                             </td>
 
                             @if ( auth()->check())
                                 @if(auth()->user()->pos!='社員')
-                                <td>
+                                <td class="td">
                                     <a class="btn btn-sm btn-primary" href={{route('posts.edit',$post->id)}}>修改</a>
                                     <form action="{{ route('posts.destroy',$post->id) }}" method="POST" style="display: inline">
                                         @method('DELETE')

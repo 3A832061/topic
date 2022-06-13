@@ -50,23 +50,23 @@
                             @csrf
                             <input type="hidden" name="method" value="write" >
                             <div class="form-group">
-                                <label for="name" class="inline">姓名：</label>
-                                <input name="name" class="form-control-itemname" placeholder="請輸入名字" value="">
+                                <label for="name" class="inline">姓名：*</label>
+                                <input name="name" class="form-control-itemname" required placeholder="請輸入名字" value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="phone" class="inline">手機：</label>
-                                <input name="phone" class="form-control-itemname" placeholder="請輸入手機" value="">
+                                <label for="phone" class="inline">手機：*</label>
+                                <input name="phone" class="form-control-itemname" required placeholder="請輸入手機" value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="email" class="inline">email：</label>
-                                <input name="email" class="form-control-itemname" placeholder="請輸入電子信箱" value="">
+                                <label for="email" class="inline">email：*</label>
+                                <input name="email" class="form-control-itemname" required placeholder="請輸入電子信箱" value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="study" class="inline">是否為勤益在校生</label>
-                                <select id="study" name="study" class="form-control" onchange="study_visbility()">
+                                <label for="study" class="inline">是否為勤益在校生*</label>
+                                <select id="study" name="study" class="form-control" required onchange="study_visbility()">
                                     <option value="是" selected>是</option>
                                     <option value="否">否</option>
                                 </select>
@@ -74,7 +74,7 @@
 
                             <div id="student">
                                 <div class="form-group">
-                                    <label for="clas" class="inline">班級：</label>
+                                    <label for="clas" class="inline">班級：*</label>
                                     <input name="clas" class="form-control-itemname" placeholder="請輸入班級" value="">
                                 </div>
 
@@ -85,8 +85,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="play" class="inline">是否學過樂器</label>
-                                <select id="play" name="play" class="form-control"  onchange="play_visbility()">
+                                <label for="play" class="inline">是否學過樂器*</label>
+                                <select id="play" name="play" class="form-control" required onchange="play_visbility()">
                                     <option value="是" selected>是</option>
                                     <option value="否" >否</option>
                                 </select>
@@ -125,13 +125,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="want" class="inline">我想學的樂器是：</label>
-                                <input name="want" class="form-control-itemname" placeholder="" value="">
+                                <label for="want" class="inline">我想學的樂器是：*</label>
+                                <input name="want" class="form-control-itemname" required placeholder="" value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="mark" class="inline">我會看的樂譜記號：</label>
-                                <input name="mark" class="form-control-itemname" placeholder="高音譜記號、低音譜記號，或都不會" value="" >
+                                <label for="mark" class="inline">我會看的樂譜記號：*</label>
+                                <input name="mark" class="form-control-itemname" required placeholder="高音譜記號、低音譜記號，或都不會" value="" >
                             </div>
 
                             <div class="form-group">

@@ -28,16 +28,16 @@
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1" style=" white-space: pre-wrap;  word-wrap: break-word;">{{$post->title}}</h1>
                             <!-- Post meta content-->
-
-                            <div class="text-muted fst-italic mb-2">{{$post->date}}</div>
+                            <div class="text-muted fst-italic mb-2" style="">{{$post->date}}</div>
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{$post->tag}}</a>
-
+                            <a class="badge bg-secondary text-decoration-none link-light" href={{route('posts.index',$post->tag)}}>{{$post->tag}}</a>
                         </header>
 
                         <!-- Post content-->
                         <section class="mb-5" id="content" >
-                            <pre style=" white-space: pre-wrap;  word-wrap: break-word;">{{$post->content}}</pre>
+                            <pre style=" white-space: pre-wrap;  word-wrap: break-word;">
+                                {{$post->content}}
+                            </pre>
                         </section>
                         <!-- Preview image figure-->
                         <figure class='mb-4'>

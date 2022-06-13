@@ -30,7 +30,7 @@
             padding-left: 20%;
         }
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 750px) {
             .row-p {
                 margin: 0 0;
                 height: auto;
@@ -165,6 +165,7 @@
             $('.dropbtn').on('click',function(){
                 document.getElementById("myDropdown").classList.toggle("show");
             });
+
             $('.dropbtn').one('click',function(){
                 $.ajax({
                     type: "post",
@@ -172,7 +173,7 @@
                         "method": "read_calendar",
                         "query": "month"
                     },
-                    url: "https://script.google.com/macros/s/AKfycbzTpdmicws0kvgZB9ux4ZGrDANoy_siT6dwkpRgxTQMATnLavP1a37rj1wLWEIAJrwV/exec", // 填入網路應用程式網址
+                    url: "https://script.google.com/macros/s/AKfycbwPIzTzCBQ0DlUAq7zBlCxKa3rZ7l-eoksCeHRAvICiz6fPiQOYihKv5_jcfuHv-uzX/exec", // 填入網路應用程式網址
                     success: function (e) {
                         data=e;
                         var char=e.split('-');
@@ -190,33 +191,29 @@
                                     "method": "read_calendar",
                                     "query":this.id
                                 },
-                                url: "https://script.google.com/macros/s/AKfycbzTpdmicws0kvgZB9ux4ZGrDANoy_siT6dwkpRgxTQMATnLavP1a37rj1wLWEIAJrwV/exec", // 填入網路應用程式網址
+                                url: "https://script.google.com/macros/s/AKfycbwPIzTzCBQ0DlUAq7zBlCxKa3rZ7l-eoksCeHRAvICiz6fPiQOYihKv5_jcfuHv-uzX/exec", // 填入網路應用程式網址
                                 success: function (e1) {
                                     var char=e1.split('-');
                                     $('#tab tbody').html("");
 
-                                    var trHTML="<iframe name='hidden_iframe' style='display: none;'></iframe>" +
-                                        "<form id='delete' action='https://script.google.com/macros/s/AKfycbznuT6MCeLJ8D4iAmg2L0YBFNOC46d3sWnEHmoUGe6wt2a2yAEQ3PhUoENC7k2hZ2MU/exec' method='POST' role='form' target='hidden_iframe'>"+
-                                        "<input type='hidden' name='method' value='delete'>" +
-                                        "<input id='mmmm' type='hidden' name='month' value='"+id+"'>" +
-                                    "<input type='hidden' id='delData' name='content'>";
-
-                                    $("#tab tbody").append(trHTML);
-
                                     $.each(char, function(index2) {
                                         if(char[index2]!=""){
-                                            trHTML = "<tr><td>"+char[index2]+"</td>" +
-                         "<td><button value='"+index2+"' class='btn btn-danger'>刪除</button></td></tr>";
+                                            trHTML = "<tr><td>"+char[index2]+"</td><td><button id='"+index2+"' class='btn btn-danger'>刪除</button></td></tr>";
                                             $("#tab tbody").append(trHTML);
                                         }
                                     });
-                                    $('#tab tbody').append("</form>");
-
-                                    $(".btn-danger").on('click',function(){
-                                        $("#delData").val($(this).val());
+                                    $(".btn-danger").one('click',function(){
                                         var bool=confirm("您真的確定要刪除嗎？\n請確認！");
                                         if (bool==true){
-                                            $("#delete").submit();
+                                            $.ajax({
+                                                type: "post",
+                                                data: {
+                                                    "method": "delete",
+                                                    "month":id,
+                                                    "content": this.id
+                                                },
+                                                url: "https://script.google.com/macros/s/AKfycbwPIzTzCBQ0DlUAq7zBlCxKa3rZ7l-eoksCeHRAvICiz6fPiQOYihKv5_jcfuHv-uzX/execc",
+                                            });
                                             alert("刪除成功");
                                             history.go(0);
                                         }
@@ -239,8 +236,8 @@
 
             $('#btn_cre').on('click',function(){
                 if($("#content").val()!=null &&$("#content").val()!=""){
-                    if($("#date").val()!=null &&$("#content").val()!=""){
-                        if($("#time").val()!=null &&$("#content").val()!=""){
+                    if($("#date").val()!=null &&$("#date").val()!=""){
+                        if($("#time").val()!=null &&$("#time").val()!=""){
                             $("#create").submit();
                             alert("提交成功");
                             history.go(0);
@@ -249,8 +246,6 @@
                 }
 
             });
-
-
         });
     </script>
 @endsection
@@ -266,11 +261,11 @@
             <p>
                     <div class="form">
                     <iframe name="hidden_iframe" style="display: none;"></iframe>
-                    <form id="create" action="https://script.google.com/macros/s/AKfycbzTpdmicws0kvgZB9ux4ZGrDANoy_siT6dwkpRgxTQMATnLavP1a37rj1wLWEIAJrwV/exec" method="POST" role="form"  target="hidden_iframe">
+                    <form id="create" action="https://script.google.com/macros/s/AKfycbwPIzTzCBQ0DlUAq7zBlCxKa3rZ7l-eoksCeHRAvICiz6fPiQOYihKv5_jcfuHv-uzX/exec" method="POST" role="form"  target="hidden_iframe">
                         @csrf
                         <div class="form-group">
                             <input name="method" value="write_calendar"  type="hidden" >
-                            <label for="date" class="inline">日期：</label>
+                            <label for="date" class="inline">日期：*</label>
                             <input id="date" name="date" type="date" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
             border: 1px solid #ccc; border-radius: 4px;" required>
@@ -280,7 +275,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="content" >內容：</label>
+                            <label for="content" >內容：*</label>
                             <input id="content" name="content" class="form-control-itemname" placeholder="ex：團練、社課、迎新一籌...等" value="" required>
                         </div>
 

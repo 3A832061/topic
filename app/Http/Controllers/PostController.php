@@ -8,14 +8,14 @@ use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
-    public function index($tag='全部公告')
+    public function index($tag)
     {
         if($tag=='全部公告') {
             $posts = Post::orderBy('date', 'ASC')->get();
             $tag=["tag"=>$tag];
         }
         else{
-            $posts = Post::where('tag', '=',$tag)->get();
+            $posts = Post::where('tag', '=',$tag)->orderBy('date', 'ASC')->get();
             $tag=['tag'=>$tag];
         }
         $data = ['posts' => $posts];
@@ -58,8 +58,8 @@ class PostController extends Controller
                 'tag' => $_POST['tag'],
                 'user_id' => auth()->user()->id]);
         }
-
-        return redirect()->route('posts.index');
+        $tag='全部公告';
+        return redirect()->route('posts.index',['tag'=> $tag]);
     }
 
     public function edit($id)
@@ -96,13 +96,14 @@ class PostController extends Controller
                 $recipe->update($request->all());
             }
         }
-
-        return redirect()->route('posts.index');
+        $tag='全部公告';
+        return redirect()->route('posts.index',['tag'=> $tag]);
     }
 
     public function destroy($id)
     {
         Post::destroy($id);
-        return redirect()->route('posts.index');
+        $tag='全部公告';
+        return redirect()->route('posts.index',['tag'=> $tag]);
     }
 }

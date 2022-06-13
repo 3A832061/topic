@@ -34,7 +34,6 @@
     </style>
     <script>
         function inputClass(){
-
             if(document.getElementsByName("class")[0].value=="非在校"){
                 document.getElementById("accDiv").style.display="none";
             }
@@ -46,7 +45,9 @@
             document.getElementsByName("pay")[0].clicked==true;
         }
 
-
+        function check(){
+            alert("修改成功");
+        }
     </script>
 @endsection
 @section('index.con')
@@ -59,6 +60,7 @@
             alert(msg);
         }
     </script>
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -73,23 +75,23 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">{{auth()->user()->name}} 社員資料</h1>
+                    <h1 class="mt-4" id="customerz1">{{auth()->user()->name}} 的社員資料</h1>
                 </div>
                 <!-- /.row -->
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action={{ route('user.update',auth()->user()->id) }} method="POST" role="form">
+                        <form action={{ route('user.update',auth()->user()->id) }} method="POST" role="form" onsubmit="check()">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="name" class="inline">名字：</label>
-                                <input  name="name" class="form-control-itemname" placeholder="請輸入名字" value="{{auth()->user()->name}}">
+                                <label for="name" class="inline">名字：*</label>
+                                <input  name="name" class="form-control-itemname" required placeholder="請輸入名字" value="{{auth()->user()->name}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="class" class="inline" >班級：</label>
-                                <input name="class" class="form-control-itemname" placeholder="請輸入班級，若非在校生，請填非在校" value="{{auth()->user()->class}}" onchange="inputClass()">
+                                <label for="class" class="inline" >班級：*</label>
+                                <input name="class" class="form-control-itemname" required placeholder="請輸入班級，若非在校生，請填非在校" value="{{auth()->user()->class}}" onchange="inputClass()">
                             </div>
 
                             @if(auth()->user()->class!='非在校')
@@ -104,7 +106,7 @@
                             @endif
 
                             <div class="form-group">
-                                <label for="part" class="inline">聲部：</label>
+                                <label for="part" class="inline">聲部：*</label>
                                 <select name="part" class="form-control-itemname">
                                     <option value="Fl"      {{ (auth()->user()->part=="FL")?'selected':'' }}>長笛 Fl</option>
                                     <option value="Cl"      {{ (auth()->user()->part=="Cl")?'selected':'' }}>豎笛 Cl</option>
@@ -130,8 +132,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="phone" class="inline">手機：</label>
-                                <input name="phone" class="form-control-itemname" placeholder="" value={{auth()->user()->phone}}>
+                                <label for="phone" class="inline">手機：*</label>
+                                <input name="phone" class="form-control-itemname" placeholder="" required value={{auth()->user()->phone}}>
                             </div>
 
                             <div class="form-group">

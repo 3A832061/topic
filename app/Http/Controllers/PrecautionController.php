@@ -9,7 +9,7 @@ use App\Models\Information;
 class PrecautionController extends Controller
 {
     public function index(){
-        $precautions = Information::where('type','=','precaution')->get();
+        $precautions = Information::where('type','=','precaution')->orderBy('id','ASC')->get();
         $data=['precautions'=>$precautions];
         return view('information.precautions.index',$data);
     }

@@ -48,8 +48,8 @@
                         <form action="{{route('recruit.store')}}" method="POST" role="form">
                             @csrf
                             <div class="form-group">
-                                <label for="content" class="inline">內容：（換行要打\n）</label>
-                                <textarea id="content" name="content" class="form-control" rows="10" style="overflow: auto;overflow-y: auto; white-space: pre;"></textarea>
+                                <label for="content" class="inline">內容：*</label>
+                                <textarea id="content" name="content" class="form-control" required rows="10" style="overflow: auto;overflow-y: auto; white-space: pre;"></textarea>
                             </div>
 
                             <div class="text-right">

@@ -49,12 +49,12 @@
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="inline">標題：</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{ $introduction->title}}">
+                                <input name="title" required class="form-control-itemname" placeholder="請輸入標題" value="{{ $introduction->title}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="content" class="inline">內容：（換行要打\n）</label>
-                                <textarea id="content" name="content" class="form-control" rows="10">{{$introduction->content}}</textarea>
+                                <label for="content" class="inline">內容：</label>
+                                <textarea id="content" name="content" class="form-control" rows="10" style="overflow: auto;overflow-y: auto; white-space: pre;" required>{{$introduction->content}}</textarea>
                             </div>
 
                             <div class="form-group">

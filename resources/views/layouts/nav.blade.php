@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href={{route('index')}}>首頁</a></li>
-            <li class="nav-item"><a class="nav-link" href={{route('posts.index')}}>公告</a></li>
+            <li class="nav-item"><a class="nav-link" href={{route('posts.index','全部公告')}}>公告</a></li>
             <li class="nav-item"><a class="nav-link" href={{route('calendars.index')}}>行事曆</a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">社團介紹</a>
@@ -69,7 +69,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{auth()->user()->pos}} {{auth()->user()->name}}</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                            <li><h5 class="dropdown-header">出席相關</h5></li>
+                            <li><h3 class="dropdown-header" style="font-size: 18px;" >出席相關</h3></li>
 
                             @if(auth()->user()->pos!='社員')
                                 <li><a id="calendar" class="dropdown-item" href={{route('calendar.create')}}>日程設定</a></li>
@@ -79,7 +79,7 @@
                             <li><a class="dropdown-item" href={{route('attends.index')}}>出席統計</a></li>
 
                             <li><hr class="dropdown-divider"></hr></li>
-                            <li><h5 class="dropdown-header">社員相關</h5></li>
+                            <li><h3 class="dropdown-header" style="font-size: 18px;" >社員相關</h3></li>
                             @if(auth()->user()->pos!='社員')
                                 <li><a class="dropdown-item" href={{route('recruit.index')}}>招生資料</a></li>
                             @endif
@@ -93,7 +93,7 @@
 
 
                             <li><hr class="dropdown-divider"></hr></li>
-                            <li><h5 class="dropdown-header">帳號相關</h5></li>
+                            <li><h3 style="font-size: 18px;" class="dropdown-header">帳號相關</h3></li>
 
                             <li><a class="dropdown-item" href={{route('user.edit')}}>社員資料</a></li>
                             <li><a class="dropdown-item" href={{route('password.reset')}}>修改密碼</a></li>
@@ -101,7 +101,7 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                    <x-jet-dropdown-link style="font-size: 16px;" href="{{ route('logout') }}"
                                                          onclick="event.preventDefault();
                                         this.closest('form').submit();">
                                         登出

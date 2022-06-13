@@ -44,10 +44,10 @@
                                 $string = "<li>".$string."</li>";
                                 echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;'>".$string."</pre>";
                             }else{
-                                echo "<p>無資料，請按修改新增注意事項</p>";
+                                echo "<p>無資料，請按「新增」，新增資料</p>";
                             }
                             ?>
-                    </pre>
+                        </pre>
                     @else
                         <p class="lead fw-normal text-muted mb-0">
                             暫無資料
@@ -55,11 +55,8 @@
                     @endif
                 </div>
             </div>
-                @if (Route::has('login'))
-                    @auth
-                    @else
-            <a class="button button4" style="float:right;"  href={{route('recruit.show')}}>下一頁</a>
-                    @endauth
+                @if (!auth()->check())
+                        <a class="button button4" style="float:right;"  href={{route('recruit.show')}}>填寫表單</a>
                 @endif
         </section>
     </main>

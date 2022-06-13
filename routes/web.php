@@ -138,13 +138,13 @@ Route::prefix('calendar')->group(function(){
 });
 
 Route::prefix('posts')->group(function(){
+    Route::get('/tag/{tag?}',[PostController::class,'index'])->name('posts.index');
     Route::get('/create',[PostController::class,'create'])->name('posts.create')->middleware('auth');
-    Route::get('/{tag?}',[PostController::class,'index'])->name('posts.index');
     Route::post('/',[PostController::class,'store'])->name('posts.store')->middleware('auth');
-    Route::get('/{id}/edit',[PostController::class,'edit'])->name('posts.edit')->middleware('auth');
-    Route::post('{id}',[PostController::class,'update'])->name('posts.update')->middleware('auth');
+    Route::get('/edit/{id}',[PostController::class,'edit'])->name('posts.edit')->middleware('auth');
+    Route::post('/{id}',[PostController::class,'update'])->name('posts.update')->middleware('auth');
     Route::delete('/{id}',[PostController::class,'destroy'])->name('posts.destroy')->middleware('auth');
-    Route::get('/{id}/show',[PostController::class,'show'])->name('posts.show');
+    Route::get('/show/{id}',[PostController::class,'show'])->name('posts.show');
 });
 
 Route::prefix('teacher')->group(function(){
@@ -237,6 +237,9 @@ Route::get('/reset-password/', function () {
 
 Route::post('/reset-password',[UserController::class,'reset'])->middleware('auth')->name('password.update');
 
+Route::get('/register',  function () {return view('auth.register');} )->name('register')->middleware('auth');
+Route::post('/register', [UserController::class, 'store']);
+
 Route::prefix('evaluation')->group(function(){
     Route::get('/',[EvaluationController::class,'index'])->name('evaluations.index');
     Route::get('/create',[EvaluationController::class,'create'])->name('evaluations.create')->middleware('auth');
@@ -253,7 +256,7 @@ Route::prefix('precautions')->group(function(){
     Route::post('{id}',[PrecautionController::class,'update'])->name('precautions.update')->middleware('auth');
 });
 
-Route::prefix('architectures')->group(function(){
+Route::prefix('architecture')->group(function(){
     Route::get('/',[ArchitectureController::class,'index'])->name('architectures.index');
     Route::get('/create',[ArchitectureController::class,'create'])->name('architectures.create')->middleware('auth');
     Route::post('/',[ArchitectureController::class,'store'])->name('architectures.store')->middleware('auth');
@@ -262,7 +265,7 @@ Route::prefix('architectures')->group(function(){
     Route::delete('/{id}',[ArchitectureController::class,'destroy'])->name('architectures.destroy')->middleware('auth');
 });
 
-Route::prefix('organizes')->group(function(){
+Route::prefix('organize')->group(function(){
     Route::get('/',[OrganizeController::class,'index'])->name('organizes.index');
     Route::get('/create',[OrganizeController::class,'create'])->name('organizes.create')->middleware('auth');
     Route::post('/',[OrganizeController::class,'store'])->name('organizes.store')->middleware('auth');

@@ -57,13 +57,13 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">新增活動</h1>
+                    <h1 class="mt-4" id="customerz1">新增</h1>
                 </div>
                 <!-- /.row -->
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form id="form1" action="{{route('evaluation.store')}}" method="POST" role="form" enctype="multipart/form-data">
+                        <form id="form1" action="{{route('evaluations.store')}}" method="POST" role="form" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="inline">學年：*</label>

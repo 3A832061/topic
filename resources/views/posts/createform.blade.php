@@ -32,13 +32,28 @@
             margin-bottom:100px !important;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        function success(){
-            var content = $("#form1 textarea").val();
-            content = content.replace(/\n|\r\n/g,"<br>");
-            window.alert("提交成功，感謝填寫");
-        }
+        $(document).ready(function(){
+            $("#ch").on('click',function(){
+                var user=$('#user').text(),title=$('#title').val();
+                $.ajax({
+                    type: "post",
+                    data: {
+                        "msg":title,
+                        "user":user
+                    },
+                    url: "https://script.google.com/macros/s/AKfycbxwjZzQTPGn8Tl8tqVeLktolYG3Nz0nhBV5EK4bA4gxH9vUrX3qBXDesz6GZ4LHtJVNPA/exec",
+                });
+                $("#form1").submit();
+            });
+        });
     </script>
+<script>
+    function success(){
+        alert('成功新增');
+    }
+</script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
@@ -52,26 +67,26 @@
             </ul>
         </div>
     @endif
-    <!-- 公告-->
+
     <main class="flex-shrink-0">
         <div id="layoutSidenav_content">
-            <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4" id="customerz1">新增公告</h1>
                 </div>
-                <!-- /.row -->
-                <p>
+
                 <div class="row">
                     <div class="col-lg-8">
-                        <form id="form1" action="{{route('posts.store')}}" method="POST" role="form" enctype="multipart/form-data">
+                        <form id="form1" action="{{route('posts.store')}}" method="POST" role="form" enctype="multipart/form-data" onsubmit="success()">
                             @csrf
+                            <p style="visibility: hidden;" id="user">{{auth()->user()->name}}</p>
+
                             <div class="form-group">
-                                <label for="title" class="inline">標題：</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{ old('title') }}" required onsubmit="return success();">
+                                <label for="title" class="inline">標題：*</label>
+                                <input id="title" name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{ old('title') }}" required >
                             </div>
 
                             <div class="form-group">
-                                <label for="tag" class="inline">標籤：</label>
+                                <label for="tag" class="inline">標籤：*</label>
                                 <select name="tag" style="width: 200px;" class="form-control-itemname">
                                     <option value="音樂會公告" selected>音樂會公告</option>
                                     <option value="活動宣傳" >活動宣傳</option>
@@ -83,7 +98,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="content" class="inline">內容：</label>
+                                <label for="content" class="inline">內容：*</label>
                                 <textarea id="content" name="content" class="form-control" rows="10" style="white-space: pre;" required>{{ old('content') }}</textarea>
                             </div>
 
@@ -93,12 +108,11 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button id="ch" type="button" class="btn btn-primary">提交</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </main>
         </div>
     </main>
     @include('layouts.footer')

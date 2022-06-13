@@ -178,15 +178,19 @@
                 </div>
 
                 <p>
-
                 <div class=" col-sm-auto " style="">
-
+                    @if( auth()->check())
+                        @if(auth()->user()->pos!='社員')
+                            <a class="btn btn-success flex-shrink-0" href="{{route('active.create')}}">新增</a>
+                        @endif
+                    @endif
+                <div class="container" style="">
                     <!-- Full-width images with number text -->
                     <div class="containermage">
-
+                        <?php $x=0; $sum=0; foreach($actives as $active) {$sum+=1;}?>
                     @foreach($actives as $active)
                     <div class="mySlides">
-                       <div class="numbertext">{{$active->id}}/ 6 ｜{{$active->content}}
+                       <div class="numbertext"> <?php $x+=1; echo $x."/".$sum."｜"; ?>{{$active->content}}
                                 <div class="show">
                                     @if ( auth()->check())
                                         @if(auth()->user()->pos!='社員')
@@ -206,7 +210,6 @@
                     <div class="row case">
                         <div class="column">
 
-                                <!--img class="demo cursor" src="" style="width:60px; height:60px;" onclick="currentSlide()" alt="活動紀錄"-->
 
                         </div>
                     </div>
@@ -214,6 +217,7 @@
                 </div>
 
                 </div>
+            </div>
         </section>
     </main>
 

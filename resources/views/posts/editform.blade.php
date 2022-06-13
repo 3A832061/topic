@@ -68,12 +68,12 @@
                 <form action="{{route('posts.update',$post->id)}}" method="POST" role="form" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="title" class="inline">標題：</label>
+                        <label for="title" class="inline">標題：*</label>
                         <input name="title" class="form-control-itemname" placeholder="請輸入標題" value="{{old('title',$post->title)}}">
                     </div>
 
                     <div class="form-group">
-                        <label for="tag" class="inline">標籤：</label>
+                        <label for="tag" class="inline">標籤：*</label>
                         <select name="tag" style="width: 200px;" class="form-control-itemname">
                             <option value="音樂會公告" {{ ($post->tag=="音樂會公告")?'selected':'' }}>音樂會公告</option>
                             <option value="活動宣傳" {{ ($post->tag=="活動宣傳")?'selected':'' }}>活動宣傳</option>
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="content" class="inline">內容：</label>
+                        <label for="content" class="inline">內容：*</label>
                         <textarea id="content" name="content" class="form-control" style=" white-space: pre;" rows="5">{{old('content',$post->content)}}</textarea>
                     </div>
 
