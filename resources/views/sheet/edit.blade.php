@@ -151,15 +151,15 @@
                                 <input name="price" class="form-control-itemname" placeholder="如果有其他事項請在此處填寫" value="" id="remark">
                             </div>
                             <div class="form-group">
-                                <label for="change" class="inline">能否換譜（※若不確定則默認不可換譜）：</label>
-                                <select id="change" name="change" class="form-control">
+                                <label for="change1" class="inline">能否換譜（※若不確定則默認不可換譜）：</label>
+                                <select id="change1" name="change" class="form-control">
                                     <option value="0" {{ ($Sheet__Music->change=="0")?'selected':'' }}>可以換譜</option>
                                     <option value="1" {{ ($Sheet__Music->change=="1")?'selected':'' }}>不可換譜</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="check" class="inline">10年間已演奏</label>
-                                <select id="check" name="check" class="form-control">
+                                <label for="check1" class="inline">10年間已演奏</label>
+                                <select id="check1" name="check" class="form-control">
                                     <option value="1" {{ ($Sheet__Music->check=="1")?'selected':'' }}>是</option>
                                     <option value="0" {{ ($Sheet__Music->check=="0")?'selected':'' }}>否</option>
                                 </select>

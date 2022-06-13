@@ -76,7 +76,7 @@
                                 <th scope="col">份數</th>
                                 <th scope="col">申請狀態</th>
                                 <th scope="col">備註</th>
-                                <th scope="col"></th>
+                                @if((auth()->user()->pos=='社長')||(auth()->user()->pos=='譜務'))<th scope="col"></th>@endif
                             </tr>
                             </thead>
                             <tbody>
@@ -103,7 +103,6 @@
                             echo "<td>".$a->remark."</td>";
 
                             ?>
-                            @if (auth()->check())
                                 @if((auth()->user()->pos=='社長')||(auth()->user()->pos=='譜務'))
                                     <td style="width:15%"><a class='btn btn-outline-dark flex-shrink-0' href='{{route('sheetrequest.edit',$a->id)}}' style=' white-space:nowrap;'>確認完成</a>
                                                 <form action='{{ route('sheetrequest.destroy',$a->id)}}' method='POST'
@@ -114,7 +113,6 @@
                                                 </form>
                                     </td>
                                 @endif
-                            @endif
                                     <?php
 
                                     echo "</tr>";

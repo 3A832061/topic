@@ -76,7 +76,7 @@ class SheetMusicController extends Controller
     public function check($id)
     {
         $sheets=Sheet_Music::find($id);
-        $sheets->update(['check'=>1]);
+        $sheets->update(['check1'=>1]);
         return redirect()->route('sheet.past');
     }
 

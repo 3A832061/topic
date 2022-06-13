@@ -105,7 +105,7 @@
                                         echo "<td>".$a->year."</td>";
                                         echo "<td>".$a->price."</td>";
                                         echo "<td>";
-                                            if(($a->change)==1)
+                                            if(($a->change1)==1)
                                                 {
                                                     echo "<center><font style='color:red; font-weight: bolder; text-align: center !important;'>✗</center>";
                                                 }
@@ -115,7 +115,7 @@
                                                 }
                                             echo"</td>";
                                         echo "<td>";
-                                            if(($a->check)==1)
+                                            if(($a->check1)==1)
                                             {
                                                 echo "<center><font style='color:green; font-weight: bolder; text-align: center !important;'>✓</center>";
                                             }
