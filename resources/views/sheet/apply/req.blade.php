@@ -31,6 +31,23 @@
             margin-bottom:100px !important;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#ar").on('click',function(){
+                $("#form1").submit();
+                var user=$('#mem_name').val(),title=$('#name').val();
+                $.ajax({
+                    type: "post",
+                    data: {
+                        "msg":title,
+                        "user":user
+                    },
+                    url: "https://script.google.com/macros/s/AKfycbx9d-dk6ZdtsGXfKPpzsMbPDSmjAvQFaspqGzG2BWuoeDTS5WhE-RADy_ruGLzK48q5dQ/exec",
+                });
+            });
+        });
+    </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
@@ -39,13 +56,13 @@
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4" id="customerz1">樂譜缺頁申請單</h1>
-                    <a class="btn btn-success flex-shrink-0" href={{route('sheetrequest.show')}}>查看審核狀態</a>
+                    <a class="btn btn-success flex-shrink-0" href={{route('sheetrequest.show')}} id="form1">查看審核狀態</a>
                 </div>
                 <!-- /.row -->
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="{{route('sheetrequest.store')}}" target="hidden_iframe" method="POST" role="form" >
+                        <form action="{{route('sheetrequest.store')}}"  method="POST" role="form" id="form1" >
                             @csrf
                             <div class="form-group">
                                 <label for="mem_name" class="inline">申請人姓名：</label>
@@ -81,7 +98,7 @@
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary" onclick="success()">提交</button>
+                                <button type="submit" class="btn btn-primary" onclick="success()" id="ar">提交</button>
                             </div>
                         </form>
                     </div>

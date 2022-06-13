@@ -41,6 +41,15 @@
                 margin-bottom:100px !important;
             }
         }
+        .content {
+            margin:auto;
+            width: 60%;
+            background-color: #f2f2f2;
+            margin-bottom: 5%;
+            padding: 30px;
+            border-radius: 20px 20px 20px 20px;
+
+        }
     </style>
 
 @endsection
@@ -57,14 +66,9 @@
         </div>
     @endif
 
-    <!-- 公告-->
-    <main >
-        <div id="layoutSidenav_content">
-                <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1" >修改公告</h1>
-                </div>
-                <!-- /.row -->
-                <p>
+
+    <h1 style="text-align: center;margin-top: 5%; margin-bottom: 30px;">修改公告</h1>
+    <div class="content">
                 <form action="{{route('posts.update',$post->id)}}" method="POST" role="form" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -86,7 +90,7 @@
 
                     <div class="form-group">
                         <label for="content" class="inline">內容：*</label>
-                        <textarea id="content" name="content" class="form-control" style=" white-space: pre;" rows="5">{{old('content',$post->content)}}</textarea>
+                        <textarea id="content" name="content" class="form-control" style=" white-space: pre;" rows="7">{{old('content',$post->content)}}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -108,8 +112,6 @@
                         <p style="padding-left: 80px;">無附件</p>
                     @endif
                 </figure>
-
-        </div>
-    </main>
+    </div>
     @include('layouts.footer')
 @endsection

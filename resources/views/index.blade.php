@@ -55,35 +55,33 @@
         <header class="bg-dark py-5">
             <div style="padding-left: 10%;padding-right: 10%; ">
 
-                        <div class="my-5 text-center" >
-                            <h3 style="color: white">最新公告</h3>
-                            @if(count($posts)==0)
-                                <p style="color: white">暫無公告</p>
-                            @else
-                                <table style="margin: 0 auto; color: white;table-layout:fixed;"width="70%;">
-                                    <tr>
-                                        <td style="width: 120px;">類別</td>
-                                        <td style="width: 120px;">日期</td>
-                                        <td style="text-align: left;">標題</td>
-                                    </tr>
-                                    @foreach($posts as $post)
-                                        <tr>
-                                            <td style="width: 120px;"><a style="text-decoration:none;color: white;" href={{ route('posts.index',$post->tag) }}>{{$post->tag}}</a></td>
-                                            <td style="width: 120px;">{{$post->date}}</td>
-                                            <td style="text-align: left; overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">
-                                                <a  style=" text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>
-                                                    {{$post->title}}
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </table>
-                            @endif
-                            <br>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center ">
-                                <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index','全部公告')}} >查看全部公告</a>
-                            </div>
-                        </div>
+                <div class="my-5 text-center" >
+                    <h3 style="color: white">最新公告</h3>
+                    @if(count($posts)==0)
+                        <p style="color: white">暫無公告</p>
+                    @else
+                        <table style="margin: 0 auto; color: white;table-layout:fixed;" border="5" width="70%">
+                            <tr>
+                                <td style="width: 120px;">類別</td>
+                                <td style="width: 120px;">日期</td>
+                                <td style="text-align: left;">標題</td>
+                            </tr>
+                            @foreach($posts as $post)
+                                <tr>
+                                    <td style="width: 120px;"><a style="text-decoration:none;color: white;" href={{ route('posts.index',$post->tag) }}>{{$post->tag}}</a></td>
+                                    <td style="width: 120px;">{{$post->date}}</td>
+                                    <td style="text-align: left; overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">
+                                        <a  style=" text-decoration:none;color: white;" href={{route('posts.show',$post->id)}}>{{$post->title}}</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    @endif
+                    <br>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center ">
+                        <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index','全部公告')}} >查看全部公告</a>
+                    </div>
+                </div>
 
             </div>
         </header>

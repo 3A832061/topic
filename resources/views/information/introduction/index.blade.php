@@ -1,22 +1,5 @@
 @extends('layouts.partials.type')
 @section('title','管樂社')
-<style>
-    .button {
-        background-color: #04AA6D;
-        width: 120px;
-        border: none;
-        color: white;
-        padding: 5px;
-        text-align: center;
-
-
-        font-size: 16px;
-        margin: 4px 2px;
-    }
-
-    .button4 {border-radius: 12px;}
-
-</style>
 @section('index.con')
     <main class="flex-shrink-0">
         @include('layouts.nav')
@@ -27,17 +10,18 @@
                 <div class="row gx-5 justify-content-center">
 
                         <div class="text-center mb-5">
-                            <h1 class="fw-bolder" style="display: inline;">社團介紹</h1>
+                            <h1 class="fw-bolder" style="display: inline;">社團介紹
                             @if ( auth()->check())
                                 @if(auth()->user()->pos!='社員')
                                     @if(!$introduction)
-                                        <a class="button button4" href={{route('introduction.create')}}>新增</a>
+                                        <a class="btn btn-success" href={{route('introduction.create')}}>新增</a>
                                     @else
-                                        <a class="button button4" href={{ route('introduction.edit', $introduction->id) }}>修改</a>
+                                        <a class="btn btn-primary" href={{ route('introduction.edit', $introduction->id) }}>修改</a>
                                     @endif
                                 @endif
                             @endif
-                            <p>
+                            </h1>
+                            <br> <br>
                             @if($introduction)
                                 <p class="lead fw-normal text-muted mb-0">
                                     {{$introduction->content}}

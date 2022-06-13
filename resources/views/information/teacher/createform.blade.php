@@ -1,42 +1,43 @@
 @extends('layouts.partials.type')
 @section('form.css')
     <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
-
-    <style>
-        .row
-        {padding-left:50px !important;}
-        .mt-4
-        {padding-left: 35px;}
-        /*--*/
-        .form-control-itemname
-        {
-            display: inline;
-            width: 60%;
-            height: 34px;
-            padding: 6px 12px;
-            font-size: 14px;
-            line-height: 1.42857143;
-            color: #555;
-            background-color: #fff;
-            background-image: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-group
-        {
-            margin-bottom: 15px !important;
-        }
-        #layoutSidenav_content
-        {
-            margin-left:200px !important;
-            margin-bottom:100px !important;
-        }
-        pre {
-            white-space: nowrap;
-            word-wrap: break-word;
-            font-size: 15px !important;
-        }
-    </style>
+        <style>
+            .row
+            {padding-left:50px !important;}
+            .mt-4
+            {padding-left: 35px;}
+            /*--*/
+            .form-control-itemname
+            {
+                display: inline;
+                width: 60%;
+                height: 34px;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .form-group
+            {
+                margin-bottom: 15px !important;
+            }
+            #layoutSidenav_content
+            {
+                margin-left:200px !important;
+                margin-bottom:100px !important;
+            }
+            pre
+            {
+                white-space: nowrap;
+                word-wrap: break-word;
+                font-size: 15px !important;
+            }
+        </style>
+    </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
@@ -51,7 +52,7 @@
                 <p>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form action="{{route('teacher.store')}}" method="POST" role="form">
+                        <form action="{{route('teacher.store')}}" method="POST" role="form" id="form1">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="inline">指導老師名稱：</label>

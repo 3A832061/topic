@@ -32,7 +32,7 @@ class TeacherController extends Controller
                 'picture' => $_POST['url'],
                // 'user_id' => auth()->user()->id
                    ]);
-        return view('information.teacher.index');
+        return redirect()->route('teacher.show');
     }
 
     public function edit($id)

@@ -29,26 +29,23 @@
         }
         .navbar
         {
-            background-color:  #020c19 !important;
+
         }
         #myBtn
         {
-            background-color: #adc5ba;
+            /*background-color: #ccb;*/
         }
         #myBtn:hover
         {
-            background-color: #020c19;
+
             color:#ccc;
 
         }
         body
         {
-            background-color: #f7f0e8 :  !important;
+           /* background-color: #f7f0e8;  !important;*/
         }
-        .view-container-border
-        {
-            background-color: rgba(0,0,0,0.0) !important;
-        }
+
     </style>
 </head>
 <body class="d-flex flex-column h-100">
