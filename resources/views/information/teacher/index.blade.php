@@ -61,7 +61,6 @@
 
             <div class="row gx-5">
                 <div class="col-12"></div>
-                <h2>列表</h2>
                 <ul>
                     @foreach($teachers as $info)
                     <li>

@@ -191,6 +191,7 @@
                     <div class="container mt-3">
                         <h1 class="mt-4" id="customerz1">社費清單</h1>
                         <p>請選擇學期</p>
+                        <br>
                         <div style="overflow-x:auto;">
                         <table id="tab"  style="width: 100%;">
                             <thead>

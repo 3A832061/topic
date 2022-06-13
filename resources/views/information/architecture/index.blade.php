@@ -40,7 +40,7 @@
                             <h1 class="fw-bolder">組織架構
                                 @if ( auth()->check())
                                     @if(auth()->user()->pos!='社員')
-                                            <a class="button button4" href={{route('architectures.create')}}>新增</a>
+                                            <a class="btn btn-success" href={{route('architectures.create')}}>新增</a>
                                         @endif
                                 @endif
                             </h1>

@@ -16,14 +16,14 @@
 
             @if(auth()->user()->pos=="社長")
                 @auth()
-                    <h4>若是有社員忘記密碼，可以從輸入其信箱來修改密碼。</h4>
+                    <h4>若是有社員忘記密碼，可以輸入其信箱來幫他修改密碼。</h4>
                     <br>
                     <x-jet-label for="email" value="{{ __('信箱') }}" />
                     <x-jet-input id="eamil" class="block mt-1 w-full" type="email" name="email" value="{{auth()->user()->email}}" required autocomplete="new-password" />
                     @endauth
             @else
                 <div style="display: none;">
-                    <h4>若是有社員忘記密碼，可以從輸入其信箱來修改密碼。</h4>
+                    <h4>若是有社員忘記密碼，可以輸入其信箱來幫他修改密碼。</h4>
                     <br>
                     <x-jet-label for="email" value="{{ __('信箱') }}" />
                     <x-jet-input id="eamil" class="block mt-1 w-full" type="email" name="email" value="{{auth()->user()->email}}" required autocomplete="new-password" />

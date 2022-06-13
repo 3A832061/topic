@@ -101,7 +101,7 @@
                         <h1 class="fw-bolder">組織章程
                             @if ( auth()->check())
                                 @if(auth()->user()->pos!='社員')
-                                    <a class="button button4" href={{route('organizes.create')}}>新增</a>
+                                    <a class="btn btn-success" href={{route('organizes.create')}}>新增</a>
                                 @endif
                             @endif
                         </h1>
@@ -123,7 +123,7 @@
                                             $string = "<li>".$string."</li>";
                                             echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;text-align: left;padding-left: 50px;'>".$string."</pre>";
                                         }else{
-                                            echo "<p>無資料，請按修改新增注意事項</p>";
+                                            echo "<p>暫時無資料，請按修改，新增注意事項</p>";
                                         }
                                         ?>
                                     </span>

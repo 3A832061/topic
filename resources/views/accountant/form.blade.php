@@ -48,7 +48,9 @@
             margin:auto;
             width: 60%;
             background-color: #f2f2f2;
-            padding: 20px;
+            margin-bottom: 5%;
+            padding: 30px;
+            border-radius: 20px 20px 20px 20px;
         }
 
         @media screen and (max-width: 742px) {
@@ -65,8 +67,8 @@
 
     <h1 style="padding-top: 5%;text-align: center;">填寫收支</h1>
     <p>
-    <main class="content" >
 
+    <main class="content" >
         <iframe name="hidden_iframe" style="display: none;"></iframe>
         <form style="padding-bottom: 5%;" onsubmit="javascript:return success();" action="https://script.google.com/macros/s/AKfycbx7nsrV_jO3E8RNBS1_s-5hsvVj_dRBRwJfx1EEdmkgNSw7obF8Y1NtOeZUAyc332LE/exec" target="hidden_iframe" method="POST" role="form" >
             @csrf
@@ -150,10 +152,9 @@
             <div class="text-right">
                 <button type="submit" class="btn btn-primary" style="float: right;">提交</button>
             </div>
-
         </form>
-
     </main>
+
     @include('layouts.footer')
     <script>
         function success(){

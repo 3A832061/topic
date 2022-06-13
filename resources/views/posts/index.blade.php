@@ -102,7 +102,7 @@
     <!-- Page Content-->
     <section class="py-5">
         <div class="container mt-3">
-            <h2 align="center">{{$tag}}</h2>
+            <h1 align="center">{{$tag}}</h1>
             @if ( auth()->check())
                 @if(auth()->user()->pos!='社員')
                     <a class="btn btn-sm btn-success" href={{ route('posts.create') }}>新增公告</a>

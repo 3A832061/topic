@@ -80,29 +80,33 @@ function down() {
         <div style="padding-left: 10%;padding-top: 50px;">
             <div id="layoutSidenav_content">
                 <h2>歷屆社團評鑑紀錄 <a class="btn btn-sm btn-success" href={{ route('evaluations.create') }}>新增紀錄</a></h2>
-                @foreach($evaluations as $item)
-                <button class="accordion" onclick="down()">{{$item->title}}</button>
-                <div class="panel">
-                    <p></p>
-                    <p style="float: right;">
-                        <a class="btn btn-sm btn-primary"  href={{ route('evaluations.edit',$item->id) }}>修改</a>
-                    </p>
-                    <p>{{$item->remark}}</p>
-                    <p>
-                        <?php
-                            if($item->content){
-                                $string = $item->content;
-                                $string = str_replace("\n","\n</li><li>",$string);
-                                $string = "<li>".$string."</li>";
-                                echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;'>".$string."</pre>";
-                            }else{
-                                echo "<p>無資料，請按修改新增注意事項</p>";
-                            }
-                        ?>
-                    </p>
+                @if(count($evaluations)>0)
+                    @foreach($evaluations as $item)
+                    <button class="accordion" onclick="down()">{{$item->title}}</button>
+                    <div class="panel">
+                        <br>
+                        <p style="float: right;">
+                            <a class="btn btn-sm btn-primary"  href={{ route('evaluations.edit',$item->id) }}>修改</a>
+                        </p>
+                        <p>{{$item->remark}}</p>
+                        <p>
+                            <?php
+                                if($item->content){
+                                    $string = $item->content;
+                                    $string = str_replace("\n","\n</li><li>",$string);
+                                    $string = "<li>".$string."</li>";
+                                    echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;'>".$string."</pre>";
+                                }else{
+                                    echo "<p>無資料，請新增資料。</p>";
+                                }
+                            ?>
+                        </p>
 
-                </div>
-                @endforeach
+                    </div>
+                    @endforeach
+                @else
+                    <p>無資料，請新增資料。</p>
+                @endif
             </div>
         </div>
 
