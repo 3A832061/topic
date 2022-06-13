@@ -35,7 +35,7 @@
 @section('index.con')
     @include('layouts.nav')
     <main class="flex-shrink-0">
-        <div id="layoutSidenav_content">
+        <div id="" style="padding-left:-10% !important;">
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4" id="customerz1">樂譜缺頁申請單</h1>

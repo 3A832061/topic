@@ -1,5 +1,22 @@
 @extends('layouts.partials.type')
+
+
 @section('title','管樂社')
+<style>
+    div.col-lg-9
+    {
+        box-shadow: 0px 0px 2px #bbb;
+        border-radius: 10px;
+        color: #2a2a2a !important;
+        background-color: #f6f6f6;
+        border:1px solid #d7f0ed !important;
+        padding-top:20px;
+    }
+    body
+    {
+        background-color: #e5ece7 !important;
+    }
+</style>
 @section('index.con')
     <main class="flex-shrink-0">
         @include('layouts.nav')
@@ -35,9 +52,7 @@
 
                         <!-- Post content-->
                         <section class="mb-5" id="content" >
-                            <pre style=" white-space: pre-wrap;  word-wrap: break-word;">
-                                {{$post->content}}
-                            </pre>
+                            <pre style=" white-space: pre-wrap;  word-wrap: break-word;">{{$post->content}}</pre>
                         </section>
                         <!-- Preview image figure-->
                         <figure class='mb-4'>

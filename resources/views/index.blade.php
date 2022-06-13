@@ -26,6 +26,11 @@
             width: 100px;
 
         }
+        tbody
+        {
+            border: 1px solid #eaf0d7;
+            border-radius:  !important;
+        }
     </style>
     <script>
         //Get the button
@@ -60,7 +65,7 @@
                             @if(count($posts)==0)
                                 <p style="color: white">暫無公告</p>
                             @else
-                                <table style="margin: 0 auto; color: white;table-layout:fixed;" border="5" width="70%">
+                                <table style="margin: 0 auto; color: white;table-layout:fixed;"width="70%;">
                                     <tr>
                                         <td style="width: 120px;">類別</td>
                                         <td style="width: 120px;">日期</td>

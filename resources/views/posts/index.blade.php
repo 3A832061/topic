@@ -25,6 +25,7 @@
     .a:after {
         content: "\25BC";
     }
+
 </style>
 <script>
     function doubleCheck(){
@@ -100,7 +101,7 @@
     @include('layouts.nav')
     <main class="flex-shrink-0">
     <!-- Page Content-->
-    <section class="py-5">
+    <section class="py-5" >
         <div class="container mt-3">
             <h2 align="center">{{$tag}}</h2>
             @if ( auth()->check())
