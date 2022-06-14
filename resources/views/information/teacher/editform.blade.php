@@ -62,6 +62,11 @@
             }
         }
     </style>
+    <script>
+        function success(){
+            alert('成功修改');
+        }
+    </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
@@ -69,7 +74,7 @@
     <h1 style="padding-top: 5%;text-align: center;">修改老師資料</h1>
     <br>
     <div class="content">
-        <form action="{{route('teacher.update',$Information->id)}}" enctype="multipart/form-data"   method="POST" role="form">
+        <form action="{{route('teacher.update',$Information->id)}}" enctype="multipart/form-data"   method="POST" role="form" onsubmit="success()">
             @csrf
             <div class="form-group">
                 <label for="title" class="inline">指導老師名稱：</label>

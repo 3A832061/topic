@@ -77,12 +77,12 @@
                         <form action="{{route('award.store')}}" method="POST" role="form" onsubmit="success()">
                             @csrf
                             <div class="form-group">
-                                <label for="year" class="inline">年份：</label>
+                                <label for="year" class="inline">年份：*</label>
                                 <input name="year" class="form-control-itemname" placeholder="" required value="">
                             </div>
                             <div class="form-group" >
                                 <pre>
-                                <label for="content" class="inline">獎項內容：</label>
+                                <label for="content" class="inline">獎項內容：*</label>
                                     <input name="content" class="form-control-itemname" placeholder="" required value="">
                                 </pre>
                             </div>

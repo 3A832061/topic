@@ -68,7 +68,7 @@
                             @csrf
                             @method('POST')
                             <div class="form-group">
-                                <label for="type" class="inline">紀錄類型：</label>
+                                <label for="type" class="inline">>活動：：*</label>
                                 <select name="type" class="form-control-itemname">
                                     <option value="音樂會" selected>音樂會</option>
                                     <option value="迎新">迎新</option>
@@ -79,12 +79,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="content" class="inline" >註記內容：</label>
+                                <label for="content" class="inline" >註記內容：*</label>
                                 <input id="content" name="content" class="form-control-itemname" required value="{{old('content',$actives->content)}}" >
                             </div>
 
                             <div class="form-group">
-                                <label for="url" class="inline">照片：</label>
+                                <label for="url" class="inline">照片：*</label>
                                 <input type="file" name="picture" required accept="image/*" >
                             </div>
 

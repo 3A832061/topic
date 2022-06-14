@@ -58,6 +58,11 @@
             }
         }
     </style>
+    <script>
+        function success(){
+            window.alert("提交成功，感謝填寫");
+        }
+    </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
@@ -65,7 +70,7 @@
     <h1 style="padding-top: 5%;text-align: center;">修改簡介</h1>
     <br>
     <main class="content" >
-        <form action="{{route('introduction.update',$introduction->id)}}" method="POST" role="form" enctype="multipart/form-data">
+        <form action="{{route('introduction.update',$introduction->id)}}" method="POST" role="form" enctype="multipart/form-data" onsubmit="success()">
             @csrf
             <div class="form-group">
                 <label for="title" class="inline">標題：</label>

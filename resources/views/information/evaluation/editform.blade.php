@@ -59,8 +59,6 @@
     </style>
     <script>
         function success(){
-            var content = $("#form1 textarea").val();
-            content = content.replace(/\n|\r\n/g,"<br>");
             window.alert("提交成功，感謝填寫");
         }
     </script>
@@ -82,16 +80,16 @@
                     <h1 style="margin-top: 5%;text-align: center;">修改</h1>
 
                     <div class="content">
-                        <form id="form1" action="{{route('evaluations.update',$evaluation->id)}}" method="POST" role="form" enctype="multipart/form-data">
+                        <form id="form1" action="{{route('evaluations.update',$evaluation->id)}}" method="POST" role="form" enctype="multipart/form-data" onsubmit="success();">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="inline">學年：*</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入學年" value="{{ old('title',$evaluation->title) }}" required onsubmit="return success();">
+                                <input name="title" class="form-control-itemname"  placeholder="請輸入學年" value="{{ old('title',$evaluation->title) }}" required >
                             </div>
 
                             <div class="form-group">
                                 <label for="content" class="inline">社評連結：*</label>
-                                <input id="remark" name="remark" class="form-control-itemname" placeholder="請輸入社團評鑑的連結" value={{ old('content',$evaluation->remark) }}>
+                                <input id="remark" name="remark" class="form-control-itemname" required placeholder="請輸入社團評鑑的連結" value={{ old('content',$evaluation->remark) }}>
                             </div>
 
                             <div class="form-group">

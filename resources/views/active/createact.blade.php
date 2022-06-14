@@ -68,7 +68,7 @@
                         <form action="{{route('active.store')}}" method="POST" role="form" enctype="multipart/form-data" onsubmit="success()">
                             @csrf
                             <div class="form-group">
-                                <label for="type" class="inline">活動：</label>
+                                <label for="type" class="inline">活動：*</label>
                                 <select name="type" class="form-control-itemname">
                                     <option value="音樂會" selected>音樂會</option>
                                     <option value="迎新">迎新</option>
@@ -79,12 +79,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="content" class="inline" style="vertical-align: top;">註記內容：</label>
+                                <label for="content" class="inline" style="vertical-align: top;">註記內容：*</label>
                                 <input id="content" name="content" class="form-control-itemname" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="url" class="inline">照片：</label>
+                                <label for="url" class="inline">照片：*</label>
                                 <input type="file" name="picture" required accept="image/*">
                             </div>
 

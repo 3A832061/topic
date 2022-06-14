@@ -10,8 +10,7 @@
         /*--*/
         .form-control-itemname
         {
-            display: inline;
-            width: 60%;
+            width: 70%;
             height: 34px;
             padding: 6px 12px;
             font-size: 14px;
@@ -21,15 +20,41 @@
             background-image: none;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin-right: 5%;
+        }
+        .inline{
+            text-align: center;
+            padding: 12px 12px 12px 0;
+            width: 20%;
+
+            display: inline-block;
         }
         .form-group
         {
+            width: 100%;
+            float: left;
             margin-bottom: 15px !important;
         }
         #layoutSidenav_content
         {
             margin-left:200px !important;
             margin-bottom:100px !important;
+        }
+        .content {
+            margin:auto;
+            width: 60%;
+            background-color: #f2f2f2;
+            margin-bottom: 5%;
+            padding: 30px;
+            border-radius: 20px 20px 20px 20px;
+        }
+
+        @media screen and (max-width: 742px) {
+            .form-control-itemname, .inline {
+                text-align: left;
+                width: 100%;
+                margin-top: 0;
+            }
         }
     </style>
     <script>
@@ -71,16 +96,10 @@
         </div>
     @endif
     <!-- 公告-->
-    <main class="flex-shrink-0">
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">{{auth()->user()->name}} 的社員資料</h1>
-                </div>
-                <!-- /.row -->
-                <p>
-                <div class="row">
-                    <div class="col-lg-8">
+
+                    <h1 style="margin-top: 5%;text-align: center;">{{auth()->user()->name}} 的社員資料</h1>
+<br>
+                    <div class="content">
                         <form action={{ route('user.update',auth()->user()->id) }} method="POST" role="form" onsubmit="check()">
                             @csrf
                             @method('PUT')
@@ -124,11 +143,11 @@
                                 <?php
                                 $year=date_format(auth()->user()->created_at,'Y/m/d');
                                 ?>
-                                <label for="year" class="inline">入社年：{{$year}}</label>
+                                <label for="year" class="inline">入社年：</label><label>{{$year}}</label>
                             </div>
 
                             <div class="form-group">
-                                <label class="inline">職位： {{auth()->user()->pos}}</label>
+                                <label class="inline">職位：</label><label>{{auth()->user()->pos}}</label>
                             </div>
 
                             <div class="form-group">
@@ -138,17 +157,14 @@
 
                             <div class="form-group">
                                 <label for="pay" class="inline">社費繳交：</label>
-                                <input name="pay" type="checkbox"  value={{auth()->user()->pay}} {{ (auth()->user()->pay==1 )?'checked':'' }}  onclick="return false;" >
+                                <input name="pay" type="checkbox"  onclick="javascript: return false;" value={{auth()->user()->pay}} {{ (auth()->user()->pay==1 )?'checked':'' }}   >
                             </div>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary" onsubmit="inputcheck();">提交</button>
+                                <button style="float: right;" type="submit" class="btn btn-primary" onsubmit="inputcheck();">提交</button>
                             </div>
                         </form>
                     </div>
-                </div>
-            </main>
-        </div>
-    </main>
+
     @include('layouts.footer')
 @endsection

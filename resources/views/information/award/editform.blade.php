@@ -79,12 +79,12 @@
                             @csrf
                             @method('POST')
                             <div class="form-group">
-                                <label for="year" class="inline">年份：</label>
+                                <label for="year" class="inline">年份：*</label>
                                 <input name="year" class="form-control-itemname" required value="{{old('year',$awards->year)}}">
                             </div>
                             <div class="form-group" >
                                 <pre>
-                                <label for="content" class="inline">獎項內容：</label>
+                                <label for="content" class="inline">獎項內容：*</label>
                                     <input name="content" class="form-control-itemname" required value="{{old('content',$awards->content)}}">
                                 </pre>
                             </div>

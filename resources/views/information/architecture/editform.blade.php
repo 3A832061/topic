@@ -84,12 +84,12 @@
                         <form id="form1" action="{{route('architectures.update',$architecture->id)}}" method="POST" role="form" enctype="multipart/form-data" onsubmit="success();">
                             @csrf
                             <div class="form-group">
-                                <label for="title" class="inline">職位名稱：</label>
+                                <label for="title" class="inline">職位名稱：*</label>
                                 <input name="title" class="form-control-itemname" placeholder="請輸入職位" value="{{ old('title',$architecture->title) }}" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="content" class="inline" style="vertical-align: top;">權責：</label>
+                                <label for="content" class="inline" style="vertical-align: top;">權責：*</label>
                                 <textarea id="content" name="content" class="form-control-itemname" required style=" white-space: pre;height: 150px;" >{{ old('content',$architecture->content) }}</textarea>
                             </div>
 

@@ -63,6 +63,11 @@
             }
         }
     </style>
+    <script>
+        function success(){
+            alert('成功新增');
+        }
+    </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
@@ -71,7 +76,7 @@
     <h1 style="padding-top: 5%;text-align: center;">新增老師資料</h1>
     <br>
     <main class="content" >
-        <form action="{{route('teacher.store')}}" method="POST" enctype="multipart/form-data"  role="form">
+        <form action="{{route('teacher.store')}}" method="POST" enctype="multipart/form-data"  role="form" onsubmit="success()">
             @csrf
             <div class="form-group">
                 <label for="title" class="inline">指導老師名稱：</label>

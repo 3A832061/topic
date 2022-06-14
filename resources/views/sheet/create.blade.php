@@ -67,7 +67,7 @@
                             @csrf
                             <h6 style="font-weight: bolder; color:red;">*=必填</h6><div class='form-group'>
                                 <label for='name' class='inline'>曲目名稱*：</label>
-                                <input id='name' name='name'  class='form-control-itemname' placeholder='請輸入曲目原文名稱' value='' required>
+                                <input id='name' name='name'  class='form-control-itemname'  placeholder='請輸入曲目原文名稱' value='' required>
                             </div>
                             <div class='form-group'>
                                 <label for='type' class='inline'>曲目類型：</label>
