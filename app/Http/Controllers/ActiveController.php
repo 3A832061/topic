@@ -60,7 +60,7 @@ class ActiveController extends Controller
     }
 
     public function destroy($id){
-        $type=Active::find($id)
+        $type=Active::find($id);
         Active::destroy($id);
         return redirect()->route('active.show',$type->type);
     }
