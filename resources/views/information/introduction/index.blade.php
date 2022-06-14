@@ -36,7 +36,7 @@
                 @if($introduction)
                     <div class="row gx-5">
                         <div class="col-12">
-                            <img class="img-fluid rounded-3 mb-5" src={{asset('images/introduction/'.$introduction->picture)}} alt="..." />
+                            <img class="img-fluid rounded-3 mb-5" src={{ asset('images/introduction/'.$introduction->picture) }} alt="..." />
                         </div>
                     </div>
                 @endif

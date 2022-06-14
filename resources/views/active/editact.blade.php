@@ -86,7 +86,6 @@
                             <div class="form-group">
                                 <label for="url" class="inline">照片：</label>
                                 <input type="file" name="picture" required accept="image/*" >
-                                <input type="checkbox"  name="link_del" value="true"><label>刪除附件</label>
                             </div>
 
                             <div class="text-right">

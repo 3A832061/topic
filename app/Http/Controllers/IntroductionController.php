@@ -50,16 +50,13 @@ class IntroductionController extends Controller
             $imageName = time().'.'.$request->picture->extension();
             //把檔案存到公開的資料夾
             $request->picture->move(public_path('images/introduction'), $imageName);
-            $recipe->title=$request->title;
-            $recipe->content=$request->content;
-            $recipe->picture=$imageName;
+
+            $recipe->title = $request->title;
+            $recipe->content = $request->content;
+            $recipe->picture = $imageName;
             $recipe->save();
         }
-        else{
-                $recipe->update($request->all());
-        }
 
-        $recipe->update($request->all());
         return redirect()->route('introduction.show');
     }
 
