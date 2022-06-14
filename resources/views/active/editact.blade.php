@@ -74,7 +74,7 @@
                                     <option value="迎新"{{ ($actives->type=="迎新")?'selected':'' }}>迎新</option>
                                     <option value="社慶"{{ ($actives->type=="社慶")?'selected':'' }}>社慶</option>
                                     <option value="講座"{{ ($actives->type=="講座")?'selected':'' }}>講座</option>
-                                    <option value="寒/暑訓"{{ ($actives->type=="寒/暑訓")?'selected':'' }}>寒/暑訓</option>
+                                    <option value="寒訓或暑訓"{{ ($actives->type=="寒訓或暑訓")?'selected':'' }}>寒/暑訓</option>
                                     <option value="幹部訓練"{{ ($actives->type=="幹部訓練")?'selected':'' }}>幹部訓練</option>
                                 </select>
                             </div>

@@ -74,7 +74,7 @@
                                     <option value="迎新">迎新</option>
                                     <option value="社慶">社慶</option>
                                     <option value="講座">講座</option>
-                                    <option value="寒/暑訓">寒/暑訓</option>
+                                    <option value="寒訓或暑訓">寒/暑訓</option>
                                     <option value="幹部訓練">幹部訓練</option>
                                 </select>
                             </div>

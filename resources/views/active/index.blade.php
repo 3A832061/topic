@@ -167,6 +167,7 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
                         <div class="text-center mb-4" >
+                            @if($type!='寒訓或暑訓')
                             <h1 >{{$type}}紀錄
                                 @if( auth()->check())
                                     @if(auth()->user()->pos!='社員')
@@ -174,6 +175,15 @@
                                     @endif
                                 @endif
                             </h1>
+                            @else
+                                <h1 >寒/暑訓紀錄
+                                    @if( auth()->check())
+                                        @if(auth()->user()->pos!='社員')
+                                            <a class="btn btn-success " href="{{route('active.create')}}">新增</a>
+                                        @endif
+                                    @endif
+                                </h1>
+                            @endif
                         </div>
                     </div>
                 </div>
