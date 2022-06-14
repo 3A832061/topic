@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="content" class="inline" style="vertical-align: middle;">內容：</label>
+                                <label for="content" class="inline" style="vertical-align: top;">內容：</label>
                                 <textarea id="content" name="content" class="textarea"  rows="10" required style="overflow: auto;overflow-y: auto; white-space: pre;"></textarea>
                             </div>
 

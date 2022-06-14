@@ -69,27 +69,37 @@
     <h1 style="padding-top: 5%;text-align: center;">修改老師資料</h1>
     <br>
     <div class="content">
-        <form action="{{route('teacher.update',$Information->id)}}" method="POST" role="form">
+        <form action="{{route('teacher.update',$Information->id)}}" enctype="multipart/form-data"   method="POST" role="form">
             @csrf
             <div class="form-group">
                 <label for="title" class="inline">指導老師名稱：</label>
-                <input name="title" class="form-control-itemname" placeholder="" value="{{old('title',$Information->title)}}">
+                <input name="title" class="form-control-itemname" placeholder="" required value="{{old('title',$Information->title)}}">
             </div>
 
             <div class="form-group" >
                 <label for="content" class="inline">老師介紹：</label>
-                <textarea name="content" class="form-control-itemname" style=" white-space: pre;height: 150px;">{{old('content',$Information->content)}}</textarea>
+                <textarea name="content" class="form-control-itemname" required style=" white-space: pre;height: 150px;">{{old('content',$Information->content)}}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="url" class="inline">圖片網址：</label>
-                <input id="url" name="url" class="form-control-itemname"  placeholder="請輸入連結網址" value="{{old('picture',$Information->picture)}}">
+                <label for="picture" class="inline">附件</label>
+                <input type="file" name="picture" accept="image/*">
+                <input type="checkbox"  name="link_del" value="true"><label>刪除附件</label>
             </div>
 
             <div class="text-right">
                 <button style="float: right;" type="submit" class="btn btn-primary">儲存</button>
             </div>
         </form>
+
+        <h3>目前附件：</h3>
+        <figure class='mb-4'>
+            @if($Information->picture!=null)
+                <img style="max-width: 30%;" class='img-fluid rounded' src={{ asset("images/teachers/".$Information->picture) }} alt='...' />
+            @else
+                <p style="padding-left: 80px;">無附件</p>
+            @endif
+        </figure>
     </div>
 
     @include('layouts.footer')

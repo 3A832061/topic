@@ -22,15 +22,15 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         if($request->hasFile('picture')) {
-            $imageName = time().'.'.$request->link->extension();
+            $imageName = time().'.'.$request->picture->extension();
             //把檔案存到公開的資料夾
-            $request->link->move(public_path('images/teachers'), $imageName);
+            $request->picture->move(public_path('images/teachers'), $imageName);
             DB::table('information')->insert(
                 [
                     'title'=> $_POST['title'],
                     'type' => "teacher",
                     'content' => $_POST['content'],
-                    'picture' => $imageName
+                    'picture' => $imageName,
                 ]);
         }
         else{
@@ -38,7 +38,7 @@ class TeacherController extends Controller
                 [
                     'title'=> $_POST['title'],
                     'type' => "teacher",
-                    'content' => $_POST['content']
+                    'content' => $_POST['content'],
                 ]);
         }
 
@@ -56,8 +56,29 @@ class TeacherController extends Controller
     public function update(Request $request,$id)
     {
         //
-        $teachers=Information::find($id);
-        $teachers->update($request->all());
+        $recipe=Information::find($id);
+
+        if($request->hasFile('picture')) {
+            $imageName = time().'.'.$request->picture->extension();
+            //把檔案存到公開的資料夾
+            $request->picture->move(public_path('images/teachers'), $imageName);
+
+            $recipe->title=$request->title;
+            $recipe->content=$request->content;
+            $recipe->picture=$imageName;
+            $recipe->save();
+        }
+        else{
+            if($request->link_del!=null) {
+                $recipe->update($request->all());
+                $recipe->picture=null;
+                $recipe->save();
+            }
+            else{
+                $recipe->update($request->all());
+            }
+        }
+        $tag='全部公告';
         return redirect()->route('teacher.show');
     }
 

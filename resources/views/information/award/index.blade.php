@@ -76,15 +76,13 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
                         <div class="text-center mb-4" style="padding-top: 70px;">
-                            <h1 class="fw-bolder">獎項紀錄</h1>
-
-
-                    @if(auth()->check())
-                                @if(auth()->user()->pos!='社員')
-                            <a class="btn btn-success flex-shrink-0" href="{{route('award.create')}}">新增獎項</a>
-                        @endif
-                    @endif
-
+                            <h1 class="fw-bolder">獎項紀錄
+                                @if(auth()->check())
+                                    @if(auth()->user()->pos!='社員')
+                                        <a class="btn btn-success flex-shrink-0" href="{{route('award.create')}}">新增獎項</a>
+                                    @endif
+                                @endif
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -122,7 +120,7 @@
                                                         @if(auth()->user()->pos!='社員')
 
                                                     <a class='btn btn-outline-dark flex-shrink-0' href='{{route('award.edit',$id)}}'>修改</a>
-                                                    <form action='{{ route('award.destroy',$id) }}' method='POST' style='display: inline;'>
+                                                    <form action='{{ route('award.destroy',$id) }}' method='POST' style='display: inline;' onsubmit="javascript:return doubleCheck();">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button  class='btn btn-outline-danger flex-shrink-0' type='submit'>刪除</button>
@@ -158,6 +156,15 @@
                     content.style.display = "block";
                 }
             });
+        }
+
+        function doubleCheck(){
+            var msg = "您真的確定要刪除嗎？\n\n請確認！";
+            if (confirm(msg)==true){
+                return true;
+            }else{
+                return false;
+            }
         }
     </script>
     @include('layouts.footer')

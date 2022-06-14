@@ -71,7 +71,7 @@
     <h1 style="padding-top: 5%;text-align: center;">新增老師資料</h1>
     <br>
     <main class="content" >
-        <form action="{{route('teacher.store')}}" method="POST" role="form">
+        <form action="{{route('teacher.store')}}" method="POST" enctype="multipart/form-data"  role="form">
             @csrf
             <div class="form-group">
                 <label for="title" class="inline">指導老師名稱：</label>
@@ -80,14 +80,14 @@
 
             <div class="form-group" >
                 <pre>
-                <label for="content" class="inline">老師介紹：</label>
-                    <textarea name="content" class="form-control-itemname" required style="height: 150px;"></textarea>
+                <label for="content" class="inline" style="vertical-align: top;">老師介紹：</label>
+                    <textarea name="content" class="form-control-itemname" required style="height: 150px; white-space: pre;"></textarea>
                 </pre>
             </div>
 
             <div class="form-group">
-                <label for="url" class="inline">附件</label>
-                <input type="file" name="url" accept="image/*">
+                <label for="picture" class="inline">附件</label>
+                <input type="file" name="picture" accept="image/*">
             </div>
 
             <div class="text-right">

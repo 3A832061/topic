@@ -10,8 +10,7 @@
         /*--*/
         .form-control-itemname
         {
-            display: inline;
-            width: 60%;
+            width: 70%;
             height: 34px;
             padding: 6px 12px;
             font-size: 14px;
@@ -21,9 +20,19 @@
             background-image: none;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin-right: 5%;
+        }
+        .inline{
+            text-align: center;
+            padding: 12px 12px 12px 0;
+            width: 20%;
+
+            display: inline-block;
         }
         .form-group
         {
+            width: 100%;
+            float: left;
             margin-bottom: 15px !important;
         }
         #layoutSidenav_content
@@ -36,42 +45,52 @@
             word-wrap: break-word;
             font-size: 15px !important;
         }
+        .content {
+            margin:auto;
+            width: 60%;
+            background-color: #f2f2f2;
+            margin-bottom: 5%;
+            padding: 30px;
+            border-radius: 20px 20px 20px 20px;
+        }
+
+        @media screen and (max-width: 742px) {
+            .form-control-itemname, .inline {
+                text-align: left;
+                width: 100%;
+                margin-top: 0;
+            }
+        }
     </style>
+    <script>
+        function success(){
+            alert('成功新增');
+        }
+    </script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
     <!-- 獎項-->
-    <main class="flex-shrink-0">
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">新增獎項</h1>
-                </div>
-                <!-- /.row -->
-                <p>
-                <div class="row">
-                    <div class="col-lg-8">
-                        <form action="{{route('award.store')}}" method="POST" role="form">
+
+                    <h1 style="text-align: center;margin-top: 5%;">新增獎項</h1>
+<div class="content">
+                        <form action="{{route('award.store')}}" method="POST" role="form" onsubmit="success()">
                             @csrf
                             <div class="form-group">
                                 <label for="year" class="inline">年份：</label>
-                                <input name="year" class="form-control-itemname" placeholder="" value="">
+                                <input name="year" class="form-control-itemname" placeholder="" required value="">
                             </div>
                             <div class="form-group" >
                                 <pre>
                                 <label for="content" class="inline">獎項內容：</label>
-                                    <input name="content" class="form-control-itemname" placeholder=""
-                                           value="">
+                                    <input name="content" class="form-control-itemname" placeholder="" required value="">
                                 </pre>
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">儲存</button>
+                                <button style="float: right;" type="submit" class="btn btn-primary">儲存</button>
                             </div>
                         </form>
                     </div>
-                </div>
-            </main>
-        </div>
-    </main>
+
     @include('layouts.footer')
 @endsection

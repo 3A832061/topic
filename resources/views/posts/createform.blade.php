@@ -117,7 +117,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="content" class="inline">內容：*</label>
+                            <label for="content" class="inline" style="vertical-align: top;">內容：*</label>
                             <textarea id="content" name="content" class="form-control-itemname" rows="10" style="height: 150px; white-space: pre;" required>{{ old('content') }}</textarea>
                         </div>
 

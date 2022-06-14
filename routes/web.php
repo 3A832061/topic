@@ -100,17 +100,6 @@
         Route::get('{id}/edit',[AttendController::class,'edit'])->name('attends.edit');
     });
 
-    Route::prefix('member')->group(function(){
-        Route::get('/',[UserController::class,'edit'])->name('user.edit');
-        Route::post('/{id}',[UserController::class,'update'])->name('user.update');
-    });
-
-    /*未完成
-    Route::prefix('equipment')->group(function(){
-        Route::get('/',[EquipmentController::class,'index'])->name('attends.index'); //list
-        Route::get('/',[EquipmentController::class,''])->name('attends.create');
-        Route::get('/',[EquipmentController::class,'edit'])->name('attends.edit');
-    });*/
 
     Route::prefix('recruit')->group(function(){
         Route::get('/',[RecruitController::class,'index'])->name('recruit.index');
@@ -202,7 +191,6 @@ Route::prefix('sheetrequ')->group(function(){
     Route::post('{id}',[SheetRequController::class,'update'])->name('sheetrequest.update');
     Route::delete('{id}',[SheetRequController::class,'destroy'])->name('sheetrequest.destroy');
 });
-
 
 
 Route::prefix('attend')->group(function(){

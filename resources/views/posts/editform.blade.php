@@ -67,7 +67,11 @@
             }
         }
     </style>
-
+<script>
+    function success(){
+        alert('成功修改');
+    }
+</script>
 @endsection
 @section('index.con')
     @include('layouts.nav')
@@ -85,7 +89,7 @@
 
     <h1 style="text-align: center;margin-top: 5%; margin-bottom: 30px;">修改公告</h1>
     <div class="content">
-                <form action="{{route('posts.update',$post->id)}}" method="POST" role="form" enctype="multipart/form-data">
+                <form action="{{route('posts.update',$post->id)}}" method="POST" role="form" enctype="multipart/form-data" onsubmit="success()">
                     @csrf
                     <div class="form-group">
                         <label for="title" class="inline">標題：*</label>
@@ -106,7 +110,7 @@
 
                     <div class="form-group">
                         <label for="content" class="inline">內容：*</label>
-                        <textarea id="content" name="content" class="form-control-itemname" style=" white-space: pre;height: 150px;" rows="7">{{old('content',$post->content)}}</textarea>
+                        <textarea id="content" name="content" class="form-control-itemname" style=" white-space: pre;height: 150px;" >{{old('content',$post->content)}}</textarea>
                     </div>
 
                     <div class="form-group">
@@ -115,7 +119,7 @@
                         <input type="checkbox"  name="link_del" value="true"><label>刪除附件</label>
                     </div>
 
-                    <div   style="text-align:right;">
+                    <div style="text-align:right;">
                         <button type="submit" class="btn btn-primary">提交</button>
                     </div>
                 </form>

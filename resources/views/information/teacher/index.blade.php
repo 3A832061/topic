@@ -85,13 +85,12 @@
                                         @endif
                                     @endif
                                 </h2>
-
                             <pre>{{$info->content}}</pre>
                         </section>
                         <div class="col-3">
-
-                                <img class="img-fluid rounded-3" src="{{$info->picture}}"  />
-
+                            @if($info->picture)
+                                <img class="img-fluid rounded-3" src={{asset("images/teachers/".$info->picture)}} />
+                            @endif
                         </div>
                         </div>
                     <hr>
