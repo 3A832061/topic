@@ -85,7 +85,7 @@
 
                             <div class="form-group">
                                 <label for="url" class="inline">照片：*</label>
-                                <input type="file" name="picture" required accept="image/*" >
+                                <input type="file" name="picture" accept="image/*" >
                             </div>
 
                             <div class="text-right">
