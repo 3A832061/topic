@@ -28,7 +28,7 @@ class ActiveController extends Controller
                     'updated_at'=>now()
                 ]);
         }
-        return redirect()->route('active.show','音樂會');
+        return redirect()->route('active.show',$request->type);
     }
 
     public function update(Request $request,$id){
@@ -44,7 +44,7 @@ class ActiveController extends Controller
             $request->updated_at=now();
             $recipe->save();
         }
-        return redirect()->route('active.show','音樂會');
+        return redirect()->route('active.show',$request->type);
     }
 
     public function create()
@@ -60,8 +60,9 @@ class ActiveController extends Controller
     }
 
     public function destroy($id){
+        $type=Active::find($id)
         Active::destroy($id);
-        return redirect()->route('active.show','音樂會');
+        return redirect()->route('active.show',$type->type);
     }
 
 }
