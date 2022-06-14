@@ -61,8 +61,8 @@
 
         /* Number text (1/3 etc) */
         .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
+
+            font-size: 20px;
             padding: 8px 12px;
             position: absolute;
             top: 0;
@@ -133,12 +133,7 @@
         {
             color:#aaa !important;
         }
-        .btn
-        {
 
-            opacity:0.5;
-
-        }
         .btn:hover  /*#75799想靠右!&COLOR*/
         {
             opacity:1.0;
@@ -172,34 +167,38 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
                         <div class="text-center mb-4" >
-                            <h1 class="fw-bolder">活動紀錄- </h1>
+                            <h1 >{{$type}}紀錄
+                                @if( auth()->check())
+                                    @if(auth()->user()->pos!='社員')
+                                        <a class="btn btn-success " href="{{route('active.create')}}">新增</a>
+                                    @endif
+                                @endif
+                            </h1>
                         </div>
                     </div>
                 </div>
 
                 <p>
-                <div class=" col-sm-auto " style="">
-                    @if( auth()->check())
-                        @if(auth()->user()->pos!='社員')
-                            <a class="btn btn-success flex-shrink-0" href="{{route('active.create')}}">新增</a>
-                        @endif
-                    @endif
+
                 <div class="container" style="">
                     <!-- Full-width images with number text -->
                     <div class="containermage">
                         <?php $x=0; $sum=0; foreach($actives as $active) {$sum+=1;}?>
                     @foreach($actives as $active)
                     <div class="mySlides">
-                       <div class="numbertext"> <?php $x+=1; echo $x."/".$sum."｜"; ?>{{$active->content}}
-                                <div class="show">
+                       <div class="numbertext"> <?php $x+=1; echo $x."/".$sum."｜"; ?>{{$active->type}}-{{$active->content}}
                                     @if ( auth()->check())
                                         @if(auth()->user()->pos!='社員')
                                             <a class="btn btn-primary flex-shrink-0" href="{{route('active.edit',$active->id)}}">修改</a>
+                                           <form action="{{ route('active.destroy',$active->id) }}" method="POST" style="display: inline" onsubmit="javascript:return doubleCheck();">
+                                               @method('DELETE')
+                                               @csrf
+                                               <button style="display: inline;" class="btn  btn-danger" type="submit" >刪除</button>
+                                           </form>
                                         @endif
                                     @endif
-                                </div>
                         </div>
-                        <img src="{{$active->url}}" class="image">
+                        <img  class="image" src={{asset("images/actives/".$active->url)}}>
                     </div>
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -217,11 +216,23 @@
                 </div>
 
                 </div>
-            </div>
+
         </section>
     </main>
 
     <script>
+
+        function doubleCheck(){
+            var msg = "您真的確定要刪除嗎？\n\n請確認！";
+            if (confirm(msg)==true){
+                return true;
+                alert('刪除成功');
+            }
+            else{
+                return false;
+            }
+        }
+
         let slideIndex = 1;
         showSlides(slideIndex);
 
