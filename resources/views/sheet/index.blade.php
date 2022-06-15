@@ -47,13 +47,14 @@
                     <div class="row gx-3 justify-content-center">
                         <div class="col-lg-10 col-xl-7">
                             <div class="text-center">
-                                <h1 class="fw-bolder">社內樂譜清單一覽</h1>
+                                <h1 style="margin-top: 5%;text-align: center;"><b>社內樂譜清單一覽</b>
                                 @if ( auth()->check())
                                     @if((auth()->user()->pos=='社長')||(auth()->user()->pos=='譜務'))
-                                        <a class="btn btn-outline-danger btn-lg px-4" href={{route('sheet.create')}} >新增曲目</a>
+                                        <a class="btn btn-sm btn-outline-danger" href={{route('sheet.create')}} >新增曲目</a>
                                     @endif
                                 @endif
-                                <p>
+                                </h1>
+                                <br>
                             </div>
                         </div>
                     </div>
@@ -82,7 +83,7 @@
                                     <th scope="col">登錄者</th>
                                     @if ( auth()->check())
                                         @if((auth()->user()->pos=='社長')||(auth()->user()->pos=='譜務'))
-                                    <th scope="col"></th>
+                                            <th scope="col"></th>
                                         @endif
                                     @endif
                                 </tr>

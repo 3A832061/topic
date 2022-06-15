@@ -102,7 +102,7 @@
                             }
                             echo"</td>";
                             echo "<td>";
-                            if(($a->check)==1)
+                            if(($a->check1)==1)
                             {
                                 echo "<font style='color:green; font-weight: bolder; text-align: center !important;'>✓";
                             }
