@@ -92,7 +92,7 @@
                             echo "<td>".$a->authorize."</td>";
                             echo "<td>".$a->year."</td>";
                             echo "<td>";
-                            if(($a->change)==1)
+                            if(($a->change1)==1)
                             {
                                 echo "<font style='color:red; font-weight: bolder; text-align: center !important;'>✗";
                             }

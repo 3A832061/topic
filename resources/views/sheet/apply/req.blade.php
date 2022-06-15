@@ -65,7 +65,7 @@
                     </h1>
     <br>
                     <div class="content">
-                        <form action="{{route('sheetrequest.store')}}" target="hidden_iframe" method="POST" role="form" onsubmit="success()">
+                        <form action="{{route('sheetrequest.store')}}" method="POST" role="form" onsubmit="success()">
                             @csrf
                             <div class="form-group">
                                 <label for="mem_name" class="inline">申請人姓名：*</label>

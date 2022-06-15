@@ -126,19 +126,21 @@
                                         echo"</td>";
                                         echo "<td>".$a->remark."</td>";
                                         echo "<td>".$a->pin."</td>";?>
+
                                          @if ( auth()->check())
-                                     @if((auth()->user()->pos=='社長')||(auth()->user()->pos=='譜務'))
-                                            <td style="width:15%"><a class='btn btn-outline-dark flex-shrink-0' href='{{route('sheet.edit',$a->id)}}' style=' white-space:nowrap;'>編輯</a>
+                                              @if((auth()->user()->pos=='社長')||(auth()->user()->pos=='譜務'))
+                                                 <td style="width:15%">
+                                                     <a class='btn btn-outline-dark flex-shrink-0' href='{{route('sheet.edit',$a->id)}}' style=' white-space:nowrap;'>編輯</a>
 
-                                                        {{ route('sheet.destroy',$a->id) }}' method='POST' style='display: inline; white-space:nowrap;' onSubmit="return CheckForm();">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button  class='btn btn-outline-danger flex-shrink-0' type='submit'>刪除</button>
-                                            </form>
+                                                      <form action="{{ route('sheet.destroy',$a->id) }}" method='POST' style='display: inline; white-space:nowrap;' onSubmit="return CheckForm();">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button  class='btn btn-outline-danger flex-shrink-0' type='submit'>刪除</button>
+                                                    </form>
+                                                 </td>
+                                                @endif
+                                            @endif
 
-                                    @endif
-                                @endif
-                                            </td>
                                         <?php
 
                                         echo "</tr>";
