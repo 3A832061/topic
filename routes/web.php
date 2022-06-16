@@ -102,100 +102,94 @@
 
 
 
-    /*未完成
-    Route::prefix('equipment')->group(function(){
-        Route::get('/',[EquipmentController::class,'index'])->name('attends.index'); //list
-        Route::get('/',[EquipmentController::class,''])->name('attends.create');
-        Route::get('/',[EquipmentController::class,'edit'])->name('attends.edit');
-    });*/
-
-
     Route::prefix('accountant')->group(function(){
         Route::get('/',[AccountantController::class,'create'])->name('accountant.create');
         Route::get('/show',[AccountantController::class,'show'])->name('accountant.show');
     });
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
+    Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']);
 
 
-Route::get('/',[HomeController::class,'index'])->name('index');
+    Route::get('/',[HomeController::class,'index'])->name('index');
 
-Route::prefix('calendar')->group(function(){
-    Route::get('',[CalendarController::class,'index'])->name('calendars.index'); //顯示行事曆
-    Route::get('/create/{month?}',[CalendarController::class,'create'])->name('calendar.create')->middleware('auth');
-});
+    Route::prefix('calendar')->group(function(){
+        Route::get('',[CalendarController::class,'index'])->name('calendars.index'); //顯示行事曆
+        Route::get('/create/{month?}',[CalendarController::class,'create'])->name('calendar.create')->middleware('auth');
+    });
 
-Route::prefix('posts')->group(function(){
-    Route::get('/tag/{tag?}',[PostController::class,'index'])->name('posts.index');
-    Route::get('/create',[PostController::class,'create'])->name('posts.create')->middleware('auth');
-    Route::post('/',[PostController::class,'store'])->name('posts.store')->middleware('auth');
-    Route::get('/edit/{id}',[PostController::class,'edit'])->name('posts.edit')->middleware('auth');
-    Route::post('/{id}',[PostController::class,'update'])->name('posts.update')->middleware('auth');
-    Route::delete('/{id}',[PostController::class,'destroy'])->name('posts.destroy')->middleware('auth');
-    Route::get('/show/{id}',[PostController::class,'show'])->name('posts.show');
-});
+    Route::prefix('posts')->group(function(){
+        Route::get('/tag/{tag?}',[PostController::class,'index'])->name('posts.index');
+        Route::get('/create',[PostController::class,'create'])->name('posts.create')->middleware('auth');
+        Route::post('/',[PostController::class,'store'])->name('posts.store')->middleware('auth');
+        Route::get('/edit/{id}',[PostController::class,'edit'])->name('posts.edit')->middleware('auth');
+        Route::post('/{id}',[PostController::class,'update'])->name('posts.update')->middleware('auth');
+        Route::delete('/{id}',[PostController::class,'destroy'])->name('posts.destroy')->middleware('auth');
+        Route::get('/show/{id}',[PostController::class,'show'])->name('posts.show');
+    });
 
-Route::prefix('teacher')->group(function(){
-    Route::get('/',[TeacherController::class,'index'])->name('teacher.show');
-    Route::get('/create',[TeacherController::class,'create'])->name('teacher.create')->middleware('auth');
-    Route::post('/',[TeacherController::class,'store'])->name('teacher.store')->middleware('auth');
-    Route::get('{id}/edit',[TeacherController::class,'edit'])->name('teacher.edit')->middleware('auth');
-    Route::post('{id}',[TeacherController::class,'update'])->name('teacher.update')->middleware('auth');
-});
+    Route::prefix('teacher')->group(function(){
+        Route::get('/',[TeacherController::class,'index'])->name('teacher.show');
+        Route::get('/create',[TeacherController::class,'create'])->name('teacher.create')->middleware('auth');
+        Route::post('/',[TeacherController::class,'store'])->name('teacher.store')->middleware('auth');
+        Route::get('{id}/edit',[TeacherController::class,'edit'])->name('teacher.edit')->middleware('auth');
+        Route::post('{id}',[TeacherController::class,'update'])->name('teacher.update')->middleware('auth');
+    });
 
-Route::prefix('introduction')->group(function(){
-    Route::get('/',[IntroductionController::class,'index'])->name('introduction.show');
-    Route::get('/create',[IntroductionController::class,'create'])->name('introduction.create')->middleware('auth');
-    Route::post('/',[IntroductionController::class,'store'])->name('introduction.store')->middleware('auth');
-    Route::get('{id}/edit',[IntroductionController::class,'edit'])->name('introduction.edit')->middleware('auth');
-    Route::post('{id}',[IntroductionController::class,'update'])->name('introduction.update')->middleware('auth');
-});
+    Route::prefix('introduction')->group(function(){
+        Route::get('/',[IntroductionController::class,'index'])->name('introduction.show');
+        Route::get('/create',[IntroductionController::class,'create'])->name('introduction.create')->middleware('auth');
+        Route::post('/',[IntroductionController::class,'store'])->name('introduction.store')->middleware('auth');
+        Route::get('{id}/edit',[IntroductionController::class,'edit'])->name('introduction.edit')->middleware('auth');
+        Route::post('{id}',[IntroductionController::class,'update'])->name('introduction.update')->middleware('auth');
+    });
 
-Route::prefix('award')->group(function(){
-    Route::get('/',[AwardController::class,'index'])->name('award.show');
-    Route::get('/create',[AwardController::class,'create'])->name('award.create')->middleware('auth');
-    Route::post('/',[AwardController::class,'store'])->name('award.store')->middleware('auth');
-    Route::get('{id}/edit',[AwardController::class,'edit'])->name('award.edit')->middleware('auth');
-    Route::post('{id}',[AwardController::class,'update'])->name('award.update')->middleware('auth');
-    Route::delete('{id}',[AwardController::class,'destroy'])->name('award.destroy')->middleware('auth');
-});
+    Route::prefix('award')->group(function(){
+        Route::get('/',[AwardController::class,'index'])->name('award.show');
+        Route::get('/create',[AwardController::class,'create'])->name('award.create')->middleware('auth');
+        Route::post('/',[AwardController::class,'store'])->name('award.store')->middleware('auth');
+        Route::get('{id}/edit',[AwardController::class,'edit'])->name('award.edit')->middleware('auth');
+        Route::post('{id}',[AwardController::class,'update'])->name('award.update')->middleware('auth');
+        Route::delete('{id}',[AwardController::class,'destroy'])->name('award.destroy')->middleware('auth');
+    });
 
-Route::prefix('active')->group(function(){
-    Route::get('show/{show}',[ActiveController::class,'show'])->name('active.show');
-    Route::get('create',[ActiveController::class,'create'])->name('active.create')->middleware('auth');
-    Route::post('/',[ActiveController::class,'store'])->name('active.store')->middleware('auth');
-    Route::get('{id}/edit',[ActiveController::class,'edit'])->name('active.edit')->middleware('auth');
-    Route::post('{id}',[ActiveController::class,'update'])->name('active.update')->middleware('auth');
-    Route::delete('{id}',[ActiveController::class,'destroy'])->name('active.destroy')->middleware('auth');
-});
+    Route::prefix('active')->group(function(){
+        Route::get('show/{show}',[ActiveController::class,'show'])->name('active.show');
+        Route::get('create',[ActiveController::class,'create'])->name('active.create')->middleware('auth');
+        Route::post('/',[ActiveController::class,'store'])->name('active.store')->middleware('auth');
+        Route::get('{id}/edit',[ActiveController::class,'edit'])->name('active.edit')->middleware('auth');
+        Route::post('{id}',[ActiveController::class,'update'])->name('active.update')->middleware('auth');
+        Route::delete('{id}',[ActiveController::class,'destroy'])->name('active.destroy')->middleware('auth');
+    });
 
 
-Route::prefix('sheet')->group(function(){
-    Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show')->middleware('auth');
-    Route::get('/past',[SheetMusicController::class,'past'])->name('sheet.past')->middleware('auth');
-    Route::get('/past/search',[SheetMusicController::class,'search'])->name('sheet.search')->middleware('auth');
-    Route::post('/past{id}',[SheetMusicController::class,'check'])->name('sheet.check')->middleware('auth');
-    Route::post('/',[SheetMusicController::class,'store'])->name('sheet.store')->middleware('auth');
-    Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create')->middleware('auth');
-    Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit')->middleware('auth');
-    Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update')->middleware('auth');
-    Route::delete('{id}',[SheetMusicController::class,'destroy'])->name('sheet.destroy')->middleware('auth');
-});
+    Route::prefix('sheet')->group(function(){
+        Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show')->middleware('auth');
+        Route::get('/past',[SheetMusicController::class,'past'])->name('sheet.past')->middleware('auth');
+        Route::get('/past/search',[SheetMusicController::class,'search'])->name('sheet.search')->middleware('auth');
+        Route::post('/past{id}',[SheetMusicController::class,'check'])->name('sheet.check')->middleware('auth');
+        Route::post('/',[SheetMusicController::class,'store'])->name('sheet.store')->middleware('auth');
+        Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create')->middleware('auth');
+        Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit')->middleware('auth');
+        Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update')->middleware('auth');
+        Route::delete('{id}',[SheetMusicController::class,'destroy'])->name('sheet.destroy')->middleware('auth');
+    });
 
-Route::prefix('sheetrequ')->group(function(){
-    Route::get('/',[SheetRequController::class,'index'])->name('sheetrequest.show')->middleware('auth'); //檢視all
-    Route::get('/create',[SheetRequController::class,'create'])->name('sheetrequest.create')->middleware('auth'); //新增
-    Route::post('/',[SheetRequController::class,'store'])->name('sheetrequest.store')->middleware('auth');
-    Route::get('{id}/edit',[SheetRequController::class,'edit'])->name('sheetrequest.edit')->middleware('auth'); //編輯狀態
-    Route::post('{id}',[SheetRequController::class,'update'])->name('sheetrequest.update')->middleware('auth');
-    Route::delete('{id}',[SheetRequController::class,'destroy'])->name('sheetrequest.destroy')->middleware('auth');
-});
+    Route::prefix('sheetrequ')->group(function(){
+        Route::get('/',[SheetRequController::class,'index'])->name('sheetrequest.show')->middleware('auth'); //檢視all
+        Route::get('/create',[SheetRequController::class,'create'])->name('sheetrequest.create')->middleware('auth'); //新增
+        Route::post('/',[SheetRequController::class,'store'])->name('sheetrequest.store')->middleware('auth');
+        Route::get('{id}/edit',[SheetRequController::class,'edit'])->name('sheetrequest.edit')->middleware('auth'); //編輯狀態
+        Route::post('{id}',[SheetRequController::class,'update'])->name('sheetrequest.update')->middleware('auth');
+        Route::delete('{id}',[SheetRequController::class,'destroy'])->name('sheetrequest.destroy')->middleware('auth');
+    });
+
 
 
     Route::prefix('attend')->group(function(){
         Route::get('/',[AttendController::class,'index'])->name('attends.index')->middleware('auth'); //list
         Route::get('/create',[AttendController::class,'create'])->name('attends.create')->middleware('auth');
     });
+
 
 
     /*修改社員資料*/

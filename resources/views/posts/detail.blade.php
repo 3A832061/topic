@@ -1,16 +1,12 @@
 @extends('layouts.partials.type')
-
-
 @section('title','管樂社')
 <style>
-
     .content {
         margin: auto;
         width: 50%;
         margin-top: 5%;
         margin-bottom: 5%;
     }
-
 
     @media screen and (max-width: 830px) {
         .content {
@@ -28,14 +24,13 @@
                         @if(auth()->user()->pos!='社員')
                             <a style="display: block;width: 90px;"  class="btn btn-primary" href={{route('posts.create')}} >新增公告</a>
                             <a style="display: block;width: 90px;"  class="btn  btn-success" href={{route('posts.edit',$post->id)}}>修改公告</a>
-                            <form action="{{ route('posts.destroy',$post->id) }}" method="POST" style="display: inline">
+                            <form action="{{ route('posts.destroy',$post->id) }}" method="POST" style="display: inline" onsubmit="javascript:return doubleCheck();">
                                 @method('DELETE')
                                 @csrf
-                                <button  style="display: block;width: 90px;"  class="btn  btn-danger" type="submit" onclick="javascript:return doubleCheck();">刪除</button>
+                                <button  style="display: block;width: 90px;"  class="btn  btn-danger" type="submit" >刪除</button>
                             </form>
                         @endif
                     @endif
-
                 </div>
             </article>
 

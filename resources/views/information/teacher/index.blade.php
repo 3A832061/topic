@@ -47,12 +47,13 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center mb-5">
-                        <h1 class="fw-bolder">指導老師</h1>
+                        <h1 class="fw-bolder">指導老師
                         @if ( auth()->check())
                             @if(auth()->user()->pos!='社員')
                                 <a class="btn btn-success flex-shrink-0" href="{{route('teacher.create')}}">新增</a>
                             @endif
                         @endif
+                        </h1>
                     </div>
                 </div>
 
@@ -60,12 +61,10 @@
 
 
             <div class="row gx-5">
-                <div class="col-12"></div>
-                <ul>
+                <ul style="float:left;">
                     @foreach($teachers as $info)
-                    <li>
+                    <li style="float:left;  width: 100px;">
                         <a href="#{{$info->id}}" class="aaa btn btn-default flex-shrink-0" >{{$info->title}}</a>
-                        <p>
                     </li>
                     @endforeach
                 </ul>
@@ -74,26 +73,28 @@
                     <div class="row gx-5" style="border-bottom: #2a2a2a;">
                         <section class="col-9" >
                             <a id="{{$info->id}}"></a>
-                            @if ( auth()->check())
-                                @if(auth()->user()->pos!='社員')
-                                    <right> <a class='btn btn-outline-dark flex-shrink-0' href='{{route('teacher.edit',$info->id)}}' style=' white-space:nowrap; !important;'>編輯</a>
-                                        <form action='{{ route('teacher.destroy',$info->id) }}' method='POST' style='display: inline;'>
-                                        @method('DELETE')
-                                        @csrf
-                                        <button  class='btn btn-outline-danger flex-shrink-0' type='submit'>刪除</button>
-                                        </form> </right>
-                                @endif
-                            @endif
-                            <p><h2 style=' white-space:nowrap; !important;'>{{$info->title}}</h2>
-                            </p>
+                                <h2 style=' white-space:nowrap; !important;'>{{$info->title}}
+                                    @if ( auth()->check())
+                                        @if(auth()->user()->pos!='社員')
+                                            <right> <a class='btn btn-outline-dark flex-shrink-0' href='{{route('teacher.edit',$info->id)}}' style=' white-space:nowrap; !important;'>編輯</a>
+                                                <form action='{{ route('teacher.destroy',$info->id) }}' method='POST' style='display: inline;'>
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button  class='btn btn-outline-danger flex-shrink-0' type='submit'>刪除</button>
+                                                </form> </right>
+                                        @endif
+                                    @endif
+                                </h2>
                             <pre>{{$info->content}}</pre>
-                    </section>
+                        </section>
                         <div class="col-3">
-                            <img class="img-fluid rounded-3" src="{{$info->picture}}"  />
+                            @if($info->picture)
+                                <img class="img-fluid rounded-3" src={{asset("images/teachers/".$info->picture)}} />
+                            @endif
                         </div>
                         </div>
                     <hr>
-                    @endforeach
+                @endforeach
 
 
 

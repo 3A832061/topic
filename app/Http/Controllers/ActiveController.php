@@ -5,24 +5,47 @@ namespace App\Http\Controllers;
 use App\Models\Active;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ActiveController extends Controller
 {
     public function show($type)
     {
         $actives = DB::table('actives')->where('type', '=', $type)->get();
-        return view('active.index',['actives' => $actives]);
+        return view('active.index',['actives' => $actives],['type'=>$type]);
     }
 
     public function store(Request $request){
-        Active::create($request->all());
-        return redirect()->route('active.show','音樂會');
+        if($request->hasFile('picture')) {
+            $imageName = time().'.'.$request->picture->extension();
+            //把檔案存到公開的資料夾
+            $request->picture->move(public_path('images/actives'), $imageName);
+            DB::table('actives')->insert(
+                [
+                    'type' => $request->type,
+                    'content' => $_POST['content'],
+                    'url' => $imageName,
+                    'created_at'=>now(),
+                    'updated_at'=>now()
+                ]);
+        }
+        return redirect()->route('active.show',$request->type);
     }
 
     public function update(Request $request,$id){
-        $actives=Active::find($id);
-        $actives->update($request->all());
-        return redirect()->route('active.show','音樂會');
+        $recipe=Active::find($id);
+
+        if($request->hasFile('picture')) {
+            $imageName = time().'.'.$request->picture->extension();
+            //把檔案存到公開的資料夾
+            $request->picture->move(public_path('images/actives'), $imageName);
+            $recipe->type=$request->type;
+            $recipe->content=$request->content;
+            $recipe->url=$imageName;
+            $request->updated_at=now();
+            $recipe->save();
+        }
+        return redirect()->route('active.show',$request->type);
     }
 
     public function create()
@@ -38,8 +61,9 @@ class ActiveController extends Controller
     }
 
     public function destroy($id){
+        $type=Active::find($id);
         Active::destroy($id);
-        return redirect()->route('active.show','音樂會');
+        return redirect()->route('active.show',$type->type);
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Information;
 use Illuminate\Http\Request;
+use DB;
 
 class EvaluationController extends Controller
 {

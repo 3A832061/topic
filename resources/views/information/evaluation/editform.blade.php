@@ -10,8 +10,7 @@
         /*--*/
         .form-control-itemname
         {
-            display: inline;
-            width: 60%;
+            width: 70%;
             height: 34px;
             padding: 6px 12px;
             font-size: 14px;
@@ -21,9 +20,19 @@
             background-image: none;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin-right: 5%;
+        }
+        .inline{
+            text-align: center;
+            padding: 12px 12px 12px 0;
+            width: 20%;
+
+            display: inline-block;
         }
         .form-group
         {
+            width: 100%;
+            float: left;
             margin-bottom: 15px !important;
         }
         #layoutSidenav_content
@@ -31,11 +40,25 @@
             margin-left:200px !important;
             margin-bottom:100px !important;
         }
+        .content {
+            margin:auto;
+            width: 60%;
+            background-color: #f2f2f2;
+            margin-bottom: 5%;
+            padding: 30px;
+            border-radius: 20px 20px 20px 20px;
+        }
+
+        @media screen and (max-width: 742px) {
+            .form-control-itemname, .inline {
+                text-align: left;
+                width: 100%;
+                margin-top: 0;
+            }
+        }
     </style>
     <script>
         function success(){
-            var content = $("#form1 textarea").val();
-            content = content.replace(/\n|\r\n/g,"<br>");
             window.alert("提交成功，感謝填寫");
         }
     </script>
@@ -53,43 +76,32 @@
         </div>
     @endif
     <!-- 公告-->
-    <main class="flex-shrink-0">
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">修改</h1>
-                </div>
-                <!-- /.row -->
-                <p>
-                <div class="row">
-                    <div class="col-lg-8">
-                        <form id="form1" action="{{route('evaluations.update',$evaluation->id)}}" method="POST" role="form" enctype="multipart/form-data">
+
+                    <h1 style="margin-top: 5%;text-align: center;">修改</h1>
+
+                    <div class="content">
+                        <form id="form1" action="{{route('evaluations.update',$evaluation->id)}}" method="POST" role="form" enctype="multipart/form-data" onsubmit="success();">
                             @csrf
                             <div class="form-group">
                                 <label for="title" class="inline">學年：*</label>
-                                <input name="title" class="form-control-itemname" placeholder="請輸入學年" value="{{ old('title',$evaluation->title) }}" required onsubmit="return success();">
+                                <input name="title" class="form-control-itemname"  placeholder="請輸入學年" value="{{ old('title',$evaluation->title) }}" required >
                             </div>
 
                             <div class="form-group">
                                 <label for="content" class="inline">社評連結：*</label>
-                                <input id="remark" name="remark" class="form-control" rows="10" placeholder="請輸入社團評鑑的連結" style="white-space: pre;" value={{ old('content',$evaluation->remark) }}>
+                                <input id="remark" name="remark" class="form-control-itemname" required placeholder="請輸入社團評鑑的連結" value={{ old('content',$evaluation->remark) }}>
                             </div>
 
                             <div class="form-group">
-                                <label for="content" class="inline">注意事項：（換行就是一項注意事項）</label>
-                                <textarea id="content" name="content" class="form-control" rows="10" style="white-space: pre;">{{ old('content',$evaluation->content) }}</textarea>
+                                <label for="content" class="inline" style="vertical-align: top;">注意事項：</label>
+                                <textarea id="content" name="content" class="form-control-itemname" style=" white-space: pre;height: 150px;" >{{ old('content',$evaluation->content) }}</textarea>
                             </div>
-
-
+                            <p>*每換一行就是一項獨立的注意事項</p>
 
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button style="float: right;" type="submit" class="btn btn-primary">提交</button>
                             </div>
                         </form>
                     </div>
-                </div>
-            </main>
-        </div>
-    </main>
     @include('layouts.footer')
 @endsection

@@ -108,7 +108,7 @@
                             $string = "<li>".$string."</li>";
                             echo "<pre style='white-space: pre-wrap;word-wrap: break-word;font-size: 16px;'>".$string."</pre>";
                         }else{
-                            echo "<p>無資料，請按新增活動</p>";
+                            echo "<p>無資料，請按修改，新增注意事項</p>";
                         }
                         ?>
                     </pre>

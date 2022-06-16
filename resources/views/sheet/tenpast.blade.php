@@ -78,7 +78,7 @@
                         echo "<td>".$a->zhname."</td>";
                         echo "<td>".$a->composer."</td>";
                         echo "<td>";
-                        if(($a->change)==1)
+                        if(($a->change1)==1)
                         {
                             echo "<center><font style='color:red; font-weight: bolder; text-align: center !important;'>✗</center>";
                         }

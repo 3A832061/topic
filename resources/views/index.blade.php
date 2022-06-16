@@ -54,7 +54,6 @@
     <!-- 公告-->
         <header class="bg-dark py-5">
             <div style="padding-left: 10%;padding-right: 10%; ">
-
                 <div class="my-5 text-center" >
                     <h3 style="color: white">最新公告</h3>
                     @if(count($posts)==0)
@@ -82,7 +81,6 @@
                         <a class="btn btn-outline-light btn-lg px-4" href={{route('posts.index','全部公告')}} >查看全部公告</a>
                     </div>
                 </div>
-
             </div>
         </header>
         <!-- 行事曆-->

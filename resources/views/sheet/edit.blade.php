@@ -9,8 +9,7 @@
         /*--*/
         .form-control-itemname
         {
-            display: inline;
-            width: 60%;
+            width: 70%;
             height: 34px;
             padding: 6px 12px;
             font-size: 14px;
@@ -20,9 +19,19 @@
             background-image: none;
             border: 1px solid #ccc;
             border-radius: 4px;
+            margin-right: 5%;
+        }
+        .inline{
+            text-align: center;
+            padding: 12px 12px 12px 0;
+            width: 20%;
+
+            display: inline-block;
         }
         .form-group
         {
+            width: 100%;
+            float: left;
             margin-bottom: 15px !important;
         }
         #layoutSidenav_content
@@ -45,136 +54,116 @@
             border:0px;
             background-color:transparent;
         }
+        .content {
+            margin:auto;
+            width: 60%;
+            background-color: #f2f2f2;
+            margin-bottom: 5%;
+            padding: 30px;
+            border-radius: 20px 20px 20px 20px;
+        }
+
+        @media screen and (max-width: 742px) {
+            .form-control-itemname, .inline {
+                text-align: left;
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+
     </style>
 @endsection
 @section('index.con')
     @include('layouts.nav')
-    <!-- 公告-->
-    <main class="flex-shrink-0">
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <h1 class="mt-4" id="customerz1">新增樂譜</h1>
-                    <!--a class="btn btn-success flex-shrink-0" href=>查看審核狀態</a-->
-                </div>
-                <!-- /.row -->
-                <p>
-                <div class="row">
-                    <div class="col-lg-8">
-                        <form action="{{route('sheet.update',$Sheet__Music->id)}}" method="POST" role="form">
+
+                    <h1 style="margin-top: 5%;text-align: center;">修改樂譜資料</h1>
+    <br>
+
+                    <div class="content">
+                        <form action="{{route('sheet.update',$sheet->id)}}" method="POST" role="form" onsubmit="success()">
                             @csrf
                             <h6 style="font-weight: bolder; color:red;">*=必填</h6><div class='form-group'>
-                                <label for='name' class='inline'>曲目名稱：</label>
-                                <input id='name' name='name'  class='form-control-itemname' placeholder='請輸入曲目原文名稱' value='{{old('name',$Sheet__Music->name)}}' required>
+                                <label for='name' class='inline'>曲目名稱：*</label>
+                                <input id='name' name='name'  class='form-control-itemname' placeholder='請輸入曲目原文名稱' value='{{old('name',$sheet->name)}}' required>
                             </div>
                             <div class='form-group'>
                                 <label for='type' class='inline'>曲目類型：</label>
-                                <select id='type' name='type' class='form-control'>
-                                    <option value='外文譜' {{ ($Sheet__Music->type=="外文譜")?'selected':'' }} >外文譜</option>
-                                    <option value='日文譜' {{ ($Sheet__Music->type=="日文譜")?'selected':'' }}>日文譜</option>
-                                    <option value="中文譜" {{ ($Sheet__Music->type=="中文譜")?'selected':'' }}>中文譜</option>
-                                    <option value="重奏譜" {{ ($Sheet__Music->type=="重奏譜")?'selected':'' }}>重奏譜</option>
+                                <select id='type' name='type' class='form-control-itemname'>
+                                    <option value='外文譜' {{ ($sheet->type=="外文譜")?'selected':'' }} >外文譜</option>
+                                    <option value='日文譜' {{ ($sheet->type=="日文譜")?'selected':'' }}>日文譜</option>
+                                    <option value="中文譜" {{ ($sheet->type=="中文譜")?'selected':'' }}>中文譜</option>
+                                    <option value="重奏譜" {{ ($sheet->type=="重奏譜")?'selected':'' }}>重奏譜</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="zhname" class="inline">中文譯名：</label>
-                                <input id="zhname" name="zhname" class="form-control-itemname" placeholder="若為外文曲目可輸入中譯名稱" value="{{old('zhname',$Sheet__Music->name)}}" >
+                                <input id="zhname" name="zhname" class="form-control-itemname" placeholder="若為外文曲目可輸入中譯名稱" value="{{old('zhname',$sheet->zhname)}}" >
                             </div>
                             <div class="form-group">
                                 <label for="composer" class="inline">作曲者*：</label>
-                                <input name="composer" class="form-control-itemname" placeholder="請輸入作曲者姓名" value="{{old('composer',$Sheet__Music->composer)}}" id="page" required>
+                                <input name="composer" class="form-control-itemname" placeholder="請輸入作曲者姓名" value="{{old('composer',$sheet->composer)}}" id="page" required>
                             </div>
                             <div class="form-group">
                                 <label for="arranger" class="inline">編曲者：</label>
-                                <input name="arranger" class="form-control-itemname" placeholder="請輸入編曲者姓名" value="{{old('arranger',$Sheet__Music->arranger)}}" id="numpage">
+                                <input name="arranger" class="form-control-itemname" placeholder="請輸入編曲者姓名" value="{{old('arranger',$sheet->arranger)}}" id="numpage">
                             </div>
                             <div class="form-group">
                                 <label for="lost" class="inline">存譜缺少聲部：</label>
-                                <textarea name="lost" class="form-control-itemname" placeholder="若存譜有聲部缺少請在此處詳細註明" value="{{old('lost',$Sheet__Music->lost)}}" id="quan"></textarea>
+                                <textarea name="lost" class="form-control-itemname" placeholder="若存譜有聲部缺少請在此處詳細註明" value="{{old('lost',$sheet->lost)}}" id="quan"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="saveform" class="inline">存放形式：</label>
-                                <select id="saveform" name="saveform" class="form-control">
-                                    <option value="電子譜" {{ ($Sheet__Music->saveform=="電子譜")?'selected':'' }}>純電子譜</option>
-                                    <option value="紙本譜" {{ ($Sheet__Music->type=="紙本譜")?'selected':'' }}>純紙本譜</option>
-                                    <option value="電子譜/紙本譜" {{ ($Sheet__Music->type=="電子譜/紙本譜")?'selected':'' }}>電子譜+紙本譜</option>
+                                <select id="saveform" name="saveform" class="form-control-itemname">
+                                    <option value="電子譜" {{ ($sheet->saveform=="電子譜")?'selected':'' }}>純電子譜</option>
+                                    <option value="紙本譜" {{ ($sheet->saveform=="紙本譜")?'selected':'' }}>純紙本譜</option>
+                                    <option value="電子譜/紙本譜" {{ ($sheet->saveform=="電子譜/紙本譜")?'selected':'' }}>電子譜+紙本譜</option>
                                 </select>
                             </div>
                             <!--譜的授權方式補充-->
                             <div class="form-group">
-                                <label for="authorize" class="inline">授權模式：
-                                </label>
-                                <button id="infoModal" class="inline btn btn-outline-primary flex-lg-shrink-1" style="border:0px; font-weight: bolder; ">
-                                    授權模式說明
-                                </button>
-                                <dialog id="infoModal">
-                                    <p> <h3>譜的授權方式</h3><p>
-                                        關於樂譜的授權的種類<p>
-                                        1、租賃譜<br>
-                                        例如 八木澤教司、John Mackey<br>
-                                        只租賃，不斷賣，會公告在網站上哪首作品會在哪演出或比賽。<br>
-                                        這種會與代理商或作曲家直接簽約付款，「授權書」上會明確表示哪個團在哪個時間區間可以演出或是比賽次數，通常給電子譜<br>
-                                        不明究理的學生，換到或演出影片放在網路上極容易被抓，馬上有證據提告<br>
-                                        👉日本譜通常抓到一次罰三倍（通常租賃譜一份破萬）<p>
-                                        2、授權書模式<br>
-                                        買了譜不論拿到電子檔或紙本，重點是那張授權書上會記錄這是出版第幾號，授權給哪團，無限演出次數。台灣商業音樂改編都是這種模式，比如：卡儂五月天或新加坡五月天、賦格小幸運等。<br>
-                                        👉認權授權書給哪個團，所以要演的樂團要自己買<p>
-                                        3、授權指揮模式<br>
-                                        台灣管樂發展聯盟，授權指揮就是只要是指揮本人指揮演出都可以<br>
-                                        👉認指揮本人<p>
-                                        4、原版譜模式<br>
-                                        👉認譜的擁有者<p>
-                                        —————————————————————<br>
-                                        勤益管樂自創社開始，樂譜絕大部分都來自余文凱老師<br>
-                                        在此告知<br>
-                                        👉不論是鐠務、其他幹部或任何社員，換譜曲一定要經過余文凱老師的同意<br>
-                                        👉以及社團裡有許多集資福利譜，也就是提倡使用者付費觀念，文凱老師花錢買原版譜（上述的原版譜模式），學生以500塊的價錢購買演出權，那些譜是<b>絕對不能換的</b><br>
-                                        👉甚至未來若文凱老師離開，當屆的幹部必須要跟文凱討論勤益這些年從老師那拿到的譜如何處置<br>
-                                        ——————————————————————-
-                                    </p>
-                                    <button id="close"  class="inline btn btn-outline-primary flex-lg-shrink-1" >關閉</button>
-                                </dialog>
-                                <select id="authorize" name="authorize" class="form-control">
-                                    <option value="租賃譜" {{ ($Sheet__Music->authorize=="租賃譜")?'selected':'' }}>租賃譜</option>
-                                    <option value="授權書模式" {{ ($Sheet__Music->authorize=="授權書模式")?'selected':'' }}>授權書模式</option>
-                                    <option value="授權指揮模式" {{ ($Sheet__Music->authorize=="授權指揮模式")?'selected':'' }}}>授權指揮模式</option>
-                                    <option value="原版譜模式" {{ ($Sheet__Music->authorize=="原版譜模式")?'selected':'' }}>原版譜模式</option>
-                                    <option value="福利譜" {{ ($Sheet__Music->authorize=="福利譜")?'selected':'' }}>福利譜</option>
+                                <label for="authorize" class="inline">授權模式：</label>
+                                <select id="authorize" name="authorize" class="form-control-itemname">
+                                    <option value="租賃譜" {{ ($sheet->authorize=="租賃譜")?'selected':'' }}>租賃譜</option>
+                                    <option value="授權書模式" {{ ($sheet->authorize=="授權書模式")?'selected':'' }}>授權書模式</option>
+                                    <option value="授權指揮模式" {{ ($sheet->authorize=="授權指揮模式")?'selected':'' }}}>授權指揮模式</option>
+                                    <option value="原版譜模式" {{ ($sheet->authorize=="原版譜模式")?'selected':'' }}>原版譜模式</option>
+                                    <option value="福利譜" {{ ($sheet->authorize=="福利譜")?'selected':'' }}>福利譜</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="year" class="inline">年份：</label>
-                                <input name="year" class="form-control-itemname" type='year' placeholder="如果有其他事項請在此處填寫" value=" " id="remark">
+                                <input name="year" class="form-control-itemname" type='year' placeholder="如果有其他事項請在此處填寫" value="{{$sheet->year}}" id="remark">
                             </div>
                             <div class="form-group">
                                 <label for="price" class="inline">購譜價格：</label>
-                                <input name="price" class="form-control-itemname" placeholder="如果有其他事項請在此處填寫" value=" " id="remark">
+                                <input name="price" class="form-control-itemname" placeholder="如果有其他事項請在此處填寫" value="{{$sheet->price}}" id="remark">
                             </div>
                             <div class="form-group">
-                                <label for="change1" class="inline">能否換譜（※若不確定則默認不可換譜）：</label>
-                                <select id="change1" name="change" class="form-control">
-                                    <option value="0" {{ ($Sheet__Music->change=="0")?'selected':'' }}>可以換譜</option>
-                                    <option value="1" {{ ($Sheet__Music->change=="1")?'selected':'' }}>不可換譜</option>
+                                <label for="change1" class="inline">能否換譜：</label>
+                                <select id="change1" name="change1" class="form-control-itemname">
+                                    <option value="0" {{ ($sheet->change1=="0")?'selected':'' }}>可以換譜</option>
+                                    <option value="1" {{ ($sheet->change1=="1")?'selected':'' }}>不可換譜</option>
                                 </select>
+                                <p style="margin-left: 5%;">※若不確定則默認不可換譜</p>
                             </div>
                             <div class="form-group">
                                 <label for="check1" class="inline">10年間已演奏</label>
-                                <select id="check1" name="check" class="form-control">
-                                    <option value="1" {{ ($Sheet__Music->check=="1")?'selected':'' }}>是</option>
-                                    <option value="0" {{ ($Sheet__Music->check=="0")?'selected':'' }}>否</option>
+                                <select id="check1" name="check1" class="form-control-itemname">
+                                    <option value="1" {{ ($sheet->check1=="1")?'selected':'' }}>是</option>
+                                    <option value="0" {{ ($sheet->check1=="0")?'selected':'' }}>否</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="remark" class="inline">備註：</label>
-                                <input name="remark" class="form-control-itemname" placeholder="如果有其他備註或重奏聲部類別請在此處填寫" value="{{old('remark',$Sheet__Music->remark)}}" id="remark">
+                                <input name="remark" class="form-control-itemname" placeholder="如果有其他備註或重奏聲部類別請在此處填寫" value="{{old('remark',$sheet->remark)}}" id="remark">
                             </div>
                             <div class="form-group">
                                 <label for="pin" class="inline"></label>
-                                <input name="pin" class="form-control-itemname" placeholder="" value="{{old('pin',$Sheet__Music->pin)}}" id="pin"
+                                <input name="pin" class="form-control-itemname" placeholder="" value="{{old('pin',$sheet->pin)}}" id="pin"
                                        style="display:none;">
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary" onsubmit="success()">儲存</button>
+                                <button style="float: right;" type="submit" class="btn btn-primary" >儲存</button>
                             </div>
 
                         </form>
@@ -185,19 +174,10 @@
     </main>
     @include('layouts.footer')
     <script>
+
         function success(){
-            window.alert("成功新增!");
-            document.getElementById('index').click();
+            window.alert("成功修改!");
         }
 
-        let btn=document.querySelector("#show");
-        let infoModal=document.querySelector("#infoModal");
-        let close=document.querySelector("#close");
-        btn.addEventListener("click", function(){
-            infoModal.showModal();
-        })
-        close.addEventListener("click", function(){
-            infoModal.close();
-        })
     </script>
 @endsection

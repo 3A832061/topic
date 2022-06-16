@@ -29,7 +29,38 @@ class SheetMusicController extends Controller
     public function store(Request $request)
     {
         //
-        Sheet_Music::create($request->all());
+        $sheet = new Sheet_Music();
+
+        $sheet->name = $request->name;
+        $sheet->type = $request->type;
+        if($request->zhname) {
+            $sheet->zhname = $request->zhname;
+        }
+        $sheet->composer = $request->composer;
+        if($request->arranger){
+            $sheet->arranger = $request->arranger;
+        }
+        if($request->lost){
+            $sheet->lost = $request->lost;
+        }
+        $sheet->saveform = $request->saveform;
+        $sheet->authorize = $request->authorize;
+        if($request->year) {
+            $sheet->year = $request->year;
+        }
+        if($request->price){
+            $sheet->price = $request->price;
+        }
+        $sheet->change1 = $request->change1;
+        $sheet->check1 = $request->check1;
+        if($request->remark){
+            $sheet->remark = $request->remark;
+        }
+        $sheet->pin = $request->pin;
+
+        $sheet->save();
+
+
         return redirect()->route('sheet.show');
     }
 
@@ -43,8 +74,8 @@ class SheetMusicController extends Controller
     public function edit($id)
     {
         //
-        $sheets=Sheet_Music::find($id);
-        $data= ['sheet__music'=>$sheets];
+        $sheet=Sheet_Music::find($id);
+        $data= ['sheet'=>$sheet];
         return view('sheet.edit',$data);
     }
 
@@ -52,8 +83,36 @@ class SheetMusicController extends Controller
     public function update(Request $request,$id)
     {
         //
-        $sheets=Sheet_Music::find($id);
-        $sheets->update($request->all());
+        $sheet = Sheet_Music::find($id);
+
+        $sheet->name = $request->name;
+        $sheet->type = $request->type;
+        if($request->zhname) {
+            $sheet->zhname = $request->zhname;
+        }
+        $sheet->composer = $request->composer;
+        if($request->arranger){
+            $sheet->arranger = $request->arranger;
+        }
+        if($request->lost){
+            $sheet->lost = $request->lost;
+        }
+        $sheet->saveform = $request->saveform;
+        $sheet->authorize = $request->authorize;
+        if($request->year) {
+            $sheet->year = $request->year;
+        }
+        if($request->price){
+            $sheet->price = $request->price;
+        }
+        $sheet->change1 = $request->change1;
+        $sheet->check1 = $request->check1;
+        if($request->remark){
+            $sheet->remark = $request->remark;
+        }
+        $sheet->pin = $request->pin;
+
+        $sheet->save();
         return redirect()->route('sheet.show');
     }
 
@@ -70,7 +129,7 @@ class SheetMusicController extends Controller
     }
     public function search()
     {
-        $sheets = DB::table('sheet__music')->orderBy('type','asc')->orderBy('name', 'asc')->where('check','=','0')->get();
+        $sheets = DB::table('sheet__music')->orderBy('type','asc')->orderBy('name', 'asc')->where('check1','=','0')->get();
         return view('sheet.tenpastedit',['sheets' => $sheets]);
     }
     public function check($id)

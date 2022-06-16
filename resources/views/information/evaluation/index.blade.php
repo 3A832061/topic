@@ -75,7 +75,7 @@ function down() {
 @section('title','管樂社')
 @section('index.con')
     @include('layouts.nav')
-    <main class="flex-shrink-0">
+    <main class="flex-shrink-0" style="margin-bottom: 5%;">
     <!-- Page Content-->
         <div style="padding-left: 10%;padding-top: 50px;">
             <div id="layoutSidenav_content">
