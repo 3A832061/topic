@@ -144,11 +144,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="year" class="inline">年份：</label>
-                                <input name="year" class="form-control-itemname" type='year' placeholder="如果有其他事項請在此處填寫" value="" id="remark">
+                                <input name="year" class="form-control-itemname" type='year' placeholder="如果有其他事項請在此處填寫" value=" " id="remark">
                             </div>
                             <div class="form-group">
                                 <label for="price" class="inline">購譜價格：</label>
-                                <input name="price" class="form-control-itemname" placeholder="如果有其他事項請在此處填寫" value="" id="remark">
+                                <input name="price" class="form-control-itemname" placeholder="如果有其他事項請在此處填寫" value=" " id="remark">
                             </div>
                             <div class="form-group">
                                 <label for="change1" class="inline">能否換譜（※若不確定則默認不可換譜）：</label>

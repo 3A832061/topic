@@ -42,7 +42,6 @@ class SheetRequController extends Controller
             'day' => date('Y/m/d')
             ]);
 
-
         return redirect()->route('sheetrequest.show');
     }
 

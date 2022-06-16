@@ -100,10 +100,7 @@
         Route::get('{id}/edit',[AttendController::class,'edit'])->name('attends.edit');
     });
 
-    Route::prefix('member')->group(function(){
-        Route::get('/',[UserController::class,'edit'])->name('user.edit');
-        Route::post('/{id}',[UserController::class,'update'])->name('user.update');
-    });
+
 
     /*未完成
     Route::prefix('equipment')->group(function(){
@@ -112,15 +109,6 @@
         Route::get('/',[EquipmentController::class,'edit'])->name('attends.edit');
     });*/
 
-    Route::prefix('recruit')->group(function(){
-        Route::get('/',[RecruitController::class,'index'])->name('recruit.index');
-        Route::get('/create',[RecruitController::class,'create'])->name('recruit.create');
-        Route::post('/',[RecruitController::class,'store'])->name('recruit.store');
-        Route::get('{id}/edit',[RecruitController::class,'edit'])->name('recruit.edit');
-        Route::post('{id}',[RecruitController::class,'update'])->name('recruit.update');
-        Route::get('/show',[RecruitController::class,'show'])->name('recruit.show');
-        Route::get('/list',[RecruitController::class,'list'])->name('recruit.list');
-    });
 
     Route::prefix('accountant')->group(function(){
         Route::get('/',[AccountantController::class,'create'])->name('accountant.create');
@@ -183,63 +171,68 @@ Route::prefix('active')->group(function(){
 
 
 Route::prefix('sheet')->group(function(){
-    Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show');
-    Route::get('/past',[SheetMusicController::class,'past'])->name('sheet.past');
-    Route::get('/past/search',[SheetMusicController::class,'search'])->name('sheet.search');
-    Route::post('/past{id}',[SheetMusicController::class,'check'])->name('sheet.check');
-    Route::post('/',[SheetMusicController::class,'store'])->name('sheet.store');
-    Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create');
-    Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit');
-    Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update');
-    Route::delete('{id}',[SheetMusicController::class,'destroy'])->name('sheet.destroy');
+    Route::get('/',[SheetMusicController::class,'index'])->name('sheet.show')->middleware('auth');
+    Route::get('/past',[SheetMusicController::class,'past'])->name('sheet.past')->middleware('auth');
+    Route::get('/past/search',[SheetMusicController::class,'search'])->name('sheet.search')->middleware('auth');
+    Route::post('/past{id}',[SheetMusicController::class,'check'])->name('sheet.check')->middleware('auth');
+    Route::post('/',[SheetMusicController::class,'store'])->name('sheet.store')->middleware('auth');
+    Route::get('create',[SheetMusicController::class,'create'])->name('sheet.create')->middleware('auth');
+    Route::get('{id}/edit',[SheetMusicController::class,'edit'])->name('sheet.edit')->middleware('auth');
+    Route::post('{id}',[SheetMusicController::class,'update'])->name('sheet.update')->middleware('auth');
+    Route::delete('{id}',[SheetMusicController::class,'destroy'])->name('sheet.destroy')->middleware('auth');
 });
 
 Route::prefix('sheetrequ')->group(function(){
-    Route::get('/',[SheetRequController::class,'index'])->name('sheetrequest.show'); //檢視all
-    Route::get('/create',[SheetRequController::class,'create'])->name('sheetrequest.create'); //新增
-    Route::post('/',[SheetRequController::class,'store'])->name('sheetrequest.store');
-    Route::get('{id}/edit',[SheetRequController::class,'edit'])->name('sheetrequest.edit'); //編輯狀態
-    Route::post('{id}',[SheetRequController::class,'update'])->name('sheetrequest.update');
-    Route::delete('{id}',[SheetRequController::class,'destroy'])->name('sheetrequest.destroy');
+    Route::get('/',[SheetRequController::class,'index'])->name('sheetrequest.show')->middleware('auth'); //檢視all
+    Route::get('/create',[SheetRequController::class,'create'])->name('sheetrequest.create')->middleware('auth'); //新增
+    Route::post('/',[SheetRequController::class,'store'])->name('sheetrequest.store')->middleware('auth');
+    Route::get('{id}/edit',[SheetRequController::class,'edit'])->name('sheetrequest.edit')->middleware('auth'); //編輯狀態
+    Route::post('{id}',[SheetRequController::class,'update'])->name('sheetrequest.update')->middleware('auth');
+    Route::delete('{id}',[SheetRequController::class,'destroy'])->name('sheetrequest.destroy')->middleware('auth');
 });
 
 
+    Route::prefix('attend')->group(function(){
+        Route::get('/',[AttendController::class,'index'])->name('attends.index')->middleware('auth'); //list
+        Route::get('/create',[AttendController::class,'create'])->name('attends.create')->middleware('auth');
+    });
 
-Route::prefix('attend')->group(function(){
-    Route::get('/',[AttendController::class,'index'])->name('attends.index')->middleware('auth'); //list
-    Route::get('/create',[AttendController::class,'create'])->name('attends.create')->middleware('auth');
-});
 
-Route::prefix('member')->group(function(){
-    Route::get('/',[UserController::class,'edit'])->name('user.edit')->middleware('auth');
-    Route::put('/{id}',[UserController::class,'update'])->name('user.update')->middleware('auth');
-    Route::put('/{id}/admin',[UserController::class,'adminUpdate'])->name('user.adminUpdate')->middleware('auth');
-    Route::get('/{type?}/show',[UserController::class,'show'])->name('user.show')->middleware('auth');
-});
+    /*修改社員資料*/
+    Route::prefix('member')->group(function(){
+        Route::get('/',[UserController::class,'edit'])->name('user.edit')->middleware('auth');
+        Route::put('/{id}',[UserController::class,'update'])->name('user.update')->middleware('auth');
+        Route::put('/{id}/admin',[UserController::class,'adminUpdate'])->name('user.adminUpdate')->middleware('auth'); /*權限*/
+        Route::get('/{type?}/show',[UserController::class,'show'])->name('user.show')->middleware('auth'); /*社員清單*/
+    });
 
-Route::prefix('recruit')->group(function(){
-    Route::get('/',[RecruitController::class,'index'])->name('recruit.index');
-    Route::get('/create',[RecruitController::class,'create'])->name('recruit.create')->middleware('auth');
-    Route::post('/',[RecruitController::class,'store'])->name('recruit.store')->middleware('auth');
-    Route::get('{id}/edit',[RecruitController::class,'edit'])->name('recruit.edit')->middleware('auth');
-    Route::post('{id}',[RecruitController::class,'update'])->name('recruit.update')->middleware('auth');
-    Route::get('/show',[RecruitController::class,'show'])->name('recruit.show');
-    Route::get('/list',[RecruitController::class,'list'])->name('recruit.list')->middleware('auth');
-});
+    /*招生*/
+    Route::prefix('recruit')->group(function(){
+        Route::get('/',[RecruitController::class,'index'])->name('recruit.index');
+        Route::get('/create',[RecruitController::class,'create'])->name('recruit.create')->middleware('auth');
+        Route::post('/',[RecruitController::class,'store'])->name('recruit.store')->middleware('auth');
+        Route::get('{id}/edit',[RecruitController::class,'edit'])->name('recruit.edit')->middleware('auth');
+        Route::post('{id}',[RecruitController::class,'update'])->name('recruit.update')->middleware('auth');
+        Route::get('/show',[RecruitController::class,'show'])->name('recruit.show');
+        Route::get('/list',[RecruitController::class,'list'])->name('recruit.list')->middleware('auth');
+    });
 
-Route::prefix('accountant')->group(function(){
-    Route::get('/',[AccountantController::class,'create'])->name('accountant.create')->middleware('auth');
-    Route::get('/show',[AccountantController::class,'show'])->name('accountant.show')->middleware('auth');
-});
+    /*收支*/
+    Route::prefix('accountant')->group(function(){
+        Route::get('/',[AccountantController::class,'create'])->name('accountant.create')->middleware('auth');
+        Route::get('/show',[AccountantController::class,'show'])->name('accountant.show')->middleware('auth');
+    });
 
-Route::get('/reset-password/', function () {
-    return view('auth.reset-password');})->middleware('auth')->name('password.reset');
+    /*密碼重設*/
+    Route::get('/reset-password/', function () {
+        return view('auth.reset-password');})->middleware('auth')->name('password.reset');
+    Route::post('/reset-password',[UserController::class,'reset'])->middleware('auth')->name('password.update');
 
-Route::post('/reset-password',[UserController::class,'reset'])->middleware('auth')->name('password.update');
+    /*註冊K*/
+    Route::get('/register',  function () {return view('auth.register');} )->name('register')->middleware('auth');
+    Route::post('/register', [UserController::class, 'store']); /*註冊*/
 
-Route::get('/register',  function () {return view('auth.register');} )->name('register')->middleware('auth');
-Route::post('/register', [UserController::class, 'store']);
-
+    /*社評*/
 Route::prefix('evaluation')->group(function(){
     Route::get('/',[EvaluationController::class,'index'])->name('evaluations.index');
     Route::get('/create',[EvaluationController::class,'create'])->name('evaluations.create')->middleware('auth');
@@ -248,6 +241,7 @@ Route::prefix('evaluation')->group(function(){
     Route::post('{id}',[EvaluationController::class,'update'])->name('evaluations.update')->middleware('auth');
 });
 
+    /*活動注意事項*/
 Route::prefix('precautions')->group(function(){
     Route::get('/',[PrecautionController::class,'index'])->name('precautions.index');
     Route::get('/create',[PrecautionController::class,'create'])->name('precautions.create')->middleware('auth');
@@ -255,7 +249,7 @@ Route::prefix('precautions')->group(function(){
     Route::get('{id}/edit',[PrecautionController::class,'edit'])->name('precautions.edit')->middleware('auth');
     Route::post('{id}',[PrecautionController::class,'update'])->name('precautions.update')->middleware('auth');
 });
-
+    /*組織架構*/
 Route::prefix('architecture')->group(function(){
     Route::get('/',[ArchitectureController::class,'index'])->name('architectures.index');
     Route::get('/create',[ArchitectureController::class,'create'])->name('architectures.create')->middleware('auth');
@@ -264,7 +258,7 @@ Route::prefix('architecture')->group(function(){
     Route::post('{id}',[ArchitectureController::class,'update'])->name('architectures.update')->middleware('auth');
     Route::delete('/{id}',[ArchitectureController::class,'destroy'])->name('architectures.destroy')->middleware('auth');
 });
-
+    /*組織章程*/
 Route::prefix('organize')->group(function(){
     Route::get('/',[OrganizeController::class,'index'])->name('organizes.index');
     Route::get('/create',[OrganizeController::class,'create'])->name('organizes.create')->middleware('auth');
