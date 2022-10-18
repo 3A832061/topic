@@ -47,7 +47,7 @@ class SheetMusicController extends Controller
             'check1' => $request->check1,
             'checkyear' => NULL,
             'remark' => $request->remark,
-            'pin' => auth()->user()->id]);
+            'pin' => auth()->user()->name]);
 
 
         return redirect()->route('sheet.show');
