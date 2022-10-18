@@ -128,7 +128,7 @@
                         <option value="原版譜模式">原版譜模式</option>
                         <option value="福利譜">福利譜</option>
                     </select>
-                    <button id="show" class="inline btn btn-outline-primary flex-lg-shrink-1" style="margin-left: 5%; border:0px; font-weight: bolder; ">
+                    <button id="show" type="button" class="inline btn btn-outline-primary flex-lg-shrink-1" style="margin-left: 5%; border:0px; font-weight: bolder; ">
                         授權模式說明
                     </button>
                     <dialog id="infoModal">
@@ -156,7 +156,7 @@
                             👉甚至未來若文凱老師離開，當屆的幹部必須要跟文凱討論勤益這些年從老師那拿到的譜如何處置<br>
                             ——————————————————————-
                         </p>
-                        <a id="close"  class="inline btn btn-outline-primary flex-lg-shrink-1">關閉</a>
+                        <a id="close" type="button" class="inline btn btn-outline-primary flex-lg-shrink-1">關閉</a>
                     </dialog>
                 </div>
                 <div class="form-group">
@@ -192,7 +192,7 @@
                            style="display:none;">
                 </div>
                 <div class="text-right">
-                    <button style="float: right;" type="submit" class="btn btn-primary" >儲存</button>
+                    <button id="store" style="float: right;" type="submit" class="btn btn-primary" >儲存</button>
                 </div>
 
             </form>
