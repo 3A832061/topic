@@ -1,4 +1,5 @@
 @extends('layouts.partials.type')
+@section('title','諾曼本管樂社 - 公告')
 @section('form.css')
 
 <style>
@@ -95,7 +96,6 @@
     }
 </script>
 @endsection
-@section('title','管樂社')
 @section('index.con')
     @include('layouts.nav')
     <main class="flex-shrink-0">

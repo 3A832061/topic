@@ -11,11 +11,11 @@ class PostController extends Controller
     public function index($tag)
     {
         if($tag=='全部公告') {
-            $posts = Post::orderBy('date', 'ASC')->get();
+            $posts = Post::orderBy('date', 'DESC')->get();
             $tag=["tag"=>$tag];
         }
         else{
-            $posts = Post::where('tag', '=',$tag)->orderBy('date', 'ASC')->get();
+            $posts = Post::where('tag', '=',$tag)->orderBy('date', 'DESC')->get();
             $tag=['tag'=>$tag];
         }
         $data = ['posts' => $posts];
