@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sheet_Music;
 use App\Http\Requests\StoreSheet_MusicRequest;
 use App\Http\Requests\UpdateSheet_MusicRequest;
+use http\Client\Curl\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -31,34 +32,22 @@ class SheetMusicController extends Controller
         //
         $sheet = new Sheet_Music();
 
-        $sheet->name = $request->name;
-        $sheet->type = $request->type;
-        if($request->zhname) {
-            $sheet->zhname = $request->zhname;
-        }
-        $sheet->composer = $request->composer;
-        if($request->arranger){
-            $sheet->arranger = $request->arranger;
-        }
-        if($request->lost){
-            $sheet->lost = $request->lost;
-        }
-        $sheet->saveform = $request->saveform;
-        $sheet->authorize = $request->authorize;
-        if($request->year) {
-            $sheet->year = $request->year;
-        }
-        if($request->price){
-            $sheet->price = $request->price;
-        }
-        $sheet->change1 = $request->change1;
-        $sheet->check1 = $request->check1;
-        if($request->remark){
-            $sheet->remark = $request->remark;
-        }
-        $sheet->pin = $request->pin;
-
-        $sheet->save();
+        DB::table('sheet__music')->insert([
+            'name' => $request->name,
+            'type' =>  $request->type,
+            'zhname' => $request->zhname,
+            'composer' => $request->composer,
+            'arranger' => $request->arranger,
+            'lost' => $request->lost,
+            'saveform' => $request->saveform,
+            'authorize' => $request->saveform,
+            'year' => $request->year,
+            'price' => $request->price,
+            'change1' => $request->change1,
+            'check1' => $request->check1,
+            'checkyear' => NULL,
+            'remark' => $request->remark,
+            'pin' => auth()->user()->id]);
 
 
         return redirect()->route('sheet.show');
