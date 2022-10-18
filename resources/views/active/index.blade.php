@@ -168,7 +168,7 @@
                     <div class="col-lg-6">
                         <div class="text-center mb-4" >
                             @if($type!='寒訓或暑訓')
-                            <h1 >{{$type}}紀錄
+                            <h1 >活動紀錄
                                 @if( auth()->check())
                                     @if(auth()->user()->pos!='社員')
                                         <a class="btn btn-success " href="{{route('active.create')}}">新增</a>
