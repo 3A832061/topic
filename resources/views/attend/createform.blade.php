@@ -169,6 +169,7 @@
                                 },
                                 url: "https://script.google.com/macros/s/AKfycbwPIzTzCBQ0DlUAq7zBlCxKa3rZ7l-eoksCeHRAvICiz6fPiQOYihKv5_jcfuHv-uzX/exec", // 填入網路應用程式網址
                                 success: function (item_data) {
+                                    alert(item_data);
                                     $('#tmp').html('');
                                     var char=item_data.split('-');
                                     $('#customerz1').html(char[0].substring(5)+"月出席");

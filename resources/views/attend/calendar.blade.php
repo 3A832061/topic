@@ -265,9 +265,9 @@
                     <form id="create" action="https://script.google.com/macros/s/AKfycbwPIzTzCBQ0DlUAq7zBlCxKa3rZ7l-eoksCeHRAvICiz6fPiQOYihKv5_jcfuHv-uzX/exec" method="POST" role="form"  target="hidden_iframe">
                         @csrf
                         <div class="form-group">
-                            <input name="method" value="write_calendar"  type="hidden" >
+                            <input name="method" value="write_calendar" type="hidden" >
                             <label for="date" class="inline">日期：*</label>
-                            <input id="date" name="date" type="date" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
+                            <input id="date" name="date" type="date" min="<?php $a=date('Y-m-d'); echo $a;?>" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
             font-size: 14px; line-height: 1.42857143; background-color: #fff; background-image: none;
             border: 1px solid #ccc; border-radius: 4px;" required>
                             <input id="time" name="time" style="display: inline; width: 150px; height: 34px; padding: 6px 12px;
