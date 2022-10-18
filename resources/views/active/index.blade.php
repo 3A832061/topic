@@ -196,7 +196,7 @@
                         <?php $x=0; $sum=0; foreach($actives as $active) {$sum+=1;}?>
                     @foreach($actives as $active)
                     <div class="mySlides">
-                       <div class="numbertext"> <?php $x+=1; echo $x."/".$sum."｜"; ?>{{$active->type}}-{{$active->content}}
+                       <div class="numbertext"> <?php $x+=1; echo $x."/".$sum."｜"; ?>{{$active->content}}
                                     @if ( auth()->check())
                                         @if(auth()->user()->pos!='社員')
                                             <a class="btn btn-primary flex-shrink-0" href="{{route('active.edit',$active->id)}}">修改</a>
