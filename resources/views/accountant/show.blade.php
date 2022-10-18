@@ -1,5 +1,5 @@
 @extends('layouts.partials.type')
-@section('title','管樂社')
+@section('title','諾曼本管樂社 - 收支管理')
 @section('form.css')
     <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
     <style>

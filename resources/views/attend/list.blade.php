@@ -1,5 +1,5 @@
 @extends('layouts.partials.type')
-@section('title','管樂社')
+@section('title','諾曼本管樂社 - 出席管理')
 @section('index.con')
 <main class="flex-shrink-0">
     @include('layouts.nav')

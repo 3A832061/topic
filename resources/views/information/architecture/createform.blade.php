@@ -1,4 +1,5 @@
 @extends('layouts.partials.type')
+@section('title','諾曼本管樂社')
 @section('form.css')
     <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
 

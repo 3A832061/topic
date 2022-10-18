@@ -1,4 +1,5 @@
 @extends('layouts.partials.type')
+@section('title','諾曼本管樂社')
 @section('title','管樂社')
 <style>
     .button {

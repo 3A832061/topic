@@ -92,7 +92,6 @@
 
                                 <?php
                                 $x=0;
-
                                     foreach($sheets as $a){
                                         echo "<tr>";
                                         echo "<td scope='row'>".$x+=1;

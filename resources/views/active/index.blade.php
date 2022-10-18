@@ -1,5 +1,5 @@
 @extends('layouts.partials.type')
-@section('title','活動紀錄')
+@section('title','諾曼本管樂社 - 活動紀錄')
 @section('outfit.css')
     <style>
         body {
