@@ -33,7 +33,7 @@ class UserController extends Controller
 
     public function adminUpdate($id,Request $request)
     {
-        if(auth()->user()->pos=='社長' || auth()->user()->pos=='文書') {
+        if(auth()->user()->pos=='社長' || auth()->user()->pos=='文書' || auth()->user()->pos=='總務') {
             if($request->pos!=null) {
                 $user = User::where('pos', '=', auth()->user()->pos)->get();
                 if(count($user)==1){
