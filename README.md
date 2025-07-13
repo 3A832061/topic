@@ -51,19 +51,20 @@ php artisan migrate
 <h2>欄位設計</h2>
 <hr>
 <p><h3>社團資訊</h3>
-<img src="./storage/readme/data-1.png" width="400" style="background:white;"></p>
+<img src="./storage/readme/data (2).png" width="400" ></p>
 <p><h3>公告</h3>
-<img src="./storage/readme/data-2.png" width="400" style="background:white;"></p>
+<img src="./storage/readme/data (3).png" width="400" ></p>
 <p><h3>譜</h3>
-<img src="./storage/readme/data-3.png" width="400" style="background:white;"></p>
+<img src="./storage/readme/data (4).png" width="400" >
+<img src="./storage/readme/data (5).png" width="400" ></p>
 <p><h3>使用者</h3>
-<img src="./storage/readme/data-4.png" width="400" style="background:white;"></p>
+<img src="./storage/readme/data (6).png" width="400" ></p>
 <p><h3>活動紀錄</h3>
-<img src="./storage/readme/data-5.png" width="400" style="background:white;"></p>
+<img src="./storage/readme/data (1).png" width="400" ></p>
 <p><h3>獎項紀錄</h3>
-<img src="./storage/readme/data-6.png" width="400" style="background:white;"></p>
+<img src="./storage/readme/data (7).png" width="400" ></p>
 <p><h3>儲存於Google試算表的資料</h3>
-<img src="./storage/readme/data-7.png" width="400" style="background:white;"></p>
+<img src="./storage/readme/data-8.png" width="400" ></p>
 
 
 <hr style="border-bottom:3px solid;">
