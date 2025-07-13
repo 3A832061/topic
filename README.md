@@ -67,46 +67,6 @@ php artisan migrate
 
 
 <hr style="border-bottom:3px solid;">
-<h1>系統介面</h1>
-<hr>
-<h2>前端介面</h2>
-<h3>首頁</h3>
-<img src="./storage/readme/1.png" width="400">
-<p>在網站首頁便能看到最新公告，若要了解詳細可直接點選公告標題，即進入公告細項頁面。</p>
-
-<h3>所有商品</h3>
-<img src="https://i.imgur.com/cnszhYU.jpg" width="400">
-<h3>商品分類</h3>
-<img src="https://i.imgur.com/kF5WvEE.jpg" width="400">
-<h3>商品詳細資訊</h3>
-<img src="https://i.imgur.com/J0HgWRm.jpg" width="400">
-<h3>購物車畫面</h3>
-<img src="https://i.imgur.com/7dFKSrW.jpg" width="400">
-<h3>結帳畫面</h3>
-<img src="https://i.imgur.com/VTuUgBw.jpg" width="400">
-<h3>會員中心－訂單查詢</h3>
-<img src="https://i.imgur.com/L2P2Opq.jpg" width="400">
-<h3>會員中心－訂單詳細資訊</h3>
-<img src="https://i.imgur.com/LJRiimC.jpg" width="400">
-<p>
-<ol>
-<hr style="border-bottom:0.2px dotted #f8f8f8;">
-</ol>
-<h2>後端介面</h2>
-<h3>管理中心畫面</h3>
-<img src="https://i.imgur.com/HIuyHyb.jpg" width="400">
-<h3>管理中心－商品管理</h3>
-<img src="https://i.imgur.com/HDTKGB4.jpg" width="400">
-<h3>商品管理－新增商品</h3>
-<img src="https://i.imgur.com/HXIerkK.jpg" width="400">
-<img src="https://i.imgur.com/TvyE8aU.jpg" width="400">
-<h3>商品管理－修改商品</h3>
-<img src="https://i.imgur.com/z6Wr1Qf.jpg" width="400">
-<h3>訂單管理－訂單檢視</h3>
-<img src="https://i.imgur.com/DjarEdx.jpg" width="400">
-
-
-<hr style="border-bottom:3px solid;">
 
 <h2>系統主要功能</h2>
 
@@ -186,8 +146,8 @@ php artisan migrate
 
 <hr style="border-bottom:3px solid;">
 <h2>系統使用帳號</h2>
-<li>會員-帳號：<code>456@456</code>，密碼：<code>12345678</code></li><p>
-<li>平台人員-帳號：<code>123@123</code>，密碼：<code>12345678</code></li>
+<li>社長-帳號：<code>admin@gmail.com</code>，密碼：<code>12345678</code></li><p>
+<li>-帳號：<code>abc@gmail.com</code>，密碼：<code>12345678</code></li>
 
 <hr style="border-bottom:3px solid;">
 <h2>系統開發人員</h2>
